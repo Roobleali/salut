@@ -1,5 +1,3 @@
-import { type NavigationItem } from "@/types";
-
 import {
   Factory,
   Building2,
