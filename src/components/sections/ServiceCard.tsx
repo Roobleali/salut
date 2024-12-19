@@ -1,6 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check } from "lucide-react";
-import { motion } from "framer-motion";
 
 interface ServiceCardProps {
   title: string;
@@ -29,7 +28,7 @@ export function ServiceCard({ title, description, image, features, id }: Service
           <p className="text-gray-600 mb-6">{description}</p>
           <ul className="space-y-2">
             {features.map((feature) => (
-              <li 
+              <li
                 key={feature}
                 className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors duration-200"
               >

@@ -22,7 +22,7 @@ export function CaseStudies() {
             Client Success Stories
           </h1>
           <p className="text-base md:text-lg lg:text-xl text-gray-600 mb-6 md:mb-8 lg:mb-12 px-4 md:px-0">
-            Discover how Salut Enterprise has helped businesses transform their operations and achieve remarkable results.
+            Discover how SalutTech has helped businesses transform their operations and achieve remarkable results.
           </p>
           <div className="bg-white rounded-lg px-3 py-4 md:px-6 md:py-5 border-b border-gray-200 w-full max-w-xl md:max-w-2xl mx-auto">
             <h3 className="text-base md:text-lg font-semibold text-black mb-3 md:mb-4 text-center">
@@ -31,8 +31,8 @@ export function CaseStudies() {
             <div className="flex flex-wrap gap-2 md:gap-3 justify-center">
               <Badge
                 className={`cursor-pointer px-3 sm:px-4 py-1.5 sm:py-2 text-sm whitespace-nowrap transition-all ${!selectedIndustry
-                    ? "bg-primary text-primary-foreground scale-105"
-                    : "bg-secondary  text-gray-600  hover:bg-primary/90"
+                  ? "bg-primary text-primary-foreground scale-105"
+                  : "bg-secondary  text-gray-600  hover:bg-primary/90"
                   }`}
                 onClick={() => setSelectedIndustry(null)}
               >
@@ -42,8 +42,8 @@ export function CaseStudies() {
                 <Badge
                   key={industry}
                   className={`cursor-pointer px-4 py-2 text-sm transition-all ${selectedIndustry === industry
-                      ? "bg-primary text-primary-foreground scale-105"
-                      : "bg-secondary/80 text-gray-600 hover:bg-primary/70"
+                    ? "bg-primary text-primary-foreground scale-105"
+                    : "bg-secondary/80 text-gray-600 hover:bg-primary/70"
                     }`}
                   onClick={() => setSelectedIndustry(industry)}
                 >

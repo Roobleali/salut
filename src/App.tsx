@@ -1,4 +1,3 @@
-import React from 'react';
 import { Router, Switch, Route } from "wouter";
 
 import { Navbar } from "@/components/layout/Navbar";

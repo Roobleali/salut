@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Play, Pause, Volume2, VolumeX } from "lucide-react";
+import { Play, Volume2, VolumeX } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface VideoTestimonial {
@@ -32,11 +32,10 @@ export function VideoGallery({ testimonials }: VideoGalleryProps) {
             whileTap={{ scale: 0.98 }}
           >
             <Card
-              className={`cursor-pointer transition-colors ${
-                activeVideo === testimonial.id
+              className={`cursor-pointer transition-colors ${activeVideo === testimonial.id
                   ? "border-primary"
                   : "hover:border-primary/50"
-              }`}
+                }`}
               onClick={() => setActiveVideo(testimonial.id)}
             >
               <CardContent className="p-4">

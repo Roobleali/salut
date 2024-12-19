@@ -307,13 +307,40 @@ export const CASE_STUDIES = [
     ],
     testimonial: {
       quote:
-        "The transition from our legacy systems to Salut Enterprise's solution has revolutionized how we manage our coffee production and distribution operations. As Romania's first company specialized in private labeling of coffee, we needed a system that could handle our unique requirements, and this solution has exceeded our expectations.",
+        "The transition from our legacy systems to SalutTech's solution has revolutionized how we manage our coffee production and distribution operations. As Romania's first company specialized in private labeling of coffee, we needed a system that could handle our unique requirements, and this solution has exceeded our expectations.",
       author: "Sherif Abdala",
       position: "CEO",
       company: "Gourmet Coffee",
     },
-    image:
-      "https://res.cloudinary.com/do3dahfvh/image/upload/v1731747105/ttt1fmtpdnxfv3gagevm.png",
+    videoUrl:
+      "https://res.cloudinary.com/do3dahfvh/video/upload/f_auto:video,q_auto/m59amoxkynlzn8jy7ows",
+  },
+
+  {
+    id: "brec-real-estate",
+    title: "Brec Business & Real Estate Consulting Digital Transformation",
+    industry: "Real Estate",
+    challenge:
+      "As a growing real estate consulting firm in Bucharest, Brec faced challenges in managing increasing volumes of data and client interactions. They needed a unified platform to streamline their operations and improve client management.",
+    solution:
+      "Integrated a customized real estate software solution with comprehensive CRM, property management tools, and mobile accessibility for agents",
+    results: [
+      "40% reduction in property listing management time",
+      "30% improvement in client satisfaction",
+      "Enhanced data management efficiency",
+      "Automated property listing updates",
+      "Improved team collaboration",
+      "Real-time market analytics access",
+    ],
+    testimonial: {
+      quote:
+        "The integrated software solution has revolutionized our real estate operations. The centralized platform has dramatically improved our efficiency and enabled us to better serve our growing client base in Bucharest.",
+      author: "Grigore Anica",
+      position: "CEO",
+      company: "Brec Business & Real Estate Consulting SRL",
+    },
+    videoUrl:
+      "https://res.cloudinary.com/do3dahfvh/video/upload/v1734621913/7982cf6b-2687-43f1-b24e-bdadebc9777a_elwl2b.mov",
   },
   {
     id: "dolcenera-coffee",
@@ -338,35 +365,8 @@ export const CASE_STUDIES = [
       position: "Director of Operations",
       company: "Dolcenera Coffee Shops",
     },
-    image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085",
+    // No video available for this case study - using placeholder
   },
-  {
-    id: "brec-real-estate",
-    title: "Brec Business & Real Estate Consulting Digital Transformation",
-    industry: "Real Estate",
-    challenge:
-      "As a growing real estate consulting firm in Bucharest, Brec faced challenges in managing increasing volumes of data and client interactions. They needed a unified platform to streamline their operations and improve client management.",
-    solution:
-      "Integrated a customized real estate software solution with comprehensive CRM, property management tools, and mobile accessibility for agents",
-    results: [
-      "40% reduction in property listing management time",
-      "30% improvement in client satisfaction",
-      "Enhanced data management efficiency",
-      "Automated property listing updates",
-      "Improved team collaboration",
-      "Real-time market analytics access",
-    ],
-    testimonial: {
-      quote:
-        "The integrated software solution has revolutionized our real estate operations. The centralized platform has dramatically improved our efficiency and enabled us to better serve our growing client base in Bucharest.",
-      author: "Grigore Anica",
-      position: "CEO",
-      company: "Brec Business & Real Estate Consulting SRL",
-    },
-    image:
-      "https://res.cloudinary.com/do3dahfvh/image/upload/v1731747070/jpoxov3qweqyokkfeyco.png",
-  },
-
   {
     id: "codavinci-property",
     title: "Codavinci SRL Property Management Transformation",
@@ -390,7 +390,7 @@ export const CASE_STUDIES = [
       position: "CEO",
       company: "Codavinci SRL",
     },
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab",
+    // No video available for this case study - using placeholder
   },
 ];
 

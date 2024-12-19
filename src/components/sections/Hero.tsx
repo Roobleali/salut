@@ -14,9 +14,7 @@ export function Hero() {
             </h1>
             <p className="mt-6 text-lg md:text-xl text-gray-600 relative inline-block">
               Transform your business with our comprehensive suite of integrated enterprise solutions. From implementation to customization and support, we deliver tailored software that drives growth and efficiency across industries.
-              <svg className="absolute -bottom-2 left-0 w-full" height="4" viewBox="0 0 100 4" preserveAspectRatio="none">
-                <path d="M 0,2 Q 50,4 100,2" stroke="currentColor" strokeWidth="2" fill="none" className="text-primary/40" />
-              </svg>
+
             </p>
             <div className="mt-8 flex gap-4">
               <Link href="/contact">
@@ -31,7 +29,7 @@ export function Hero() {
               </Link>
             </div>
           </div>
-          
+
           <div className="relative">
             <img
               src="https://images.unsplash.com/photo-1556761175-4b46a572b786"

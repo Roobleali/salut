@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { Star, StarHalf } from "lucide-react";
+import { Star } from "lucide-react";
 import { motion } from "framer-motion";
 import { useToast } from "@/hooks/use-toast";
 
@@ -18,7 +18,7 @@ interface CaseStudyFeedbackProps {
   title: string;
 }
 
-export function CaseStudyFeedback({ caseStudyId, title }: CaseStudyFeedbackProps) {
+export function CaseStudyFeedback({ title }: CaseStudyFeedbackProps) {
   const [rating, setRating] = useState<number>(0);
   const [hoveredRating, setHoveredRating] = useState<number>(0);
   const [comment, setComment] = useState("");
@@ -67,11 +67,10 @@ export function CaseStudyFeedback({ caseStudyId, title }: CaseStudyFeedbackProps
                 onClick={() => setRating(star)}
               >
                 <Star
-                  className={`h-8 w-8 ${
-                    star <= (hoveredRating || rating)
-                      ? "fill-yellow-400 text-yellow-400"
-                      : "text-gray-300"
-                  }`}
+                  className={`h-8 w-8 ${star <= (hoveredRating || rating)
+                    ? "fill-yellow-400 text-yellow-400"
+                    : "text-gray-300"
+                    }`}
                 />
               </motion.button>
             ))}
@@ -82,8 +81,8 @@ export function CaseStudyFeedback({ caseStudyId, title }: CaseStudyFeedbackProps
             onChange={(e) => setComment(e.target.value)}
             className="min-h-[100px]"
           />
-          <Button 
-            onClick={handleSubmit} 
+          <Button
+            onClick={handleSubmit}
             disabled={!rating || isSubmitting}
             className="w-full"
           >

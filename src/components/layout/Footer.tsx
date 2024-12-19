@@ -1,5 +1,4 @@
 import { Link } from "wouter";
-import React from 'react';
 
 export function Footer() {
   return (
@@ -34,8 +33,8 @@ export function Footer() {
           <div>
             <h4 className="font-semibold mb-4">Contact</h4>
             <ul className="space-y-2 text-gray-600">
-              <li>info@Salut Enterprise.com</li>
-              <li>+1 (555) 123-4567</li>
+              <li>info@saluttech.ro</li>
+              <li>+40 729 917 823</li>
             </ul>
           </div>
         </div>
