@@ -77,9 +77,8 @@ export function Contact() {
                   <div>
                     <h3 className="font-semibold mb-1">Address</h3>
                     <p className="text-gray-600">
-                      123 Tech Street<br />
-                      San Francisco, CA 94105<br />
-                      United States
+                      Bucharest<br />
+                      Romania
                     </p>
                   </div>
                 </div>
