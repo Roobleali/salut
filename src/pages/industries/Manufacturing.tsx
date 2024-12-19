@@ -129,7 +129,7 @@ export function Manufacturing() {
             </div>
 
             {/* Manufacturing Process Visual */}
-            <div className="relative max-w-5xl mx-auto mb-16 md:mb-24">
+            {/* <div className="relative max-w-5xl mx-auto mb-16 md:mb-24">
               <div className="aspect-video rounded-lg overflow-hidden bg-gradient-to-br from-primary/10 via-primary/5 to-transparent p-8">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 h-full">
                   {[Factory, Cog, LineChart].map((Icon, index) => (
@@ -145,7 +145,7 @@ export function Manufacturing() {
                   ))}
                 </div>
               </div>
-            </div>
+            </div> */}
 
             {/* Key Advantages Section */}
             <motion.div
