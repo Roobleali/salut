@@ -33,9 +33,14 @@ export function Footer() {
           <div>
             <h4 className="font-semibold mb-4">Contact</h4>
             <ul className="space-y-2 text-gray-600">
-              <li>info@saluttech.ro</li>
-              <li>+40 729 917 823</li>
+              <li>
+                <a href="mailto:info@saluttech.ro">info@saluttech.ro</a>
+              </li>
+              <li>
+                <a href="tel:+40729917823">+40 729 917 823</a>
+              </li>
             </ul>
+
           </div>
         </div>
 

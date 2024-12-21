@@ -3,9 +3,7 @@ import {
   Building2,
   ShoppingBag,
   Briefcase,
-  HardHat,
   UtensilsCrossed,
-  Stethoscope,
   GraduationCap,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
@@ -52,13 +50,7 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
           "Project management and service tracking for consulting firms",
         icon: Briefcase,
       },
-      {
-        title: "Construction",
-        href: "/industries/construction",
-        description:
-          "Project cost estimation, material tracking and regulatory compliance",
-        icon: HardHat,
-      },
+
       {
         title: "Hospitality",
         href: "/industries/hospitality",
@@ -66,13 +58,7 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
           "Reservation systems and guest experience management solutions",
         icon: UtensilsCrossed,
       },
-      {
-        title: "Healthcare",
-        href: "/industries/healthcare",
-        description:
-          "Patient management and medical inventory tracking systems",
-        icon: Stethoscope,
-      },
+
       {
         title: "Education",
         href: "/industries/education",
@@ -119,11 +105,7 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
         href: "/enterprise/project-management",
         description: "Project planning and resource allocation",
       },
-      {
-        title: "HR & Recruitment",
-        href: "/enterprise/hr",
-        description: "Complete HR management system",
-      },
+
       {
         title: "Website & E-commerce",
         href: "/enterprise/ecommerce",
@@ -134,11 +116,7 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
         href: "/enterprise/pos",
         description: "Modern POS system for retail",
       },
-      {
-        title: "Field Service",
-        href: "/enterprise/field-service",
-        description: "Mobile workforce management",
-      },
+
       {
         title: "Marketing Automation",
         href: "/enterprise/marketing",

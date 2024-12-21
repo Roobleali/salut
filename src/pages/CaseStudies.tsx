@@ -25,9 +25,7 @@ export function CaseStudies() {
             Discover how SalutTech has helped businesses transform their operations and achieve remarkable results.
           </p>
           <div className="bg-white rounded-lg px-3 py-4 md:px-6 md:py-5 border-b border-gray-200 w-full max-w-xl md:max-w-2xl mx-auto">
-            <h3 className="text-base md:text-lg font-semibold text-black mb-3 md:mb-4 text-center">
-              Filter by Industry
-            </h3>
+
             <div className="flex flex-wrap gap-2 md:gap-3 justify-center">
               <Badge
                 className={`cursor-pointer px-3 sm:px-4 py-1.5 sm:py-2 text-sm whitespace-nowrap transition-all ${!selectedIndustry
