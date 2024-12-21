@@ -40,7 +40,7 @@ export function Hero() {
                   !
                 </span>
                 <span className="block mt-2 font-medium text-primary text-3xl">
-                  We deliver tailored software that drives growth and efficiency across industries.
+                  We deliver tailored software that drives growth <br /> and efficiency across industries.
 
                 </span>
               </h1>
