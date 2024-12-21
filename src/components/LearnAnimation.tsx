@@ -51,7 +51,7 @@ export function LearnAnimation() {
                       {step.title}
                     </h3>
                   </div>
-                  <p className="text-gray-600">{step.description}</p>
+                  <p className="text-gray-600 mt-2">{step.description}</p>
                 </div>
               </div>
               {index < steps.length - 1 && (

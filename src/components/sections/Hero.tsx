@@ -39,8 +39,8 @@ export function Hero() {
                   </span>
                   !
                 </span>
-                <span className="block mt-2 text-primary">
-                  Transform your business with our comprehensive suite of integrated enterprise solutions. From implementation to customization and support, we deliver tailored software that drives growth and efficiency across industries.
+                <span className="block mt-2 font-medium text-primary text-3xl">
+                  We deliver tailored software that drives growth and efficiency across industries.
 
                 </span>
               </h1>
@@ -50,7 +50,7 @@ export function Hero() {
                   className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
                   onClick={() => navigate("/services")}
                 >
-                  Bilow Maanta
+                  Get started
                 </Button>
               </div>
               <div className="container max-w-4xl mx-auto px-4">
