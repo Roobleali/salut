@@ -94,7 +94,7 @@ export function Navbar() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href="/">
-            <a className="font-bold text-2xl text-primary">Salut Enterprise</a>
+            <img src="/logo.jpeg" alt="" className="w-max h-10" />
           </Link>
 
           {/* Mobile Menu Toggle */}

@@ -26,26 +26,37 @@ export function Home() {
             <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10 rounded-3xl blur-2xl -z-10"></div>
             {/* Traditional Software Card */}
             <div className="p-8 rounded-xl bg-white/80 backdrop-blur shadow-xl">
-              <h3 className="text-2xl font-bold mb-6 text-gray-800">Traditional Software</h3>
+              <h3 className="text-2xl font-bold mb-6 text-gray-800">
+                Traditional Software
+              </h3>
               <div className="space-y-4">
                 {[
-
-                  "Do NothingRelying on outdated systems that stifle growth.",
-                  "Limited Customization Generic solutions that don’t fit your needs.",
-                  "Time-Consuming Processes Manual tasks wasting valuable hours.",
-                  "High Costs Expensive licenses with hidden fees.",
-                  "Stagnant Growth Lack of innovative features to drive progress.",
-                  "Lack of Support Minimal access to expert guidance.",
-                  "Risk of Obsolescence Falling behind competitors using modern tech.",
-                  "Complex Interfaces Difficult navigation requiring extensive training.",
-                  "Rigid Pricing Inflexible pricing models straining your budget.",
-                  "Outdated Technology Tech that lags behind industry advancements."
+                  "Do Nothing: Relying on outdated systems that hinder growth.",
+                  "Limited Customization: One-size-fits-all solutions that don't cater to your unique needs.",
+                  "Time-Consuming Processes: Manual tasks that waste valuable hours.",
+                  "High Costs: Expensive licenses and hidden fees.",
+                  "Stagnant Growth: Lack of innovative features to propel your business forward.",
+                  "Lack of Support: Minimal access to expert guidance and mentorship.",
+                  "Risk of Obsolescence: Falling behind competitors embracing modern technologies.",
+                  "Complex Interfaces: Difficult to navigate, requiring extensive training.",
+                  "Rigid Pricing: Inflexible pricing models that can strain your budget.",
+                  "Outdated Technology: Technology that doesn't keep pace with industry advancements.",
                 ].map((item, index) => (
-                  <div key={index} className="flex w-full  items-start gap-3">
-                    <svg className="w-5 h-5 text-red-500 mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  <div key={index} className="flex items-start gap-3">
+                    <svg
+                      className="w-5 h-5 text-red-500 mt-1 flex-shrink-0"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M6 18L18 6M6 6l12 12"
+                      />
                     </svg>
-                    <span className="text-gray-700 truncate w-full">{item}</span>
+                    <span className="text-gray-700">{item}</span>
                   </div>
                 ))}
               </div>
@@ -58,23 +69,32 @@ export function Home() {
               </h3>
               <div className="space-y-4">
                 {[
-
-                  "Increase Profits Optimize operations to maximize revenue.",
-                  "Save Time Streamline processes with automation for strategic growth.",
-                  "Eliminate Manual Tasks let AI handle routine tasks, reducing errors.",
-                  "Cut Costs: Lower expenses with cost-effective solutions.",
-                  "Boost Productivity: Tools designed to enhance team performance.",
-                  "Enhance Customization: Tailor features to meet your franchise's needs.",
-                  "Scalable Solutions: Grow your business without software limitations.",
-                  "Real-Time Analytics: Make informed decisions with up-to-date data.",
-                  "No Experience Needed: User-friendly design for all skill levels.",
-                  "Seamless Integration: Easily incorporate software with existing systems.",
+                  "Increase Profits: Optimize operations to maximize your revenue potential.",
+                  "Save Time: Streamline processes with automation, freeing up your schedule for strategic growth.",
+                  "Eliminate Manual Tasks: Let AI handle routine activities, reducing errors and enhancing efficiency.",
+                  "Cut Costs: Lower operational expenses with cost-effective solutions and transparent pricing.",
+                  "Boost Productivity: Advanced tools designed to enhance your team's performance and output.",
+                  "Enhance Customization: Tailor features to meet your franchise's specific needs and goals.",
+                  "Seamless Integration: Easily incorporate our software with your existing systems for smooth transitions.",
+                  "Scalable Solutions: Grow your business without worrying about software limitations.",
+                  "Real-Time Analytics: Make informed decisions with up-to-the-minute data insights.",
+                  "No Experience Needed: Designed for all skill levels with user-friendly interfaces.",
                 ].map((item, index) => (
                   <div key={index} className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-primary mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    <svg
+                      className="w-5 h-5 text-primary mt-1 flex-shrink-0"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
                     </svg>
-                    <span className="text-gray-700 truncate w-full">{item}</span>
+                    <span className="text-gray-700">{item}</span>
                   </div>
                 ))}
               </div>
