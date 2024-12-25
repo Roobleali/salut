@@ -429,7 +429,6 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
                                         name="cui"
                                         render={({ field }) => (
                                             <FormItem>
-                                                <FormLabel>Company CUI</FormLabel>
                                                 <FormDescription>
                                                     Enter your CUI to automatically fill company details
                                                 </FormDescription>
