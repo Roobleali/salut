@@ -1,9 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { LearnAnimation } from "@/components/LearnAnimation";
-import { useLocation } from "wouter";
+import { OnboardingModal } from "@/components/models/OnboardingModal";
+import { useState } from "react";
 
 export function Hero() {
-  const [_, navigate] = useLocation();
+  const [showOnboarding, setShowOnboarding] = useState(false);
 
   return (
     <div className="relative overflow-hidden bg-gradient-to-b from-primary/5 to-transparent pt-32 pb-24">
@@ -21,7 +22,7 @@ export function Hero() {
               <h1 className="text-5xl lg:text-6xl font-bold tracking-tight animate-slide-in mb-8">
                 <span className="block mb-4">
                   Cloud Based ERP for
-                  <span className="relative">
+                  <span className="relative ml-2">
                     SME's
                     <svg
                       className="absolute -bottom-1 left-0 w-full"
@@ -48,10 +49,12 @@ export function Hero() {
                 <Button
                   size="lg"
                   className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
-                  onClick={() => navigate("/services")}
+                  onClick={() => setShowOnboarding(true)}
                 >
-                  Get started
+                  Get Started
                 </Button>
+
+
               </div>
               <div className="container max-w-4xl mx-auto px-4">
                 <LearnAnimation />
@@ -60,6 +63,12 @@ export function Hero() {
           </div>
         </div>
       </div>
-    </div>
+
+      {/* Onboarding Modal */}
+      <OnboardingModal
+        open={showOnboarding}
+        onOpenChange={setShowOnboarding}
+      />
+    </div >
   );
 }

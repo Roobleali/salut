@@ -94,8 +94,13 @@ export function Navbar() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href="/">
-            <img src="/logo.jpeg" alt="" className="w-max h-10" />
+            <img
+              src="/logo.jpeg"
+              alt="Salut Enterprise Logo"
+              className="w-full max-w-[150px] h-auto"
+            />
           </Link>
+
 
           {/* Mobile Menu Toggle */}
           <button
