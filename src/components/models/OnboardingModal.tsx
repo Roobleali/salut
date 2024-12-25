@@ -168,14 +168,13 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
                 .replace(/[^0-9]/g, "");
 
             // Use a CORS proxy service or your own proxy
-            const corsProxy = "https://cors-anywhere.herokuapp.com/";
             const apiUrl = `https://api.openapi.ro/api/companies/${sanitizedCui}`;
 
-            const response = await fetch(corsProxy + apiUrl, {
+            const response = await fetch(apiUrl, {
                 method: "GET",
                 headers: {
                     Accept: "application/json",
-                    "x-api-key": "bj8a5zPQ-Z-J4SWxxF2_ezS4Q6Wq3L4F24Qc9r9Yonq6oYfaTQ",
+                    "x-api-key": 'bj8a5zPQ-Z-J4SWxxF2_ezS4Q6Wq3L4F24Qc9r9Yonq6oYfaTQ',
                     Origin: window.location.origin,
                 },
             });
