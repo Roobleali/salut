@@ -12,7 +12,6 @@ import {
     FormField,
     FormItem,
     FormLabel,
-    FormMessage,
     FormDescription,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
@@ -40,11 +39,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import emailjs from '@emailjs/browser';
 
 const formSchema = z.object({
-    industry: z.string().min(1, "Please select an industry"),
-    currentSoftware: z.string().min(1, "Please describe your current software"),
-    company: z.string().min(2, "Company name must be at least 2 characters"),
-    cui: z.string().optional(),
-    email: z.string().email("Please enter a valid email"),
+    industry: z.string(),
+    currentSoftware: z.string(),
+    company: z.string(),
+    cui: z.string(),
+    email: z.string().email(),
     address: z.string().optional(),
     county: z.string().optional(),
     phone: z.string().optional(),
@@ -100,7 +99,6 @@ const STEPS: Record<StepType, string> = {
     COMPLETED: "Request Submitted",
 };
 
-
 interface OnboardingModalProps {
     open: boolean;
     onOpenChange: (open: boolean) => void;
@@ -117,12 +115,6 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
             emailjs.init("Zf4lxizbewKMs2_SJ");
         } catch (error) {
             console.error("Failed to initialize EmailJS:", error);
-            toast({
-                title: "Error",
-                description:
-                    "Failed to initialize email service. Please try again later.",
-                variant: "destructive",
-            });
         }
     }, []);
 
@@ -139,7 +131,6 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
             phone: "",
         },
     });
-
     const handleApiError = (error: any) => {
         console.error("API Error:", error);
         const errorMessage = error.message || "An unexpected error occurred";
@@ -149,6 +140,7 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
             variant: "destructive",
         });
     };
+
 
     const lookupCompany = async (cui: string | undefined) => {
         if (!cui) {
@@ -220,40 +212,26 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
                     company: data.company,
                     industry: INDUSTRIES.find(ind => ind.value === data.industry)?.label || data.industry,
                     email: data.email,
-                    phone: data.phone,
-                    address: data.address,
-                    county: data.county,
-                    cui: data.cui,
-                    currentSoftware: data.currentSoftware
+                    phone: data.phone || "N/A",
+                    address: data.address || "N/A",
+                    county: data.county || "N/A",
+                    cui: data.cui || "N/A",
+                    currentSoftware: data.currentSoftware || "N/A"
                 },
             );
 
-            if (result.status !== 200) {
-                throw new Error("Failed to send email");
+            if (result.status === 200) {
+                setStep("COMPLETED");
             }
-
-            return true;
         } catch (error) {
             console.error("EmailJS error:", error);
-            throw new Error("Failed to send email. Please try again later.");
         }
     };
 
     const onSubmit = async (data: FormData) => {
         setIsLoading(true);
-        try {
-            await sendEmail(data);
-            toast({
-                title: "Success",
-                description:
-                    "Your request has been submitted successfully. We'll be in touch shortly.",
-            });
-            setStep("COMPLETED");
-        } catch (error) {
-            handleApiError(error);
-        } finally {
-            setIsLoading(false);
-        }
+        await sendEmail(data);
+        setIsLoading(false);
     };
 
     const validateCurrentStep = () => {
@@ -262,7 +240,7 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
         const currentFields = {
             SELECT_INDUSTRY: ["industry"],
             CURRENT_SOFTWARE: ["currentSoftware"],
-            COMPANY_DETAILS: ["company", "email"],
+            COMPANY_DETAILS: ["company", "email", "cui"], // Added cui to validation
         }[step];
 
         return currentFields.every((field) => {
@@ -270,6 +248,7 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
             return value && value.length > 0;
         });
     };
+
     const progress = (() => {
         const stepValues: StepType[] = [
             "SELECT_INDUSTRY",
@@ -278,7 +257,7 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
             "COMPLETED",
         ];
         const currentIndex = stepValues.indexOf(step);
-        return (currentIndex / (stepValues.length - 2)) * 100;
+        return (currentIndex / (stepValues.length - 1)) * 100; // Adjusted calculation
     })();
 
     const goToNextStep = () => {
@@ -293,12 +272,6 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
             if (currentIndex < stepOrder.length - 1) {
                 setStep(stepOrder[currentIndex + 1]);
             }
-        } else {
-            toast({
-                title: "Validation Error",
-                description: "Please fill in all required fields before proceeding.",
-                variant: "destructive",
-            });
         }
     };
 
@@ -317,22 +290,21 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
 
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
-            <DialogContent className="sm:max-w-[600px]">
+            <DialogContent className="w-[95vw] max-w-[600px] p-4 md:p-6">
                 <DialogHeader>
                     <div className="space-y-2">
-                        <DialogTitle className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-[#9747FF] via-[#8A43E6] to-[#6E35B9] bg-clip-text text-transparent pb-1">
+                        <DialogTitle className="text-xl md:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-[#9747FF] via-[#8A43E6] to-[#6E35B9] bg-clip-text text-transparent pb-1">
                             Get Started with Salut Enterprise
                         </DialogTitle>
                         {step !== "COMPLETED" && (
                             <>
-                                <DialogDescription className="text-base font-medium text-foreground/80">
+                                <DialogDescription className="text-sm md:text-base font-medium text-foreground/80">
                                     {STEPS[step]}
                                 </DialogDescription>
                                 <div className="space-y-2">
                                     <Progress value={progress} className="h-2" />
-                                    <p className="text-sm text-muted-foreground">
-                                        Step {Object.keys(STEPS).indexOf(step) + 1} of{" "}
-                                        {Object.keys(STEPS).length - 1}
+                                    <p className="text-xs md:text-sm text-muted-foreground">
+                                        Step {Object.keys(STEPS).indexOf(step) + 1} of {Object.keys(STEPS).length - 1}
                                     </p>
                                 </div>
                             </>
@@ -341,55 +313,53 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
                 </DialogHeader>
 
                 {step === "COMPLETED" ? (
-                    <div className="py-8 text-center space-y-4">
+                    <div className="py-4 md:py-8 text-center space-y-4">
                         <div className="flex justify-center">
-                            <CheckCircle2 className="h-16 w-16 text-primary" />
+                            <CheckCircle2 className="h-12 w-12 md:h-16 md:w-16 text-primary" />
                         </div>
-                        <h3 className="text-2xl font-semibold text-primary">
+                        <h3 className="text-xl md:text-2xl font-semibold text-primary">
                             Thank You for Your Interest!
                         </h3>
-                        <p className="text-muted-foreground max-w-md mx-auto">
+                        <p className="text-sm md:text-base text-muted-foreground max-w-md mx-auto">
                             Our team will review your requirements and get back to you within
                             the next hour with a personalized solution tailored to your needs.
                         </p>
                     </div>
                 ) : (
                     <Form {...form}>
-                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 md:space-y-6">
                             {step === "SELECT_INDUSTRY" && (
                                 <FormField
                                     control={form.control}
                                     name="industry"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel>Select Your Industry</FormLabel>
-                                            <div className="grid grid-cols-2 gap-4">
-                                                {INDUSTRIES.map(
-                                                    ({ value, label, icon: Icon, description }) => (
-                                                        <div
-                                                            key={value}
-                                                            className={`p-4 rounded-lg border-2 cursor-pointer transition-all duration-200 ${field.value === value
-                                                                ? "border-primary bg-primary/5"
-                                                                : "border-border hover:border-primary/50"
-                                                                }`}
-                                                            onClick={() => field.onChange(value)}
-                                                        >
-                                                            <div className="flex items-center gap-3">
-                                                                <div className="p-2 rounded-md bg-primary/10">
-                                                                    <Icon className="w-5 h-5 text-primary" />
-                                                                </div>
-                                                                <div>
-                                                                    <div className="font-medium">{label}</div>
-                                                                    <div className="text-sm text-muted-foreground">
-                                                                        {description}
-                                                                    </div>
+                                            <FormLabel className="text-sm md:text-base">Select Your Industry</FormLabel>
+                                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
+                                                {INDUSTRIES.map(({ value, label, icon: Icon, description }) => (
+                                                    <div
+                                                        key={value}
+                                                        className={`p-3 md:p-4 rounded-lg border-2 cursor-pointer transition-all duration-200 ${field.value === value
+                                                            ? "border-primary bg-primary/5"
+                                                            : "border-border hover:border-primary/50"
+                                                            }`}
+                                                        onClick={() => field.onChange(value)}
+                                                    >
+                                                        <div className="flex items-center gap-2 md:gap-3">
+                                                            <div className="p-1.5 md:p-2 rounded-md bg-primary/10">
+                                                                <Icon className="w-4 h-4 md:w-5 md:h-5 text-primary" />
+                                                            </div>
+                                                            <div>
+                                                                <div className="text-sm md:text-base font-medium">{label}</div>
+                                                                <div className="text-xs md:text-sm text-muted-foreground">
+                                                                    {description}
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    ),
-                                                )}
+                                                    </div>
+                                                ))}
                                             </div>
-                                            <FormMessage />
+                                            {/* <FormMessage /> */}
                                         </FormItem>
                                     )}
                                 />
@@ -401,22 +371,22 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
                                     name="currentSoftware"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel>
+                                            <FormLabel className="text-sm md:text-base">
                                                 What software solutions are you currently using and what
                                                 are your main requirements?
                                             </FormLabel>
-                                            <FormDescription>
+                                            <FormDescription className="text-xs md:text-sm">
                                                 Tell us about your current software setup and what
                                                 improvements you're looking for.
                                             </FormDescription>
                                             <FormControl>
                                                 <Textarea
                                                     placeholder="e.g., Currently using Excel for inventory, looking for an automated solution with real-time tracking..."
-                                                    className="min-h-[100px]"
+                                                    className="min-h-[100px] text-sm md:text-base"
                                                     {...field}
                                                 />
                                             </FormControl>
-                                            <FormMessage />
+                                            {/* <FormMessage /> */}
                                         </FormItem>
                                     )}
                                 />
@@ -429,16 +399,16 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
                                         name="cui"
                                         render={({ field }) => (
                                             <FormItem>
-                                                <FormDescription>
+                                                <FormDescription className="text-xs md:text-sm">
                                                     Enter your CUI to automatically fill company details
                                                 </FormDescription>
-                                                <div className="flex gap-2">
+                                                <div className="flex flex-col sm:flex-row gap-2">
                                                     <FormControl>
-                                                        <div className="relative">
-                                                            <Building2 className="absolute left-3 top-2.5 h-5 w-5 text-muted-foreground" />
+                                                        <div className="relative flex-1">
+                                                            <Building2 className="absolute left-3 top-2.5 h-4 w-4 md:h-5 md:w-5 text-muted-foreground" />
                                                             <Input
                                                                 placeholder="Enter CUI"
-                                                                className="pl-10"
+                                                                className="pl-10 text-sm md:text-base"
                                                                 {...field}
                                                             />
                                                         </div>
@@ -448,7 +418,7 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
                                                         variant="outline"
                                                         onClick={() => lookupCompany(field.value)}
                                                         disabled={isLookingUp || !field.value}
-                                                        className="min-w-[120px] bg-primary/5 hover:bg-primary/10 border-primary/20 hover:border-primary/30"
+                                                        className="min-w-[120px] bg-primary/5 hover:bg-primary/10 border-primary/20 hover:border-primary/30 text-sm md:text-base"
                                                     >
                                                         {isLookingUp ? (
                                                             <Loader2 className="h-4 w-4 animate-spin" />
@@ -460,90 +430,106 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
                                                         )}
                                                     </Button>
                                                 </div>
-                                                <FormMessage />
                                             </FormItem>
                                         )}
                                     />
 
-                                    <FormField
-                                        control={form.control}
-                                        name="company"
-                                        render={({ field }) => (
-                                            <FormItem>
-                                                <FormLabel>Company Name</FormLabel>
-                                                <FormControl>
-                                                    <Input placeholder="Company Name" {...field} />
-                                                </FormControl>
-                                                <FormMessage />
-                                            </FormItem>
-                                        )}
-                                    />
-
-                                    <FormField
-                                        control={form.control}
-                                        name="email"
-                                        render={({ field }) => (
-                                            <FormItem>
-                                                <FormLabel>Business Email</FormLabel>
-                                                <FormControl>
-                                                    <Input
-                                                        type="email"
-                                                        placeholder="contact@company.com"
-                                                        {...field}
-                                                    />
-                                                </FormControl>
-                                                <FormMessage />
-                                            </FormItem>
-                                        )}
-                                    />
-
-                                    <div className="grid grid-cols-2 gap-4">
+                                    <div className="space-y-4">
                                         <FormField
                                             control={form.control}
-                                            name="address"
+                                            name="company"
                                             render={({ field }) => (
                                                 <FormItem>
-                                                    <FormLabel>Address</FormLabel>
+                                                    <FormLabel className="text-sm md:text-base">Company Name</FormLabel>
                                                     <FormControl>
-                                                        <Input placeholder="Company Address" {...field} />
+                                                        <Input
+                                                            placeholder="Company Name"
+                                                            className="text-sm md:text-base"
+                                                            {...field}
+                                                        />
                                                     </FormControl>
-                                                    <FormMessage />
                                                 </FormItem>
                                             )}
                                         />
 
                                         <FormField
                                             control={form.control}
-                                            name="county"
+                                            name="email"
                                             render={({ field }) => (
                                                 <FormItem>
-                                                    <FormLabel>County</FormLabel>
+                                                    <FormLabel className="text-sm md:text-base">Business Email</FormLabel>
                                                     <FormControl>
-                                                        <Input placeholder="County" {...field} />
+                                                        <Input
+                                                            type="email"
+                                                            placeholder="contact@company.com"
+                                                            className="text-sm md:text-base"
+                                                            {...field}
+                                                        />
                                                     </FormControl>
-                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
+
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                            <FormField
+                                                control={form.control}
+                                                name="address"
+                                                render={({ field }) => (
+                                                    <FormItem>
+                                                        <FormLabel className="text-sm md:text-base">Address</FormLabel>
+                                                        <FormControl>
+                                                            <Input
+                                                                placeholder="Company Address"
+                                                                className="text-sm md:text-base"
+                                                                {...field}
+                                                            />
+                                                        </FormControl>
+                                                        {/* <FormMessage /> */}
+                                                    </FormItem>
+                                                )}
+                                            />
+
+                                            <FormField
+                                                control={form.control}
+                                                name="county"
+                                                render={({ field }) => (
+                                                    <FormItem>
+                                                        <FormLabel className="text-sm md:text-base">County</FormLabel>
+                                                        <FormControl>
+                                                            <Input
+                                                                placeholder="County"
+                                                                className="text-sm md:text-base"
+                                                                {...field}
+                                                            />
+                                                        </FormControl>
+                                                        {/* <FormMessage /> */}
+                                                    </FormItem>
+                                                )}
+                                            />
+                                        </div>
+
+                                        <FormField
+                                            control={form.control}
+                                            name="phone"
+                                            render={({ field }) => (
+                                                <FormItem>
+                                                    <FormLabel className="text-sm md:text-base">Phone Number</FormLabel>
+                                                    <FormControl>
+                                                        <Input
+                                                            placeholder="Phone Number"
+                                                            className="text-sm md:text-base"
+                                                            {...field}
+                                                        />
+                                                    </FormControl>
+                                                    {/* <FormMessage /> */}
                                                 </FormItem>
                                             )}
                                         />
                                     </div>
-
-                                    <FormField
-                                        control={form.control}
-                                        name="phone"
-                                        render={({ field }) => (
-                                            <FormItem>
-                                                <FormLabel>Phone Number</FormLabel>
-                                                <FormControl>
-                                                    <Input placeholder="Phone Number" {...field} />
-                                                </FormControl>
-                                                <FormMessage />
-                                            </FormItem>
-                                        )}
-                                    />
                                 </div>
                             )}
 
-                            <div className="flex justify-between pt-4">
+                            <div className="flex flex-col sm:flex-row justify-between gap-2 pt-4">
                                 {step !== ("COMPLETED" as StepType) && (
                                     <>
                                         <Button
@@ -551,6 +537,7 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
                                             variant="outline"
                                             onClick={goToPreviousStep}
                                             disabled={step === "SELECT_INDUSTRY" || isLoading}
+                                            className="w-full sm:w-auto text-sm md:text-base"
                                         >
                                             <ArrowLeft className="mr-2 h-4 w-4" /> Back
                                         </Button>
@@ -560,11 +547,16 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
                                                 type="button"
                                                 onClick={goToNextStep}
                                                 disabled={isLoading}
+                                                className="w-full sm:w-auto text-sm md:text-base"
                                             >
                                                 Next <ArrowRight className="ml-2 h-4 w-4" />
                                             </Button>
                                         ) : (
-                                            <Button type="submit" disabled={isLoading}>
+                                            <Button
+                                                type="submit"
+                                                disabled={isLoading}
+                                                className="w-full sm:w-auto text-sm md:text-base"
+                                            >
                                                 {isLoading ? (
                                                     <>
                                                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -585,3 +577,5 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
         </Dialog>
     );
 }
+
+export default OnboardingModal;
