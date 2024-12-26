@@ -27,18 +27,21 @@ export function Footer() {
             <ul className="space-y-2">
               <li><Link href="/about"><a className="text-gray-600 hover:text-primary">About Us</a></Link></li>
               <li><Link href="/contact"><a className="text-gray-600 hover:text-primary">Contact</a></Link></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-semibold mb-4">Contact</h4>
-            <ul className="space-y-2 text-gray-600">
               <li>
                 <a href="mailto:info@saluttech.ro">info@saluttech.ro</a>
               </li>
               <li>
                 <a href="tel:+40729917823">+40 729 917 823</a>
               </li>
+            </ul>
+          </div>
+
+
+          <div>
+            <h4 className="font-semibold mb-4">Legal</h4>
+            <ul className="space-y-2 text-gray-600">
+              <li><Link href="/legal/privacy"><a className="text-gray-600 hover:text-primary">Privacy</a></Link></li>
+
             </ul>
 
           </div>

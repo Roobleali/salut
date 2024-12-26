@@ -22,7 +22,7 @@ import { Education } from "@/pages/industries/Education";
 import { Services as IndustryServices } from "@/pages/industries/Services";
 import { Hospitality } from "@/pages/industries/Hospitality";
 import { ScrollToTop } from "@/components/utils/ScrollToTop";
-
+import PrivacyPolicy from '@/pages/legal/PrivacyPolicy'
 function App() {
   return (
     <Router>
@@ -57,6 +57,9 @@ function App() {
             <Route path="/industries/education" component={Education} />
             <Route path="/industries/services" component={IndustryServices} />
             <Route path="/industries/hospitality" component={Hospitality} />
+
+
+            <Route path="/legal/privacy" component={PrivacyPolicy} />
 
             {/* Glossary Route */}
             <Route path="/glossary" component={Glossary} />

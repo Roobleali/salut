@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check } from "lucide-react";
+import { useState } from "react";
 
 interface ServiceCardProps {
   title: string;
@@ -10,14 +11,22 @@ interface ServiceCardProps {
 }
 
 export function ServiceCard({ title, description, image, features, id }: ServiceCardProps) {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
   return (
     <div className="h-full">
       <Card className="overflow-hidden h-full shadow-sm hover:shadow-md transition-shadow duration-300" id={id}>
-        <div className="aspect-video relative overflow-hidden">
+        <div className="aspect-video relative overflow-hidden bg-gray-100">
+          {!imageLoaded && (
+            <div className="absolute inset-0 animate-pulse bg-gray-200" />
+          )}
           <img
             src={image}
             alt={title}
-            className="object-cover w-full h-full"
+            loading="lazy"
+            className={`object-cover w-full h-full transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'
+              }`}
+            onLoad={() => setImageLoaded(true)}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
         </div>
