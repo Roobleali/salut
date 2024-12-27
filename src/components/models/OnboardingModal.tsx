@@ -228,12 +228,12 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
             });
         }
     };
-    const baseurl = 'http://localhost:3000'
+    const baseurl = 'https://api.saluttech.ro'
     const onSubmit = async (data: FormData) => {
         setIsLoading(true);
         try {
             // Call our backend API
-            const response = await fetch(`${baseurl}+api/odoo/create-company`, {
+            const response = await fetch(`${baseurl}api/odoo/create-company`, {
                 method: 'POST',
                 credentials: 'include',  // Important for CORS with credentials
 
