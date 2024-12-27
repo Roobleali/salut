@@ -12,7 +12,7 @@ import {
     FormField,
     FormItem,
     FormLabel,
-    FormDescription,
+    FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -31,7 +31,6 @@ import {
     UtensilsCrossed,
     CheckCircle2,
 } from "lucide-react";
-import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -40,13 +39,22 @@ import emailjs from '@emailjs/browser';
 
 const formSchema = z.object({
     industry: z.string(),
-    currentSoftware: z.string(),
     company: z.string(),
     cui: z.string(),
-    email: z.string().email(),
     address: z.string().optional(),
     county: z.string().optional(),
     phone: z.string().optional(),
+    adminName: z.string().min(1, "Admin name is required"),
+    email: z.string().email("Invalid email address"),
+    confirmEmail: z.string().email("Invalid email address"),
+    adminPassword: z.string().min(6, "Password must be at least 6 characters"),
+    confirmPassword: z.string(),
+}).refine((data) => data.email === data.confirmEmail, {
+    message: "Emails do not match",
+    path: ["confirmEmail"],
+}).refine((data) => data.adminPassword === data.confirmPassword, {
+    message: "Passwords do not match",
+    path: ["confirmPassword"],
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -90,12 +98,12 @@ const INDUSTRIES = [
     },
 ];
 
-type StepType = "SELECT_INDUSTRY" | "CURRENT_SOFTWARE" | "COMPANY_DETAILS" | "COMPLETED";
+type StepType = "SELECT_INDUSTRY" | "COMPANY_DETAILS" | "ADMIN_SETUP" | "COMPLETED";
 
 const STEPS: Record<StepType, string> = {
     SELECT_INDUSTRY: "Select Your Industry",
-    CURRENT_SOFTWARE: "Current Software & Needs",
     COMPANY_DETAILS: "Company Details",
+    ADMIN_SETUP: "Admin Account Setup",
     COMPLETED: "Request Submitted",
 };
 
@@ -112,9 +120,14 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
 
     useEffect(() => {
         try {
-            emailjs.init("Zf4lxizbewKMs2_SJ");
+            emailjs.init('Zf4lxizbewKMs2_SJ');
         } catch (error) {
             console.error("Failed to initialize EmailJS:", error);
+            toast({
+                variant: "destructive",
+                title: "Service Error",
+                description: "Failed to initialize email service. Please try again later.",
+            });
         }
     }, []);
 
@@ -122,81 +135,63 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
         resolver: zodResolver(formSchema),
         defaultValues: {
             industry: "",
-            currentSoftware: "",
             company: "",
             cui: "",
-            email: "",
             address: "",
             county: "",
             phone: "",
+            adminName: "",
+            email: "",
+            confirmEmail: "",
+            adminPassword: "",
+            confirmPassword: "",
         },
     });
-    const handleApiError = (error: any) => {
-        console.error("API Error:", error);
-        const errorMessage = error.message || "An unexpected error occurred";
-        toast({
-            title: "Error",
-            description: errorMessage,
-            variant: "destructive",
-        });
-    };
 
-
-    const lookupCompany = async (cui: string | undefined) => {
+    const lookupCompany = async (cui: string) => {
         if (!cui) {
             toast({
-                title: "Error",
-                description: "Please enter a CUI number",
                 variant: "destructive",
+                title: "Validation Error",
+                description: "Please enter a CUI number",
             });
             return;
         }
 
         setIsLookingUp(true);
         try {
-            const sanitizedCui = cui
-                .toString()
-                .trim()
-                .replace(/[^0-9]/g, "");
-
-            // Use a CORS proxy service or your own proxy
-            const apiUrl = `https://api.openapi.ro/api/companies/${sanitizedCui}`;
-
-            const response = await fetch(apiUrl, {
-                method: "GET",
-                headers: {
-                    Accept: "application/json",
-                    "x-api-key": 'bj8a5zPQ-Z-J4SWxxF2_ezS4Q6Wq3L4F24Qc9r9Yonq6oYfaTQ',
-                    Origin: window.location.origin,
-                },
-            });
-
+            const sanitizedCui = cui.toString().trim().replace(/[^0-9]/g, "");
+            const response = await fetch(`${baseurl}/api/anaf-lookup?cui=${sanitizedCui}`);
+            console.log(response)
             if (!response.ok) {
-                if (response.status === 403) {
-                    throw new Error("Invalid API key or authorization error");
-                }
-                if (response.status === 404) {
-                    throw new Error("Company not found");
-                }
-                throw new Error(`API error: ${response.status} ${response.statusText}`);
+                throw new Error(response.statusText);
             }
 
             const data = await response.json();
-            if (!data || !data.denumire) {
-                throw new Error("Company data not available");
+
+            if (data?.found) {
+                form.setValue("company", data.denumire);
+                form.setValue("address", data.adresa || "");
+                form.setValue("county", data.judet || "");
+                form.setValue("phone", data.telefon || "");
+                toast({
+                    title: "Success",
+                    description: "Company details found and filled automatically.",
+                });
+            } else {
+                toast({
+                    variant: "destructive",
+                    title: "Company Not Found",
+                    description: "Could not find company details for the provided CUI.",
+                });
             }
-
-            form.setValue("company", data.denumire);
-            form.setValue("address", data.adresa || "");
-            form.setValue("county", data.judet || "");
-            form.setValue("phone", data.telefon || "");
-
+        } catch (error) {
+            console.error("Company lookup error:", error);
             toast({
-                title: "Success",
-                description: "Company information has been automatically filled.",
+                variant: "destructive",
+                title: "Lookup Error",
+                description: "Failed to lookup company details. Please try again or enter manually.",
             });
-        } catch (error: any) {
-            handleApiError(error);
         } finally {
             setIsLookingUp(false);
         }
@@ -205,8 +200,8 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
     const sendEmail = async (data: FormData) => {
         try {
             const result = await emailjs.send(
-                "service_lnippfb",
-                "template_ck1avc9",
+                'service_lnippfb',
+                'template_ck1avc9',
                 {
                     to_name: "Salut Enterprise Team",
                     company: data.company,
@@ -216,22 +211,90 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
                     address: data.address || "N/A",
                     county: data.county || "N/A",
                     cui: data.cui || "N/A",
-                    currentSoftware: data.currentSoftware || "N/A"
+                    admin_name: data.adminName
                 },
             );
 
             if (result.status === 200) {
-                setStep("COMPLETED");
+                // Email sent successfully
             }
         } catch (error) {
             console.error("EmailJS error:", error);
+            // Don't throw here as this is a non-critical error
+            toast({
+                variant: "default",
+                title: "⚠️ Warning",
+                description: "Could not send email notification, but your company was created successfully.",
+            });
         }
     };
-
+    const baseurl = 'http://localhost:3000'
     const onSubmit = async (data: FormData) => {
         setIsLoading(true);
-        await sendEmail(data);
-        setIsLoading(false);
+        try {
+            // Call our backend API
+            const response = await fetch(`${baseurl}+api/odoo/create-company`, {
+                method: 'POST',
+                credentials: 'include',  // Important for CORS with credentials
+
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: data.company,
+                    email: data.email,
+                    phone: data.phone || undefined,
+                    street: data.address || undefined,
+                    city: data.county || undefined,
+                    adminName: data.adminName,
+                    adminLogin: data.email,
+                    adminPassword: data.adminPassword
+                }),
+            });
+
+            const responseData = await response.json();
+
+            if (!response.ok) {
+                // Handle specific error cases
+                if (responseData.message?.includes("already exists")) {
+                    throw new Error(`Company name "${data.company}" is already taken. Please choose a different name.`);
+                }
+                throw new Error(responseData.message || 'Failed to create company');
+            }
+
+            await sendEmail(data);
+
+            toast({
+                title: "Success",
+                description: "Your company has been created successfully. Redirecting to your dashboard...",
+            });
+
+            setStep("COMPLETED");
+
+            // Get Odoo URL from environment
+            const odooUrl = 'https://hub.saluttech.ro/'
+            if (!odooUrl) {
+                throw new Error("Odoo URL not configured");
+            }
+
+            // Construct login URL with credentials
+            const loginUrl = `${odooUrl}/web/login?login=${encodeURIComponent(data.email)}&password=${encodeURIComponent(data.adminPassword)}&redirect=/web#action=mail.action_discuss`;
+
+            // Wait briefly then redirect
+            setTimeout(() => {
+                window.location.href = loginUrl;
+            }, 2000);
+
+        } catch (error: any) {
+            console.error('Submission error:', error);
+            toast({
+                variant: "destructive",
+                title: "Error",
+                description: error.message || "An unexpected error occurred. Please try again.",
+            });
+            // Reset loading state but don't change step on error
+            setIsLoading(false);
+        }
     };
 
     const validateCurrentStep = () => {
@@ -239,8 +302,8 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
 
         const currentFields = {
             SELECT_INDUSTRY: ["industry"],
-            CURRENT_SOFTWARE: ["currentSoftware"],
-            COMPANY_DETAILS: ["company", "email", "cui"], // Added cui to validation
+            COMPANY_DETAILS: ["company", "cui"],
+            ADMIN_SETUP: ["adminName", "email", "confirmEmail", "adminPassword", "confirmPassword"],
         }[step];
 
         return currentFields.every((field) => {
@@ -252,20 +315,20 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
     const progress = (() => {
         const stepValues: StepType[] = [
             "SELECT_INDUSTRY",
-            "CURRENT_SOFTWARE",
             "COMPANY_DETAILS",
+            "ADMIN_SETUP",
             "COMPLETED",
         ];
         const currentIndex = stepValues.indexOf(step);
-        return (currentIndex / (stepValues.length - 1)) * 100; // Adjusted calculation
+        return (currentIndex / (stepValues.length - 1)) * 100;
     })();
 
     const goToNextStep = () => {
         if (validateCurrentStep()) {
             const stepOrder: StepType[] = [
                 "SELECT_INDUSTRY",
-                "CURRENT_SOFTWARE",
                 "COMPANY_DETAILS",
+                "ADMIN_SETUP",
                 "COMPLETED",
             ];
             const currentIndex = stepOrder.indexOf(step);
@@ -278,8 +341,8 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
     const goToPreviousStep = () => {
         const stepOrder: StepType[] = [
             "SELECT_INDUSTRY",
-            "CURRENT_SOFTWARE",
             "COMPANY_DETAILS",
+            "ADMIN_SETUP",
             "COMPLETED",
         ];
         const currentIndex = stepOrder.indexOf(step);
@@ -290,10 +353,10 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
 
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
-            <DialogContent className="w-[95vw] max-w-[600px] p-4 md:p-6">
+            <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
                 <DialogHeader>
                     <div className="space-y-2">
-                        <DialogTitle className="text-xl md:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-[#9747FF] via-[#8A43E6] to-[#6E35B9] bg-clip-text text-transparent pb-1">
+                        <DialogTitle className="text-xl md:text-3xl font-bold bg-gradient-to-r from-[#9747FF] via-[#8A43E6] to-[#6E35B9] bg-clip-text text-transparent pb-1">
                             Get Started with Salut Enterprise
                         </DialogTitle>
                         {step !== "COMPLETED" && (
@@ -304,7 +367,8 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
                                 <div className="space-y-2">
                                     <Progress value={progress} className="h-2" />
                                     <p className="text-xs md:text-sm text-muted-foreground">
-                                        Step {Object.keys(STEPS).indexOf(step) + 1} of {Object.keys(STEPS).length - 1}
+                                        Step {Object.keys(STEPS).indexOf(step) + 1} of{" "}
+                                        {Object.keys(STEPS).length}
                                     </p>
                                 </div>
                             </>
@@ -313,16 +377,15 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
                 </DialogHeader>
 
                 {step === "COMPLETED" ? (
-                    <div className="py-4 md:py-8 text-center space-y-4">
+                    <div className="py-6 md:py-8 text-center space-y-4">
                         <div className="flex justify-center">
                             <CheckCircle2 className="h-12 w-12 md:h-16 md:w-16 text-primary" />
                         </div>
                         <h3 className="text-xl md:text-2xl font-semibold text-primary">
-                            Thank You for Your Interest!
+                            Thank You for Choosing Salut Enterprise!
                         </h3>
                         <p className="text-sm md:text-base text-muted-foreground max-w-md mx-auto">
-                            Our team will review your requirements and get back to you within
-                            the next hour with a personalized solution tailored to your needs.
+                            Your company has been created successfully. You will be redirected to your dashboard momentarily...
                         </p>
                     </div>
                 ) : (
@@ -334,59 +397,34 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
                                     name="industry"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel className="text-sm md:text-base">Select Your Industry</FormLabel>
+                                            <FormLabel>Select Your Industry</FormLabel>
                                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
-                                                {INDUSTRIES.map(({ value, label, icon: Icon, description }) => (
-                                                    <div
-                                                        key={value}
-                                                        className={`p-3 md:p-4 rounded-lg border-2 cursor-pointer transition-all duration-200 ${field.value === value
-                                                            ? "border-primary bg-primary/5"
-                                                            : "border-border hover:border-primary/50"
-                                                            }`}
-                                                        onClick={() => field.onChange(value)}
-                                                    >
-                                                        <div className="flex items-center gap-2 md:gap-3">
-                                                            <div className="p-1.5 md:p-2 rounded-md bg-primary/10">
-                                                                <Icon className="w-4 h-4 md:w-5 md:h-5 text-primary" />
-                                                            </div>
-                                                            <div>
-                                                                <div className="text-sm md:text-base font-medium">{label}</div>
-                                                                <div className="text-xs md:text-sm text-muted-foreground">
-                                                                    {description}
+                                                {INDUSTRIES.map(
+                                                    ({ value, label, icon: Icon, description }) => (
+                                                        <div
+                                                            key={value}
+                                                            className={`p-3 md:p-4 rounded-lg border-2 cursor-pointer transition-all duration-200 ${field.value === value
+                                                                ? "border-primary bg-primary/5"
+                                                                : "border-border hover:border-primary/50"
+                                                                }`}
+                                                            onClick={() => field.onChange(value)}
+                                                        >
+                                                            <div className="flex items-center gap-3">
+                                                                <div className="p-2 rounded-md bg-primary/10">
+                                                                    <Icon className="w-4 h-4 md:w-5 md:h-5 text-primary" />
+                                                                </div>
+                                                                <div>
+                                                                    <div className="text-sm md:text-base font-medium">{label}</div>
+                                                                    <div className="text-xs md:text-sm text-muted-foreground">
+                                                                        {description}
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                ))}
+                                                    ),
+                                                )}
                                             </div>
-                                            {/* <FormMessage /> */}
-                                        </FormItem>
-                                    )}
-                                />
-                            )}
-
-                            {step === "CURRENT_SOFTWARE" && (
-                                <FormField
-                                    control={form.control}
-                                    name="currentSoftware"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel className="text-sm md:text-base">
-                                                What software solutions are you currently using and what
-                                                are your main requirements?
-                                            </FormLabel>
-                                            <FormDescription className="text-xs md:text-sm">
-                                                Tell us about your current software setup and what
-                                                improvements you're looking for.
-                                            </FormDescription>
-                                            <FormControl>
-                                                <Textarea
-                                                    placeholder="e.g., Currently using Excel for inventory, looking for an automated solution with real-time tracking..."
-                                                    className="min-h-[100px] text-sm md:text-base"
-                                                    {...field}
-                                                />
-                                            </FormControl>
-                                            {/* <FormMessage /> */}
+                                            <FormMessage />
                                         </FormItem>
                                     )}
                                 />
@@ -399,10 +437,8 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
                                         name="cui"
                                         render={({ field }) => (
                                             <FormItem>
-                                                <FormDescription className="text-xs md:text-sm">
-                                                    Enter your CUI to automatically fill company details
-                                                </FormDescription>
-                                                <div className="flex flex-col sm:flex-row gap-2">
+                                                <FormLabel>CUI Number</FormLabel>
+                                                <div className="flex gap-2">
                                                     <FormControl>
                                                         <div className="relative flex-1">
                                                             <Building2 className="absolute left-3 top-2.5 h-4 w-4 md:h-5 md:w-5 text-muted-foreground" />
@@ -410,6 +446,7 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
                                                                 placeholder="Enter CUI"
                                                                 className="pl-10 text-sm md:text-base"
                                                                 {...field}
+                                                                autoFocus
                                                             />
                                                         </div>
                                                     </FormControl>
@@ -418,118 +455,198 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
                                                         variant="outline"
                                                         onClick={() => lookupCompany(field.value)}
                                                         disabled={isLookingUp || !field.value}
-                                                        className="min-w-[120px] bg-primary/5 hover:bg-primary/10 border-primary/20 hover:border-primary/30 text-sm md:text-base"
+                                                        className="min-w-[100px] md:min-w-[120px] bg-primary/5 hover:bg-primary/10 border-primary/20 hover:border-primary/30"
                                                     >
                                                         {isLookingUp ? (
                                                             <Loader2 className="h-4 w-4 animate-spin" />
                                                         ) : (
                                                             <>
                                                                 <Search className="mr-2 h-4 w-4" />
-                                                                Lookup Info
+                                                                <span className="hidden sm:inline">Lookup</span> Info
                                                             </>
                                                         )}
                                                     </Button>
                                                 </div>
+                                                <FormMessage />
                                             </FormItem>
                                         )}
                                     />
 
-                                    <div className="space-y-4">
+                                    <FormField
+                                        control={form.control}
+                                        name="company"
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel>Company Name</FormLabel>
+                                                <FormControl>
+                                                    <Input
+                                                        placeholder="Company Name"
+                                                        className="text-sm md:text-base"
+                                                        {...field}
+                                                    />
+                                                </FormControl>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                         <FormField
                                             control={form.control}
-                                            name="company"
+                                            name="address"
                                             render={({ field }) => (
                                                 <FormItem>
-                                                    <FormLabel className="text-sm md:text-base">Company Name</FormLabel>
+                                                    <FormLabel>Address</FormLabel>
                                                     <FormControl>
                                                         <Input
-                                                            placeholder="Company Name"
+                                                            placeholder="Company Address"
                                                             className="text-sm md:text-base"
                                                             {...field}
                                                         />
                                                     </FormControl>
+                                                    <FormMessage />
                                                 </FormItem>
                                             )}
                                         />
 
                                         <FormField
                                             control={form.control}
-                                            name="email"
+                                            name="county"
                                             render={({ field }) => (
                                                 <FormItem>
-                                                    <FormLabel className="text-sm md:text-base">Business Email</FormLabel>
+                                                    <FormLabel>County</FormLabel>
                                                     <FormControl>
                                                         <Input
-                                                            type="email"
-                                                            placeholder="contact@company.com"
+                                                            placeholder="County"
                                                             className="text-sm md:text-base"
                                                             {...field}
                                                         />
                                                     </FormControl>
-                                                </FormItem>
-                                            )}
-                                        />
-
-                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                            <FormField
-                                                control={form.control}
-                                                name="address"
-                                                render={({ field }) => (
-                                                    <FormItem>
-                                                        <FormLabel className="text-sm md:text-base">Address</FormLabel>
-                                                        <FormControl>
-                                                            <Input
-                                                                placeholder="Company Address"
-                                                                className="text-sm md:text-base"
-                                                                {...field}
-                                                            />
-                                                        </FormControl>
-                                                        {/* <FormMessage /> */}
-                                                    </FormItem>
-                                                )}
-                                            />
-
-                                            <FormField
-                                                control={form.control}
-                                                name="county"
-                                                render={({ field }) => (
-                                                    <FormItem>
-                                                        <FormLabel className="text-sm md:text-base">County</FormLabel>
-                                                        <FormControl>
-                                                            <Input
-                                                                placeholder="County"
-                                                                className="text-sm md:text-base"
-                                                                {...field}
-                                                            />
-                                                        </FormControl>
-                                                        {/* <FormMessage /> */}
-                                                    </FormItem>
-                                                )}
-                                            />
-                                        </div>
-
-                                        <FormField
-                                            control={form.control}
-                                            name="phone"
-                                            render={({ field }) => (
-                                                <FormItem>
-                                                    <FormLabel className="text-sm md:text-base">Phone Number</FormLabel>
-                                                    <FormControl>
-                                                        <Input
-                                                            placeholder="Phone Number"
-                                                            className="text-sm md:text-base"
-                                                            {...field}
-                                                        />
-                                                    </FormControl>
-                                                    {/* <FormMessage /> */}
+                                                    <FormMessage />
                                                 </FormItem>
                                             )}
                                         />
                                     </div>
+
+                                    <FormField
+                                        control={form.control}
+                                        name="phone"
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel>Phone Number</FormLabel>
+                                                <FormControl>
+                                                    <Input
+                                                        placeholder="Phone Number"
+                                                        className="text-sm md:text-base"
+                                                        {...field}
+                                                    />
+                                                </FormControl>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
                                 </div>
                             )}
 
-                            <div className="flex flex-col sm:flex-row justify-between gap-2 pt-4">
+                            {step === "ADMIN_SETUP" && (
+                                <div className="space-y-4">
+                                    <FormField
+                                        control={form.control}
+                                        name="adminName"
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel>Admin Name</FormLabel>
+                                                <FormControl>
+                                                    <Input
+                                                        placeholder="Full Name"
+                                                        className="text-sm md:text-base"
+                                                        {...field}
+                                                    />
+                                                </FormControl>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+
+                                    <FormField
+                                        control={form.control}
+                                        name="email"
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel>Email Address</FormLabel>
+                                                <FormControl>
+                                                    <Input
+                                                        type="email"
+                                                        placeholder="your.email@company.com"
+                                                        className="text-sm md:text-base"
+                                                        {...field}
+                                                    />
+                                                </FormControl>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+
+                                    <FormField
+                                        control={form.control}
+                                        name="confirmEmail"
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel>Confirm Email</FormLabel>
+                                                <FormControl>
+                                                    <Input
+                                                        type="email"
+                                                        placeholder="Confirm your email"
+                                                        className="text-sm md:text-base"
+                                                        {...field}
+                                                    />
+                                                </FormControl>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+
+                                    <FormField
+                                        control={form.control}
+                                        name="adminPassword"
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel>Password</FormLabel>
+                                                <FormControl>
+                                                    <Input
+                                                        type="password"
+                                                        placeholder="Minimum 6 characters"
+                                                        className="text-sm md:text-base"
+                                                        {...field}
+                                                    />
+                                                </FormControl>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+
+                                    <FormField
+                                        control={form.control}
+                                        name="confirmPassword"
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel>Confirm Password</FormLabel>
+                                                <FormControl>
+                                                    <Input
+                                                        type="password"
+                                                        placeholder="Confirm your password"
+                                                        className="text-sm md:text-base"
+                                                        {...field}
+                                                    />
+                                                </FormControl>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+                                </div>
+                            )}
+
+                            <div className="flex justify-between pt-4">
                                 {step !== ("COMPLETED" as StepType) && (
                                     <>
                                         <Button
@@ -537,17 +654,17 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
                                             variant="outline"
                                             onClick={goToPreviousStep}
                                             disabled={step === "SELECT_INDUSTRY" || isLoading}
-                                            className="w-full sm:w-auto text-sm md:text-base"
+                                            className="text-sm md:text-base"
                                         >
                                             <ArrowLeft className="mr-2 h-4 w-4" /> Back
                                         </Button>
 
-                                        {step !== "COMPANY_DETAILS" ? (
+                                        {step !== "ADMIN_SETUP" ? (
                                             <Button
                                                 type="button"
                                                 onClick={goToNextStep}
                                                 disabled={isLoading}
-                                                className="w-full sm:w-auto text-sm md:text-base"
+                                                className="text-sm md:text-base"
                                             >
                                                 Next <ArrowRight className="ml-2 h-4 w-4" />
                                             </Button>
@@ -555,15 +672,15 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
                                             <Button
                                                 type="submit"
                                                 disabled={isLoading}
-                                                className="w-full sm:w-auto text-sm md:text-base"
+                                                className="text-sm md:text-base"
                                             >
                                                 {isLoading ? (
                                                     <>
                                                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                                                        Submitting...
+                                                        Creating...
                                                     </>
                                                 ) : (
-                                                    "Submit"
+                                                    "Create Company"
                                                 )}
                                             </Button>
                                         )}
@@ -577,5 +694,3 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
         </Dialog>
     );
 }
-
-export default OnboardingModal;
