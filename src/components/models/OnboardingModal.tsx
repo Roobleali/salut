@@ -233,7 +233,7 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
         setIsLoading(true);
         try {
             // Call our backend API
-            const response = await fetch(`${baseurl}api/odoo/create-company`, {
+            const response = await fetch(`${baseurl}/api/odoo/create-company`, {
                 method: 'POST',
                 credentials: 'include',  // Important for CORS with credentials
 
