@@ -272,7 +272,7 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
             setStep("COMPLETED");
 
             // Get Odoo URL from environment
-            const odooUrl = 'https://hub.saluttech.ro/'
+            const odooUrl = 'https://invoices.saluttech.ro/'
             if (!odooUrl) {
                 throw new Error("Odoo URL not configured");
             }
