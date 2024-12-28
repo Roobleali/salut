@@ -1,3 +1,5 @@
+// @ts-ignore: Unused variable
+
 import { useState, useEffect } from "react";
 import {
     Dialog,
@@ -125,6 +127,17 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
     const [step, setStep] = useState<StepType>("SELECT_INDUSTRY");
     const [isLoading, setIsLoading] = useState(false);
     const [isLookingUp, setIsLookingUp] = useState(false);
+    // @ts-ignore: Unused variable
+    const [loadingStage, setLoadingStage] = useState<{
+        stage: 'init' | 'company' | 'admin' | 'finalizing';
+        message: string;
+    }>({
+        stage: 'init',
+        message: ''
+    });
+
+
+
     const { toast } = useToast();
 
     useEffect(() => {
@@ -157,7 +170,7 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
             confirmPassword: "",
         },
     });
-
+    const baseurl = 'https://api.saluttech.ro/'
     const lookupCompany = async (cui: string) => {
         if (!cui) {
             toast({
@@ -177,12 +190,12 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
             const response = await fetch(
                 `${baseurl}/api/anaf-lookup?cui=${sanitizedCui}`,
             );
-            console.log(response);
-            if (!response.ok) {
-                throw new Error(response.statusText);
-            }
 
             const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.error || response.statusText);
+            }
 
             if (data?.found) {
                 form.setValue("company", data.denumire);
@@ -198,17 +211,15 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
                 toast({
                     variant: "destructive",
                     title: "Company Not Found",
-                    description:
-                        "Could not find company details for the provided CUI.",
+                    description: data.error || "Could not find company details for the provided CUI.",
                 });
             }
-        } catch (error) {
+        } catch (error: any) {
             console.error("Company lookup error:", error);
             toast({
                 variant: "destructive",
                 title: "Lookup Error",
-                description:
-                    "Failed to lookup company details. Please try again or enter manually.",
+                description: error.message || "Failed to lookup company details. Please try again or enter manually.",
             });
         } finally {
             setIsLookingUp(false);
@@ -249,15 +260,14 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
             });
         }
     };
-    const baseurl = "https://api.saluttech.ro";
     const onSubmit = async (data: FormData) => {
         setIsLoading(true);
         try {
-            // Call our backend API
+            setLoadingStage({ stage: 'company', message: 'Creating your company...' });
+
             const response = await fetch(`${baseurl}/api/odoo/create-company`, {
                 method: "POST",
-                credentials: "include", // Important for CORS with credentials
-
+                credentials: "include",
                 headers: {
                     "Content-Type": "application/json",
                 },
@@ -276,19 +286,13 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
             const responseData = await response.json();
 
             if (!response.ok) {
-                // Handle specific error cases
-                if (responseData.message?.includes("already exists")) {
-                    throw new Error(
-                        `Company name "${data.company}" is already taken. Please choose a different name.`,
-                    );
-                }
-                throw new Error(
-                    responseData.message || "Failed to create company",
-                );
+                throw new Error(responseData.message || responseData.error || "Failed to create company");
             }
 
+            setLoadingStage({ stage: 'admin', message: 'Setting up admin account...' });
             await sendEmail(data);
 
+            setLoadingStage({ stage: 'finalizing', message: 'Finalizing setup...' });
             toast({
                 title: "Success",
                 description:
@@ -297,16 +301,13 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
 
             setStep("COMPLETED");
 
-            // Get Odoo URL from environment
             const odooUrl = "https://invoices.saluttech.ro/";
             if (!odooUrl) {
                 throw new Error("Odoo URL not configured");
             }
 
-            // Construct login URL with credentials
             const loginUrl = `${odooUrl}/web/login?login=${encodeURIComponent(data.email)}&password=${encodeURIComponent(data.adminPassword)}&redirect=/web#action=mail.action_discuss`;
 
-            // Wait briefly then redirect
             setTimeout(() => {
                 window.location.href = loginUrl;
             }, 2000);
@@ -315,12 +316,10 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
             toast({
                 variant: "destructive",
                 title: "Error",
-                description:
-                    error.message ||
-                    "An unexpected error occurred. Please try again.",
+                description: error.message || "An unexpected error occurred. Please try again.",
             });
-            // Reset loading state but don't change step on error
             setIsLoading(false);
+            setLoadingStage({ stage: 'init', message: '' });
         }
     };
 
@@ -384,6 +383,40 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
         }
     };
 
+    const LoadingState = ({ loadingStage }: any) => (
+        <div className="py-6 space-y-6 text-center">
+            <div className="flex flex-col items-center gap-4">
+                <Loader2 className="h-8 w-8 animate-spin text-primary" />
+                <div className="space-y-2">
+                    <h3 className="text-lg font-semibold text-primary">
+                        {loadingStage.stage === 'company' && "Creating Your Company..."}
+                        {loadingStage.stage === 'admin' && "Setting Up Admin Account..."}
+                        {loadingStage.stage === 'finalizing' && "Finalizing Setup..."}
+                    </h3>
+                    <p className="text-sm text-muted-foreground max-w-md mx-auto">
+                        {loadingStage.stage === 'company' && "Building your digital workspace. This might take a minute..."}
+                        {loadingStage.stage === 'admin' && "Configuring administrative access and permissions..."}
+                        {loadingStage.stage === 'finalizing' && "Almost there! Preparing your dashboard..."}
+                    </p>
+                </div>
+            </div>
+            <div className="space-y-4">
+                <Progress
+                    value={
+                        loadingStage.stage === 'company' ? 33 :
+                            loadingStage.stage === 'admin' ? 66 :
+                                loadingStage.stage === 'finalizing' ? 90 : 0
+                    }
+                    className="h-2"
+                />
+                <p className="text-xs text-muted-foreground">
+                    Please don't close this window
+                </p>
+            </div>
+        </div>
+    );
+
+
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
             <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
@@ -413,7 +446,9 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
                     </div>
                 </DialogHeader>
 
-                {step === "COMPLETED" ? (
+                {isLoading ? (
+                    <LoadingState />
+                ) : step === "COMPLETED" ? (
                     <div className="py-6 md:py-8 text-center space-y-4">
                         <div className="flex justify-center">
                             <CheckCircle2 className="h-12 w-12 md:h-16 md:w-16 text-primary" />
@@ -452,9 +487,9 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
                                                         <div
                                                             key={value}
                                                             className={`p-3 md:p-4 rounded-lg border-2 cursor-pointer transition-all duration-200 ${field.value ===
-                                                                    value
-                                                                    ? "border-primary bg-primary/5"
-                                                                    : "border-border hover:border-primary/50"
+                                                                value
+                                                                ? "border-primary bg-primary/5"
+                                                                : "border-border hover:border-primary/50"
                                                                 }`}
                                                             onClick={() =>
                                                                 field.onChange(
