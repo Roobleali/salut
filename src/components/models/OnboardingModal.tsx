@@ -127,11 +127,7 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
     const [step, setStep] = useState<StepType>("SELECT_INDUSTRY");
     const [isLoading, setIsLoading] = useState(false);
     const [isLookingUp, setIsLookingUp] = useState(false);
-    // @ts-ignore: Unused variable
-    const [loadingStage, setLoadingStage] = useState<{
-        stage: 'init' | 'company' | 'admin' | 'finalizing';
-        message: string;
-    }>({
+    const [loadingStage, setLoadingStage] = useState<LoadingStage>({
         stage: 'init',
         message: ''
     });
@@ -383,29 +379,38 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
         }
     };
 
-    const LoadingState = ({ loadingStage }: any) => (
+    interface LoadingStage {
+        stage: 'init' | 'company' | 'admin' | 'finalizing';
+        message: string;
+    }
+
+    interface LoadingStateProps {
+        stage: LoadingStage;
+    }
+
+    const LoadingState = ({ stage }: LoadingStateProps) => (
         <div className="py-6 space-y-6 text-center">
             <div className="flex flex-col items-center gap-4">
                 <Loader2 className="h-8 w-8 animate-spin text-primary" />
                 <div className="space-y-2">
                     <h3 className="text-lg font-semibold text-primary">
-                        {loadingStage.stage === 'company' && "Creating Your Company..."}
-                        {loadingStage.stage === 'admin' && "Setting Up Admin Account..."}
-                        {loadingStage.stage === 'finalizing' && "Finalizing Setup..."}
+                        {stage.stage === 'company' && "Creating Your Company..."}
+                        {stage.stage === 'admin' && "Setting Up Admin Account..."}
+                        {stage.stage === 'finalizing' && "Finalizing Setup..."}
                     </h3>
                     <p className="text-sm text-muted-foreground max-w-md mx-auto">
-                        {loadingStage.stage === 'company' && "Building your digital workspace. This might take a minute..."}
-                        {loadingStage.stage === 'admin' && "Configuring administrative access and permissions..."}
-                        {loadingStage.stage === 'finalizing' && "Almost there! Preparing your dashboard..."}
+                        {stage.stage === 'company' && "Building your digital workspace. This might take a minute..."}
+                        {stage.stage === 'admin' && "Configuring administrative access and permissions..."}
+                        {stage.stage === 'finalizing' && "Almost there! Preparing your dashboard..."}
                     </p>
                 </div>
             </div>
             <div className="space-y-4">
                 <Progress
                     value={
-                        loadingStage.stage === 'company' ? 33 :
-                            loadingStage.stage === 'admin' ? 66 :
-                                loadingStage.stage === 'finalizing' ? 90 : 0
+                        stage.stage === 'company' ? 33 :
+                            stage.stage === 'admin' ? 66 :
+                                stage.stage === 'finalizing' ? 90 : 0
                     }
                     className="h-2"
                 />
@@ -447,7 +452,7 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
                 </DialogHeader>
 
                 {isLoading ? (
-                    <LoadingState />
+                    <LoadingState stage={loadingStage} />
                 ) : step === "COMPLETED" ? (
                     <div className="py-6 md:py-8 text-center space-y-4">
                         <div className="flex justify-center">
