@@ -170,7 +170,7 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
             confirmPassword: "",
         },
     });
-    const baseurl = 'https://api.saluttech.ro/'
+    const baseurl = 'https://api.saluttech.ro'
     const lookupCompany = async (cui: string) => {
         if (!cui) {
             toast({
