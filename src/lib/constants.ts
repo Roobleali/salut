@@ -60,8 +60,8 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
       },
 
       {
-        title: "Education",
-        href: "/industries/education",
+        title: "E-invoicing",
+        href: "/industries/e-factura",
         description: "Student information and educational resource management",
         icon: GraduationCap,
       },

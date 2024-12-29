@@ -18,7 +18,7 @@ import { RealEstate } from "@/pages/industries/RealEstate";
 import { Healthcare } from "@/pages/industries/Healthcare";
 import { Glossary } from "@/pages/Glossary";
 import { GradientCustomizerPage } from "@/pages/GradientCustomizer";
-import { Education } from "@/pages/industries/Education";
+import Efactura from "@/pages/industries/Efactura";
 import { Services as IndustryServices } from "@/pages/industries/Services";
 import { Hospitality } from "@/pages/industries/Hospitality";
 import { ScrollToTop } from "@/components/utils/ScrollToTop";
@@ -54,7 +54,7 @@ function App() {
             <Route path="/industries/manufacturing" component={Manufacturing} />
             <Route path="/industries/real-estate" component={RealEstate} />
             <Route path="/industries/retail" component={Retail} />
-            <Route path="/industries/education" component={Education} />
+            <Route path="/industries/e-factura" component={Efactura} />
             <Route path="/industries/services" component={IndustryServices} />
             <Route path="/industries/hospitality" component={Hospitality} />
 
