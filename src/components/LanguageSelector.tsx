@@ -6,10 +6,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { FaFlag, FaFlagUsa } from "react-icons/fa";
+import { US, RO } from 'country-flag-icons/react/3x2';
 
 export function LanguageSelector() {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   return (
     <Select
@@ -17,19 +17,20 @@ export function LanguageSelector() {
       onValueChange={(value) => {
         i18n.changeLanguage(value);
       }}
+      aria-label={t('language.select')}
     >
-      <SelectTrigger className="w-[140px]">
+      <SelectTrigger className="w-[140px] bg-transparent border-none hover:bg-accent/50">
         <SelectValue>
           <div className="flex items-center gap-2">
             {i18n.language === 'en' ? (
               <>
-                <FaFlagUsa className="h-4 w-4" />
-                <span>English</span>
+                <US className="h-4 w-4" title="English" />
+                <span>{t('language.english')}</span>
               </>
             ) : (
               <>
-                <FaFlag className="h-4 w-4 text-blue-600" />
-                <span>Română</span>
+                <RO className="h-4 w-4" title="Romanian" />
+                <span>{t('language.romanian')}</span>
               </>
             )}
           </div>
@@ -38,14 +39,14 @@ export function LanguageSelector() {
       <SelectContent>
         <SelectItem value="en">
           <div className="flex items-center gap-2">
-            <FaFlagUsa className="h-4 w-4" />
-            <span>English</span>
+            <US className="h-4 w-4" title="English" />
+            <span>{t('language.english')}</span>
           </div>
         </SelectItem>
         <SelectItem value="ro">
           <div className="flex items-center gap-2">
-            <FaFlag className="h-4 w-4 text-blue-600" />
-            <span>Română</span>
+            <RO className="h-4 w-4" title="Romanian" />
+            <span>{t('language.romanian')}</span>
           </div>
         </SelectItem>
       </SelectContent>

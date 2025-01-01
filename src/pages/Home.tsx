@@ -41,6 +41,8 @@ export function Home() {
                   "Complex Interfaces: Difficult to navigate, requiring extensive training.",
                   "Rigid Pricing: Inflexible pricing models that can strain your budget.",
                   "Outdated Technology: Technology that doesn't keep pace with industry advancements.",
+                  "Data Security Concerns: Vulnerable systems that put sensitive business information at risk.",
+                  "Inefficient Scalability: Tools that fail to grow with your business, limiting long-term potential.",
                 ].map((item, index) => (
                   <div key={index} className="flex items-start gap-3">
                     <svg
