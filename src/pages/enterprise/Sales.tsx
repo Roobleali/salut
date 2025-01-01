@@ -80,7 +80,7 @@ export function Sales() {
             Empower your sales team with advanced tools for pipeline management, forecasting, and territory planning. Drive revenue growth with data-driven insights and automation.
           </p>
           <div className="flex gap-4 justify-center">
-            <Link href="/contact">
+            <Link href="https://cal.com/salut">
               <Button size="lg">
                 Schedule Demo <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
@@ -141,7 +141,7 @@ export function Sales() {
               <h3 className="text-2xl font-bold mb-8 text-center">
                 {CASE_STUDY.title}
               </h3>
-              
+
               <div className="grid sm:grid-cols-3 gap-8 mb-8">
                 {CASE_STUDY.metrics.map((metric) => (
                   <div key={metric.label} className="text-center">

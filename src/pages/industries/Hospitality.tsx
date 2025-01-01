@@ -93,7 +93,7 @@ export function Hospitality() {
                         Elevate your hospitality operations with our integrated management solutions designed for hotels, restaurants, and catering businesses. Experience seamless operations and enhanced guest satisfaction.
                     </p>
                     <div className="flex gap-4 justify-center mb-12">
-                        <Link href="/contact">
+                        <Link href="https://cal.com/salut">
                             <Button size="lg" className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70">
                                 Schedule Demo <ArrowRight className="ml-2 h-4 w-4" />
                             </Button>
