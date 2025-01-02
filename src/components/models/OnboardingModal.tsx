@@ -106,13 +106,11 @@ const INDUSTRIES = [
 ];
 
 type StepType =
-    | "SELECT_INDUSTRY"
     | "COMPANY_DETAILS"
     | "ADMIN_SETUP"
     | "COMPLETED";
 
 const STEPS: Record<StepType, string> = {
-    SELECT_INDUSTRY: "Select Your Industry",
     COMPANY_DETAILS: "Company Details",
     ADMIN_SETUP: "Admin Account Setup",
     COMPLETED: "Request Submitted",
@@ -124,7 +122,7 @@ interface OnboardingModalProps {
 }
 
 export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
-    const [step, setStep] = useState<StepType>("SELECT_INDUSTRY");
+    const [step, setStep] = useState<StepType>("COMPANY_DETAILS");
     const [isLoading, setIsLoading] = useState(false);
     const [isLookingUp, setIsLookingUp] = useState(false);
     const [loadingStage, setLoadingStage] = useState<LoadingStage>({
@@ -282,7 +280,7 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
             const responseData = await response.json();
 
             if (!response.ok) {
-                throw new Error(responseData.message || responseData.error || "Failed to create company");
+                throw new Error(responseData.error || responseData.error || "Failed to create company");
             }
 
             setLoadingStage({ stage: 'admin', message: 'Setting up admin account...' });
@@ -323,7 +321,6 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
         if (step === "COMPLETED") return true;
 
         const currentFields = {
-            SELECT_INDUSTRY: ["industry"],
             COMPANY_DETAILS: ["company", "cui"],
             ADMIN_SETUP: [
                 "adminName",
@@ -342,7 +339,6 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
 
     const progress = (() => {
         const stepValues: StepType[] = [
-            "SELECT_INDUSTRY",
             "COMPANY_DETAILS",
             "ADMIN_SETUP",
             "COMPLETED",
@@ -354,7 +350,6 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
     const goToNextStep = () => {
         if (validateCurrentStep()) {
             const stepOrder: StepType[] = [
-                "SELECT_INDUSTRY",
                 "COMPANY_DETAILS",
                 "ADMIN_SETUP",
                 "COMPLETED",
@@ -368,7 +363,6 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
 
     const goToPreviousStep = () => {
         const stepOrder: StepType[] = [
-            "SELECT_INDUSTRY",
             "COMPANY_DETAILS",
             "ADMIN_SETUP",
             "COMPLETED",
@@ -472,60 +466,6 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
                             onSubmit={form.handleSubmit(onSubmit)}
                             className="space-y-4 md:space-y-6"
                         >
-                            {step === "SELECT_INDUSTRY" && (
-                                <FormField
-                                    control={form.control}
-                                    name="industry"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel>
-                                                Select Your Industry
-                                            </FormLabel>
-                                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
-                                                {INDUSTRIES.map(
-                                                    ({
-                                                        value,
-                                                        label,
-                                                        icon: Icon,
-                                                        description,
-                                                    }) => (
-                                                        <div
-                                                            key={value}
-                                                            className={`p-3 md:p-4 rounded-lg border-2 cursor-pointer transition-all duration-200 ${field.value ===
-                                                                value
-                                                                ? "border-primary bg-primary/5"
-                                                                : "border-border hover:border-primary/50"
-                                                                }`}
-                                                            onClick={() =>
-                                                                field.onChange(
-                                                                    value,
-                                                                )
-                                                            }
-                                                        >
-                                                            <div className="flex items-center gap-3">
-                                                                <div className="p-2 rounded-md bg-primary/10">
-                                                                    <Icon className="w-4 h-4 md:w-5 md:h-5 text-primary" />
-                                                                </div>
-                                                                <div>
-                                                                    <div className="text-sm md:text-base font-medium">
-                                                                        {label}
-                                                                    </div>
-                                                                    <div className="text-xs md:text-sm text-muted-foreground">
-                                                                        {
-                                                                            description
-                                                                        }
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    ),
-                                                )}
-                                            </div>
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-                            )}
 
                             {step === "COMPANY_DETAILS" && (
                                 <div className="space-y-4">
@@ -779,7 +719,7 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
                                             variant="outline"
                                             onClick={goToPreviousStep}
                                             disabled={
-                                                step === "SELECT_INDUSTRY" ||
+
                                                 isLoading
                                             }
                                             className="text-sm md:text-base"

@@ -19,7 +19,7 @@ export function Hero() {
         <div className="flex flex-col items-center max-w-4xl mx-auto">
           <div className="space-y-8 animate-fade-in text-center">
             <div className="space-y-10">
-              <h1 className="text-5xl lg:text-6xl font-bold tracking-tight animate-slide-in mb-8">
+              <h1 className="text-5xl lg:text-6xl font-bold tracking-tight animate-slide-in ">
                 <span className="block mb-4">
                   Cloud Based ERP for
                   <span className="relative ml-2">
@@ -43,7 +43,12 @@ export function Hero() {
                 <span className="block mt-2 font-medium text-primary text-3xl">
                   We deliver tailored software that drives growth <br /> and efficiency across industries.
 
+                  <p className="mt-4 text-gray-500 text-sm">Free E-factura Software</p>
+
                 </span>
+                <div className="flex -mb-5 items-center justify-center">
+                  <img src="https://odoocdn.com/openerp_website/static/src/img/graphics/arrow_doodle_1.svg" alt="" />
+                </div>
               </h1>
               <div className="flex justify-center gap-4 animate-fade-in">
                 <Button
