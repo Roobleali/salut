@@ -356,7 +356,7 @@ export function RealEstate() {
             Comprehensive real estate solutions tailored for the Romanian market, with AI-powered features and seamless integrations.
           </p>
           <div className="flex justify-center gap-4">
-            <Link href="https://cal.com/salut">
+            <Link href="#">
               <Button size="lg" className="transition-all hover:-translate-y-1">
                 Schedule Demo <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
@@ -391,13 +391,13 @@ export function RealEstate() {
         <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto mb-24">
           <MetricLine
             icon={Clock}
-            label="Time Saved"
-            value="60%"
+            label="Setup Time"
+            value="3 minute"
           />
           <MetricLine
             icon={Shield}
-            label="Error Reduction"
-            value="85%"
+            label="Cost"
+            value="Completlty Free"
           />
           <MetricLine
             icon={ChartBar}

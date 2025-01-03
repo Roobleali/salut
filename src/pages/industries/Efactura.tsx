@@ -1,248 +1,275 @@
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import {
-    Check,
-    ArrowRight,
+import { OnboardingModal } from "@/components/models/OnboardingModal";
 
+import {
+    CheckCircle,
+    FileCheck,
+    Cloud,
+    Zap,
     Shield,
-    BarChart,
-    Globe,
-    Building2,
+    CreditCard,
+    Receipt,
     Bell,
+    Star,
     Banknote,
-    RefreshCw,
-    Languages
+    ArrowRight,
+    PieChart,
+    LineChart,
+    Laptop,
 } from "lucide-react";
-import { motion } from "framer-motion";
+import { useState } from "react";
+
+const BENEFITS = [
+    {
+        title: "Superior e-Factura Compliance",
+        description:
+            "Stay ahead with automated ANAF compliance and real-time validation.",
+        icon: CheckCircle,
+    },
+    {
+        title: "Enterprise-Grade SAF-T",
+        description: "Built for large-scale operations with automated reporting.",
+        icon: FileCheck,
+    },
+    {
+        title: "Enterprise Cloud Architecture",
+        description: "Scale confidently with our robust cloud infrastructure.",
+        icon: Cloud,
+    },
+    {
+        title: "AI-Powered Automation",
+        description: "Reduce manual work by 85% with intelligent automation.",
+        icon: Zap,
+    },
+    {
+        title: "Bank-Level Security",
+        description: "ISO 27001 certified with end-to-end encryption.",
+        icon: Shield,
+    },
+    {
+        title: "Advanced Payment Processing",
+        description:
+            "Integrated with all major Romanian banks for real-time tracking.",
+        icon: CreditCard,
+    },
+    {
+        title: "Multi-Entity Management",
+        description: "Manage multiple companies effortlessly.",
+        icon: CreditCard,
+    },
+];
 
 const FEATURES = [
     {
-        title: "Real-Time ANAF Integration",
-        description: "Receive instant notifications for new messages and updates from ANAF platform.",
-        icon: Bell
+        title: "Advanced e-Factura Suite",
+        description:
+            "Surpass basic compliance with automated validation and batch processing.",
+        icon: Receipt,
     },
     {
-        title: "Multi-Currency Support",
-        description: "Generate invoices in any currency with automatic RON conversion using BNR exchange rates.",
-        icon: Banknote
+        title: "Proactive Compliance",
+        description: "Stay ahead of regulatory changes with AI-powered updates.",
+        icon: Shield,
     },
     {
-        title: "Multi-Company Management",
-        description: "Manage multiple companies under one dashboard with separate workflows and reports.",
-        icon: Building2
+        title: "Global Operations Ready",
+        description:
+            "Support for multiple currencies and international reporting standards.",
+        icon: Banknote,
     },
     {
-        title: "Automated BNR Exchange Rates",
-        description: "Daily automatic updates of exchange rates from Romanian National Bank (BNR).",
-        icon: RefreshCw
+        title: "Smart ANAF Integration",
+        description: "Real-time synchronization with automated error correction.",
+        icon: Bell,
     },
     {
-        title: "Smart Validation Engine",
-        description: "Real-time validation ensuring compliance with latest ANAF requirements.",
-        icon: Shield
+        title: "Executive Analytics",
+        description: "Custom dashboards for financial performance insights.",
+        icon: PieChart,
     },
     {
-        title: "International Trading Support",
-        description: "Handle both domestic and international invoices with built-in VAT rules.",
-        icon: Globe
+        title: "Enterprise Integration Hub",
+        description:
+            "Seamless connection with Saga, WinMentor, and custom ERP systems.",
+        icon: Laptop,
     },
     {
-        title: "Multi-Language Interface",
-        description: "Switch between Romanian, English, and other languages instantly.",
-        icon: Languages
+        title: "Automated Collections",
+        description: "Reduce outstanding payments by 60% with smart tracking.",
+        icon: CreditCard,
     },
     {
-        title: "Advanced Analytics",
-        description: "Get insights into your invoicing patterns and compliance metrics.",
-        icon: BarChart
-    }
+        title: "Financial Intelligence",
+        description: "ML-powered forecasting and cash flow optimization.",
+        icon: LineChart,
+    },
 ];
 
-const BENEFITS = [
-    "Compliant with January 2024 Romanian e-Factura regulations",
-    "Instant ANAF message notifications",
-    "Automated BNR exchange rate updates",
-    "Multi-company support with separate workflows",
-    "Real-time validation and error checking",
-    "International trading support with VAT rules",
-    "Multi-language interface",
-    "Comprehensive audit trails"
+const SUCCESS_METRICS = [
+    { icon: Star, value: "98.5%", label: "Client Satisfaction" },
+    { icon: Zap, value: "85%", label: "Time Saved" },
+    { icon: Shield, value: "99.9%", label: "Compliance Rate" },
 ];
 
-const METRICS = [
-    { label: "Processing Time Saved", value: "85%" },
-    { label: "Error Reduction", value: "99%" },
-    { label: "Compliance Rate", value: "100%" }
-];
+const MetricLine = ({ icon: Icon, label, value }: any) => (
+    <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="flex flex-col items-center bg-white rounded-lg p-6 shadow-lg"
+    >
+        <div className="rounded-full bg-blue-50 p-4 mb-3">
+            {" "}
+            <Icon className="h-8 w-8 text-blue-600" />{" "}
+        </div>
+        <div className="text-3xl font-bold text-blue-600 mb-2">{value}</div>
+        <div className="text-sm text-gray-600 text-center">{label}</div>
+    </motion.div>
+);
 
-const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: {
-            staggerChildren: 0.1
-        }
-    }
-};
-
-const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: {
-            duration: 0.5
-        }
-    }
-};
+const FeatureGrid = ({ items }: any) => (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {items.map((item: any) => (
+            <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+            >
+                <Card className="h-full hover:shadow-xl transition-shadow duration-300">
+                    <CardContent className="p-6">
+                        <div className="rounded-full bg-blue-50 p-3 w-12 h-12 flex items-center justify-center mb-4">
+                            {" "}
+                            <item.icon className="h-6 w-6 text-blue-600" />{" "}
+                        </div>
+                        <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
+                        <p className="text-gray-600">{item.description}</p>
+                    </CardContent>
+                </Card>
+            </motion.div>
+        ))}
+    </div>
+);
 
 export default function EFactura() {
+    const [showOnboarding, setShowOnboarding] = useState(false);
+
     return (
-        <div className="min-h-screen bg-gradient-to-br from-background via-background/95 to-blue-50 pt-32 pb-24">
+        <div className="min-h-screen bg-gradient-to-br from-white via-blue-50/30 to-white">
             <div className="container mx-auto px-4">
-                {/* Hero Section */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    className="max-w-3xl mx-auto text-center mb-16"
-                >
-                    <Badge className="mb-4 bg-blue-100 text-blue-800">Romanian e-Factura Solution</Badge>
-                    <h1 className="text-4xl font-bold mb-6">
-                        Complete Romanian e-Factura Platform
-                    </h1>
-                    <p className="text-xl text-gray-600 mb-8">
-                        One platform for all your e-Factura needs. Get instant ANAF notifications, automatic BNR rates,
-                        and support for multiple companies and currencies.
-                    </p>
-                    <motion.div
-                        className="flex gap-4 justify-center"
-                        whileHover={{ scale: 1.02 }}
-                    >
-                        <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
-                            Start Free Trial <ArrowRight className="ml-2 h-4 w-4" />
-                        </Button>
-                        <Button variant="outline" size="lg">
-                            Schedule Demo
-                        </Button>
-                    </motion.div>
-                </motion.div>
+                {" "}
+                {/* Hero Section */}{" "}
+                <div className="py-24 text-center">
+                    {" "}
+                    <Badge className="mb-4 bg-blue-100 text-blue-800 hover:bg-blue-200">
+                        {" "}
+                        E-Invoicing Solutions{" "}
+                    </Badge>{" "}
+                    <h1 className="text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-800">
+                        {" "}
+                        Transform Your Invoicing Process{" "}
+                    </h1>{" "}
+                    <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+                        {" "}
+                        The only enterprise-grade platform that combines advanced
+                        e-invoicing compliance and AI-powered financial intelligence.{" "}
+                    </p>{" "}
+                    <div className="flex justify-center gap-6">
+                        {" "}
+                        <Button
+                            size="lg"
+                            onClick={() => setShowOnboarding(true)}
 
-                {/* Features Grid */}
-                <motion.div
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate="visible"
-                    className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24"
-                >
-                    {FEATURES.map((feature) => (
-                        <motion.div
-                            key={feature.title}
-                            variants={itemVariants}
-                            whileHover={{ scale: 1.02 }}
-                            className="h-full"
+                            className="bg-blue-600 hover:bg-blue-700 shadow-lg hover:shadow-xl transition-all"
                         >
-                            <Card className="h-full hover:shadow-lg transition-shadow duration-300">
-                                <CardContent className="p-6">
-                                    <div className="flex flex-col items-center text-center gap-4">
-                                        <feature.icon className="h-8 w-8 text-blue-600" />
-                                        <div>
-                                            <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
-                                            <p className="text-gray-600">{feature.description}</p>
-                                        </div>
-                                    </div>
-                                </CardContent>
-                            </Card>
-                        </motion.div>
-                    ))}
-                </motion.div>
+                            {" "}
+                            Get Started<ArrowRight className="ml-2 h-5 w-5" />{" "}
+                        </Button>{" "}
 
-                {/* Compliance Notice */}
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
-                    className="bg-blue-50 rounded-lg p-8 mb-24"
-                >
-                    <div className="max-w-3xl mx-auto text-center">
-                        <h2 className="text-2xl font-bold mb-4">Real-Time ANAF Integration</h2>
-                        <p className="text-gray-700">
-                            Stay updated with instant notifications from ANAF. Our platform continuously
-                            synchronizes with ANAF's systems to ensure you never miss important updates
-                            or messages.
-                        </p>
-                    </div>
-                </motion.div>
+                        <Button
+                            variant="outline"
+                            size="lg"
+                            className="border-blue-600 text-blue-600 hover:bg-blue-50"
+                        >
+                            {" "}
+                            ROI Calculator{" "}
+                        </Button>{" "}
+                    </div>{" "}
+                </div>{" "}
+                {/* Trust Indicators */}{" "}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-24">
+                    {" "}
+                    {SUCCESS_METRICS.map((metric) => (
+                        <MetricLine
+                            key={metric.label}
+                            icon={metric.icon}
+                            label={metric.label}
+                            value={metric.value}
+                        />
+                    ))}{" "}
+                </div>{" "}
+                {/* Features Section */}{" "}
+                <div className="py-24">
+                    {" "}
+                    <div className="text-center mb-16">
+                        {" "}
+                        <h2 className="text-3xl font-bold mb-4">Key Features</h2>{" "}
+                        <p className="text-xl text-gray-600">
+                            Built for efficiency and compliance
+                        </p>{" "}
+                    </div>{" "}
+                    <FeatureGrid items={FEATURES} />{" "}
+                </div>{" "}
+                {/* Benefits Section */}{" "}
+                <div className="py-24">
+                    {" "}
+                    <div className="text-center mb-16">
+                        {" "}
+                        <h2 className="text-3xl font-bold mb-4">
+                            Benefits of Our Solution
+                        </h2>{" "}
+                        <p className="text-xl text-gray-600">
+                            Designed for scale and performance
+                        </p>{" "}
+                    </div>{" "}
+                    <FeatureGrid items={BENEFITS} />{" "}
+                </div>{" "}
 
-                {/* Benefits Section */}
-                <motion.div
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    className="max-w-3xl mx-auto mb-24"
-                >
-                    <h2 className="text-3xl font-bold text-center mb-12">Key Benefits</h2>
-                    <div className="grid sm:grid-cols-2 gap-4">
-                        {BENEFITS.map((benefit) => (
-                            <motion.div
-                                key={benefit}
-                                variants={itemVariants}
-                                whileHover={{ scale: 1.02 }}
-                                className="flex items-center gap-3 bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300"
+                {/* CTA Section */}{" "}
+                <div className="bg-gradient-to-r from-blue-600 to-blue-800 rounded-3xl text-white py-20 px-8 mb-24">
+                    {" "}
+                    <div className="text-center">
+                        {" "}
+                        <h2 className="text-4xl font-bold mb-6">
+                            Ready to Transform Your Invoicing?
+                        </h2>{" "}
+                        <p className="text-xl mb-8 max-w-2xl mx-auto">
+                            {" "}
+                            Join industry leaders who trust our platform for their invoicing
+                            needs.{" "}
+                        </p>{" "}
+                        <div className="flex justify-center gap=6">
+                            {" "}
+                            <Button
+                                size="lg"
+                                variant="secondary"
+                                className="border-gray-500 bg-black text-blue600 hover:bg-blue50"
                             >
-                                <Check className="h-5 w-5 text-green-500 flex-shrink-0" />
-                                <span className="text-gray-700">{benefit}</span>
-                            </motion.div>
-                        ))}
-                    </div>
-                </motion.div>
+                                {" "}
+                                Schedule a Demo{" "}
+                            </Button>{" "}
 
-                {/* Metrics Section */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
-                    className="max-w-4xl mx-auto"
-                >
-                    <Card className="hover:shadow-xl transition-shadow duration-300">
-                        <CardContent className="p-8">
-                            <h3 className="text-2xl font-bold mb-8 text-center">
-                                Trusted by Romanian Businesses
-                            </h3>
-
-                            <div className="grid sm:grid-cols-3 gap-8 mb-8">
-                                {METRICS.map((metric) => (
-                                    <motion.div
-                                        key={metric.label}
-                                        initial={{ scale: 0.9 }}
-                                        whileInView={{ scale: 1 }}
-                                        viewport={{ once: true }}
-                                        className="text-center"
-                                    >
-                                        <div className="text-3xl font-bold text-blue-600 mb-2">
-                                            {metric.value}
-                                        </div>
-                                        <div className="text-sm text-gray-600">{metric.label}</div>
-                                    </motion.div>
-                                ))}
-                            </div>
-
-                            <motion.div
-                                className="text-center mt-8"
-                                whileHover={{ scale: 1.05 }}
-                            >
-                                <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
-                                    Get Started Today
-                                </Button>
-                            </motion.div>
-                        </CardContent>
-                    </Card>
-                </motion.div>
+                        </div>{" "}
+                    </div>{" "}
+                </div>
             </div>
+            {/* Onboarding Modal */}
+            <OnboardingModal
+                open={showOnboarding}
+                onOpenChange={setShowOnboarding}
+            />
         </div>
     );
 }

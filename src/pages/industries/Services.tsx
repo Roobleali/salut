@@ -93,7 +93,7 @@ export function Services() {
                         Empower your professional services firm with comprehensive tools designed for efficient service delivery, client management, and business growth.
                     </p>
                     <div className="flex gap-4 justify-center mb-12">
-                        <Link href="https://cal.com/salut">
+                        <Link href="#">
                             <Button size="lg" className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70">
                                 Schedule Demo <ArrowRight className="ml-2 h-4 w-4" />
                             </Button>

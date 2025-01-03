@@ -75,7 +75,7 @@ export function Purchase() {
             Transform your purchasing operations with our comprehensive procurement management solution. Automate workflows, manage suppliers, and gain powerful insights into your spending.
           </p>
           <div className="flex gap-4 justify-center">
-            <Link href="https://cal.com/salut">
+            <Link href="#">
               <Button size="lg">
                 Schedule Demo <ArrowRight className="ml-2 h-4 w-4" />
               </Button>

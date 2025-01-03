@@ -80,7 +80,7 @@ export function Sales() {
             Empower your sales team with advanced tools for pipeline management, forecasting, and territory planning. Drive revenue growth with data-driven insights and automation.
           </p>
           <div className="flex gap-4 justify-center">
-            <Link href="https://cal.com/salut">
+            <Link href="#">
               <Button size="lg">
                 Schedule Demo <ArrowRight className="ml-2 h-4 w-4" />
               </Button>

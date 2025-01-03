@@ -95,16 +95,6 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
         href: "/enterprise/manufacturing",
         description: "End-to-end manufacturing management",
       },
-      {
-        title: "Accounting",
-        href: "/enterprise/accounting",
-        description: "Financial management and reporting",
-      },
-      {
-        title: "Project Management",
-        href: "/enterprise/project-management",
-        description: "Project planning and resource allocation",
-      },
 
       {
         title: "Website & E-commerce",
