@@ -10,8 +10,8 @@ const steps = [
   },
   {
     icon: TrendingUp,
-    title: "Market",
-    description: "Expand your reach with data-driven marketing strategies",
+    title: "Automate",
+    description: "Boost your marketing! Automate for greater reach and smarter engagement!",
     color: "from-green-500/20 to-green-600/20",
   },
   {

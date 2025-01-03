@@ -25,12 +25,6 @@ import {
     ArrowLeft,
     Building2,
     Search,
-    Factory,
-    Building,
-    Store,
-    GraduationCap,
-    Briefcase,
-    UtensilsCrossed,
     CheckCircle2,
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
@@ -41,7 +35,6 @@ import emailjs from "@emailjs/browser";
 
 const formSchema = z
     .object({
-        industry: z.string(),
         company: z.string(),
         cui: z.string(),
         address: z.string().optional(),
@@ -49,16 +42,12 @@ const formSchema = z
         phone: z.string().optional(),
         adminName: z.string().min(1, "Admin name is required"),
         email: z.string().email("Invalid email address"),
-        confirmEmail: z.string().email("Invalid email address"),
         adminPassword: z
             .string()
             .min(6, "Password must be at least 6 characters"),
         confirmPassword: z.string(),
     })
-    .refine((data) => data.email === data.confirmEmail, {
-        message: "Emails do not match",
-        path: ["confirmEmail"],
-    })
+
     .refine((data) => data.adminPassword === data.confirmPassword, {
         message: "Passwords do not match",
         path: ["confirmPassword"],
@@ -66,44 +55,7 @@ const formSchema = z
 
 type FormData = z.infer<typeof formSchema>;
 
-const INDUSTRIES = [
-    {
-        value: "manufacturing",
-        label: "Manufacturing",
-        icon: Factory,
-        description: "Production and assembly operations",
-    },
-    {
-        value: "real_estate",
-        label: "Real Estate",
-        icon: Building,
-        description: "Property management and sales",
-    },
-    {
-        value: "retail",
-        label: "Retail",
-        icon: Store,
-        description: "Retail and commerce",
-    },
-    {
-        value: "education",
-        label: "Education",
-        icon: GraduationCap,
-        description: "Educational institutions",
-    },
-    {
-        value: "services",
-        label: "Services",
-        icon: Briefcase,
-        description: "Professional services",
-    },
-    {
-        value: "hospitality",
-        label: "Hospitality",
-        icon: UtensilsCrossed,
-        description: "Hotels and restaurants",
-    },
-];
+
 
 type StepType =
     | "COMPANY_DETAILS"
@@ -151,7 +103,6 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
     const form = useForm<FormData>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            industry: "",
             company: "",
             cui: "",
             address: "",
@@ -159,12 +110,11 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
             phone: "",
             adminName: "",
             email: "",
-            confirmEmail: "",
             adminPassword: "",
             confirmPassword: "",
         },
     });
-    const baseurl = 'https://api.saluttech.ro'
+    const baseurl = 'http://localhost:3000'
     const lookupCompany = async (cui: string) => {
         if (!cui) {
             toast({
@@ -228,9 +178,7 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
                 {
                     to_name: "Salut Enterprise Team",
                     company: data.company,
-                    industry:
-                        INDUSTRIES.find((ind) => ind.value === data.industry)
-                            ?.label || data.industry,
+
                     email: data.email,
                     phone: data.phone || "N/A",
                     address: data.address || "N/A",
@@ -325,7 +273,6 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
             ADMIN_SETUP: [
                 "adminName",
                 "email",
-                "confirmEmail",
                 "adminPassword",
                 "confirmPassword",
             ],
@@ -648,26 +595,6 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
                                         )}
                                     />
 
-                                    <FormField
-                                        control={form.control}
-                                        name="confirmEmail"
-                                        render={({ field }) => (
-                                            <FormItem>
-                                                <FormLabel>
-                                                    Confirm Email
-                                                </FormLabel>
-                                                <FormControl>
-                                                    <Input
-                                                        type="email"
-                                                        placeholder="Confirm your email"
-                                                        className="text-sm md:text-base"
-                                                        {...field}
-                                                    />
-                                                </FormControl>
-                                                <FormMessage />
-                                            </FormItem>
-                                        )}
-                                    />
 
                                     <FormField
                                         control={form.control}

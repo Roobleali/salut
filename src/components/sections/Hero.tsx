@@ -43,7 +43,7 @@ export function Hero() {
                 <span className="block mt-2 font-medium text-primary text-3xl">
                   We deliver tailored software that drives growth <br /> and efficiency across industries.
 
-                  <p className="mt-4 text-gray-500 text-sm">Free E-factura Software</p>
+                  <p className="mt-4 text-gray-500 text-sm font-bold font-serif">Free E-Invoicing Software</p>
 
                 </span>
                 <div className="flex -mb-5 items-center justify-center">
