@@ -7,7 +7,7 @@ export function Hero() {
   const [showOnboarding, setShowOnboarding] = useState(false);
 
   return (
-    <div className="relative overflow-hidden bg-gradient-to-b from-primary/5 to-transparent pt-32 pb-24">
+    <div className="relative overflow-hidden bg-gradient-to-b from-primary/5 to-transparent pt-16 pb-24">
       {/* Decorative Elements */}
       <div className="absolute inset-0 animate-fade-in">
         <div className="absolute top-10 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl opacity-50" />
@@ -53,7 +53,7 @@ export function Hero() {
               <div className="flex justify-center gap-4 animate-fade-in">
                 <Button
                   size="lg"
-                  className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="bg-primary hover:bg-primary/90 text-white px-8 py-3 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
                   onClick={() => setShowOnboarding(true)}
                 >
                   Get Started

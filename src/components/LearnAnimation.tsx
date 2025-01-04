@@ -24,7 +24,7 @@ const steps = [
 
 export function LearnAnimation() {
   return (
-    <div className="relative py-16 overflow-hidden">
+    <div className="relative py- overflow-hidden">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0 }}
