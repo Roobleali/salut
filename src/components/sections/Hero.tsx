@@ -7,7 +7,7 @@ export function Hero() {
   const [showOnboarding, setShowOnboarding] = useState(false);
 
   return (
-    <div className="relative overflow-hidden bg-gradient-to-b from-primary/5 to-transparent pt-16 pb-24">
+    <div className="relative overflow-hidden bg-gradient-to-b from-primary/5 to-transparent pt-20 pb-24">
       {/* Decorative Elements */}
       <div className="absolute inset-0 animate-fade-in">
         <div className="absolute top-10 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl opacity-50" />
