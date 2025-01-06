@@ -127,8 +127,8 @@ export function Contact() {
                 <div className="space-y-6">
                   <div>
                     <h3 className="font-semibold mb-2 text-lg">Email</h3>
-                    <a href="mailto:contact@saluttech.ro" className="text-primary hover:underline">
-                      contact@saluttech.ro
+                    <a href="mailto:info@saluttech.ro" className="text-primary hover:underline">
+                      info@saluttech.ro
                     </a>
                   </div>
                   <div>
