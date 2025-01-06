@@ -397,7 +397,7 @@ export function RealEstate() {
           <MetricLine
             icon={Shield}
             label="Cost"
-            value="Cheap with Quality "
+            value="150 €"
           />
           <MetricLine
             icon={ChartBar}
