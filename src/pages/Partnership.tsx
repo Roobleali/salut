@@ -273,7 +273,12 @@ const PartnershipProgram: React.FC = () => {
                         leading real estate software solution.
                     </p>
                     <div className="flex justify-center gap-4 ">
-                        <a href={`https://api.whatsapp.com/send?phone=40729917823`} target="_blank" rel="noopener noreferrer" className='relative'>
+                        <a
+                            href={`https://api.whatsapp.com/send?phone=40729917823`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="relative"
+                        >
                             <span className="bg-green-500 -mt-3 absolute right-0 text-white text-xs p-1 rounded ml-2">
                                 Response &lt; 1 min
                             </span>
@@ -281,7 +286,6 @@ const PartnershipProgram: React.FC = () => {
                                 Contact Us <ArrowRight className="ml-2 h-4 w-4" />
                             </Button>
                         </a>
-
 
                         <Link href="/services">
                             <Button
@@ -346,13 +350,10 @@ const PartnershipProgram: React.FC = () => {
                     />{" "}
                     <div className=" t  shadow p-4 rounded-3xl">
                         <p className=" text-gray-500 flex   ">
-                            " Am colaborat cu Salut Enterprise acum un an, și a fost o
-                            schimbare majoră pentru cele două companii ale mele. Nu mai
-                            plătesc nimic și, în plus, primesc venituri suplimentare.
-                            Software-ul este extrem de ușor de utilizat și a fost esențial
-                            pentru dezvoltarea afacerilor noastre. Simplitatea și eficiența
-                            lui sunt exact motivele pentru care am ales să lucrăm cu Salut
-                            Enterprise." <br />
+                            "I partnered with Salut Enterprise a year ago, and it transformed
+                            my businesses. I no longer pay anything and even earn extra
+                            revenue. Their user-friendly software is essential for our growth.
+                            " <br />
                         </p>{" "}
                         <a href="https://gourmetcoffee.ro/" className="mt-5">
                             CEO at Gourmetcoffee.ro
@@ -371,8 +372,8 @@ const PartnershipProgram: React.FC = () => {
                         <Card
                             key={tier.name}
                             className={`relative overflow-hidden transition-all duration-300 cursor-pointer ${selectedTier === tier.name
-                                ? "ring-2 ring-blue-500 shadow-xl"
-                                : "hover:shadow-lg"
+                                    ? "ring-2 ring-blue-500 shadow-xl"
+                                    : "hover:shadow-lg"
                                 }`}
                             onClick={() => handleTierSelect(tier)}
                         >
@@ -401,8 +402,8 @@ const PartnershipProgram: React.FC = () => {
                             <CardFooter>
                                 <Button
                                     className={`w-full ${selectedTier === tier.name
-                                        ? "bg-blue-700 hover:bg-blue-800"
-                                        : "bg-blue-600 hover:bg-blue-700"
+                                            ? "bg-blue-700 hover:bg-blue-800"
+                                            : "bg-blue-600 hover:bg-blue-700"
                                         }`}
                                     onClick={(e) => {
                                         e.stopPropagation();
