@@ -356,14 +356,14 @@ export function RealEstate() {
             Comprehensive real estate solutions tailored for the Romanian market, with AI-powered features and seamless integrations.
           </p>
           <div className="flex justify-center gap-4">
-            <Link href="#">
+            <Link href="/contact">
               <Button size="lg" className="transition-all hover:-translate-y-1">
                 Schedule Demo <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
-            <Link href="/contact">
+            <Link href="/partnership">
               <Button variant="outline" size="lg" className="transition-all hover:-translate-y-1">
-                Contact Sales
+                Become Partner
               </Button>
             </Link>
           </div>

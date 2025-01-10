@@ -23,6 +23,7 @@ import { Services as IndustryServices } from "@/pages/industries/Services";
 import { Hospitality } from "@/pages/industries/Hospitality";
 import { ScrollToTop } from "@/components/utils/ScrollToTop";
 import PrivacyPolicy from '@/pages/legal/PrivacyPolicy'
+import PartnershipProgram from '@/pages/Partnership'
 function App() {
   return (
     <Router>
@@ -66,6 +67,7 @@ function App() {
 
             {/* Gradient Customizer Route */}
             <Route path="/gradients" component={GradientCustomizerPage} />
+            <Route path="/partnership" component={PartnershipProgram} />
           </Switch>
         </main>
         <Footer />
