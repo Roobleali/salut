@@ -274,8 +274,8 @@ const PartnershipProgram: React.FC = () => {
                     </p>
                     <div className="flex justify-center gap-4 ">
                         <a href={`https://api.whatsapp.com/send?phone=40729917823`} target="_blank" rel="noopener noreferrer" className='relative'>
-                            <span className="bg-green-500 absolute right-0 text-white text-xs p-1 rounded ml-2">
-                                Response &lt;5 min
+                            <span className="bg-green-500 -mt-3 absolute right-0 text-white text-xs p-1 rounded ml-2">
+                                Response &lt; 1 min
                             </span>
                             <Button size="lg" className="transition-all hover:-translate-y-1">
                                 Contact Us <ArrowRight className="ml-2 h-4 w-4" />
@@ -358,13 +358,12 @@ const PartnershipProgram: React.FC = () => {
                             CEO at Gourmetcoffee.ro
                         </a>{" "}
                     </div>
-                    <div></div>
                 </div>
                 {/* arrow  */}
                 <img
                     src="https://odoocdn.com/openerp_website/static/src/img/arrows/grey_arrow_loop_02.svg"
                     alt=""
-                    className="w-24 flex items-center justify-center text-center h-auto ml-96"
+                    className="w-24   text-center h-auto ml-96  hidden md:flex items-center justify-center"
                 />{" "}
                 {/* Directly showing partnership tiers here instead of in tabs */}
                 <div className="grid gap-6 md:grid-cols-3 mt-10">
