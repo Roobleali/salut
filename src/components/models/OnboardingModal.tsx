@@ -37,9 +37,11 @@ const formSchema = z
     .object({
         company: z.string(),
         cui: z.string(),
+        cod_postal: z.string(),
         address: z.string().optional(),
         county: z.string().optional(),
         phone: z.string().optional(),
+        numar_reg_com: z.string().optional(),
         adminName: z.string().min(1, "Admin name is required"),
         email: z.string().email("Invalid email address"),
         adminPassword: z
@@ -105,16 +107,19 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
         defaultValues: {
             company: "",
             cui: "",
+            cod_postal: "",
             address: "",
             county: "",
             phone: "",
+            numar_reg_com: "",
             adminName: "",
             email: "",
             adminPassword: "",
             confirmPassword: "",
         },
     });
-    const baseurl = 'https://api.saluttech.ro'
+    const baseurl = import.meta.env.VITE_BASE_URL as string;
+
     const lookupCompany = async (cui: string) => {
         if (!cui) {
             toast({
@@ -136,7 +141,7 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
             );
 
             const data = await response.json();
-
+            console.log(data)
             if (!response.ok) {
                 throw new Error(data.error || response.statusText);
             }
@@ -146,6 +151,9 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
                 form.setValue("address", data.adresa || "");
                 form.setValue("county", data.judet || "");
                 form.setValue("phone", data.telefon || "");
+                form.setValue("cui", data.cif || "");
+                form.setValue("cod_postal", data.cod_postal || "");
+                form.setValue("numar_reg_com", data.numar_reg_com || "");
                 toast({
                     title: "Success",
                     description:
@@ -216,9 +224,12 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
                 body: JSON.stringify({
                     name: data.company,
                     email: data.email,
+                    cod_postal: data.cod_postal,
                     phone: data.phone || undefined,
                     street: data.address || undefined,
+                    cui: data.cui || undefined,
                     city: data.county || undefined,
+                    numar_reg_com: data.numar_reg_com || undefined,
                     adminName: data.adminName,
                     adminLogin: data.email,
                     adminPassword: data.adminPassword,
@@ -228,31 +239,79 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
             const responseData = await response.json();
 
             if (!response.ok) {
-                throw new Error(responseData.error || responseData.error || "Failed to create company");
+                throw new Error(responseData.error || "Failed to create company");
             }
 
             setLoadingStage({ stage: 'admin', message: 'Setting up admin account...' });
             await sendEmail(data);
 
-            setLoadingStage({ stage: 'finalizing', message: 'Finalizing setup...' });
+            setLoadingStage({ stage: 'finalizing', message: 'Initializing your dashboard...' });
             toast({
                 title: "Success",
-                description:
-                    "Your company has been created successfully. Redirecting to your dashboard...",
+                description: "Your company has been created successfully. Redirecting to your dashboard...",
             });
 
             setStep("COMPLETED");
 
-            const odooUrl = "https://invoices.saluttech.ro/";
-            if (!odooUrl) {
-                throw new Error("Odoo URL not configured");
+            // First get the login page to obtain the CSRF token
+            try {
+                const loginPageResponse = await fetch('https://invoices.saluttech.ro/web/login', {
+                    method: 'GET',
+                    credentials: 'include',
+                });
+
+                const loginPageHtml = await loginPageResponse.text();
+
+                // Create temporary element to parse HTML
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(loginPageHtml, 'text/html');
+
+                // Get CSRF token
+                const csrfToken = doc.querySelector('input[name="csrf_token"]')?.getAttribute('value');
+
+                // Create form with CSRF token
+                const form = document.createElement('form');
+                form.method = 'POST';
+                form.action = 'https://invoices.saluttech.ro/web/login';
+                form.style.display = 'none';
+
+                // Add CSRF token
+                if (csrfToken) {
+                    const csrfInput = document.createElement('input');
+                    csrfInput.type = 'hidden';
+                    csrfInput.name = 'csrf_token';
+                    csrfInput.value = csrfToken;
+                    form.appendChild(csrfInput);
+                }
+
+                // Add other required fields
+                const formFields = {
+                    'login': data.email,
+                    'password': data.adminPassword,
+                    'db': 'invoices.saluttech.ro',
+                    'redirect': '/web#action=456&model=account.move&view_type=list&cids=32&menu_id=280'
+                };
+
+                Object.entries(formFields).forEach(([name, value]) => {
+                    const input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = name;
+                    input.value = value;
+                    form.appendChild(input);
+                });
+
+                document.body.appendChild(form);
+
+                setTimeout(() => {
+                    form.submit();
+                }, 2000);
+
+            } catch (error) {
+                console.error('Login error:', error);
+                // Fallback to direct URL if form submission fails
+                window.location.href = `https://invoices.saluttech.ro/web/login?login=${encodeURIComponent(data.email)}&password=${encodeURIComponent(data.adminPassword)}&db=invoices.saluttech.ro&redirect=${encodeURIComponent('/web#action=456&model=account.move&view_type=list&cids=32&menu_id=280')}`;
             }
 
-            const loginUrl = `${odooUrl}/web/login?login=${encodeURIComponent(data.email)}&password=${encodeURIComponent(data.adminPassword)}&redirect=/web#action=mail.action_discuss`;
-
-            setTimeout(() => {
-                window.location.href = loginUrl;
-            }, 2000);
         } catch (error: any) {
             console.error("Submission error:", error);
             toast({
@@ -466,28 +525,47 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
                                                 <FormMessage />
                                             </FormItem>
                                         )}
-                                    />
+                                    />  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
-                                    <FormField
-                                        control={form.control}
-                                        name="company"
-                                        render={({ field }) => (
-                                            <FormItem>
-                                                <FormLabel>
-                                                    Company Name
-                                                </FormLabel>
-                                                <FormControl>
-                                                    <Input
-                                                        placeholder="Company Name"
-                                                        className="text-sm md:text-base"
-                                                        {...field}
-                                                    />
-                                                </FormControl>
-                                                <FormMessage />
-                                            </FormItem>
-                                        )}
-                                    />
-
+                                        <FormField
+                                            control={form.control}
+                                            name="company"
+                                            render={({ field }) => (
+                                                <FormItem>
+                                                    <FormLabel>
+                                                        Company Name
+                                                    </FormLabel>
+                                                    <FormControl>
+                                                        <Input
+                                                            placeholder="Company Name"
+                                                            className="text-sm md:text-base"
+                                                            {...field}
+                                                        />
+                                                    </FormControl>
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
+                                        <FormField
+                                            control={form.control}
+                                            name="numar_reg_com"
+                                            render={({ field }) => (
+                                                <FormItem>
+                                                    <FormLabel>
+                                                        Trade Reg.
+                                                    </FormLabel>
+                                                    <FormControl>
+                                                        <Input
+                                                            placeholder="Trade Reg."
+                                                            className="text-sm md:text-base"
+                                                            {...field}
+                                                        />
+                                                    </FormControl>
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
+                                    </div>
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                         <FormField
                                             control={form.control}
@@ -530,25 +608,8 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
                                         />
                                     </div>
 
-                                    <FormField
-                                        control={form.control}
-                                        name="phone"
-                                        render={({ field }) => (
-                                            <FormItem>
-                                                <FormLabel>
-                                                    Phone Number
-                                                </FormLabel>
-                                                <FormControl>
-                                                    <Input
-                                                        placeholder="Phone Number"
-                                                        className="text-sm md:text-base"
-                                                        {...field}
-                                                    />
-                                                </FormControl>
-                                                <FormMessage />
-                                            </FormItem>
-                                        )}
-                                    />
+
+
                                 </div>
                             )}
 
