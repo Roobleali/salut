@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
+import VideoModal from "@/components/models/VideoModel";
 
 const FEATURES = [
   {
@@ -375,12 +376,8 @@ export function RealEstate() {
             <LeftVector />
           </div>
 
-          <img
-            src="/Section.svg"
-            alt="Real Estate Management"
-            className="max-w-full overflow-hidden h-auto rounded-lg shadow-lg mx-auto"
-            style={{ maxWidth: '600px' }}
-          />
+          <VideoModal />
+
 
           <div className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2">
             <RightVector />
@@ -397,7 +394,7 @@ export function RealEstate() {
           <MetricLine
             icon={Shield}
             label="Cost"
-            value="150 €"
+            value="200 € / Month"
           />
           <MetricLine
             icon={ChartBar}

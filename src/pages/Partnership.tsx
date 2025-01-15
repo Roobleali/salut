@@ -32,7 +32,7 @@ const ROICalculator: React.FC<ROICalculatorProps> = ({ selectedTierRate }) => {
     const [numCustomers, setNumCustomers] = useState<number>(1);
     const [paymentMethod, setPaymentMethod] = useState<"card" | "cash">("card");
 
-    const CUSTOMER_PRICE = 150;
+    const CUSTOMER_PRICE = 200;
 
     const calculateROI = () => {
         const months = 12;
@@ -118,7 +118,7 @@ const ROICalculator: React.FC<ROICalculatorProps> = ({ selectedTierRate }) => {
                             <p className="text-sm">
                                 Current Commission Rate: {Math.round(selectedTierRate * 100)}%
                             </p>
-                            <p className="text-sm">Price per Customer: €150</p>
+                            <p className="text-sm">Price per Customer: 200 € / Month</p>
                         </div>
                     </CardContent>
                 </Card>
@@ -372,8 +372,8 @@ const PartnershipProgram: React.FC = () => {
                         <Card
                             key={tier.name}
                             className={`relative overflow-hidden transition-all duration-300 cursor-pointer ${selectedTier === tier.name
-                                    ? "ring-2 ring-blue-500 shadow-xl"
-                                    : "hover:shadow-lg"
+                                ? "ring-2 ring-blue-500 shadow-xl"
+                                : "hover:shadow-lg"
                                 }`}
                             onClick={() => handleTierSelect(tier)}
                         >
@@ -402,8 +402,8 @@ const PartnershipProgram: React.FC = () => {
                             <CardFooter>
                                 <Button
                                     className={`w-full ${selectedTier === tier.name
-                                            ? "bg-blue-700 hover:bg-blue-800"
-                                            : "bg-blue-600 hover:bg-blue-700"
+                                        ? "bg-blue-700 hover:bg-blue-800"
+                                        : "bg-blue-600 hover:bg-blue-700"
                                         }`}
                                     onClick={(e) => {
                                         e.stopPropagation();
