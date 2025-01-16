@@ -289,7 +289,7 @@ export const BlogPost = () => {
                     <img src="https://cdn.prod.website-files.com/65c091ad1249c93370811afe/66052604a11d997b98ff7063_map-bg%402x.png" alt="" className='opacity-20' />
                 </div>
                 <Link href="/blog">
-                    <button className="flex items-center space-x-2 text-gray-600 hover:text-blue-600 mb-5">
+                    <button className="flex overflow-hidden z-50 items-center space-x-2 text-gray-600 hover:text-blue-600 mb-5">
                         <ArrowLeft size={20} />
                         <span>Back to all posts</span>
                     </button>
