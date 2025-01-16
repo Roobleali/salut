@@ -389,7 +389,7 @@ export function RealEstate() {
           <MetricLine
             icon={Clock}
             label="Setup Time"
-            value="3 minute"
+            value="3 Days"
           />
           <MetricLine
             icon={Shield}
