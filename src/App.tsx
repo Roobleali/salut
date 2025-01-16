@@ -24,55 +24,61 @@ import { Hospitality } from "@/pages/industries/Hospitality";
 import { ScrollToTop } from "@/components/utils/ScrollToTop";
 import PrivacyPolicy from '@/pages/legal/PrivacyPolicy'
 import PartnershipProgram from '@/pages/Partnership'
+import { BlogList, BlogPost } from "./pages/BlogList";
+import { HelmetProvider } from 'react-helmet-async';
+
 function App() {
   return (
-    <Router>
-      <div className="min-h-screen flex flex-col">
-        <ScrollToTop />
+    <HelmetProvider>
 
-        <Navbar />
+      <Router>
+        <div className="min-h-screen flex flex-col">
+          <ScrollToTop />
 
-        <main className="flex-1">
-          <Switch>
-            <Route path="/" component={Home} />
-            <Route path="/services" component={Services} />
-            <Route path="/case-studies" component={CaseStudies} />
-            <Route path="/about" component={About} />
-            <Route path="/contact" component={Contact} />
+          <Navbar />
 
-            {/* Enterprise Routes */}
-            <Route path="/enterprise" component={EnterpriseApps} />
-            <Route path="/enterprise/crm" component={CRM} />
-            <Route path="/enterprise/sales" component={Sales} />
-            <Route path="/enterprise/purchase" component={Purchase} />
-            <Route path="/enterprise/inventory" component={Inventory} />
+          <main className="flex-1">
+            <Switch>
+              <Route path="/" component={Home} />
+              <Route path="/services" component={Services} />
+              <Route path="/case-studies" component={CaseStudies} />
+              <Route path="/about" component={About} />
+              <Route path="/contact" component={Contact} />
 
-            {/* Industry Routes */}
-            <Route path="/industries/manufacturing" component={Manufacturing} />
-            <Route path="/industries/real-estate" component={RealEstate} />
-            <Route path="/industries/healthcare" component={Healthcare} />
-            {/* Industry Routes */}
-            <Route path="/industries/manufacturing" component={Manufacturing} />
-            <Route path="/industries/real-estate" component={RealEstate} />
-            <Route path="/industries/retail" component={Retail} />
-            <Route path="/industries/e-factura" component={Efactura} />
-            <Route path="/industries/services" component={IndustryServices} />
-            <Route path="/industries/hospitality" component={Hospitality} />
+              {/* Enterprise Routes */}
+              <Route path="/enterprise" component={EnterpriseApps} />
+              <Route path="/enterprise/crm" component={CRM} />
+              <Route path="/enterprise/sales" component={Sales} />
+              <Route path="/enterprise/purchase" component={Purchase} />
+              <Route path="/enterprise/inventory" component={Inventory} />
 
+              {/* Industry Routes */}
+              <Route path="/industries/manufacturing" component={Manufacturing} />
+              <Route path="/industries/real-estate" component={RealEstate} />
+              <Route path="/industries/healthcare" component={Healthcare} />
+              {/* Industry Routes */}
+              <Route path="/industries/manufacturing" component={Manufacturing} />
+              <Route path="/industries/real-estate" component={RealEstate} />
+              <Route path="/industries/retail" component={Retail} />
+              <Route path="/industries/e-factura" component={Efactura} />
+              <Route path="/industries/services" component={IndustryServices} />
+              <Route path="/industries/hospitality" component={Hospitality} />
+              <Route path="/blog" component={BlogList} />
+              <Route path="/blog/:id" component={BlogPost} />
+              <Route path="/legal/privacy" component={PrivacyPolicy} />
 
-            <Route path="/legal/privacy" component={PrivacyPolicy} />
+              {/* Glossary Route */}
+              <Route path="/glossary" component={Glossary} />
 
-            {/* Glossary Route */}
-            <Route path="/glossary" component={Glossary} />
-
-            {/* Gradient Customizer Route */}
-            <Route path="/gradients" component={GradientCustomizerPage} />
-            <Route path="/partnership" component={PartnershipProgram} />
-          </Switch>
-        </main>
-        <Footer />
-      </div>
-    </Router>
+              {/* Gradient Customizer Route */}
+              <Route path="/gradients" component={GradientCustomizerPage} />
+              <Route path="/partnership" component={PartnershipProgram} />
+            </Switch>
+          </main>
+          <Footer />
+        </div>
+      </Router>
+    </HelmetProvider>
   );
 }
 

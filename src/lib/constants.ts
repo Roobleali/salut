@@ -123,6 +123,11 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
         description: "Learn more about our company and mission",
       },
       {
+        title: "News",
+        href: "/blog",
+        description: "Stay Upto date, About Product update, And tech news",
+      },
+      {
         title: "Case Studies",
         href: "/case-studies",
         description: "Success stories from our clients",

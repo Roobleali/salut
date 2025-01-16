@@ -6,16 +6,16 @@ const VideoModal = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div className="relative inline-block">
+        <div className="relative inline-block w-full max-w-full">
             {/* Placeholder image with play button */}
             <div
-                className="relative cursor-pointer group"
+                className="relative cursor-pointer group w-full max-w-full"
                 onClick={() => setIsOpen(true)}
             >
                 <img
                     src="/Section.svg"
                     alt="Real Estate Management"
-                    className="max-w-full h-auto rounded-lg shadow-lg mx-auto"
+                    className="w-full h-auto rounded-lg shadow-lg mx-auto"
                     style={{ maxWidth: '600px' }}
                 />
 
@@ -29,10 +29,10 @@ const VideoModal = () => {
 
             {/* Video Modal */}
             <Dialog open={isOpen} onOpenChange={setIsOpen}>
-                <DialogContent className=" max-w-5xl p-0">
-                    <div className="aspect-video">
+                <DialogContent className="p-0 max-w-full w-full">
+                    <div className="relative pt-[56.25%] w-full h-0 overflow-hidden rounded-md">
                         <iframe
-                            className="w-full h-full rounded-md "
+                            className="absolute top-0 left-0 w-full h-full"
                             src="https://www.youtube.com/embed/9mGwVLKyibo?autoplay=1"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowFullScreen

@@ -385,7 +385,7 @@ export function RealEstate() {
         </div>
 
         {/* Metrics */}
-        <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto mb-24">
+        <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto mb-24 truncate">
           <MetricLine
             icon={Clock}
             label="Setup Time"
@@ -394,7 +394,7 @@ export function RealEstate() {
           <MetricLine
             icon={Shield}
             label="Cost"
-            value="200 € / Month"
+            value="200 €"
           />
           <MetricLine
             icon={ChartBar}
