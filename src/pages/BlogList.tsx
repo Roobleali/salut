@@ -283,11 +283,7 @@ export const BlogPost = () => {
     return (
         <div className="relative overflow-hidden bg-white pt-20 pb-24">
             <div className="max-w-4xl mx-auto px-4 py-16">
-                {/* Decorative Elements */}
-                <div className="absolute inset-0 animate-fade-in">
-                    <div className="absolute bottom-10 right-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl opacity-50" />
-                    <img src="https://cdn.prod.website-files.com/65c091ad1249c93370811afe/66052604a11d997b98ff7063_map-bg%402x.png" alt="" className='opacity-20' />
-                </div>
+
                 <Link href="/blog">
                     <button className="flex overflow-hidden z-50 items-center space-x-2 text-gray-600 hover:text-blue-600 mb-5">
                         <ArrowLeft size={20} />

@@ -12,43 +12,50 @@ const resources = {
         resources: "Resources",
         solutions: "Our Solutions",
         about: "About Us",
-        manufacturing: "Manufacturing",
-        real_estate: "Real Estate",
-        healthcare: "Healthcare",
-        retail: "Retail & E-commerce",
-        services: "Professional Services",
-        construction: "Construction",
-        hospitality: "Hospitality",
-        education: "Education",
         manufacturing: {
+          title: "Manufacturing",
+
           description:
             "End-to-end manufacturing management with MRP, production planning and quality control",
         },
-        real_estate: {
+        estate: {
+          title: "Real Estate",
           description:
             "Complete property management solution for leasing, maintenance, and tenant portals",
         },
         retail: {
+          title: "Retail & E-commerce",
+
           description:
             "Integrated POS, inventory and e-commerce solutions for modern retail",
         },
         services: {
+          title: "Professional Services",
+
           description:
             "Project management and service tracking for consulting firms",
         },
         construction: {
+          title: "Construction",
+
           description:
             "Project cost estimation, material tracking and regulatory compliance",
         },
         hospitality: {
+          title: "Hospitality",
+
           description:
             "Reservation systems and guest experience management solutions",
         },
         healthcare: {
+          title: "Healthcare",
+
           description:
             "Patient management and medical inventory tracking systems",
         },
         education: {
+          title: "Education",
+
           description:
             "Student information and educational resource management",
         },
@@ -234,43 +241,51 @@ const resources = {
         resources: "Resurse",
         solutions: "Soluțiile Noastre",
         about: "Despre Noi",
-        manufacturing: "Producție",
-        real_estate: "Imobiliare",
-        healthcare: "Sănătate",
-        retail: "Retail și E-commerce",
-        services: "Servicii Profesionale",
-        construction: "Construcții",
-        hospitality: "Ospitalitate",
-        education: "Educație",
         manufacturing: {
+          title: "Producție",
+
           description:
             "Management complet al producției cu MRP, planificare și control al calității",
         },
         real_estate: {
+          title: "Imobiliare",
+
           description:
             "Soluție completă de administrare imobiliară pentru închiriere, întreținere și portaluri pentru chiriași",
         },
         retail: {
+          title: "Retail și E-commerce",
+
           description:
             "Soluții integrate POS, inventar și e-commerce pentru retail modern",
         },
         services: {
+          title: "Servicii Profesionale",
+
           description:
             "Management de proiect și urmărirea serviciilor pentru firme de consultanță",
         },
         construction: {
+          title: "Construcții",
+
           description:
             "Estimarea costurilor proiectelor, urmărirea materialelor și conformitate cu reglementările",
         },
         hospitality: {
+          title: "Ospitalitate",
+
           description:
             "Sisteme de rezervări și management al experienței oaspeților",
         },
         healthcare: {
+          title: "Sănătate",
+
           description:
             "Managementul pacienților și urmărirea inventarului medical",
         },
         education: {
+          title: "Educație",
+
           description:
             "Managementul informațiilor studenților și al resurselor educaționale",
         },

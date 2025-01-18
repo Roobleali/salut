@@ -50,17 +50,22 @@ export function Hero() {
                   <img src="https://odoocdn.com/openerp_website/static/src/img/graphics/arrow_doodle_1.svg" alt="" />
                 </div>
               </h1>
-              <div className="flex justify-center gap-4 animate-fade-in">
-                <Button
-                  size="lg"
-                  className="bg-primary hover:bg-primary/90 text-white px-8 py-3 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
-                  onClick={() => setShowOnboarding(true)}
-                >
-                  Get Started
-                </Button>
-
-
+              <div className="flex flex-col items-center gap-4 animate-fade-in">
+                <div className="relative">
+                  <Button
+                    size="lg"
+                    className="bg-primary hover:bg-primary/90 text-white px-8 py-3 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 opacity-50 cursor-not-allowed"
+                    onClick={() => setShowOnboarding(true)}
+                    disabled
+                  >
+                    Get Started
+                  </Button>
+                  <span className="absolute top-0 right-0 transform translate-x-2 -translate-y-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-sm">
+                    Coming Soon
+                  </span>
+                </div>
               </div>
+
               <div className="container max-w-4xl mx-auto px-4">
                 <LearnAnimation />
               </div>
