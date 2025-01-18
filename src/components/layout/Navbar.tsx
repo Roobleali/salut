@@ -214,7 +214,7 @@ export function Navbar() {
 
           <div className="sticky bottom-0 bg-white p-4 border-t">
             <div className="flex flex-col gap-4">
-              <LanguageSelector />
+              {/* <LanguageSelector /> */}
               <Link href="/contact">
                 <a>
                   <Button size="lg" className="w-full">
