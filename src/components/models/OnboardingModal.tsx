@@ -289,7 +289,7 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
                     'login': data.email,
                     'password': data.adminPassword,
                     'db': 'invoices.saluttech.ro',
-                    'redirect': '/web#action=456&model=account.move&view_type=list&cids=32&menu_id=280'
+                    'redirect': '/web'
                 };
 
                 Object.entries(formFields).forEach(([name, value]) => {
@@ -309,7 +309,7 @@ export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
             } catch (error) {
                 console.error('Login error:', error);
                 // Fallback to direct URL if form submission fails
-                window.location.href = `https://invoices.saluttech.ro/web/login?login=${encodeURIComponent(data.email)}&password=${encodeURIComponent(data.adminPassword)}&db=invoices.saluttech.ro&redirect=${encodeURIComponent('/web#action=456&model=account.move&view_type=list&cids=32&menu_id=280')}`;
+                window.location.href = `https://invoices.saluttech.ro/web/login?login=${encodeURIComponent(data.email)}&password=${encodeURIComponent(data.adminPassword)}&db=invoices.saluttech.ro&redirect=${encodeURIComponent('/web')}`;
             }
 
         } catch (error: any) {

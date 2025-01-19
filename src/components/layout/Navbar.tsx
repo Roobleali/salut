@@ -11,7 +11,6 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { Button } from "@/components/ui/button";
-import { LanguageSelector } from "@/components/LanguageSelector";
 import {
   Users,
   ShoppingCart,
