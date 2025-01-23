@@ -290,15 +290,15 @@ const PartnershipProgram: React.FC = () => {
                             </Button>
                         </a>
 
-                        <Link href="/services">
+                        <a href="/Parnership%20Program.pdf">
                             <Button
                                 variant="outline"
                                 size="lg"
                                 className="transition-all hover:-translate-y-1"
                             >
-                                Industries
+                                View Contract
                             </Button>
-                        </Link>
+                        </a>
                     </div>
                 </div>
                 {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
