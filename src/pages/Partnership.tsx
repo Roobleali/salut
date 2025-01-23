@@ -23,7 +23,6 @@ import {
     Tooltip,
     ResponsiveContainer,
 } from "recharts";
-import { Link } from "wouter";
 
 interface ROICalculatorProps {
     selectedTierRate: number;
