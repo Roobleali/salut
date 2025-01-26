@@ -56,7 +56,7 @@ export function Retail() {
                 <meta name="keywords" content="retail software, e-commerce platform, POS system, inventory management, omnichannel retail, retail analytics" />
                 <meta property="og:title" content="Retail & E-commerce Solutions | SalutTech" />
                 <meta property="og:description" content="Transform your retail business with SalutTech's comprehensive e-commerce and point-of-sale solutions." />
-                <link rel="canonical" href="https://saluttech.ro/industries/retail" />
+                <link rel="canonical" href="https://saluttech.ro/erp-system/retail" />
             </Helmet>
 
             <motion.div

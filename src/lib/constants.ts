@@ -24,28 +24,28 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
     items: [
       {
         title: "Manufacturing",
-        href: "/industries/manufacturing",
+        href: "/erp-system/manufacturing",
         description:
           "End-to-end manufacturing management with MRP, production planning and quality control",
         icon: Factory,
       },
       {
         title: "Real Estate",
-        href: "/industries/real-estate",
+        href: "/erp-system/real-estate",
         description:
           "Complete property management solution for leasing, maintenance, and tenant portals",
         icon: Building2,
       },
       {
         title: "Retail & E-commerce",
-        href: "/industries/retail",
+        href: "/erp-system/retail",
         description:
           "Integrated POS, inventory and e-commerce solutions for modern retail",
         icon: ShoppingBag,
       },
       {
         title: "Professional Services",
-        href: "/industries/services",
+        href: "/erp-system/services",
         description:
           "Project management and service tracking for consulting firms",
         icon: Briefcase,
@@ -53,7 +53,7 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
 
       {
         title: "Hospitality",
-        href: "/industries/hospitality",
+        href: "/erp-system/hospitality",
         description:
           "Reservation systems and guest experience management solutions",
         icon: UtensilsCrossed,
@@ -61,7 +61,7 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
 
       {
         title: "E-invoicing",
-        href: "/industries/e-factura",
+        href: "/erp-system/e-factura",
         description: "Student information and educational resource management",
         icon: GraduationCap,
       },

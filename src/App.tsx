@@ -54,16 +54,16 @@ function App() {
               <Route path="/enterprise/inventory" component={Inventory} />
 
               {/* Industry Routes */}
-              <Route path="/industries/manufacturing" component={Manufacturing} />
-              <Route path="/industries/real-estate" component={RealEstate} />
-              <Route path="/industries/healthcare" component={Healthcare} />
+              <Route path="/erp-system/manufacturing" component={Manufacturing} />
+              <Route path="/erp-system/real-estate" component={RealEstate} />
+              <Route path="/erp-system/healthcare" component={Healthcare} />
               {/* Industry Routes */}
-              <Route path="/industries/manufacturing" component={Manufacturing} />
-              <Route path="/industries/real-estate" component={RealEstate} />
-              <Route path="/industries/retail" component={Retail} />
-              <Route path="/industries/e-factura" component={Efactura} />
-              <Route path="/industries/services" component={IndustryServices} />
-              <Route path="/industries/hospitality" component={Hospitality} />
+              <Route path="/erp-system/manufacturing" component={Manufacturing} />
+              <Route path="/erp-system/real-estate" component={RealEstate} />
+              <Route path="/erp-system/retail" component={Retail} />
+              <Route path="/erp-system/e-factura" component={Efactura} />
+              <Route path="/erp-system/services" component={IndustryServices} />
+              <Route path="/erp-system/hospitality" component={Hospitality} />
               <Route path="/blog" component={BlogList} />
               <Route path="/blog/:id" component={BlogPost} />
               <Route path="/legal/privacy" component={PrivacyPolicy} />
