@@ -24,7 +24,8 @@ import { Hospitality } from "@/pages/industries/Hospitality";
 import { ScrollToTop } from "@/components/utils/ScrollToTop";
 import PrivacyPolicy from '@/pages/legal/PrivacyPolicy'
 import PartnershipProgram from '@/pages/Partnership'
-import { BlogList, BlogPost } from "./pages/BlogList";
+import { BlogList } from "./pages/Blog/BlogList";
+import { BlogPost } from "./pages/Blog/Blog_details";
 import { HelmetProvider } from 'react-helmet-async';
 
 function App() {
