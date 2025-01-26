@@ -94,3 +94,4 @@ export function Timeline({ milestones }: TimelineProps) {
     </div>
   );
 }
+

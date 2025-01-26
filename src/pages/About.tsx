@@ -41,30 +41,7 @@ export function About() {
         </div>
       </section>
 
-      {/* Expertise Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Our Expertise</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="p-6 rounded-xl bg-white shadow-lg hover:shadow-xl transition-all duration-300">
-              <h3 className="text-lg font-semibold mb-3">HORECA Management Systems</h3>
-              <p className="text-gray-600">Complete solutions for hotels, restaurants, and catering businesses</p>
-            </div>
-            <div className="p-6 rounded-xl bg-white shadow-lg hover:shadow-xl transition-all duration-300">
-              <h3 className="text-lg font-semibold mb-3">Manufacturing Solutions</h3>
-              <p className="text-gray-600">End-to-end manufacturing management and optimization</p>
-            </div>
-            <div className="p-6 rounded-xl bg-white shadow-lg hover:shadow-xl transition-all duration-300">
-              <h3 className="text-lg font-semibold mb-3">Point of Sale Systems</h3>
-              <p className="text-gray-600">Modern POS solutions for retail and hospitality</p>
-            </div>
-            <div className="p-6 rounded-xl bg-white shadow-lg hover:shadow-xl transition-all duration-300">
-              <h3 className="text-lg font-semibold mb-3">Real Estate Management</h3>
-              <p className="text-gray-600">Comprehensive property management solutions</p>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* Values Section */}
       <section className="py-16 bg-gradient-to-br from-primary/5 via-background to-primary/10">

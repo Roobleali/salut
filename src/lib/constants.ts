@@ -68,49 +68,42 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
     ],
   },
   {
-    title: "Modules",
+    title: "Solutions",
     items: [
       {
-        title: "CRM",
-        href: "/enterprise/crm",
-        description: "Complete customer relationship management system",
+        title: "ERP Solutions:",
+        href: "/solutions/erp",
+        description:
+          "Integrated enterprise resource planning for comprehensive business management",
       },
       {
-        title: "Sales",
-        href: "/enterprise/sales",
-        description: "Sales pipeline and forecasting tools",
+        title: "Cloud Management",
+        href: "/solutions/cloud-management",
+        description: "Scalable cloud infrastructure and service optimization",
       },
       {
-        title: "Purchase",
-        href: "/enterprise/purchase",
-        description: "Procurement and vendor management",
+        title: "Marketing",
+        href: "/solutions/marketing",
+        description:
+          "Advanced marketing strategy and digital campaign management",
       },
       {
-        title: "Inventory",
-        href: "/enterprise/inventory",
-        description: "Real-time inventory tracking system",
+        title: "Integration & Customization",
+        href: "/solutions/integration",
+        description:
+          "Seamless system integration and tailored business process optimization",
       },
       {
-        title: "Manufacturing",
-        href: "/enterprise/manufacturing",
-        description: "End-to-end manufacturing management",
-      },
-
-      {
-        title: "Website & E-commerce",
-        href: "/enterprise/ecommerce",
-        description: "Online store and website builder",
+        title: "Support & Maintenance",
+        href: "/solutions/support",
+        description:
+          "Comprehensive technical support and proactive system maintenance",
       },
       {
-        title: "Point of Sale",
-        href: "/enterprise/pos",
-        description: "Modern POS system for retail",
-      },
-
-      {
-        title: "Marketing Automation",
-        href: "/enterprise/marketing",
-        description: "Automated marketing campaigns",
+        title: "Custom Website & E-commerce",
+        href: "/solutions/website-ecommerce",
+        description:
+          "Custom web development and powerful e-commerce platform solutions",
       },
     ],
   },
@@ -165,7 +158,68 @@ export const COMPANY_MILESTONES = [
     category: "team" as const,
   },
 ];
-
+export const ERP_IMPLEMENTATION_MILESTONES = [
+  {
+    id: "kick-off-meeting",
+    duration: "3-5 days",
+    title: "Kick-off Meeting",
+    description:
+      "Initial strategic consultation to define project scope and objectives",
+    note: "Duration may vary based on project complexity",
+    category: "initial" as const,
+  },
+  {
+    id: "requirements-analysis",
+    duration: "5-7 days",
+    title: "Requirements Analysis",
+    description:
+      "Comprehensive assessment of business needs and system landscape",
+    note: "Complexity of business processes impacts timeline",
+    category: "planning" as const,
+  },
+  {
+    id: "solution-design",
+    duration: "5-7 days",
+    title: "Solution Design",
+    description: "Architectural planning and initial ERP system configuration",
+    note: "Custom requirements may extend design phase",
+    category: "design" as const,
+  },
+  {
+    id: "implementation",
+    duration: "10-14 days",
+    title: "Implementation Phase",
+    description: "System configuration, data migration, and custom development",
+    note: "Varies significantly with system complexity and customization needs",
+    category: "development" as const,
+  },
+  {
+    id: "testing",
+    duration: "3-5 days",
+    title: "Comprehensive Testing",
+    description:
+      "System validation across functional and performance dimensions",
+    note: "Depth of testing depends on system intricacy",
+    category: "validation" as const,
+  },
+  {
+    id: "training",
+    duration: "2-3 days",
+    title: "User Training",
+    description:
+      "Comprehensive training program for end-users and administrators",
+    note: "Tailored to organizational size and system complexity",
+    category: "enablement" as const,
+  },
+  {
+    id: "go-live",
+    duration: "2-3 days",
+    title: "Go-Live and Transition",
+    description: "Managed system deployment and initial support period",
+    note: "Deployment complexity impacts timeline",
+    category: "deployment" as const,
+  },
+];
 export const SERVICES = [
   {
     id: "horeca",

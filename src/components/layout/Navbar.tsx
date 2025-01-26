@@ -13,17 +13,12 @@ import {
 import { Button } from "@/components/ui/button";
 import {
   Users,
-  ShoppingCart,
-  Package,
-  Boxes,
+  CloudCog,
+
   Factory,
-  Calculator,
-  ClipboardList,
-  UserPlus,
-  Globe,
+
   ShoppingBag,
-  Truck,
-  Megaphone,
+
   Building2,
   Briefcase,
   Hammer,
@@ -32,6 +27,10 @@ import {
   GraduationCap,
   Menu,
   X,
+  ShoppingCart,
+  Settings,
+  Wrench,
+  Globe,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { NAVIGATION_ITEMS } from "@/lib/constants";
@@ -42,7 +41,7 @@ type IconMapping = {
 
 type IconSections = {
   Industries: IconMapping;
-  Modules: IconMapping;
+  Solutions: IconMapping;
 };
 
 const icons: IconSections = {
@@ -56,20 +55,15 @@ const icons: IconSections = {
     Healthcare: <Stethoscope className="w-4 h-4" aria-hidden="true" />,
     Education: <GraduationCap className="w-4 h-4" aria-hidden="true" />,
   },
-  Modules: {
-    CRM: <Users className="w-4 h-4" aria-hidden="true" />,
-    Sales: <ShoppingCart className="w-4 h-4" aria-hidden="true" />,
-    Purchase: <Package className="w-4 h-4" aria-hidden="true" />,
-    Inventory: <Boxes className="w-4 h-4" aria-hidden="true" />,
-    Manufacturing: <Factory className="w-4 h-4" aria-hidden="true" />,
-    Accounting: <Calculator className="w-4 h-4" aria-hidden="true" />,
-    "Project Management": <ClipboardList className="w-4 h-4" aria-hidden="true" />,
-    "HR & Recruitment": <UserPlus className="w-4 h-4" aria-hidden="true" />,
-    "Website & E-commerce": <Globe className="w-4 h-4" aria-hidden="true" />,
-    "Point of Sale": <ShoppingBag className="w-4 h-4" aria-hidden="true" />,
-    "Field Service": <Truck className="w-4 h-4" aria-hidden="true" />,
-    "Marketing Automation": <Megaphone className="w-4 h-4" aria-hidden="true" />,
-  },
+  Solutions: {
+    "ERP Solutions:": <Users className="w-4 h-4" aria-hidden="true" />,
+    "Cloud Management": <CloudCog className="w-4 h-4" aria-hidden="true" />,
+    "Marketing": <ShoppingCart className="w-4 h-4" aria-hidden="true" />,
+    "Integration & Customization": <Settings className="w-4 h-4" aria-hidden="true" />,
+    "Support & Maintenance": <Wrench className="w-4 h-4" aria-hidden="true" />,
+    "Custom Website & E-commerce": <Globe className="w-4 h-4" aria-hidden="true" />
+
+  }
 };
 
 const getIcon = (title: string, section: string): JSX.Element | null => {
@@ -120,7 +114,7 @@ export function Navbar() {
                         className={cn(
                           "grid gap-3 p-6",
                           item.title === "Industries" ||
-                            item.title === "Modules"
+                            item.title === "Solutions"
                             ? "w-[600px] grid-cols-2"
                             : "w-[400px]"
                         )}
