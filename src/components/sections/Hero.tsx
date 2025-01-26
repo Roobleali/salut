@@ -2,9 +2,11 @@ import { Button } from "@/components/ui/button";
 import { LearnAnimation } from "@/components/LearnAnimation";
 import { OnboardingModal } from "@/components/models/OnboardingModal";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export function Hero() {
   const [showOnboarding, setShowOnboarding] = useState(false);
+  const { t } = useTranslation();
 
   return (
     <div className="relative overflow-hidden bg-gradient-to-b from-primary/5 to-transparent pt-20 pb-24">
@@ -21,7 +23,7 @@ export function Hero() {
             <div className="space-y-10">
               <h1 className="text-5xl lg:text-6xl font-bold tracking-tight animate-slide-in ">
                 <span className="block mb-4">
-                  Cloud Based ERP for
+                  {t('home.hero.title')}
                   <span className="relative ml-2">
                     SME's
                     <svg
@@ -39,12 +41,14 @@ export function Hero() {
                     </svg>
                   </span>
                   !
+
                 </span>
                 <span className="block mt-2 font-medium text-primary text-3xl">
-                  We deliver tailored software that drives growth <br /> and efficiency across industries.
-
-                  <p className="mt-4 text-gray-500 text-sm font-bold font-serif">Free E-Invoicing Software</p>
-
+                  {t('home.hero.subtitle')}
+                  <br />
+                  <p className="mt-4 text-gray-500 text-sm font-bold font-serif">
+                    {t('home.hero.e_invoicing')}
+                  </p>
                 </span>
                 <div className="flex -mb-5 items-center justify-center">
                   <img src="https://odoocdn.com/openerp_website/static/src/img/graphics/arrow_doodle_1.svg" alt="" />
@@ -56,10 +60,8 @@ export function Hero() {
                   className="bg-primary hover:bg-primary/90 text-white px-8 py-3 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
                   onClick={() => setShowOnboarding(true)}
                 >
-                  Get Started
+                  {t('home.hero.cta')}
                 </Button>
-
-
               </div>
 
               <div className="container max-w-4xl mx-auto px-4">
@@ -70,12 +72,10 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Onboarding Modal */}
       <OnboardingModal
         open={showOnboarding}
         onOpenChange={setShowOnboarding}
       />
-    </div >
+    </div>
   );
 }
-

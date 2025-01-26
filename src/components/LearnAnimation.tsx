@@ -1,28 +1,34 @@
 import { motion } from "framer-motion";
 import { Settings2, TrendingUp, Trophy } from "lucide-react";
-
-const steps = [
-  {
-    icon: Settings2,
-    title: "Manage",
-    description: "Streamline operations with our integrated management solutions",
-    color: "from-blue-500/20 to-blue-600/20",
-  },
-  {
-    icon: TrendingUp,
-    title: "Automate",
-    description: "Boost your marketing! Automate for greater reach and smarter engagement!",
-    color: "from-green-500/20 to-green-600/20",
-  },
-  {
-    icon: Trophy,
-    title: "Succeed",
-    description: "Achieve your business goals with proven success metrics",
-    color: "from-yellow-500/20 to-yellow-600/20",
-  },
-];
+import { useTranslation } from "react-i18next";
 
 export function LearnAnimation() {
+  const { t } = useTranslation();
+
+  const steps = [
+    {
+      id: "manage",
+      icon: Settings2,
+      title: t("home.steps.manage.title"),
+      description: t("home.steps.manage.description"),
+      color: "from-blue-500/20 to-blue-600/20",
+    },
+    {
+      id: "automate",
+      icon: TrendingUp,
+      title: t("home.steps.automate.title"),
+      description: t("home.steps.automate.description"),
+      color: "from-green-500/20 to-green-600/20",
+    },
+    {
+      id: "succeed",
+      icon: Trophy,
+      title: t("home.steps.succeed.title"),
+      description: t("home.steps.succeed.description"),
+      color: "from-yellow-500/20 to-yellow-600/20",
+    },
+  ];
+
   return (
     <div className="relative py- overflow-hidden">
       <div className="container mx-auto px-4">
@@ -34,7 +40,7 @@ export function LearnAnimation() {
         >
           {steps.map((step, index) => (
             <motion.div
-              key={step.title}
+              key={step.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.2 }}

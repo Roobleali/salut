@@ -1,21 +1,20 @@
+// @ts-nocheck
+
 import Timeline from '@/components/sections/ERPTimeline';
 import { Badge } from '@/components/ui/badge';
 import { motion } from "framer-motion";
 
-import { ERP_IMPLEMENTATION_MILESTONES } from '@/lib/constants';
 import {
-
-  ArrowRight,
-  Check,
-
-
+  ArrowRight, Check,
 } from 'lucide-react';
 import { Link } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { ServiceFeature } from '@/components/sections/ServiceFeature';
+import { useTranslation } from 'react-i18next';
 
 const ERPSolutionsPage = () => {
 
+  const { t } = useTranslation();
 
   const BENEFITS = [
     "All-in-One Solution: Integrate multiple business functions into a single platform, eliminating the hassle of managing disparate systems",
@@ -66,6 +65,7 @@ const ERPSolutionsPage = () => {
       outcome: "Manage project timelines, resource allocation, client communications, and iterative development processes",
     }
   ];
+  const milestones = t('erp.implementation_milestones', { returnObjects: true });
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background/95 to-primary/5">
@@ -104,13 +104,13 @@ const ERPSolutionsPage = () => {
         </div>
       </section>
 
-
+      {/* onboarding */}
       <section className="mb-16">
         <h2 className="text-3xl font-semibold text-blue-700 text-center mb-8">
           Our Onboarding Process
         </h2>
         <div className="mt-12">
-          <Timeline milestones={ERP_IMPLEMENTATION_MILESTONES} />
+          <Timeline milestones={milestones} />
         </div>
       </section>
       {/* Features Section */}

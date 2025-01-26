@@ -43,11 +43,11 @@ const categoryColors = {
     deployment: "bg-teal-500"
 };
 
-// Change to default export
 export default function Timeline({ milestones }: TimelineProps) {
     return (
         <div className="relative container mx-auto px-4 py-16">
-            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gray-200" />
+            {/* Vertical line */}
+            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gray-200 hidden sm:block" />
 
             <div className="space-y-12">
                 {milestones.map((milestone, index) => {
@@ -61,9 +61,11 @@ export default function Timeline({ milestones }: TimelineProps) {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5 }}
-                            className={`flex items-center ${isEven ? "flex-row" : "flex-row-reverse"}`}
+                            className="flex flex-col sm:flex-row sm:items-center 
+                                       sm:even:flex-row-reverse relative"
                         >
-                            <div className={`w-1/2 ${isEven ? "pr-8 text-right" : "pl-8"}`}>
+                            {/* Desktop: Half width with original positioning */}
+                            <div className={`w-full sm:w-1/2 sm:${isEven ? 'pr-8 text-right' : 'pl-8'}`}>
                                 <Card className="overflow-hidden">
                                     <CardContent className="p-6">
                                         <div className="flex items-center gap-2 mb-2">
@@ -81,13 +83,17 @@ export default function Timeline({ milestones }: TimelineProps) {
                                 </Card>
                             </div>
 
-                            <div className="relative z-10">
-                                <div className={`w-12 h-12 rounded-full border-4 border-white flex items-center justify-center ${categoryColors[milestone.category]}`}>
-                                    <Icon className="h-6 w-6 text-white" />
+                            {/* Milestone Icon */}
+                            <div className="relative z-10 sm:static">
+                                <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full 
+                                                border-4 border-white flex items-center 
+                                                justify-center ${categoryColors[milestone.category]}`}>
+                                    <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                                 </div>
                             </div>
 
-                            <div className="w-1/2" />
+                            {/* Placeholder for layout */}
+                            <div className="hidden sm:block sm:w-1/2" />
                         </motion.div>
                     );
                 })}
