@@ -6,6 +6,85 @@ import Backend from "i18next-http-backend";
 const resources = {
   en: {
     translation: {
+      onboarding: {
+        process: "          Our Onboarding Process",
+        title: "      Transform Your Business with Comprehensive ERP Solutions",
+        desc: "                At Salut Enterprise, we understand that service companies are driven by the desire for efficiency, growth, and exceptional customer experiences.Tailored ERP solutions designed to meet your specific business needs across multiple industries",
+      },
+      pageTitle: "Let's Transform Your Business Together",
+      pageSubtitle:
+        "Join hundreds of industry leaders who've already upgraded their enterprise solutions with Salut Tech",
+      trustElements: {
+        support: {
+          title: "24/7 Support",
+          description: "Quick response time with dedicated support team",
+        },
+        security: {
+          title: "Enterprise Security",
+          description: "ISO 27001 certified, GDPR compliant solutions",
+        },
+        clients: {
+          title: "500+ Clients",
+          description: "Trusted by leading companies worldwide",
+        },
+        expert: {
+          title: "Industry Expert",
+          description: "10+ years of enterprise solutions",
+        },
+      },
+      contactInfo: {
+        title: "Contact Information",
+        email: {
+          label: "Email",
+          value: "info@saluttech.ro",
+        },
+        phone: {
+          label: "Phone",
+          value: "+40 743 118 879",
+        },
+        address: {
+          label: "Address",
+          value: "Bucharest\nRomania",
+        },
+        response: {
+          title: "Quick Response Guarantee",
+          description:
+            "Our team typically responds within 24 hours to all inquiries",
+        },
+      },
+      form: {
+        title: "Send us a message",
+        name: {
+          label: "Name",
+          placeholder: "Your name",
+          error: "Name must be at least 2 characters",
+        },
+        email: {
+          label: "Email",
+          placeholder: "your@email.com",
+          error: "Invalid email address",
+        },
+        company: {
+          label: "Company",
+          placeholder: "Your company",
+          error: "Company name must be at least 2 characters",
+        },
+        message: {
+          label: "Message",
+          placeholder: "How can we help transform your business?",
+          error: "Message must be at least 10 characters",
+        },
+        submit: "Send Message",
+        sending: "Sending...",
+        success: {
+          title: "Message sent successfully",
+          description: "We'll get back to you within 24 hours.",
+        },
+        error: {
+          title: "Error sending message",
+          description: "Please try again or contact us directly.",
+        },
+      },
       nav: {
         industries: "Industries",
         modules: "Modules",
@@ -978,6 +1057,86 @@ const resources = {
   },
   ro: {
     translation: {
+      onboarding: {
+        process: "Procesul nostru de integrare",
+        title: "  Transformați-vă afacerea cu soluții ERP cuprinzătoare",
+        desc: "La Salut Enterprise, înțelegem că companiile de servicii sunt conduse de dorința de eficiență, creștere și experiențe excepționale pentru clienți. Soluții ERP personalizate concepute pentru a satisface nevoile dvs. specifice de afaceri din mai multe industrii.",
+      },
+      pageTitle: "Să Transformăm Împreună Afacerea Ta",
+      pageSubtitle:
+        "Alătură-te sutelor de lideri din industrie care și-au modernizat deja soluțiile enterprise cu Salut Tech",
+      trustElements: {
+        support: {
+          title: "Suport 24/7",
+          description: "Timp de răspuns rapid cu echipă dedicată de suport",
+        },
+        security: {
+          title: "Securitate Enterprise",
+          description: "Certificat ISO 27001, soluții conforme GDPR",
+        },
+        clients: {
+          title: "500+ Clienți",
+          description: "De încredere pentru companii lidere la nivel mondial",
+        },
+        expert: {
+          title: "Expert în Industrie",
+          description: "Peste 10 ani de soluții enterprise",
+        },
+      },
+      contactInfo: {
+        title: "Informații de Contact",
+        email: {
+          label: "Email",
+          value: "info@saluttech.ro",
+        },
+        phone: {
+          label: "Telefon",
+          value: "+40 743 118 879",
+        },
+        address: {
+          label: "Adresă",
+          value: "București\nRomânia",
+        },
+        response: {
+          title: "Garanția Răspunsului Rapid",
+          description:
+            "Echipa noastră răspunde de obicei în 24 de ore la toate solicitările",
+        },
+      },
+      form: {
+        title: "Trimite-ne un mesaj",
+        name: {
+          label: "Nume",
+          placeholder: "Numele tău",
+          error: "Numele trebuie să aibă cel puțin 2 caractere",
+        },
+        email: {
+          label: "Email",
+          placeholder: "email@tau.ro",
+          error: "Adresă de email invalidă",
+        },
+        company: {
+          label: "Companie",
+          placeholder: "Compania ta",
+          error: "Numele companiei trebuie să aibă cel puțin 2 caractere",
+        },
+        message: {
+          label: "Mesaj",
+          placeholder: "Cum putem să îți transformăm afacerea?",
+          error: "Mesajul trebuie să aibă cel puțin 10 caractere",
+        },
+        submit: "Trimite Mesaj",
+        sending: "Se trimite...",
+        success: {
+          title: "Mesaj trimis cu succes",
+          description: "Îți vom răspunde în maxim 24 de ore.",
+        },
+        error: {
+          title: "Eroare la trimiterea mesajului",
+          description:
+            "Te rugăm să încerci din nou sau să ne contactezi direct.",
+        },
+      },
       nav: {
         industries: "Industrii",
         modules: "Module",

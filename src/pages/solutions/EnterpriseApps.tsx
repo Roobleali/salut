@@ -80,11 +80,11 @@ const ERPSolutionsPage = () => {
             >
               <Badge className="mb-4">Enterprise Solutions</Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary via-primary/90 to-primary/80 bg-clip-text text-transparent">
-                Transform Your Business with Comprehensive ERP Solutions
+                {t('onboarding.title')}
               </h1>
               <p className="text-xl text-gray-600 mb-8">
-                At Salut Enterprise, we understand that service companies are driven by the desire for efficiency, growth, and exceptional customer experiences.Tailored ERP solutions designed to meet your specific business needs across multiple industries
 
+                {t('onboarding.desc')}
 
               </p>
               <div className="flex gap-4 justify-center">
@@ -107,7 +107,8 @@ const ERPSolutionsPage = () => {
       {/* onboarding */}
       <section className="mb-16">
         <h2 className="text-3xl font-semibold text-blue-700 text-center mb-8">
-          Our Onboarding Process
+          {t('onboarding.process')}
+
         </h2>
         <div className="mt-12">
           <Timeline milestones={milestones} />

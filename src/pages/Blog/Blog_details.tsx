@@ -70,7 +70,7 @@ export const BlogPost = () => {
                         word.charAt(0).toUpperCase() + word.slice(1)
                     ).join(' ')
                 });
-
+                console.log(response)
                 if (response.items.length > 0) {
                     const fetchedPost = {
                         sys: response.items[0].sys,
@@ -91,7 +91,7 @@ export const BlogPost = () => {
     }, [params?.slug]);
 
     if (loading) return <div className="flex justify-center items-center min-h-screen">Loading...</div>;
-
+    console.log(post)
     if (!post) return (
         <div className="flex flex-col items-center justify-center min-h-screen">
             <h2 className="text-2xl font-semibold text-gray-800 mb-4">Post not found</h2>
@@ -167,33 +167,35 @@ export const BlogPost = () => {
                                     <Calendar size={18} />
                                     <time>{new Date(post.sys.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
                                 </div>
+                                {post.fields.author && (
+                                    <div className=" flex rounded-xl p-2 mb-3">
+                                        <div className="flex items-center justify-center space-x-4">
+                                            <div>
+                                                {post.fields.author.fields.avatar ? (
+                                                    <img
+                                                        src={post.fields.author.fields.avatar.fields.file.url}
+                                                        alt={post.fields.author.fields.name}
+                                                        className="w-12 h-12 rounded-full object-cover"
+                                                    />
+                                                ) : (
+                                                    <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
+                                                        <User size={24} className="text-blue-600" />
+                                                    </div>
+                                                )}
+                                            </div>
 
+                                            <h3 className="text-xl f text-gray-800">{post.fields.author.fields.name}</h3>
+
+                                        </div>
+                                    </div>
+                                )}
                                 <button onClick={sharePost} className="flex items-center space-x-2 text-gray-600 hover:text-blue-600">
                                     <Share2 size={18} />
                                     <span>Share</span>
                                 </button>
                             </div>
                         </div>
-                        {post.fields.author && (
-                            <div className="bg-gray-50 rounded-xl p-6 mb-12">
-                                <div className="flex items-center space-x-4">
-                                    {post.fields.author.fields.avatar ? (
-                                        <img
-                                            src={post.fields.author.fields.avatar.fields.file.url}
-                                            alt={post.fields.author.fields.name}
-                                            className="w-12 h-12 rounded-full object-cover"
-                                        />
-                                    ) : (
-                                        <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
-                                            <User size={24} className="text-blue-600" />
-                                        </div>
-                                    )}
-                                    <div>
-                                        <h3 className="text-xl font-semibold text-gray-900">{post.fields.author.fields.name}</h3>
-                                    </div>
-                                </div>
-                            </div>
-                        )}
+
 
                         <div className="mt-12 prose prose-lg prose-blue">
                             {documentToReactComponents(post.fields.content)}
