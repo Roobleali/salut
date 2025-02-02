@@ -6,6 +6,98 @@ import Backend from "i18next-http-backend";
 const resources = {
   en: {
     translation: {
+      navigation: {
+        dashboard: "Dashboard",
+        compliance: "Compliance",
+        costs: "Cost Management",
+        settings: "Settings",
+        support: "Support",
+      },
+      dashboard: {
+        title: "Enterprise-Grade Cloud Management",
+        subtitle:
+          "Fully Managed Cloud Solutions with GDPR-Compliant German Infrastructure",
+        metrics: {
+          uptime: "Uptime",
+          costs: "Monthly Costs",
+          compliance: "Compliance Score",
+          tickets: "Open Tickets",
+        },
+        actions: {
+          startTrial: "Start Free Trial",
+          requestDemo: "Request Demo",
+          configure: "Configure",
+          viewDetails: "View Details",
+          export: "Export Report",
+        },
+      },
+      services: {
+        hosting: {
+          title: "Hosting",
+          features: [
+            "Dedicated Servers",
+            "Cloud Clusters",
+            "Auto-Scaling",
+            "99.99% Uptime",
+          ],
+        },
+        domain: {
+          title: "Domain",
+          features: [
+            "Registration",
+            "DNS Management",
+            "SSL Certificates",
+            "WHOIS Privacy",
+          ],
+        },
+        email: {
+          title: "Email",
+          features: [
+            "Business Email",
+            "Spam Filtering",
+            "IMAP/POP3",
+            "Webmail Access",
+          ],
+        },
+        backup: {
+          title: "Backup",
+          features: [
+            "Daily Snapshots",
+            "Disaster Recovery",
+            "Versioning",
+            "Encrypted Storage",
+          ],
+        },
+        security: {
+          title: "Security",
+          features: [
+            "DDoS Protection",
+            "Firewalls",
+            "SIEM Monitoring",
+            "Penetration Testing",
+          ],
+        },
+      },
+      compliance: {
+        title: "Compliance Dashboard",
+        heatmap: "Compliance Heatmap",
+        status: "Status",
+        lastCheck: "Last Check",
+        nextAudit: "Next Audit",
+        certificates: {
+          gdpr: "GDPR Compliant",
+          german: "German Data Law",
+          iso: "ISO 27001",
+          soc2: "SOC 2 Type II",
+        },
+      },
+      costs: {
+        title: "Cost Management",
+        comparison: "Cost Comparison",
+        forecast: "Cost Forecast",
+        optimization: "Optimization Suggestions",
+        breakdown: "Cost Breakdown",
+      },
       onboarding: {
         process: "          Our Onboarding Process",
         title: "      Transform Your Business with Comprehensive ERP Solutions",
@@ -1057,6 +1149,98 @@ const resources = {
   },
   ro: {
     translation: {
+      navigation: {
+        dashboard: "Panou de Control",
+        compliance: "Conformitate",
+        costs: "Gestiunea Costurilor",
+        settings: "Setări",
+        support: "Suport",
+      },
+      dashboard: {
+        title: "Management Cloud de Nivel Enterprise",
+        subtitle:
+          "Soluții Cloud Gestionate Complet cu Infrastructură Germană Conformă GDPR",
+        metrics: {
+          uptime: "Timp de Funcționare",
+          costs: "Costuri Lunare",
+          compliance: "Scor Conformitate",
+          tickets: "Tichete Deschise",
+        },
+        actions: {
+          startTrial: "Început Perioadă de Probă",
+          requestDemo: "Solicită Demo",
+          configure: "Configurează",
+          viewDetails: "Vezi Detalii",
+          export: "Exportă Raport",
+        },
+      },
+      services: {
+        hosting: {
+          title: "Găzduire",
+          features: [
+            "Servere Dedicate",
+            "Clustere Cloud",
+            "Scalare Automată",
+            "Uptime 99.99%",
+          ],
+        },
+        domain: {
+          title: "Domeniu",
+          features: [
+            "Înregistrare",
+            "Management DNS",
+            "Certificate SSL",
+            "Confidențialitate WHOIS",
+          ],
+        },
+        email: {
+          title: "Email",
+          features: [
+            "Email Business",
+            "Filtrare Spam",
+            "IMAP/POP3",
+            "Acces Webmail",
+          ],
+        },
+        backup: {
+          title: "Backup",
+          features: [
+            "Snapshot-uri Zilnice",
+            "Recuperare Date",
+            "Versionare",
+            "Stocare Criptată",
+          ],
+        },
+        security: {
+          title: "Securitate",
+          features: [
+            "Protecție DDoS",
+            "Firewalls",
+            "Monitorizare SIEM",
+            "Testare Penetrare",
+          ],
+        },
+      },
+      compliance: {
+        title: "Panou Conformitate",
+        heatmap: "Hartă Termică Conformitate",
+        status: "Status",
+        lastCheck: "Ultima Verificare",
+        nextAudit: "Următorul Audit",
+        certificates: {
+          gdpr: "Conform GDPR",
+          german: "Legea Germană a Datelor",
+          iso: "ISO 27001",
+          soc2: "SOC 2 Tip II",
+        },
+      },
+      costs: {
+        title: "Gestiunea Costurilor",
+        comparison: "Comparație Costuri",
+        forecast: "Prognoză Costuri",
+        optimization: "Sugestii Optimizare",
+        breakdown: "Defalcare Costuri",
+      },
       onboarding: {
         process: "Procesul nostru de integrare",
         title: "  Transformați-vă afacerea cu soluții ERP cuprinzătoare",

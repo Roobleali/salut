@@ -23,6 +23,7 @@ import PartnershipProgram from '@/pages/Partnership'
 import { BlogList } from "./pages/Blog/BlogList";
 import { BlogPost } from "./pages/Blog/Blog_details";
 import { HelmetProvider } from 'react-helmet-async';
+import CloudManagementPage from "./pages/solutions/CloudManagement";
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
 
               {/* Enterprise Routes */}
               <Route path="/solutions/erp" component={ERPSolutionsPage} />
+              <Route path="/solutions/cloud-management" component={CloudManagementPage} />
 
               {/* Industry Routes */}
               <Route path="/erp-system/manufacturing" component={Manufacturing} />

@@ -22,6 +22,7 @@ import {
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { Helmet } from "react-helmet";
+import VideoModal from "@/components/models/VideoModel";
 
 interface Feature {
   title: string;
@@ -69,6 +70,31 @@ const IntegrationPartners = () => {
     </div>
   );
 };
+const LeftVector = () => (
+  <svg viewBox="0 0 100 200" className="w-24 h-auto">
+    <path
+      d="M10 100 Q 40 50, 90 80 T 90 120"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      className="text-primary/30"
+    />
+    <circle cx="90" cy="80" r="4" fill="currentColor" className="text-primary" />
+  </svg>
+);
+
+const RightVector = () => (
+  <svg viewBox="0 0 100 200" className="w-24 h-auto">
+    <path
+      d="M90 100 Q 60 50, 10 80 T 10 120"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      className="text-primary/30"
+    />
+    <circle cx="10" cy="80" r="4" fill="currentColor" className="text-primary" />
+  </svg>
+);
 
 const Testimonials = () => {
   const { t } = useTranslation();
@@ -182,6 +208,7 @@ export function RealEstate() {
           </div>
         </div>
 
+
         {/* Metrics */}
         <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto mb-24 truncate">
           <MetricLine
@@ -200,7 +227,19 @@ export function RealEstate() {
             value={t('realEstate.metrics.efficiencyValue')}
           />
         </div>
+        {/* Image Section with Vectors */}
+        <div className="relative flex items-center justify-center mb-16">
+          <div className="absolute hidden md:flex left-0 top-1/2 -translate-y-1/2">
+            <LeftVector />
+          </div>
 
+          <VideoModal />
+
+
+          <div className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2">
+            <RightVector />
+          </div>
+        </div>
         {/* Core Features Section */}
         <div className="mb-24">
           <h2 className="text-3xl font-bold text-center mb-16">
