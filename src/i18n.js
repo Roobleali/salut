@@ -696,6 +696,27 @@ const resources = {
           scheduleDemo: "Schedule Demo",
           contactSales: "Contact Sales",
         },
+        testimonials: {
+          title: "What Our Clients Say",
+          clients: [
+            {
+              name: "Sherif Abdala",
+              company: "Gourmet coffee SRL",
+              rating: 5,
+              text: "This software has completely revolutionized how we manage our Manufacturing. We've reduced production  time by 50% and doubled transactions closed in the last 6 months!",
+              image:
+                "https://res.cloudinary.com/do3dahfvh/image/upload/v1731747105/ttt1fmtpdnxfv3gagevm.png",
+            },
+          ],
+        },
+        metrics: {
+          setupTime: "Setup Time",
+          setupTimeValue: "2 Days",
+          cost: "Cost",
+          costValue: "100 €",
+          efficiency: "Efficiency Boost",
+          efficiencyValue: "70%",
+        },
         features: {
           realTime: {
             title: "Real-Time Production Monitoring",
@@ -2119,14 +2140,16 @@ const resources = {
               company: "Coda Vinci SRL",
               rating: 5,
               text: "Acest software a revoluționat complet gestionarea portofoliului nostru. Am redus timpul de procesare a documentelor cu 70% și am dublat tranzacțiile închise în ultimele 6 luni!",
-              image: "https://res.cloudinary.com/...",
+              image:
+                "https://res.cloudinary.com/do3dahfvh/image/upload/v1731747019/yf8u9a5ql7xvyij3bywh.jpg",
             },
             {
               name: "Grigore Anica",
               company: "BREC Consulting",
               rating: 5,
               text: "Ca consultant imobiliar, am nevoie de instrumente precise. Această platformă oferă exact ce necesit - de la managementul clienților la analize de piață detaliate. Feedback-ul clienților este excepțional!",
-              image: "https://res.cloudinary.com/...",
+              image:
+                "https://res.cloudinary.com/do3dahfvh/image/upload/v1731747070/jpoxov3qweqyokkfeyco.png",
             },
           ],
         },

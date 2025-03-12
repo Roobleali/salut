@@ -1,8 +1,9 @@
+//@ts-check
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Check, ArrowRight, Factory, Cog, LineChart, Clock, Shield, Boxes } from "lucide-react";
+import { Check, ArrowRight, Factory, Cog, LineChart, Clock, Shield, Boxes, ChartBar } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { Helmet } from "react-helmet";
@@ -15,6 +16,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { LeftVector, MetricLine, RightVector } from "./RealEstate";
 
 export function Manufacturing() {
   const { t } = useTranslation();
@@ -78,6 +80,16 @@ export function Manufacturing() {
       icon: Shield
     }
   ];
+  interface Testimonial {
+    // Define the properties of the Testimonial object based on your structure
+    clientName: string;
+    feedback: string;
+    image: string;
+    name: string;
+    rating: string;
+    text: string;
+    company: string;
+  }
 
   const OPERATIONAL_BENEFITS = [
     {
@@ -93,7 +105,45 @@ export function Manufacturing() {
       description: t("manufacturing.operationalBenefits.increasedProductivity.description")
     }
   ];
+  const Testimonials = () => {
+    const { t } = useTranslation();
+    const testimonials = t('manufacturing.testimonials.clients', { returnObjects: true }) as Testimonial[];
 
+    return (
+      <div className="max-w-4xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+        <h2 className="text-2xl font-bold text-gray-800 text-center mb-6">
+          {t('manufacturing.testimonials.title')}
+        </h2>
+        <div className="grid gap-6 lg:grid-cols-2">
+          {testimonials.map((testimonial, index) => (
+            <div key={index} className="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center text-center">
+              <img
+                className="w-16 h-16 rounded-full object-cover mb-4"
+                src={testimonial.image}
+                alt={testimonial.name}
+              />
+              <h3 className="text-lg font-semibold text-gray-900">{testimonial.name}</h3>
+              <p className="text-sm text-gray-600">{testimonial.company}</p>
+              <div className="flex justify-center mt-2 mb-4">
+                {Array.from({ length: testimonial.rating }).map((_, i) => (
+                  <svg
+                    key={i}
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    className="w-5 h-5 text-yellow-500"
+                  >
+                    <path d="M12 2l2.9 5.8 6.3.9-4.6 4.4 1.1 6.3-5.7-3-5.7 3 1.1-6.3-4.6-4.4 6.3-.9L12 2z" />
+                  </svg>
+                ))}
+              </div>
+              <p className="text-gray-700 text-sm">{testimonial.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  };
   return (
     <>
       <Helmet>
@@ -130,6 +180,37 @@ export function Manufacturing() {
               </div>
             </div>
 
+            {/* Metrics */}
+            <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto mb-24 truncate">
+              <MetricLine
+                icon={Clock}
+                label={t('manufacturing.metrics.setupTime')}
+                value={t('manufacturing.metrics.setupTimeValue')}
+              />
+              <MetricLine
+                icon={Shield}
+                label={t('manufacturing.metrics.cost')}
+                value={t('manufacturing.metrics.costValue')}
+              />
+              <MetricLine
+                icon={ChartBar}
+                label={t('manufacturing.metrics.efficiency')}
+                value={t('manufacturing.metrics.efficiencyValue')}
+              />
+            </div>
+            {/* Image Section with Vectors */}
+            <div className="relative flex items-center justify-center mb-16">
+              <div className="absolute hidden md:flex left-0 top-1/2 -translate-y-1/2">
+                <LeftVector />
+              </div>
+
+              {/* <VideoModal /> */}
+
+
+              <div className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2">
+                <RightVector />
+              </div>
+            </div>
             {/* Key Advantages Section */}
             <motion.div
               initial={{ opacity: 0 }}
@@ -241,6 +322,7 @@ export function Manufacturing() {
                 ))}
               </div>
             </motion.div>
+            <Testimonials />
           </div>
         </div>
       </div>

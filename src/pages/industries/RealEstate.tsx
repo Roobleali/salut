@@ -70,7 +70,7 @@ const IntegrationPartners = () => {
     </div>
   );
 };
-const LeftVector = () => (
+export const LeftVector = () => (
   <svg viewBox="0 0 100 200" className="w-24 h-auto">
     <path
       d="M10 100 Q 40 50, 90 80 T 90 120"
@@ -83,7 +83,7 @@ const LeftVector = () => (
   </svg>
 );
 
-const RightVector = () => (
+export const RightVector = () => (
   <svg viewBox="0 0 100 200" className="w-24 h-auto">
     <path
       d="M90 100 Q 60 50, 10 80 T 10 120"
@@ -113,6 +113,7 @@ const Testimonials = () => {
               src={testimonial.image}
               alt={testimonial.name}
             /> */}
+
             <h3 className="text-lg font-semibold text-gray-900">{testimonial.name}</h3>
             <p className="text-sm text-gray-600">{testimonial.company}</p>
             <div className="flex justify-center mt-2 mb-4">
@@ -136,7 +137,7 @@ const Testimonials = () => {
   );
 };
 
-const MetricLine = ({ icon: Icon, label, value }: { icon: React.ElementType; label: string; value: string }) => (
+export const MetricLine = ({ icon: Icon, label, value }: { icon: React.ElementType; label: string; value: string }) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
