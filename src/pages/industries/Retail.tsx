@@ -34,6 +34,7 @@ export const Retail = () => {
 
     return (
       <div className="mb-24 text-center">
+
         <h2 className="text-3xl font-bold mb-12">
           {t("realEstate.integrations.title")}
         </h2>
@@ -85,6 +86,131 @@ export const Retail = () => {
     Wallet: Wallet,
   };
 
+  // Add POS devices section component
+  const POSDevicesSection = () => (
+    <section className="py-24 bg-gradient-to-br from-primary/5 via-background to-background">
+      <div className="container mx-auto px-4">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
+          Complete POS Hardware Solutions
+        </h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          {[
+            {
+              title: "Smart Cash Register",
+              description: "Modern touchscreen POS with integrated payments",
+              image: "/images/pos-register.jpg", // Add your image
+              features: ["Receipt printing", "Cash drawer", "Customer display"]
+            },
+            {
+              title: "Mobile POS Terminals",
+              description: "Portable payment solutions for flexible operations",
+              image: "/images/mobile-pos.jpg", // Add your image
+              features: ["Wireless connectivity", "Long battery life", "Compact design"]
+            },
+            {
+              title: "Self-Service Kiosks",
+              description: "Streamline customer checkout experience",
+              image: "/images/kiosk.jpg", // Add your image
+              features: ["User-friendly interface", "Payment integration", "Queue management"]
+            }
+          ].map((device, index) => (
+            <motion.div
+              key={index}
+              initial={{ y: 20, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
+            >
+              <div className="h-48 bg-gray-100">
+                <img
+                  src={device.image}
+                  alt={device.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold mb-3">{device.title}</h3>
+                <p className="text-muted-foreground mb-4">{device.description}</p>
+                <ul className="space-y-2">
+                  {device.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-center gap-2">
+                      <Check className="h-4 w-4 text-primary" />
+                      <span className="text-sm">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+
+  // Add Pricing Section component
+  const PricingSection = () => (
+    <section className="py-24 bg-gradient-to-tr from-background via-primary/5 to-background">
+      <div className="container mx-auto px-4">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
+          Flexible Pricing Plans
+        </h2>
+        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          {[
+            {
+              name: "Starter",
+              price: "$49",
+              period: "/month",
+              features: ["Basic POS features", "1 register", "Email support"]
+            },
+            {
+              name: "Professional",
+              price: "$99",
+              period: "/month",
+              features: ["Advanced POS features", "3 registers", "24/7 support", "Hardware included"]
+            },
+            {
+              name: "Enterprise",
+              price: "Custom",
+              period: "",
+              features: ["Full POS suite", "Unlimited registers", "Dedicated support", "Custom integration"]
+            }
+          ].map((plan, index) => (
+            <motion.div
+              key={index}
+              initial={{ y: 20, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="relative bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow"
+            >
+              <div className="text-center mb-6">
+                <h3 className="text-xl font-semibold mb-2">{plan.name}</h3>
+                <div className="text-3xl font-bold text-primary">
+                  {plan.price}
+                  <span className="text-base font-normal text-muted-foreground">
+                    {plan.period}
+                  </span>
+                </div>
+              </div>
+              <ul className="space-y-3 mb-6">
+                {plan.features.map((feature, idx) => (
+                  <li key={idx} className="flex items-center gap-2">
+                    <Check className="h-5 w-5 text-primary" />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              <Button className="w-full" variant={index === 1 ? "default" : "outline"}>
+                Get Started
+              </Button>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+
   return (
     <>
       <Helmet>
@@ -99,8 +225,9 @@ export const Retail = () => {
         className="min-h-screen bg-gradient-to-br from-background via-background/95 to-primary/5"
       >
         {/* Hero Section */}
-        <section className="pt-32 pb-16">
-          <div className="container mx-auto px-4 text-center">
+        <section className="pt-32 pb-16 z-50 overflow-hidden">
+
+          <div className="container mx-auto px-4 text-center ">
             <Badge className="mb-6">{content.hero.badge}</Badge>
             <motion.h1
               initial={{ y: 20, opacity: 0 }}
@@ -108,7 +235,9 @@ export const Retail = () => {
               className="text-4xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent"
             >
               {content.hero.title}
+
             </motion.h1>
+
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-12">
               {content.hero.subtitle}
             </p>
@@ -174,6 +303,14 @@ export const Retail = () => {
             </div>
           </div>
         </section>
+
+        {/* Add new POS Devices section */}
+        <POSDevicesSection />
+
+        {/* Add Pricing section */}
+        <PricingSection />
+
+        {/* Integration Partners */}
         <IntegrationPartners />
       </motion.div>
     </>

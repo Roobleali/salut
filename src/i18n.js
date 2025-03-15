@@ -1045,7 +1045,7 @@ const resources = {
         },
         hero: {
           badge: "Retail Revolution",
-          title: "Next-Gen Retail Management Platform",
+          title: "Next-Gen Retail Platform",
           subtitle:
             "Unify online and offline operations with AI-driven insights and real-time inventory across all sales channels",
           scheduleDemo: "Schedule Demo",

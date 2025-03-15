@@ -9,9 +9,9 @@ export function Hero() {
   const { t } = useTranslation();
 
   return (
-    <div className="relative overflow-hidden bg-gradient-to-b from-primary/5 to-transparent pt-20 pb-24">
+    <section className="relative overflow-hidden bg-gradient-to-b from-primary/5 to-transparent pt-20 pb-24" aria-labelledby="hero-title">
       {/* Decorative Elements */}
-      <div className="absolute inset-0 animate-fade-in">
+      <div className="absolute inset-0 animate-fade-in" aria-hidden="true">
         <div className="absolute top-10 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl opacity-50" />
         <div className="absolute bottom-10 right-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl opacity-50" />
         <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
@@ -21,7 +21,7 @@ export function Hero() {
         <div className="flex flex-col items-center max-w-4xl mx-auto">
           <div className="space-y-8 animate-fade-in text-center">
             <div className="space-y-10">
-              <h1 className="text-5xl lg:text-6xl font-bold tracking-tight animate-slide-in ">
+              <h1 id="hero-title" className="text-5xl lg:text-6xl font-bold tracking-tight animate-slide-in">
                 <span className="block mb-4">
                   {t('home.hero.title')}
                   <span className="relative ml-2">
@@ -30,6 +30,7 @@ export function Hero() {
                       className="absolute -bottom-1 left-0 w-full"
                       viewBox="0 0 100 10"
                       preserveAspectRatio="none"
+                      aria-hidden="true"
                     >
                       <path
                         d="M0,5 Q50,9 100,5"
@@ -41,7 +42,6 @@ export function Hero() {
                     </svg>
                   </span>
                   !
-
                 </span>
                 <span className="block mt-2 font-medium text-primary text-3xl">
                   {t('home.hero.subtitle')}
@@ -50,7 +50,7 @@ export function Hero() {
                     {t('home.hero.e_invoicing')}
                   </p>
                 </span>
-                <div className="flex -mb-5 items-center justify-center">
+                <div className="flex -mb-5 items-center justify-center" aria-hidden="true">
                   <img src="https://odoocdn.com/openerp_website/static/src/img/graphics/arrow_doodle_1.svg" alt="" />
                 </div>
               </h1>
@@ -76,6 +76,6 @@ export function Hero() {
         open={showOnboarding}
         onOpenChange={setShowOnboarding}
       />
-    </div>
+    </section>
   );
 }

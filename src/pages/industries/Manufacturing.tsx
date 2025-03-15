@@ -110,53 +110,116 @@ export function Manufacturing() {
     const testimonials = t('manufacturing.testimonials.clients', { returnObjects: true }) as Testimonial[];
 
     return (
-      <div className="max-w-4xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
-        <h2 className="text-2xl font-bold text-gray-800 text-center mb-6">
-          {t('manufacturing.testimonials.title')}
-        </h2>
-        <div className="grid gap-6 lg:grid-cols-2">
-          {testimonials.map((testimonial, index) => (
-            <div key={index} className="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center text-center">
-              <img
-                className="w-16 h-16 rounded-full object-cover mb-4"
-                src={testimonial.image}
-                alt={testimonial.name}
-              />
-              <h3 className="text-lg font-semibold text-gray-900">{testimonial.name}</h3>
-              <p className="text-sm text-gray-600">{testimonial.company}</p>
-              <div className="flex justify-center mt-2 mb-4">
-                {Array.from({ length: testimonial.rating }).map((_, i) => (
-                  <svg
-                    key={i}
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                    className="w-5 h-5 text-yellow-500"
-                  >
-                    <path d="M12 2l2.9 5.8 6.3.9-4.6 4.4 1.1 6.3-5.7-3-5.7 3 1.1-6.3-4.6-4.4 6.3-.9L12 2z" />
-                  </svg>
-                ))}
+      <>
+        {/* Add structured data for reviews */}
+        <Helmet>
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "review": testimonials.map(testimonial => ({
+                "@type": "Review",
+                "reviewRating": {
+                  "@type": "Rating",
+                  "ratingValue": testimonial.rating,
+                  "bestRating": "5"
+                },
+                "author": {
+                  "@type": "Person",
+                  "name": testimonial.name
+                },
+                "reviewBody": testimonial.text
+              }))
+            })}
+          </script>
+        </Helmet>
+
+        <div className="max-w-4xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-gray-800 text-center mb-6">
+            {t('manufacturing.testimonials.title')}
+          </h2>
+          <div className="grid gap-6 lg:grid-cols-2">
+            {testimonials.map((testimonial, index) => (
+              <div key={index} className="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center text-center">
+                <img
+                  className="w-16 h-16 rounded-full object-cover mb-4"
+                  src={testimonial.image}
+                  alt={testimonial.name}
+                />
+                <h3 className="text-lg font-semibold text-gray-900">{testimonial.name}</h3>
+                <p className="text-sm text-gray-600">{testimonial.company}</p>
+                <div className="flex justify-center mt-2 mb-4">
+                  {Array.from({ length: Number(testimonial.rating) }).map((_, i) => (
+                    <svg
+                      key={i}
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                      className="w-5 h-5 text-yellow-500"
+                    >
+                      <path d="M12 2l2.9 5.8 6.3.9-4.6 4.4 1.1 6.3-5.7-3-5.7 3 1.1-6.3-4.6-4.4 6.3-.9L12 2z" />
+                    </svg>
+                  ))}
+                </div>
+                <p className="text-gray-700 text-sm">{testimonial.text}</p>
               </div>
-              <p className="text-gray-700 text-sm">{testimonial.text}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
+      </>
     );
   };
   return (
     <>
       <Helmet>
-        <title>{t("manufacturing.seo.title")}</title>
+        <title>{t("manufacturing.seo.title")} | Enterprise Manufacturing Solutions</title>
         <meta name="description" content={t("manufacturing.seo.description")} />
         <meta name="keywords" content={t("manufacturing.seo.keywords")} />
+
+        {/* Open Graph tags for social sharing */}
+        <meta property="og:title" content={`${t("manufacturing.seo.title")} | Enterprise Manufacturing Solutions`} />
+        <meta property="og:description" content={t("manufacturing.seo.description")} />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="/images/manufacturing-hero.jpg" />
+        <meta property="og:url" content="https://yourdomain.com/industries/manufacturing" />
+
+        {/* Twitter Card tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`${t("manufacturing.seo.title")} | Enterprise Manufacturing Solutions`} />
+        <meta name="twitter:description" content={t("manufacturing.seo.description")} />
+        <meta name="twitter:image" content="/images/manufacturing-hero.jpg" />
+
+        {/* Additional SEO meta tags */}
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="Your Company Name" />
+        <link rel="canonical" href="https://yourdomain.com/industries/manufacturing" />
+
+        {/* Structured Data for Rich Snippets */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": t("manufacturing.seo.title"),
+            "description": t("manufacturing.seo.description"),
+            "provider": {
+              "@type": "Organization",
+              "name": "Your Company Name",
+              "url": "https://yourdomain.com"
+            },
+            "offers": {
+              "@type": "AggregateOffer",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock"
+            }
+          })}
+        </script>
       </Helmet>
 
-      <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5">
-        <div className="relative pt-20 md:pt-28 lg:pt-32 pb-12 md:pb-16 lg:pb-24">
+      <main className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5">
+        <article className="relative pt-20 md:pt-28 lg:pt-32 pb-12 md:pb-16 lg:pb-24">
           <div className="container mx-auto px-4 md:px-6 lg:px-8">
             {/* Hero Section */}
-            <div className="max-w-4xl mx-auto text-center mb-12 md:mb-16 lg:mb-20">
+            <header className="max-w-4xl mx-auto text-center mb-12 md:mb-16 lg:mb-20">
               <Badge variant="outline" className="mb-4 md:mb-6">
                 {t("manufacturing.enterpriseBadge")}
               </Badge>
@@ -178,10 +241,13 @@ export function Manufacturing() {
                   </Button>
                 </Link>
               </div>
-            </div>
+            </header>
 
             {/* Metrics */}
-            <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto mb-24 truncate">
+            <section
+              aria-label="Key Metrics"
+              className="grid grid-cols-3 gap-8 max-w-2xl mx-auto mb-24 truncate"
+            >
               <MetricLine
                 icon={Clock}
                 label={t('manufacturing.metrics.setupTime')}
@@ -197,7 +263,7 @@ export function Manufacturing() {
                 label={t('manufacturing.metrics.efficiency')}
                 value={t('manufacturing.metrics.efficiencyValue')}
               />
-            </div>
+            </section>
             {/* Image Section with Vectors */}
             <div className="relative flex items-center justify-center mb-16">
               <div className="absolute hidden md:flex left-0 top-1/2 -translate-y-1/2">
@@ -212,10 +278,8 @@ export function Manufacturing() {
               </div>
             </div>
             {/* Key Advantages Section */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
+            <section
+              aria-label="Key Advantages"
               className="max-w-7xl mx-auto mb-16 md:mb-24"
             >
               <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12">
@@ -244,13 +308,11 @@ export function Manufacturing() {
                   </motion.div>
                 ))}
               </div>
-            </motion.div>
+            </section>
 
             {/* Features Section */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
+            <section
+              aria-label="Enterprise Features"
               className="max-w-7xl mx-auto mb-16 md:mb-24"
             >
               <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12">
@@ -291,13 +353,11 @@ export function Manufacturing() {
                   </div>
                 </CardContent>
               </Card>
-            </motion.div>
+            </section>
 
             {/* Operational Benefits Section */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
+            <section
+              aria-label="Operational Benefits"
               className="max-w-3xl mx-auto"
             >
               <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12">
@@ -321,11 +381,11 @@ export function Manufacturing() {
                   </motion.div>
                 ))}
               </div>
-            </motion.div>
+            </section>
             <Testimonials />
           </div>
-        </div>
-      </div>
+        </article>
+      </main>
     </>
   );
 }
