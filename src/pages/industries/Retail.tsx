@@ -18,11 +18,15 @@ import {
   Globe,
   Shield,
   Wallet,
+  Clock,
+  ChartBar,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "wouter";
+import { LeftVector, MetricLine, RightVector } from "./RealEstate";
+import VideoModal from "@/components/models/VideoModel";
 
 export const Retail = () => {
   const { t } = useTranslation();
@@ -212,13 +216,69 @@ export const Retail = () => {
   );
 
   return (
-    <>
+    <div className="min-h-screen bg-gradient-to-br from-background via-background/95 to-primary/5 pt-32 pb-24"
+    >
       <Helmet>
         <title>{t("retail.seo.title")}</title>
         <meta name="description" content={t("retail.seo.description")} />
         <meta name="keywords" content={t("retail.seo.keywords")} />
       </Helmet>
+      <div className="container mx-auto px-4">
+        {/* Hero Section */}
+        <div className="mb-24 text-center">
+          <Badge className="mb-4">{content.hero.badge}</Badge>
+          <h1 className="text-5xl font-bold mb-6">{content.hero.title}</h1>
+          <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+            {content.hero.subtitle}
+          </p>
+          <div className="flex justify-center gap-4">
+            <Link href="/contact">
+              <Button size="lg" className="transition-all hover:-translate-y-1">
+                {t('realEstate.hero.scheduleDemo')} <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
+            <Link href="/partnership">
+              <Button variant="outline" size="lg" className="transition-all hover:-translate-y-1">
+                {t('realEstate.hero.becomePartner')}
+              </Button>
+            </Link>
+          </div>
+        </div>
 
+
+        {/* Metrics */}
+        <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto mb-24 truncate">
+          <MetricLine
+            icon={Clock}
+            label={t('retail.metrics.setupTime')}
+            value={t('retail.metrics.setupTimeValue')}
+          />
+          <MetricLine
+            icon={Shield}
+            label={t('retail.metrics.cost')}
+            value={t('retail.metrics.costValue')}
+          />
+          <MetricLine
+            icon={ChartBar}
+            label={t('retail.metrics.efficiency')}
+            value={t('retail.metrics.efficiencyValue')}
+          />
+        </div>
+        {/* Image Section with Vectors */}
+        <div className="relative flex items-center justify-center mb-16">
+          <div className="absolute hidden md:flex left-0 top-1/2 -translate-y-1/2">
+            <LeftVector />
+          </div>
+
+          <VideoModal video="https://www.youtube.com/embed/2oTiuFPgR_8?autoplay=1" photo="/retail.png" alt='Next-Gen Retail Platform
+'/>
+
+
+          <div className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2">
+            <RightVector />
+          </div>
+        </div>
+      </div>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -313,6 +373,6 @@ export const Retail = () => {
         {/* Integration Partners */}
         <IntegrationPartners />
       </motion.div>
-    </>
+    </div>
   );
 };

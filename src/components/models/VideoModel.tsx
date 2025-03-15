@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Play } from 'lucide-react';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 
-const VideoModal = () => {
+const VideoModal = ({ video, photo, alt }: any) => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
@@ -13,8 +13,8 @@ const VideoModal = () => {
                 onClick={() => setIsOpen(true)}
             >
                 <img
-                    src="/Section.svg"
-                    alt="Real Estate Management"
+                    src={photo}
+                    alt={alt}
                     className="w-full h-auto rounded-lg shadow-lg mx-auto"
                     style={{ maxWidth: '600px' }}
                 />
@@ -33,7 +33,7 @@ const VideoModal = () => {
                     <div className="relative pt-[56.25%] w-full h-0 overflow-hidden rounded-md">
                         <iframe
                             className="absolute top-0 left-0 w-full h-full"
-                            src="https://www.youtube.com/embed/9mGwVLKyibo?autoplay=1"
+                            src={video}
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowFullScreen
                         />

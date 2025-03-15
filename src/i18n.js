@@ -1159,9 +1159,9 @@ const resources = {
         },
         metrics: {
           setupTime: "Implementation Time",
-          setupTimeValue: "4 Weeks",
+          setupTimeValue: "1 Week",
           cost: "ROI Achieved",
-          costValue: "6 Months",
+          costValue: "2 Months",
           efficiency: "Process Efficiency Gain",
           efficiencyValue: "65%",
         },
@@ -2181,7 +2181,7 @@ const resources = {
         },
         hero: {
           badge: "Revoluție Retail",
-          title: "Platformă Modernă de Management Retail",
+          title: "Platformă Modernă de  Retail",
           subtitle:
             "Unifică operațiunile online și offline cu analize bazate pe AI și gestiune stocuri în timp real",
           scheduleDemo: "Programează Demo",
@@ -2274,7 +2274,14 @@ const resources = {
             { name: "Shopify", logo: "/shopify.webp" },
           ],
         },
-
+        metrics: {
+          setupTime: "Timp Configurare",
+          setupTimeValue: "3 Zile",
+          cost: "Cost",
+          costValue: "200 €",
+          efficiency: "Creștere Eficiență",
+          efficiencyValue: "75%",
+        },
         testimonials: {
           title: "Succesul Antreprenorilor",
           clients: [
