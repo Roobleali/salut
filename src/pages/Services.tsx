@@ -1,179 +1,215 @@
-import { motion } from "framer-motion";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Link } from "wouter";
-import { ArrowRight, Check } from "lucide-react";
-import { ServiceFeature } from "@/components/sections/ServiceFeature";
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { motion } from 'framer-motion';
+import {
+  ChartBarIcon,
+  UserGroupIcon,
+  DocumentTextIcon,
+  ChatBubbleLeftRightIcon,
+  ClipboardDocumentListIcon,
+  DevicePhoneMobileIcon,
+  ArrowPathIcon,
+  PresentationChartLineIcon
+} from '@heroicons/react/24/outline';
+import SEO from '../components/SEO';
+import Layout from '../components/Layout';
+import { generateServiceSchema, generateBreadcrumbSchema } from '../lib/structuredData';
 
-const FEATURES = [
-  {
-    title: "Project Management",
-    desire: "Achieve seamless project execution",
-    outcome: "Utilize Gantt charts and Kanban views for clear task visualization and progress tracking, ensuring projects are completed on time and within budget",
-  },
-  {
-    title: "Customer Relationship Management (CRM)",
-    desire: "Build lasting relationships with clients",
-    outcome: "Capture and nurture leads effectively, enhancing conversion rates and maintaining detailed interaction records to elevate service delivery",
-  },
-  {
-    title: "Billing and Invoicing",
-    desire: "Simplify financial processes",
-    outcome: "Automate invoicing directly from projects, ensuring timely payments and reducing administrative burdens with recurring billing options",
-  },
-  {
-    title: "Integrated Communication Tools",
-    desire: "Foster collaboration among teams",
-    outcome: "Enable real-time communication through integrated messaging and dashboards, ensuring everyone is aligned and informed",
-  },
-  {
-    title: "Service Agreements Management",
-    desire: "Streamline service operations",
-    outcome: "Efficiently manage service agreements, simplifying tracking and renewal processes for enhanced operational flow",
-  },
-  {
-    title: "Mobile Accessibility",
-    desire: "Manage your business on-the-go",
-    outcome: "Access all features from mobile devices, empowering you to oversee operations anytime, anywhere",
-  },
-  {
-    title: "Customizable Workflows",
-    desire: "Tailor processes to fit your needs",
-    outcome: "Automate repetitive tasks with customizable workflows that enhance efficiency across departments",
-  },
-  {
-    title: "Reporting and Analytics",
-    desire: "Make informed decisions based on data",
-    outcome: "Leverage built-in analytics tools to monitor performance metrics, enabling strategic decision-making for sustained growth",
-  },
-];
+interface Feature {
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  key: string;
+}
 
-const BENEFITS = [
-  "All-in-One Solution: Integrate multiple business functions into a single platform, eliminating the hassle of managing disparate systems",
-  "Modular Design: Select only the applications you need, creating a tailored solution that aligns with your specific business goals without unnecessary costs",
-  "Scalability: As your business grows, easily scale your operations with our cloud-based solution that adapts to increasing demands",
-  "Enhanced Customer Experience: Improve client interactions through effective CRM tools and self-service portals that foster loyalty and satisfaction",
-  "Improved Financial Management: Simplify billing processes with integrated features that ensure timely payments and accurate financial reporting",
-];
+interface ServicesTranslation {
+  benefits: {
+    items: string[];
+  };
+}
 
-export function Services() {
+export const Services: React.FC = () => {
+  const { t } = useTranslation();
+
+  const features: Feature[] = [
+    {
+      icon: ChartBarIcon,
+      key: 'project_management'
+    },
+    {
+      icon: UserGroupIcon,
+      key: 'crm'
+    },
+    {
+      icon: DocumentTextIcon,
+      key: 'billing'
+    },
+    {
+      icon: ChatBubbleLeftRightIcon,
+      key: 'communication'
+    },
+    {
+      icon: ClipboardDocumentListIcon,
+      key: 'agreements'
+    },
+    {
+      icon: DevicePhoneMobileIcon,
+      key: 'mobile'
+    },
+    {
+      icon: ArrowPathIcon,
+      key: 'workflows'
+    },
+    {
+      icon: PresentationChartLineIcon,
+      key: 'analytics'
+    }
+  ];
+
+  const benefits = (t('services.benefits.items', { returnObjects: true }) as string[]);
+  const featureTitles = features.map(feature => t(`services.features.${feature.key}.title`));
+
+  // Prepare structured data
+  const serviceSchema = generateServiceSchema(
+    t('services.hero.title'),
+    t('services.hero.subtitle'),
+    featureTitles,
+    t
+  );
+
+  const breadcrumbSchema = generateBreadcrumbSchema('services', t);
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background/95 to-primary/5">
+    <Layout ariaLabel={t('services.hero.title')}>
+      <SEO
+        title={t('services.hero.title')}
+        description={t('services.hero.subtitle')}
+        keywords="enterprise software, business solutions, project management, CRM, billing, communication tools, service management, mobile solutions, workflow automation, business analytics"
+        structuredData={[serviceSchema, breadcrumbSchema]}
+        alternates={{
+          en: 'https://salut-enterprise.com/services',
+          ro: 'https://salut-enterprise.com/ro/services'
+        }}
+      />
+
       {/* Hero Section */}
-      <section className="pt-32 pb-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
+      <header className="relative py-20 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 opacity-90"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-4xl md:text-5xl font-bold text-white mb-6"
+            >
+              {t('services.hero.title')}
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-xl text-white/90 mb-8 max-w-3xl mx-auto"
+            >
+              {t('services.hero.subtitle')}
+            </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="flex justify-center gap-4"
             >
-              <Badge className="mb-4">Enterprise Solutions</Badge>
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary via-primary/90 to-primary/80 bg-clip-text text-transparent">
-                Transform Your Business with Salut Enterprise
-              </h1>
-              <p className="text-xl text-gray-600 mb-8">
-                At Salut Enterprise, we understand that service companies are driven by the desire for efficiency, growth, and exceptional customer experiences.
-              </p>
-              <div className="flex gap-4 justify-center">
-                <Link href="/contact">
-                  <Button size="lg" className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70">
-                    Start Your Journey <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </Link>
-                <Link href="/contact">
-                  <Button variant="outline" size="lg">
-                    Contact Sales
-                  </Button>
-                </Link>
-              </div>
+              <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
+                {t('services.hero.cta')}
+              </button>
+              <button className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors">
+                {t('services.hero.contact')}
+              </button>
             </motion.div>
           </div>
         </div>
-      </section>
+      </header>
 
       {/* Features Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="max-w-3xl mx-auto text-center mb-16"
-          >
-            <h2 className="text-3xl font-bold mb-4">Key Features</h2>
-            <p className="text-gray-600">
-              Our comprehensive suite of features is designed to not just meet your desires but to turn them into tangible outcomes.
+      <section className="py-20" aria-labelledby="features-title">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 id="features-title" className="text-3xl font-bold text-gray-900 mb-4">
+              {t('services.features.title')}
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              {t('services.features.subtitle')}
             </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {FEATURES.map((feature, index) => (
-              <ServiceFeature
-                key={feature.title}
-                {...feature}
-                delay={index * 0.1}
-              />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {features.map((feature, index) => (
+              <motion.article
+                key={feature.key}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow"
+              >
+                <feature.icon className="w-12 h-12 text-blue-600 mb-4" aria-hidden="true" />
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  {t(`services.features.${feature.key}.title`)}
+                </h3>
+                <p className="text-gray-600 mb-2">
+                  {t(`services.features.${feature.key}.desire`)}
+                </p>
+                <p className="text-gray-500">
+                  {t(`services.features.${feature.key}.outcome`)}
+                </p>
+              </motion.article>
             ))}
           </div>
         </div>
       </section>
 
       {/* Benefits Section */}
-      <section className="py-16 bg-gradient-to-br from-primary/5 via-background to-primary/10">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="max-w-3xl mx-auto"
-          >
-            <h2 className="text-3xl font-bold text-center mb-12">Why Choose Salut Enterprise?</h2>
-            <div className="grid sm:grid-cols-2 gap-6">
-              {BENEFITS.map((benefit, index) => (
-                <motion.div
-                  key={benefit}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
-                  className="flex items-start gap-3"
-                >
-                  <div className="mt-1">
-                    <Check className="h-5 w-5 text-primary flex-shrink-0" />
-                  </div>
-                  <p className="text-gray-700">{benefit}</p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+      <section className="py-20 bg-gray-50" aria-labelledby="benefits-title">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 id="benefits-title" className="text-3xl font-bold text-gray-900 mb-4">
+              {t('services.benefits.title')}
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {benefits.map((benefit: string, index: number) => (
+              <motion.article
+                key={index}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="bg-white p-6 rounded-xl shadow-lg"
+              >
+                <p className="text-gray-700">{benefit}</p>
+              </motion.article>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Call to Action */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
+      {/* CTA Section */}
+      <section className="py-20" aria-labelledby="cta-title">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="max-w-3xl mx-auto text-center"
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl font-bold mb-6">Ready to Transform Your Business?</h2>
+            <h2 id="cta-title" className="text-3xl font-bold text-gray-900 mb-4">
+              {t('services.cta.title')}
+            </h2>
             <p className="text-xl text-gray-600 mb-8">
-              Experience the transformative power of Salut Enterprise today.
+              {t('services.cta.subtitle')}
             </p>
-            <Link href="/contact">
-              <Button size="lg" className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70">
-                Get Started Now <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </Link>
+            <button className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+              {t('services.cta.button')}
+            </button>
           </motion.div>
         </div>
       </section>
-    </div>
+    </Layout>
   );
-}
+};
+
+export default Services;

@@ -652,31 +652,81 @@ const resources = {
         },
       },
       services: {
-        horeca: {
-          title: "HORECA Solutions",
-          description:
-            "Complete management solutions for hotels, restaurants, and catering businesses with integrated modules for seamless operations",
-          features: [
-            "Integrated Reservation System",
-            "Real-time Kitchen Display System",
-            "Smart Inventory Management",
-            "Staff Scheduling & Management",
-            "Customer Relationship Management",
-            "Financial Analytics & Reporting",
+        hero: {
+          title: "Transform Your Business with Salut Enterprise",
+          subtitle:
+            "At Salut Enterprise, we understand that service companies are driven by the desire for efficiency, growth, and exceptional customer experiences.",
+          cta: "Start Your Journey",
+          contact: "Contact Sales",
+        },
+        features: {
+          title: "Key Features",
+          subtitle:
+            "Our comprehensive suite of features is designed to not just meet your desires but to turn them into tangible outcomes.",
+          project_management: {
+            title: "Project Management",
+            desire: "Achieve seamless project execution",
+            outcome:
+              "Utilize Gantt charts and Kanban views for clear task visualization and progress tracking, ensuring projects are completed on time and within budget",
+          },
+          crm: {
+            title: "Customer Relationship Management (CRM)",
+            desire: "Build lasting relationships with clients",
+            outcome:
+              "Capture and nurture leads effectively, enhancing conversion rates and maintaining detailed interaction records to elevate service delivery",
+          },
+          billing: {
+            title: "Billing and Invoicing",
+            desire: "Simplify financial processes",
+            outcome:
+              "Automate invoicing directly from projects, ensuring timely payments and reducing administrative burdens with recurring billing options",
+          },
+          communication: {
+            title: "Integrated Communication Tools",
+            desire: "Foster collaboration among teams",
+            outcome:
+              "Enable real-time communication through integrated messaging and dashboards, ensuring everyone is aligned and informed",
+          },
+          agreements: {
+            title: "Service Agreements Management",
+            desire: "Streamline service operations",
+            outcome:
+              "Efficiently manage service agreements, simplifying tracking and renewal processes for enhanced operational flow",
+          },
+          mobile: {
+            title: "Mobile Accessibility",
+            desire: "Manage your business on-the-go",
+            outcome:
+              "Access all features from mobile devices, empowering you to oversee operations anytime, anywhere",
+          },
+          workflows: {
+            title: "Customizable Workflows",
+            desire: "Tailor processes to fit your needs",
+            outcome:
+              "Automate repetitive tasks with customizable workflows that enhance efficiency across departments",
+          },
+          analytics: {
+            title: "Reporting and Analytics",
+            desire: "Make informed decisions based on data",
+            outcome:
+              "Leverage built-in analytics tools to monitor performance metrics, enabling strategic decision-making for sustained growth",
+          },
+        },
+        benefits: {
+          title: "Why Choose Salut Enterprise?",
+          items: [
+            "All-in-One Solution: Integrate multiple business functions into a single platform, eliminating the hassle of managing disparate systems",
+            "Modular Design: Select only the applications you need, creating a tailored solution that aligns with your specific business goals without unnecessary costs",
+            "Scalability: As your business grows, easily scale your operations with our cloud-based solution that adapts to increasing demands",
+            "Enhanced Customer Experience: Improve client interactions through effective CRM tools and self-service portals that foster loyalty and satisfaction",
+            "Improved Financial Management: Simplify billing processes with integrated features that ensure timely payments and accurate financial reporting",
           ],
         },
-        manufacturing: {
-          title: "Manufacturing Software",
-          description:
-            "Enterprise-grade manufacturing solution with advanced production planning and real-time monitoring capabilities",
-          features: [
-            "Advanced Production Planning",
-            "Quality Control & Assurance",
-            "Supply Chain Optimization",
-            "Cost & Resource Tracking",
-            "Maintenance Management",
-            "Compliance & Documentation",
-          ],
+        cta: {
+          title: "Ready to Transform Your Business?",
+          subtitle:
+            "Experience the transformative power of Salut Enterprise today.",
+          button: "Get Started Now",
         },
       },
       manufacturing: {
@@ -1067,33 +1117,32 @@ const resources = {
             },
             {
               title: "Smart POS 💳",
-              description:
-                "Intelligent point-of-sale system with AI recommendations",
+              description: "Sistem point-of-sale cu recomandări bazate pe AI",
               features: [
-                "Offline mode capability",
-                "Customer recognition",
-                "Dynamic pricing",
-                "Loyalty integration",
+                "Funcționare offline",
+                "Recunoaștere clienți",
+                "Prețuri dinamice",
+                "Integrare program loialitate",
               ],
             },
             {
               title: "Inventory AI 📦",
-              description: "Predictive stock management system",
+              description: "Sistem predictiv de gestionare stocuri",
               features: [
-                "Demand forecasting",
-                "Automated replenishment",
-                "Supplier management",
-                "Dead stock alerts",
+                "Prognoză cerere",
+                "Reaprovizionare automată",
+                "Management furnizori",
+                "Alertă stocuri stagnante",
               ],
             },
             {
               title: "Customer360 👤",
               description: "Unified customer experience management",
               features: [
-                "Purchase history tracking",
-                "Behavioral analytics",
-                "Personalized marketing",
-                "Omnichannel journey mapping",
+                "Istoric cumpărături",
+                "Analiză comportament",
+                "Marketing personalizat",
+                "Mapare journey omnichannel",
               ],
             },
             {
@@ -1164,6 +1213,159 @@ const resources = {
           costValue: "2 Months",
           efficiency: "Process Efficiency Gain",
           efficiencyValue: "65%",
+        },
+      },
+      common: {
+        company_name: "Salut Enterprise",
+        learn_more: "Learn More",
+        features: "Features",
+      },
+      websiteBuilder: {
+        hero: {
+          title: "Your Complete Online Presence",
+          subtitle:
+            "So good, it's easy to setup - yet stunningly complete. Design appealing pages and manage your entire business from one unified platform.",
+          cta: "Get Started Free",
+        },
+        quickSetup: {
+          title: "No-Code Mode",
+          subtitle:
+            "Your perfect online presence should be easy to create and maintain",
+          steps: {
+            business: {
+              title: "Set your business",
+              description: "Tell us about your business",
+            },
+            logo: {
+              title: "Add your logo",
+              description: "Upload your brand identity",
+            },
+            features: {
+              title: "Select features",
+              description: "Choose what you need",
+            },
+            theme: {
+              title: "Choose theme",
+              description: "Pick your favorite design",
+            },
+          },
+        },
+        websiteFeatures: {
+          title: "Website Features",
+          subtitle: "Everything you need to create a professional website",
+          dragDrop: {
+            title: "Drag & Drop Builder",
+            description:
+              "Creează site-ul ca un designer cu interfața noastră intuitivă drag-and-drop. Fă ajustări precise, adaugă filtre și animează elementele direct pe pagină.",
+          },
+          ai: {
+            title: "AI-Powered Creation",
+            description:
+              "Let AI suggest your website layout and content based on your industry. Boost your copy-writing with ChatGPT integration for better content generation.",
+          },
+          mobile: {
+            title: "Mobile Responsive",
+            description:
+              "Your website automatically adapts to all devices. Control what's visible on mobile with our responsive design tools.",
+          },
+          photos: {
+            title: "3M+ Free Photos",
+            description:
+              "Accesează o vastă bibliotecă de imagini de calitate de la Unsplash pentru a îmbunătăți aspectul vizual al site-ului tău.",
+          },
+        },
+        ecommerceFeatures: {
+          title: "E-commerce Features",
+          subtitle: "Everything you need to run a successful online store",
+          products: {
+            title: "Adaptive Products",
+            description:
+              "Display your products in all their facets with configurable sizes, colors, and variants. Automated stock management updates in real-time for each variant.",
+          },
+          engagement: {
+            title: "Customer Engagement",
+            description:
+              "Build stronger relationships with real-time chat support and customer reviews. Help customers find their next best buy with smart recommendations.",
+          },
+          analytics: {
+            title: "Analytics & Growth",
+            description:
+              "Track your store's performance with built-in analytics. Build advanced reports and cross-check data to make informed business decisions.",
+          },
+          payments: {
+            title: "Payment Integration",
+            description:
+              "Offer a variety of payment options to your customers. Seamlessly integrate with popular payment providers for secure transactions.",
+          },
+        },
+        additionalFeatures: {
+          title: "Additional Features",
+          subtitle: "Extra tools to enhance your online presence",
+          language: {
+            title: "Multi-Language Support",
+            description:
+              "Install different languages and translate content directly from any page with our built-in translation tools.",
+          },
+          seo: {
+            title: "SEO Optimization",
+            description:
+              "Write search engine-friendly content with our integrated SEO tools to improve your website's visibility.",
+          },
+          market: {
+            title: "Market Adaptability",
+            description:
+              "Expand your reach with integrations to major marketplaces like Amazon and Facebook. Reach more customers where they shop.",
+          },
+          shipping: {
+            title: "Flexible Shipping",
+            description:
+              "Offer multiple shipping options including click and collect. Let customers shop online and pick up orders at your store.",
+          },
+        },
+        pricing: {
+          title: "Free Forever, Unlimited Users",
+          subtitle:
+            "Your website and online store are free forever with our One App Free plan, including hosting, unlimited support, and maintenance. No ads or limits.",
+          cta: "Start Building Now",
+        },
+      },
+      about: {
+        hero: {
+          title: "About Salut Enterprise",
+          description:
+            "Salut Enterprise is a leading provider of enterprise software solutions, specializing in comprehensive business management systems that help organizations streamline their operations and achieve their full potential.",
+        },
+        mission: {
+          title: "Our Mission",
+          description:
+            "We are committed to delivering innovative, scalable, and integrated software solutions that empower businesses to thrive in an increasingly digital world. Our focus is on providing enterprise-grade technology that is both powerful and user-friendly.",
+        },
+        values: {
+          title: "Our Values",
+          innovation: {
+            title: "Innovation",
+            description:
+              "Constantly evolving our solutions to meet changing business needs",
+          },
+          quality: {
+            title: "Quality",
+            description:
+              "Maintaining the highest standards in software development",
+          },
+          customerSuccess: {
+            title: "Customer Success",
+            description: "Dedicated to helping our clients achieve their goals",
+          },
+          integrity: {
+            title: "Integrity",
+            description: "Operăm cu transparență și practici etice de afaceri",
+          },
+        },
+        journey: {
+          title: "Our Journey",
+        },
+        team: {
+          title: "Meet Our Leadership Team",
         },
       },
     },
@@ -1816,31 +2018,81 @@ const resources = {
         },
       },
       services: {
-        horeca: {
-          title: "Soluții HORECA",
-          description:
-            "Soluții complete de management pentru hoteluri, restaurante și afaceri de catering cu module integrate pentru operațiuni eficiente",
-          features: [
-            "Sistem Integrat de Rezervări",
-            "Sistem Afișaj Bucătărie în Timp Real",
-            "Gestionare Inteligentă a Stocurilor",
-            "Programare și Management Personal",
-            "Management Relații Clienți",
-            "Analize Financiare și Raportare",
+        hero: {
+          title: "Transformă-ți Afacerea cu Salut Enterprise",
+          subtitle:
+            "La Salut Enterprise, înțelegem că companiile de servicii sunt conduse de dorința de eficiență, creștere și experiențe excepționale pentru clienți.",
+          cta: "Începe Călătoria",
+          contact: "Contactează Vânzări",
+        },
+        features: {
+          title: "Funcționalități Principale",
+          subtitle:
+            "Suita noastră cuprinzătoare de funcționalități este proiectată nu doar pentru a satisface dorințele tale, ci pentru a le transforma în rezultate tangibile.",
+          project_management: {
+            title: "Management Proiecte",
+            desire: "Realizează execuția perfectă a proiectelor",
+            outcome:
+              "Utilizează diagrame Gantt și vizualizări Kanban pentru vizualizarea clară a sarcinilor și urmărirea progresului, asigurând finalizarea proiectelor la timp și în buget",
+          },
+          crm: {
+            title: "Management Relații Clienți (CRM)",
+            desire: "Construiește relații durabile cu clienții",
+            outcome:
+              "Captează și dezvoltă lead-uri eficient, îmbunătățind ratele de conversie și menținând înregistrări detaliate ale interacțiunilor pentru a îmbunătăți livrarea serviciilor",
+          },
+          billing: {
+            title: "Facturare și Invoicing",
+            desire: "Simplifică procesele financiare",
+            outcome:
+              "Automatizează facturarea direct din proiecte, asigurând plăți la timp și reducând sarcinile administrative cu opțiuni de facturare recurentă",
+          },
+          communication: {
+            title: "Instrumente de Comunicare Integrate",
+            desire: "Favorizează colaborarea între echipe",
+            outcome:
+              "Activează comunicarea în timp real prin mesagerie și dashboard-uri integrate, asigurând că toată lumea este aliniată și informată",
+          },
+          agreements: {
+            title: "Management Acorduri de Servicii",
+            desire: "Optimizează operațiunile de servicii",
+            outcome:
+              "Gestionează eficient acordurile de servicii, simplificând procesele de urmărire și reînnoire pentru un flux operațional îmbunătățit",
+          },
+          mobile: {
+            title: "Accesibilitate Mobilă",
+            desire: "Gestionează-ți afacerea în mișcare",
+            outcome:
+              "Accesează toate funcționalitățile de pe dispozitive mobile, permițându-ți să supervizezi operațiunile oriunde, oricând",
+          },
+          workflows: {
+            title: "Fluxuri de Lucru Personalizabile",
+            desire: "Adaptează procesele la nevoile tale",
+            outcome:
+              "Automatizează sarcinile repetitive cu fluxuri de lucru personalizabile care îmbunătățesc eficiența în toate departamentele",
+          },
+          analytics: {
+            title: "Raportare și Analiză",
+            desire: "Ia decizii informate bazate pe date",
+            outcome:
+              "Folosește instrumentele integrate de analiză pentru a monitoriza metricile de performanță, permițând luarea de decizii strategice pentru o creștere susținută",
+          },
+        },
+        benefits: {
+          title: "De Ce Să Alegi Salut Enterprise?",
+          items: [
+            "Soluție Tot-În-Unu: Integrează multiple funcții de afaceri într-o singură platformă, eliminând dificultățile gestionării sistemelor disparate",
+            "Design Modular: Selectează doar aplicațiile de care ai nevoie, creând o soluție personalizată care se aliniază cu obiectivele specifice ale afacerii tale fără costuri inutile",
+            "Scalabilitate: Pe măsură ce afacerea ta crește, scalează ușor operațiunile cu soluția noastră bazată pe cloud care se adaptează la cerințele în creștere",
+            "Experiență Clienți Îmbunătățită: Îmbunătățește interacțiunile cu clienții prin instrumente CRM eficiente și portaluri self-service care promovează loialitatea și satisfacția",
+            "Management Financiar Îmbunătățit: Simplifică procesele de facturare cu funcții integrate care asigură plăți la timp și raportare financiară precisă",
           ],
         },
-        manufacturing: {
-          title: "Software Producție",
-          description:
-            "Soluție enterprise pentru producție cu planificare avansată și monitorizare în timp real",
-          features: [
-            "Planificare Avansată a Producției",
-            "Control și Asigurare Calitate",
-            "Optimizare Lanț Aprovizionare",
-            "Urmărire Costuri și Resurse",
-            "Management Mentenanță",
-            "Conformitate și Documentație",
-          ],
+        cta: {
+          title: "Gata să Transformi Afacerea?",
+          subtitle:
+            "Experimentează puterea transformativă a Salut Enterprise astăzi.",
+          button: "Începe Acum",
         },
       },
       manufacturing: {
@@ -2308,6 +2560,162 @@ const resources = {
           costValue: "6 Luni",
           efficiency: "Eficiență Crescută",
           efficiencyValue: "65%",
+        },
+      },
+      common: {
+        company_name: "Salut Enterprise",
+        learn_more: "Află Mai Multe",
+        features: "Features",
+      },
+      websiteBuilder: {
+        hero: {
+          title: "Prezența Ta Online Completă",
+          subtitle:
+            "Atât de bun, încât este ușor de configurat - dar complet. Proiectează pagini atractive și gestionează-ți întreaga afacere dintr-o singură platformă unificată.",
+          cta: "Începe Gratuit",
+        },
+        quickSetup: {
+          title: "Modul Fără Cod",
+          subtitle:
+            "Prezența ta online perfectă ar trebui să fie ușor de creat și întreținut",
+          steps: {
+            business: {
+              title: "Configurează-ți afacerea",
+              description: "Spune-ne despre afacerea ta",
+            },
+            logo: {
+              title: "Adaugă logo-ul",
+              description: "Încarcă identitatea ta de brand",
+            },
+            features: {
+              title: "Selectează funcționalități",
+              description: "Alege ce ai nevoie",
+            },
+            theme: {
+              title: "Alege tema",
+              description: "Alege designul preferat",
+            },
+          },
+        },
+        websiteFeatures: {
+          title: "Funcționalități Website",
+          subtitle: "Tot ce ai nevoie pentru a crea un website profesional",
+          dragDrop: {
+            title: "Constructor Drag & Drop",
+            description:
+              "Creează site-ul ca un designer cu interfața noastră intuitivă drag-and-drop. Fă ajustări precise, adaugă filtre și animează elementele direct pe pagină.",
+          },
+          ai: {
+            title: "Creare cu AI",
+            description:
+              "Lasă AI-ul să sugereze layout-ul și conținutul site-ului în funcție de industria ta. Îmbunătățește-ți copywriting-ul cu integrarea ChatGPT pentru o generare mai bună a conținutului.",
+          },
+          mobile: {
+            title: "Responsive pe Mobile",
+            description:
+              "Site-ul tău se adaptează automat la toate dispozitivele. Controlează ce este vizibil pe mobile cu instrumentele noastre de design responsive.",
+          },
+          photos: {
+            title: "3M+ Fotografii Gratuite",
+            description:
+              "Accesează o vastă bibliotecă de imagini de calitate de la Unsplash pentru a îmbunătăți aspectul vizual al site-ului tău.",
+          },
+        },
+        ecommerceFeatures: {
+          title: "Funcționalități E-commerce",
+          subtitle:
+            "Tot ce ai nevoie pentru a gestiona un magazin online de succes",
+          products: {
+            title: "Produse Adaptative",
+            description:
+              "Afișează produsele tale în toate aspectele lor cu dimensiuni, culori și variante configurabile. Gestionarea stocurilor se actualizează automat în timp real pentru fiecare variantă.",
+          },
+          engagement: {
+            title: "Interacțiune cu Clienții",
+            description:
+              "Construiește relații mai puternice cu suport chat în timp real și recenzii de la clienți. Ajută clienții să găsească următoarea lor achiziție cu recomandări inteligente.",
+          },
+          analytics: {
+            title: "Analiză și Creștere",
+            description:
+              "Urmărește performanța magazinului cu analitice integrate. Construiește rapoarte avansate și verifică datele pentru a lua decizii informate.",
+          },
+          payments: {
+            title: "Integrare Plăți",
+            description:
+              "Oferă clienților o varietate de opțiuni de plată. Integrează fără probleme cu furnizorii populari de plăți pentru tranzacții sigure.",
+          },
+        },
+        additionalFeatures: {
+          title: "Funcționalități Adiționale",
+          subtitle:
+            "Instrumente suplimentare pentru a îmbunătăți prezența ta online",
+          language: {
+            title: "Suport Multi-Limbă",
+            description:
+              "Instalează diferite limbi și traduce conținutul direct din orice pagină cu instrumentele noastre integrate de traducere.",
+          },
+          seo: {
+            title: "Optimizare SEO",
+            description:
+              "Scrie conținut optimizat pentru motoarele de căutare cu instrumentele noastre integrate SEO pentru a îmbunătăți vizibilitatea site-ului tău.",
+          },
+          market: {
+            title: "Adaptabilitate la Piață",
+            description:
+              "Extinde-ți raza de acțiune cu integrarea cu marketplace-uri majore precum Amazon și Facebook. Ajungi la mai mulți clienți acolo unde cumpără.",
+          },
+          shipping: {
+            title: "Livrare Flexibilă",
+            description:
+              "Oferă multiple opțiuni de livrare, inclusiv click și ridicare. Lasă clienții să cumpere online și să ridice comenzile de la magazinul tău.",
+          },
+        },
+        pricing: {
+          title: "Gratuit Pentru Totdeauna, Utilizatori Nelimitați",
+          subtitle:
+            "Site-ul și magazinul tău online sunt gratuite pentru totdeauna cu planul nostru One App Free, inclusiv găzduire, suport nelimitat și întreținere. Fără reclame sau limite.",
+          cta: "Începe Acum",
+        },
+      },
+      about: {
+        hero: {
+          title: "Despre Salut Enterprise",
+          description:
+            "Salut Enterprise este un furnizor de lider al soluțiilor software enterprise, specializat în sisteme complete de management de afaceri care ajută organizațiile să-și eficientizeze operațiunile și să-și atingă potențialul maxim.",
+        },
+        mission: {
+          title: "Misiunea Noastră",
+          description:
+            "Ne angajăm să oferim soluții software inovatoare, scalabile și integrate care împuternicesc afacerile să prospere într-o lume din ce în ce mai digitală. Ne concentrăm pe furnizarea tehnologiei de nivel enterprise care este atât puternică, cât și ușor de utilizat.",
+        },
+        values: {
+          title: "Valorile Noastre",
+          innovation: {
+            title: "Inovație",
+            description:
+              "Evoluăm constant soluțiile noastre pentru a răspunde nevoilor în schimbare ale afacerilor",
+          },
+          quality: {
+            title: "Calitate",
+            description:
+              "Menținem cele mai înalte standarde în dezvoltarea software",
+          },
+          customerSuccess: {
+            title: "Succesul Clienților",
+            description:
+              "Dedicați ajutării clienților noștri să-și atingă obiectivele",
+          },
+          integrity: {
+            title: "Integritate",
+            description: "Operăm cu transparență și practici etice de afaceri",
+          },
+        },
+        journey: {
+          title: "Călătoria Noastră",
+        },
+        team: {
+          title: "Cunoaște Echipa Noastră de Conducere",
         },
       },
     },

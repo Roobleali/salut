@@ -28,8 +28,13 @@ export function Footer() {
               <li><Link href="/about"><a className="text-gray-600 hover:text-primary">About Us</a></Link></li>
               <li><Link href="/contact"><a className="text-gray-600 hover:text-primary">Contact</a></Link></li>
               <li>
+                <Link href="/resources" className="text-gray-600 hover:text-primary transition-colors">
+                  Resources & Guides
+                </Link>
+              </li> <li>
                 <a href="mailto:info@saluttech.ro">info@saluttech.ro</a>
               </li>
+
               <li>
                 <a href="tel:+40729917823">+40 729 917 823</a>
               </li>

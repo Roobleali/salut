@@ -1,17 +1,24 @@
+# Allow all crawlers
 User-agent: *
 Allow: /
-Allow: /solutions/
-Allow: /industries/
-Allow: /about/
-Allow: /contact/
-Allow: /blog/
-Allow: /case-studies/
-Allow: /sitemap.xml
 
+# Sitemap location
+Sitemap: https://salut-enterprise.com/sitemap.xml
+
+# Disallow admin and private areas
 Disallow: /admin/
 Disallow: /private/
 Disallow: /api/
 Disallow: /_next/
 Disallow: /static/
 
-Sitemap: https://saluttech.ro/sitemap.xml 
+# Allow important pages
+Allow: /services/
+Allow: /solutions/
+Allow: /about/
+Allow: /contact/
+Allow: /blog/
+Allow: /case-studies/
+
+# Crawl-delay for all bots
+Crawl-delay: 10 
