@@ -1,6 +1,5 @@
 import { Helmet } from "react-helmet";
-import { useTranslation } from "react-i18next";
-import { Wrench, Database, ArrowRight, Shield, Clock, Users } from "lucide-react";
+import { Database, ArrowRight, Shield, Clock, Users } from "lucide-react";
 
 const features = [
     {
@@ -69,21 +68,19 @@ const migrationSteps = [
 ];
 
 const Migration = () => {
-    const { t } = useTranslation();
-
     return (
         <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
             <Helmet>
-                <title>Enterprise Migration Solutions | Salut Enterprise</title>
-                <meta name="description" content="Seamless system migration services with minimal downtime and zero data loss." />
-                <meta property="og:title" content="Enterprise Migration Solutions | Salut Enterprise" />
-                <meta property="og:description" content="Seamless system migration services with minimal downtime and zero data loss." />
+                <title>Migration Services | Salut Enterprise</title>
+                <meta name="description" content="Seamless migration services to help you transition to our enterprise solutions." />
+                <meta property="og:title" content="Migration Services | Salut Enterprise" />
+                <meta property="og:description" content="Seamless migration services to help you transition to our enterprise solutions." />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://saluttech.ro/solutions/migration" />
                 <meta property="og:image" content="https://saluttech.ro/og-image.jpg" />
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Enterprise Migration Solutions | Salut Enterprise" />
-                <meta name="twitter:description" content="Seamless system migration services with minimal downtime and zero data loss." />
+                <meta name="twitter:title" content="Migration Services | Salut Enterprise" />
+                <meta name="twitter:description" content="Seamless migration services to help you transition to our enterprise solutions." />
                 <meta name="twitter:image" content="https://saluttech.ro/og-image.jpg" />
             </Helmet>
 

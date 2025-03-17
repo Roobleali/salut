@@ -1,6 +1,5 @@
 import { Helmet } from "react-helmet";
-import { useTranslation } from "react-i18next";
-import { CloudCog, Shield, Clock, Server, Users } from "lucide-react";
+import { Shield, Clock, Server, Users } from "lucide-react";
 
 const features = [
     {
@@ -26,21 +25,19 @@ const features = [
 ];
 
 const HostingSupport = () => {
-    const { t } = useTranslation();
-
     return (
         <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
             <Helmet>
-                <title>Enterprise Hosting & Support Solutions | Salut Enterprise</title>
-                <meta name="description" content="Reliable enterprise hosting and expert support services with 24/7 availability and guaranteed uptime." />
-                <meta property="og:title" content="Enterprise Hosting & Support Solutions | Salut Enterprise" />
-                <meta property="og:description" content="Reliable enterprise hosting and expert support services with 24/7 availability and guaranteed uptime." />
+                <title>Hosting & Support Services | Salut Enterprise</title>
+                <meta name="description" content="Enterprise-grade hosting and support services to keep your systems running smoothly." />
+                <meta property="og:title" content="Hosting & Support Services | Salut Enterprise" />
+                <meta property="og:description" content="Enterprise-grade hosting and support services to keep your systems running smoothly." />
                 <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://saluttech.ro/solutions/hosting" />
+                <meta property="og:url" content="https://saluttech.ro/solutions/hosting-support" />
                 <meta property="og:image" content="https://saluttech.ro/og-image.jpg" />
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Enterprise Hosting & Support Solutions | Salut Enterprise" />
-                <meta name="twitter:description" content="Reliable enterprise hosting and expert support services with 24/7 availability and guaranteed uptime." />
+                <meta name="twitter:title" content="Hosting & Support Services | Salut Enterprise" />
+                <meta name="twitter:description" content="Enterprise-grade hosting and support services to keep your systems running smoothly." />
                 <meta name="twitter:image" content="https://saluttech.ro/og-image.jpg" />
             </Helmet>
 

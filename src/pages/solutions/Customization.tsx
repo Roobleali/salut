@@ -1,5 +1,4 @@
 import { Helmet } from "react-helmet";
-import { useTranslation } from "react-i18next";
 import { Settings, Code, Puzzle, Zap, Shield, Clock } from "lucide-react";
 
 const features = [
@@ -36,21 +35,19 @@ const features = [
 ];
 
 const Customization = () => {
-    const { t } = useTranslation();
-
     return (
         <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
             <Helmet>
-                <title>Enterprise Customization Solutions | Salut Enterprise</title>
-                <meta name="description" content="Custom software solutions and integrations tailored to your specific business needs and requirements." />
-                <meta property="og:title" content="Enterprise Customization Solutions | Salut Enterprise" />
-                <meta property="og:description" content="Custom software solutions and integrations tailored to your specific business needs and requirements." />
+                <title>Customization Services | Salut Enterprise</title>
+                <meta name="description" content="Tailored solutions to meet your specific business needs and requirements." />
+                <meta property="og:title" content="Customization Services | Salut Enterprise" />
+                <meta property="og:description" content="Tailored solutions to meet your specific business needs and requirements." />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://saluttech.ro/solutions/customization" />
                 <meta property="og:image" content="https://saluttech.ro/og-image.jpg" />
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Enterprise Customization Solutions | Salut Enterprise" />
-                <meta name="twitter:description" content="Custom software solutions and integrations tailored to your specific business needs and requirements." />
+                <meta name="twitter:title" content="Customization Services | Salut Enterprise" />
+                <meta name="twitter:description" content="Tailored solutions to meet your specific business needs and requirements." />
                 <meta name="twitter:image" content="https://saluttech.ro/og-image.jpg" />
             </Helmet>
 

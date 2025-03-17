@@ -1,6 +1,5 @@
 import { Helmet } from "react-helmet";
-import { useTranslation } from "react-i18next";
-import { GraduationCap, Users, BookOpen, Clock, Award, Target } from "lucide-react";
+import { Users, BookOpen, Clock, Award, Target } from "lucide-react";
 
 const features = [
     {
@@ -67,21 +66,19 @@ const trainingPrograms = [
 ];
 
 const Training = () => {
-    const { t } = useTranslation();
-
     return (
         <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
             <Helmet>
-                <title>Enterprise Training Solutions | Salut Enterprise</title>
-                <meta name="description" content="Comprehensive training programs for users and administrators to maximize system utilization and efficiency." />
-                <meta property="og:title" content="Enterprise Training Solutions | Salut Enterprise" />
-                <meta property="og:description" content="Comprehensive training programs for users and administrators to maximize system utilization and efficiency." />
+                <title>Training Services | Salut Enterprise</title>
+                <meta name="description" content="Comprehensive training services to help your team master our enterprise solutions." />
+                <meta property="og:title" content="Training Services | Salut Enterprise" />
+                <meta property="og:description" content="Comprehensive training services to help your team master our enterprise solutions." />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://saluttech.ro/solutions/training" />
                 <meta property="og:image" content="https://saluttech.ro/og-image.jpg" />
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Enterprise Training Solutions | Salut Enterprise" />
-                <meta name="twitter:description" content="Comprehensive training programs for users and administrators to maximize system utilization and efficiency." />
+                <meta name="twitter:title" content="Training Services | Salut Enterprise" />
+                <meta name="twitter:description" content="Comprehensive training services to help your team master our enterprise solutions." />
                 <meta name="twitter:image" content="https://saluttech.ro/og-image.jpg" />
             </Helmet>
 

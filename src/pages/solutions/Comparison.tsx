@@ -1,10 +1,7 @@
 import React from 'react';
 import { Helmet } from "react-helmet";
-import { useTranslation } from "react-i18next";
 import { Sparkles, Globe, ShoppingCart, MessageSquare, Package, Layout as LayoutIcon } from "lucide-react";
-import SEO from '../../components/SEO';
 import Layout from '../../components/Layout';
-import { generateServiceSchema } from '../../lib/structuredData';
 
 interface Feature {
     icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
@@ -119,8 +116,6 @@ const comparisonTables = [
 ];
 
 const Comparison = () => {
-    const { t } = useTranslation();
-
     return (
         <Layout ariaLabel="Solution Comparison">
             <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">

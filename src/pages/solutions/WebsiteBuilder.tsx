@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet";
 import { useTranslation } from "react-i18next";
-import { Sparkles, Globe, Layout, Smartphone, Image, Zap, Globe2, Search, BarChart, ArrowRight, ShoppingCart, Package, MessageSquare, CreditCard, Truck } from "lucide-react";
+import { Sparkles, Globe, Layout, Smartphone, Image, Globe2, Search, BarChart, ArrowRight, ShoppingCart, MessageSquare, CreditCard, Truck } from "lucide-react";
 
 const websiteFeatures = [
     {
