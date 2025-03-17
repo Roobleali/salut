@@ -20,12 +20,6 @@ interface Feature {
   key: string;
 }
 
-interface ServicesTranslation {
-  benefits: {
-    items: string[];
-  };
-}
-
 export const Services: React.FC = () => {
   const { t } = useTranslation();
 

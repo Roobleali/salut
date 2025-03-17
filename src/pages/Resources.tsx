@@ -1,6 +1,9 @@
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
+import Layout from '../components/Layout';
 import { Helmet } from "react-helmet";
-import { useTranslation } from "react-i18next";
-import { Link } from "wouter";
 
 const RESOURCES = [
     {

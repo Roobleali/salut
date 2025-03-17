@@ -1,9 +1,13 @@
+import React from 'react';
 import { Hero } from "@/components/sections/Hero";
 import { ServiceCard } from "@/components/sections/ServiceCard";
 import { SERVICES } from "@/lib/constants";
 import { useTranslation, Trans } from "react-i18next";
 import { Helmet } from "react-helmet";
-import { Link } from "wouter";
+import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
+import Layout from '../components/Layout';
+import { generateOrganizationSchema } from '../lib/structuredData';
 
 export function Home() {
   const { t } = useTranslation();
@@ -223,8 +227,6 @@ export function Home() {
           </div>
         </div>
       </section>
-
-
 
       {/* Add social sharing buttons */}
       <div className="fixed bottom-4 right-4 z-50 flex flex-col gap-2">

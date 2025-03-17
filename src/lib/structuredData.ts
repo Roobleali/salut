@@ -1,5 +1,3 @@
-import { useTranslation } from "react-i18next";
-
 export const generateOrganizationSchema = (t: (key: string) => string) => ({
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -25,12 +23,12 @@ export const generateBreadcrumbSchema = (
   t: (key: string) => string
 ) => {
   const pathSegments = path.split("/").filter(Boolean);
-  const breadcrumbItems = pathSegments.map((segment, index) => ({
+  const breadcrumbItems = pathSegments.map((segment) => ({
     "@type": "ListItem",
-    position: index + 1,
+    position: pathSegments.indexOf(segment) + 1,
     name: t(`breadcrumbs.${segment}`),
     item: `https://salut-enterprise.com/${pathSegments
-      .slice(0, index + 1)
+      .slice(0, pathSegments.indexOf(segment) + 1)
       .join("/")}`,
   }));
 
@@ -74,7 +72,7 @@ export const generateServiceSchema = (
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Enterprise Services",
-    itemListElement: features.map((feature, index) => ({
+    itemListElement: features.map((feature) => ({
       "@type": "Offer",
       itemOffered: {
         "@type": "Service",
