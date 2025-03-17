@@ -234,7 +234,7 @@ export function RealEstate() {
             <LeftVector />
           </div>
 
-          <VideoModal src='https://www.youtube.com/embed/9mGwVLKyibo?autoplay=1' image='/Section.svg' alt='real estate software' />
+          <VideoModal src='https://www.youtube.com/embed/9mGwVLKyibo?autoplay=1' photo='/Section.svg' alt='real estate software' />
 
 
           <div className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2">
