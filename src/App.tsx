@@ -9,6 +9,13 @@ import { Contact } from "@/pages/Contact";
 import { CaseStudies } from "@/pages/CaseStudies";
 import { Resources } from "@/pages/Resources";
 import ERPSolutionsPage from "@/pages/solutions/EnterpriseApps";
+import HostingSupport from "@/pages/solutions/HostingSupport";
+import Customization from "@/pages/solutions/Customization";
+import Training from "@/pages/solutions/Training";
+import Migration from "@/pages/solutions/Migration";
+import Ecommerce from "@/pages/solutions/Ecommerce";
+import WebsiteBuilder from "@/pages/solutions/WebsiteBuilder";
+import Comparison from "@/pages/solutions/Comparison";
 import { Manufacturing } from "@/pages/industries/Manufacturing";
 import { Retail } from "@/pages/industries/Retail";
 import { RealEstate } from "@/pages/industries/RealEstate";
@@ -43,13 +50,15 @@ function App() {
               <Route path="/about" component={About} />
               <Route path="/contact" component={Contact} />
 
-              {/* Odoo ERP Solutions Routes */}
+              {/* Enterprise Solutions Routes */}
               <Route path="/solutions/erp" component={ERPSolutionsPage} />
-              <Route path="/solutions/hosting" component={ERPSolutionsPage} />
-              <Route path="/solutions/customization" component={ERPSolutionsPage} />
-              <Route path="/solutions/training" component={ERPSolutionsPage} />
-              <Route path="/solutions/migration" component={ERPSolutionsPage} />
-              <Route path="/solutions/ecommerce" component={ERPSolutionsPage} />
+              <Route path="/solutions/hosting" component={HostingSupport} />
+              <Route path="/solutions/customization" component={Customization} />
+              <Route path="/solutions/training" component={Training} />
+              <Route path="/solutions/migration" component={Migration} />
+              <Route path="/solutions/ecommerce" component={Ecommerce} />
+              <Route path="/solutions/website-builder" component={WebsiteBuilder} />
+              <Route path="/solutions/comparison" component={Comparison} />
 
               {/* Industry Routes */}
               <Route path="/erp-system/manufacturing" component={Manufacturing} />

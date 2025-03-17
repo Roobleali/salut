@@ -45,7 +45,7 @@ const iconMap: Record<string, Record<string, JSX.Element>> = {
     '/solutions/marketing': <ShoppingCart className="w-4 h-4" aria-hidden="true" />,
     '/solutions/integration': <Settings className="w-4 h-4" aria-hidden="true" />,
     '/solutions/support': <Wrench className="w-4 h-4" aria-hidden="true" />,
-    '/solutions/website-ecommerce': <Globe className="w-4 h-4" aria-hidden="true" />,
+    '/solutions/website-builder': <Globe className="w-4 h-4" aria-hidden="true" />,
   },
 };
 

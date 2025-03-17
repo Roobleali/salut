@@ -547,7 +547,7 @@ const resources = {
             },
             {
               title: "Custom Website & E-commerce",
-              href: "/solutions/website-ecommerce",
+              href: "/solutions/website-builder",
               description:
                 "Custom web development and powerful e-commerce platform solutions",
             },
@@ -1711,7 +1711,7 @@ const resources = {
             },
             {
               title: "Website & E-commerce Personalizat",
-              href: "/solutions/website-ecommerce",
+              href: "/solutions/website-builder",
               description:
                 "Dezvoltare web personalizată și soluții de platformă e-commerce puternice",
             },
