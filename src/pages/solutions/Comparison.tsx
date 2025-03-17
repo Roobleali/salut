@@ -1,8 +1,7 @@
 import React from 'react';
 import { Helmet } from "react-helmet";
 import { useTranslation } from "react-i18next";
-import { Sparkles, Globe, ShoppingCart, MessageSquare, Zap, CreditCard, Package, Users, Layout as LayoutIcon } from "lucide-react";
-import { motion } from 'framer-motion';
+import { Sparkles, Globe, ShoppingCart, MessageSquare, Package, Layout as LayoutIcon } from "lucide-react";
 import SEO from '../../components/SEO';
 import Layout from '../../components/Layout';
 import { generateServiceSchema } from '../../lib/structuredData';

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Hero } from "@/components/sections/Hero";
 import { ServiceCard } from "@/components/sections/ServiceCard";
 import { SERVICES } from "@/lib/constants";
