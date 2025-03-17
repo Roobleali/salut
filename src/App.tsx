@@ -7,6 +7,7 @@ import { Services } from "@/pages/Services";
 import { About } from "@/pages/About";
 import { Contact } from "@/pages/Contact";
 import { CaseStudies } from "@/pages/CaseStudies";
+import { Resources } from "@/pages/Resources";
 import ERPSolutionsPage from "@/pages/solutions/EnterpriseApps";
 import { Manufacturing } from "@/pages/industries/Manufacturing";
 import { Retail } from "@/pages/industries/Retail";
@@ -23,12 +24,10 @@ import PartnershipProgram from '@/pages/Partnership'
 import { BlogList } from "./pages/Blog/BlogList";
 import { BlogPost } from "./pages/Blog/Blog_details";
 import { HelmetProvider } from 'react-helmet-async';
-import CloudManagementPage from "./pages/solutions/CloudManagement";
 
 function App() {
   return (
     <HelmetProvider>
-
       <Router>
         <div className="min-h-screen flex flex-col">
           <ScrollToTop />
@@ -40,32 +39,32 @@ function App() {
               <Route path="/" component={Home} />
               <Route path="/services" component={Services} />
               <Route path="/case-studies" component={CaseStudies} />
+              <Route path="/resources" component={Resources} />
               <Route path="/about" component={About} />
               <Route path="/contact" component={Contact} />
 
-              {/* Enterprise Routes */}
+              {/* Odoo ERP Solutions Routes */}
               <Route path="/solutions/erp" component={ERPSolutionsPage} />
-              <Route path="/solutions/cloud-management" component={CloudManagementPage} />
+              <Route path="/solutions/hosting" component={ERPSolutionsPage} />
+              <Route path="/solutions/customization" component={ERPSolutionsPage} />
+              <Route path="/solutions/training" component={ERPSolutionsPage} />
+              <Route path="/solutions/migration" component={ERPSolutionsPage} />
+              <Route path="/solutions/ecommerce" component={ERPSolutionsPage} />
 
               {/* Industry Routes */}
               <Route path="/erp-system/manufacturing" component={Manufacturing} />
               <Route path="/erp-system/real-estate" component={RealEstate} />
               <Route path="/erp-system/healthcare" component={Healthcare} />
-              {/* Industry Routes */}
-              <Route path="/erp-system/manufacturing" component={Manufacturing} />
-              <Route path="/erp-system/real-estate" component={RealEstate} />
               <Route path="/erp-system/retail" component={Retail} />
               <Route path="/erp-system/e-factura" component={Efactura} />
               <Route path="/erp-system/services" component={IndustryServices} />
               <Route path="/erp-system/hospitality" component={Hospitality} />
+
+              {/* Other Routes */}
               <Route path="/blog" component={BlogList} />
               <Route path="/blog/:id" component={BlogPost} />
               <Route path="/legal/privacy" component={PrivacyPolicy} />
-
-              {/* Glossary Route */}
               <Route path="/glossary" component={Glossary} />
-
-              {/* Gradient Customizer Route */}
               <Route path="/gradients" component={GradientCustomizerPage} />
               <Route path="/partnership" component={PartnershipProgram} />
             </Switch>

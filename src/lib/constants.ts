@@ -5,6 +5,14 @@ import {
   Briefcase,
   UtensilsCrossed,
   GraduationCap,
+  FileText,
+  BookOpen,
+  FileCheck,
+  Users,
+  CloudCog,
+  Settings,
+  Wrench,
+  ShoppingCart,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -71,39 +79,44 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
     title: "Solutions",
     items: [
       {
-        title: "ERP Solutions:",
+        title: "Odoo ERP Solutions",
         href: "/solutions/erp",
         description:
-          "Integrated enterprise resource planning for comprehensive business management",
+          "Comprehensive Odoo ERP implementation and customization for your business needs",
+        icon: Users,
       },
       {
-        title: "Cloud Management",
-        href: "/solutions/cloud-management",
-        description: "Scalable cloud infrastructure and service optimization",
-      },
-      {
-        title: "Marketing",
-        href: "/solutions/marketing",
+        title: "Odoo Hosting & Support",
+        href: "/solutions/hosting",
         description:
-          "Advanced marketing strategy and digital campaign management",
+          "Reliable hosting and expert support for your Odoo instance",
+        icon: CloudCog,
       },
       {
-        title: "Integration & Customization",
-        href: "/solutions/integration",
+        title: "Odoo Customization",
+        href: "/solutions/customization",
         description:
-          "Seamless system integration and tailored business process optimization",
+          "Tailored Odoo modules and features for your specific requirements",
+        icon: Settings,
       },
       {
-        title: "Support & Maintenance",
-        href: "/solutions/support",
+        title: "Odoo Training",
+        href: "/solutions/training",
         description:
-          "Comprehensive technical support and proactive system maintenance",
+          "Comprehensive training programs for Odoo users and administrators",
+        icon: GraduationCap,
       },
       {
-        title: "Custom Website & E-commerce",
-        href: "/solutions/website-ecommerce",
-        description:
-          "Custom web development and powerful e-commerce platform solutions",
+        title: "Odoo Migration",
+        href: "/solutions/migration",
+        description: "Seamless migration from legacy systems to Odoo ERP",
+        icon: Wrench,
+      },
+      {
+        title: "Odoo E-commerce",
+        href: "/solutions/ecommerce",
+        description: "Powerful e-commerce solutions built on Odoo platform",
+        icon: ShoppingCart,
       },
     ],
   },
@@ -111,19 +124,28 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
     title: "Resources",
     items: [
       {
-        title: "About Us",
-        href: "/about",
-        description: "Learn more about our company and mission",
-      },
-      {
-        title: "News",
+        title: "Blog",
         href: "/blog",
-        description: "Stay Upto date, About Product update, And tech news",
+        description:
+          "Stay updated with the latest insights and industry trends",
+        icon: BookOpen,
       },
       {
         title: "Case Studies",
         href: "/case-studies",
         description: "Success stories from our clients",
+        icon: FileCheck,
+      },
+      {
+        title: "Resources",
+        href: "/resources",
+        description: "Download guides, checklists, and best practices",
+        icon: FileText,
+      },
+      {
+        title: "About Us",
+        href: "/about",
+        description: "Learn more about our company and mission",
       },
     ],
   },
