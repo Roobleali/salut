@@ -3,10 +3,6 @@ import { ServiceCard } from "@/components/sections/ServiceCard";
 import { SERVICES } from "@/lib/constants";
 import { useTranslation, Trans } from "react-i18next";
 import { Helmet } from "react-helmet";
-import { motion } from 'framer-motion';
-import SEO from '../components/SEO';
-import Layout from '../components/Layout';
-import { generateOrganizationSchema } from '../lib/structuredData';
 
 export function Home() {
   const { t } = useTranslation();
