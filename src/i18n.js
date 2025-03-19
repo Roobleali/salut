@@ -1368,6 +1368,23 @@ const resources = {
           title: "Meet Our Leadership Team",
         },
       },
+      thankYou: {
+        meta: {
+          title: "Thank You - Salut Enterprise",
+          description:
+            "Thank you for contacting Salut Enterprise. We appreciate your interest and will get back to you shortly.",
+        },
+        title: "Thank You!",
+        message:
+          "We have received your message and will get back to you as soon as possible.",
+        whatNext: {
+          title: "What happens next?",
+          step1: "Our team will review your message within 24 hours",
+          step2: "A dedicated specialist will be assigned to assist you",
+          step3: "We will contact you via email or phone to discuss your needs",
+        },
+        backHome: "Return to Homepage",
+      },
     },
   },
   ro: {
@@ -2717,6 +2734,25 @@ const resources = {
         team: {
           title: "Cunoaște Echipa Noastră de Conducere",
         },
+      },
+      thankYou: {
+        meta: {
+          title: "Mulțumim - Salut Enterprise",
+          description:
+            "Vă mulțumim că ați contactat Salut Enterprise. Apreciem interesul dumneavoastră și vă vom răspunde în curând.",
+        },
+        title: "Mulțumim!",
+        message:
+          "Am primit mesajul dumneavoastră și vă vom răspunde cât mai curând posibil.",
+        whatNext: {
+          title: "Ce urmează?",
+          step1:
+            "Echipa noastră va analiza mesajul dumneavoastră în termen de 24 de ore",
+          step2: "Un specialist dedicat va fi desemnat să vă asiste",
+          step3:
+            "Vă vom contacta prin email sau telefon pentru a discuta nevoile dumneavoastră",
+        },
+        backHome: "Înapoi la Pagina Principală",
       },
     },
   },

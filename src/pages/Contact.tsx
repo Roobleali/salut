@@ -13,7 +13,7 @@ import emailjs from '@emailjs/browser';
 import { Building2, Clock, MessagesSquare, Shield, Users, Loader2 } from 'lucide-react';
 
 export function Contact() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const formSchema = z.object({
     name: z.string().min(2, t('form.name.error')),
@@ -85,6 +85,11 @@ export function Contact() {
         description: t('form.success.description'),
       });
       form.reset();
+
+      // Redirect to the Thank You page after a short delay
+      setTimeout(() => {
+        window.location.href = `/${i18n.language}/thank-you`;
+      }, 1500);
     } catch (error) {
       console.error('EmailJS Error:', error);
       toast({
