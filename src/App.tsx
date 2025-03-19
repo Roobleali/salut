@@ -77,7 +77,7 @@ function App() {
               <Route path="/glossary" component={Glossary} />
               <Route path="/gradients" component={GradientCustomizerPage} />
               <Route path="/partnership" component={PartnershipProgram} />
-              <Route path="/:lang/thank-you" component={ThankYou} />
+              <Route path="/thank-you" component={ThankYou} />
             </Switch>
           </main>
           <Footer />

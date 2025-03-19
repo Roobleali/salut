@@ -88,7 +88,7 @@ export function Contact() {
 
       // Redirect to the Thank You page after a short delay
       setTimeout(() => {
-        window.location.href = `/${i18n.language}/thank-you`;
+        window.location.href = '/thank-you';
       }, 1500);
     } catch (error) {
       console.error('EmailJS Error:', error);
