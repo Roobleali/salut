@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <!-- Home Page -->
+    <url>
+        <loc>https://salut-enterprise.com/</loc>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://salut-enterprise.com/" />
+        <xhtml:link rel="alternate" hreflang="ro" href="https://salut-enterprise.com/ro/" />
+    </url>
+
+    <!-- Main Pages -->
+    <url>
+        <loc>https://salut-enterprise.com/about</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://salut-enterprise.com/about" />
+        <xhtml:link rel="alternate" hreflang="ro" href="https://salut-enterprise.com/ro/about" />
+    </url>
+    <url>
+        <loc>https://salut-enterprise.com/services</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://salut-enterprise.com/services" />
+        <xhtml:link rel="alternate" hreflang="ro" href="https://salut-enterprise.com/ro/services" />
+    </url>
+    <url>
+        <loc>https://salut-enterprise.com/contact</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://salut-enterprise.com/contact" />
+        <xhtml:link rel="alternate" hreflang="ro" href="https://salut-enterprise.com/ro/contact" />
+    </url>
+
+    <!-- Solutions Pages -->
+    <url>
+        <loc>https://salut-enterprise.com/solutions/website-builder</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <xhtml:link rel="alternate" hreflang="en"
+            href="https://salut-enterprise.com/solutions/website-builder" />
+        <xhtml:link rel="alternate" hreflang="ro"
+            href="https://salut-enterprise.com/ro/solutions/website-builder" />
+    </url>
+    <url>
+        <loc>https://salut-enterprise.com/solutions/ecommerce</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <xhtml:link rel="alternate" hreflang="en"
+            href="https://salut-enterprise.com/solutions/ecommerce" />
+        <xhtml:link rel="alternate" hreflang="ro"
+            href="https://salut-enterprise.com/ro/solutions/ecommerce" />
+    </url>
+    <url>
+        <loc>https://salut-enterprise.com/solutions/enterprise</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        <xhtml:link rel="alternate" hreflang="en"
+            href="https://salut-enterprise.com/solutions/enterprise" />
+        <xhtml:link rel="alternate" hreflang="ro"
+            href="https://salut-enterprise.com/ro/solutions/enterprise" />
+    </url>
+
+    <!-- Resource Pages -->
+    <url>
+        <loc>https://salut-enterprise.com/blog</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://salut-enterprise.com/blog" />
+        <xhtml:link rel="alternate" hreflang="ro" href="https://salut-enterprise.com/ro/blog" />
+    </url>
+    <url>
+        <loc>https://salut-enterprise.com/case-studies</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://salut-enterprise.com/case-studies" />
+        <xhtml:link rel="alternate" hreflang="ro"
+            href="https://salut-enterprise.com/ro/case-studies" />
+    </url>
+    <url>
+        <loc>https://salut-enterprise.com/glossary</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://salut-enterprise.com/glossary" />
+        <xhtml:link rel="alternate" hreflang="ro" href="https://salut-enterprise.com/ro/glossary" />
+    </url>
+
+    <!-- Legal Pages -->
+    <url>
+        <loc>https://salut-enterprise.com/legal/privacy</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://salut-enterprise.com/legal/privacy" />
+        <xhtml:link rel="alternate" hreflang="ro"
+            href="https://salut-enterprise.com/ro/legal/privacy" />
+    </url>
+    <url>
+        <loc>https://salut-enterprise.com/legal/terms</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://salut-enterprise.com/legal/terms" />
+        <xhtml:link rel="alternate" hreflang="ro" href="https://salut-enterprise.com/ro/legal/terms" />
+    </url>
+    <url>
+        <loc>https://salut-enterprise.com/legal/cookies</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://salut-enterprise.com/legal/cookies" />
+        <xhtml:link rel="alternate" hreflang="ro"
+            href="https://salut-enterprise.com/ro/legal/cookies" />
+    </url>
+</urlset> 

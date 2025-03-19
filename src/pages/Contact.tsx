@@ -13,7 +13,7 @@ import emailjs from '@emailjs/browser';
 import { Building2, Clock, MessagesSquare, Shield, Users, Loader2 } from 'lucide-react';
 
 export function Contact() {
-  const { t, i18n } = useTranslation();
+  const { t, } = useTranslation();
 
   const formSchema = z.object({
     name: z.string().min(2, t('form.name.error')),

@@ -1,10 +1,8 @@
 import { useEffect } from 'react';
 import { useLocation } from 'wouter';
-import { useTranslation } from 'react-i18next';
 
 export function LanguageRedirect() {
     const [location, setLocation] = useLocation();
-    const { i18n } = useTranslation();
 
     useEffect(() => {
         const pathSegments = location.split('/').filter(Boolean);

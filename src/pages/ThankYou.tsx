@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { CheckCircleIcon } from '@heroicons/react/24/outline';
 
 export default function ThankYou() {
-    const { t, i18n } = useTranslation();
+    const { t, } = useTranslation();
 
     return (
         <>
