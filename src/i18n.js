@@ -516,7 +516,7 @@ const resources = {
           ],
           Solutions: [
             {
-              title: "ERP Solutions:",
+              title: "ERP TimeLine",
               href: "/solutions/erp",
               description:
                 "Integrated enterprise resource planning for comprehensive business management",
@@ -529,19 +529,19 @@ const resources = {
             },
             {
               title: "Marketing",
-              href: "/solutions/marketing",
+              href: "#",
               description:
                 "Advanced marketing strategy and digital campaign management",
             },
             {
               title: "Integration & Customization",
-              href: "/solutions/integration",
+              href: "#",
               description:
                 "Seamless system integration and tailored business process optimization",
             },
             {
               title: "Support & Maintenance",
-              href: "/solutions/support",
+              href: "#",
               description:
                 "Comprehensive technical support and proactive system maintenance",
             },
@@ -1899,7 +1899,7 @@ const resources = {
           ],
           Solutions: [
             {
-              title: "Soluții ERP:",
+              title: "Etape ERP",
               href: "/solutions/erp",
               description:
                 "Planificare integrată a resurselor întreprinderii pentru management cuprinzător de afaceri",
@@ -1912,13 +1912,13 @@ const resources = {
             },
             {
               title: "Marketing",
-              href: "/solutions/marketing",
+              href: "#",
               description:
                 "Strategie de marketing avansată și management de campanii digitale",
             },
             {
               title: "Integrare & Personalizare",
-              href: "/solutions/integration",
+              href: "#",
               description:
                 "Integrare sistem fără probleme și optimizare personalizată a proceselor de afaceri",
             },
