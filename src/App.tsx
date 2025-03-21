@@ -22,9 +22,7 @@ import { RealEstate } from "@/pages/industries/RealEstate";
 import { Healthcare } from "@/pages/industries/Healthcare";
 import { Glossary } from "@/pages/Glossary";
 import { GradientCustomizerPage } from "@/pages/GradientCustomizer";
-import Efactura from "@/pages/industries/Efactura";
 import { Services as IndustryServices } from "@/pages/industries/Services";
-import { Hospitality } from "@/pages/industries/Hospitality";
 import { ScrollToTop } from "@/components/utils/ScrollToTop";
 import PrivacyPolicy from '@/pages/legal/PrivacyPolicy'
 import PartnershipProgram from '@/pages/Partnership'
@@ -66,9 +64,7 @@ function App() {
               <Route path="/erp-system/real-estate" component={RealEstate} />
               <Route path="/erp-system/healthcare" component={Healthcare} />
               <Route path="/erp-system/retail" component={Retail} />
-              <Route path="/erp-system/e-factura" component={Efactura} />
               <Route path="/erp-system/services" component={IndustryServices} />
-              <Route path="/erp-system/hospitality" component={Hospitality} />
 
               {/* Other Routes */}
               <Route path="/blog" component={BlogList} />

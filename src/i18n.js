@@ -194,7 +194,7 @@ const resources = {
             "Complete property management solution for leasing, maintenance, and tenant portals",
         },
         retail: {
-          title: "Retail & E-commerce",
+          title: "Hospitality",
 
           description:
             "Integrated POS, inventory and e-commerce solutions for modern retail",
@@ -211,12 +211,7 @@ const resources = {
           description:
             "Project cost estimation, material tracking and regulatory compliance",
         },
-        hospitality: {
-          title: "Hospitality",
 
-          description:
-            "Reservation systems and guest experience management solutions",
-        },
         healthcare: {
           title: "Healthcare",
 
@@ -490,7 +485,7 @@ const resources = {
                 "Complete property management solution for leasing, maintenance, and tenant portals",
             },
             {
-              title: "Retail & E-commerce",
+              title: "Hospitality",
               href: "/erp-system/retail",
               description:
                 "Integrated POS, inventory and e-commerce solutions for modern retail",
@@ -500,18 +495,6 @@ const resources = {
               href: "/erp-system/services",
               description:
                 "Project management and service tracking for consulting firms",
-            },
-            {
-              title: "Hospitality",
-              href: "/erp-system/hospitality",
-              description:
-                "Reservation systems and guest experience management solutions",
-            },
-            {
-              title: "E-invoicing",
-              href: "/erp-system/e-factura",
-              description:
-                "Student information and educational resource management",
             },
           ],
           Solutions: [
@@ -1580,7 +1563,7 @@ const resources = {
             "Soluție completă de administrare imobiliară pentru închiriere, întreținere și portaluri pentru chiriași",
         },
         retail: {
-          title: "Retail și E-commerce",
+          title: "Hospitality",
 
           description:
             "Soluții integrate POS, inventar și e-commerce pentru retail modern",
@@ -1597,12 +1580,7 @@ const resources = {
           description:
             "Estimarea costurilor proiectelor, urmărirea materialelor și conformitate cu reglementările",
         },
-        hospitality: {
-          title: "Ospitalitate",
 
-          description:
-            "Sisteme de rezervări și management al experienței oaspeților",
-        },
         healthcare: {
           title: "Sănătate",
 
@@ -1874,7 +1852,7 @@ const resources = {
                 "Soluție completă de administrare imobiliară pentru închiriere, întreținere și portaluri pentru chiriași",
             },
             {
-              title: "Retail și E-commerce",
+              title: "Ospitalitate",
               href: "/erp-system/retail",
               description:
                 "Soluții integrate POS, inventar și e-commerce pentru retail modern",

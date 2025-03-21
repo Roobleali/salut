@@ -102,19 +102,21 @@ export const Retail = () => {
             {
               title: "Smart Cash Register",
               description: "Modern touchscreen POS with integrated payments",
-              image: "/images/pos-register.jpg", // Add your image
+              image: "/mobile-pos.jpg", // Add your image
+
               features: ["Receipt printing", "Cash drawer", "Customer display"]
             },
             {
               title: "Mobile POS Terminals",
               description: "Portable payment solutions for flexible operations",
-              image: "/images/mobile-pos.jpg", // Add your image
+              image: "/pos-register.jpg", // Add your image
+
               features: ["Wireless connectivity", "Long battery life", "Compact design"]
             },
             {
               title: "Self-Service Kiosks",
               description: "Streamline customer checkout experience",
-              image: "/images/kiosk.jpg", // Add your image
+              image: "/kiosk.webp", // Add your image
               features: ["User-friendly interface", "Payment integration", "Queue management"]
             }
           ].map((device, index) => (
@@ -126,11 +128,11 @@ export const Retail = () => {
               transition={{ delay: index * 0.1 }}
               className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
             >
-              <div className="h-48 bg-gray-100">
+              <div className="h-48 bg-transparent">
                 <img
                   src={device.image}
                   alt={device.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                 />
               </div>
               <div className="p-6">

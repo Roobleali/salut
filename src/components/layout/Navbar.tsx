@@ -18,14 +18,12 @@ import {
   ShoppingBag,
   Building2,
   Briefcase,
-  UtensilsCrossed,
   Menu,
   X,
   ShoppingCart,
   Settings,
   Wrench,
   Globe,
-  FileText,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { LanguageSelector } from "../LanguageSelector";
@@ -36,8 +34,6 @@ const iconMap: Record<string, Record<string, JSX.Element>> = {
     '/erp-system/real-estate': <Building2 className="w-4 h-4" aria-hidden="true" />,
     '/erp-system/retail': <ShoppingBag className="w-4 h-4" aria-hidden="true" />,
     '/erp-system/services': <Briefcase className="w-4 h-4" aria-hidden="true" />,
-    '/erp-system/hospitality': <UtensilsCrossed className="w-4 h-4" aria-hidden="true" />,
-    '/erp-system/e-factura': <FileText className="w-4 h-4" aria-hidden="true" />,
   },
   Solutions: {
     '/solutions/erp': <Users className="w-4 h-4" aria-hidden="true" />,
