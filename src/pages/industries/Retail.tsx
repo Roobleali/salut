@@ -27,6 +27,7 @@ import { Badge } from "@/components/ui/badge";
 import { Link } from "wouter";
 import { LeftVector, MetricLine, RightVector } from "./RealEstate";
 import VideoModal from "@/components/models/VideoModel";
+import { useState } from "react";
 
 export const Retail = () => {
   const { t } = useTranslation();
@@ -155,67 +156,249 @@ export const Retail = () => {
   );
 
   // Add Pricing Section component
-  const PricingSection = () => (
-    <section className="py-24 bg-gradient-to-tr from-background via-primary/5 to-background">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
-          Flexible Pricing Plans
-        </h2>
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {[
-            {
-              name: "Starter",
-              price: "$49",
-              period: "/month",
-              features: ["Basic POS features", "1 register", "Email support"]
-            },
-            {
-              name: "Professional",
-              price: "$99",
-              period: "/month",
-              features: ["Advanced POS features", "3 registers", "24/7 support", "Hardware included"]
-            },
-            {
-              name: "Enterprise",
-              price: "Custom",
-              period: "",
-              features: ["Full POS suite", "Unlimited registers", "Dedicated support", "Custom integration"]
-            }
-          ].map((plan, index) => (
+  const PricingSection = () => {
+    const [currency, setCurrency] = useState('RON');
+    const prices = {
+      basic: {
+        eur: 79,
+        ron: 355
+      },
+      standard: {
+        eur: 94,
+        ron: 445
+      },
+      growth: {
+        eur: 99,
+        ron: 445
+      },
+      setup: {
+        eur: 299,
+        ron: 1335
+      },
+      module: {
+        eur: 15,
+        ron: 67
+      }
+    };
+
+    const getPrice = (priceKey) => {
+      return currency === 'RON' ? prices[priceKey].ron : prices[priceKey].eur;
+    };
+
+    const handleWhatsAppClick = (packageName, price, modules = []) => {
+      const message = encodeURIComponent(
+        `Hello! I'm interested in the ${packageName} package (${price} ${currency}/month).\n` +
+        `Setup fee: ${getPrice('setup')} ${currency}\n` +
+        (modules.length > 0 ? `Selected modules: ${modules.join(', ')}\n` : '') +
+        'Please provide more information about your restaurant.'
+      );
+
+      window.open(`https://wa.me/40729917823?text=${message}`, '_blank');
+    };
+
+    return (
+      <section className="py-24 bg-gradient-to-tr from-background via-primary/5 to-background">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              {t("retail.pricing.title")}
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              {t("retail.pricing.subtitle")}
+            </p>
+            <div className="flex items-center justify-center gap-4 mt-6">
+              <span className="text-sm font-medium">RON</span>
+              <button
+                onClick={() => setCurrency(currency === 'RON' ? 'EUR' : 'RON')}
+                className="relative inline-flex h-6 w-11 items-center rounded-full bg-primary/20 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+              >
+                <span
+                  className={`${currency === 'EUR' ? 'translate-x-6' : 'translate-x-1'
+                    } inline-block h-4 w-4 transform rounded-full bg-primary transition-transform`}
+                />
+              </button>
+              <span className="text-sm font-medium">EUR</span>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {/* Basic Package */}
             <motion.div
-              key={index}
               initial={{ y: 20, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="relative bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow"
+              className="relative bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow"
             >
-              <div className="text-center mb-6">
-                <h3 className="text-xl font-semibold mb-2">{plan.name}</h3>
-                <div className="text-3xl font-bold text-primary">
-                  {plan.price}
-                  <span className="text-base font-normal text-muted-foreground">
-                    {plan.period}
-                  </span>
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-semibold mb-2">Basic</h3>
+                <div className="text-4xl font-bold text-primary">
+                  {getPrice('basic')}
+                  <span className="text-base font-normal text-muted-foreground">/month</span>
                 </div>
+                <p className="text-sm text-muted-foreground mt-2">
+                  One-time setup: {getPrice('setup')} {currency}
+                </p>
               </div>
-              <ul className="space-y-3 mb-6">
-                {plan.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-center gap-2">
-                    <Check className="h-5 w-5 text-primary" />
-                    <span>{feature}</span>
-                  </li>
-                ))}
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-center gap-2">
+                  <Check className="h-5 w-5 text-primary" />
+                  <span>Smart POS System</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="h-5 w-5 text-primary" />
+                  <span>Kitchen Display System</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="h-5 w-5 text-primary" />
+                  <span>Basic Stock Management</span>
+                </li>
               </ul>
-              <Button className="w-full" variant={index === 1 ? "default" : "outline"}>
+              <Button
+                className="w-full"
+                variant="outline"
+                onClick={() => handleWhatsAppClick('Basic', getPrice('basic'))}
+              >
                 Get Started
               </Button>
             </motion.div>
-          ))}
+
+            {/* Standard Package */}
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="relative bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow"
+            >
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-semibold mb-2">Standard</h3>
+                <div className="text-4xl font-bold text-primary">
+                  {getPrice('standard')}
+                  <span className="text-base font-normal text-muted-foreground">/month</span>
+                </div>
+                <p className="text-sm text-muted-foreground mt-2">
+                  One-time setup: {getPrice('setup')} {currency}
+                </p>
+              </div>
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-center gap-2">
+                  <Check className="h-5 w-5 text-primary" />
+                  <span>All Basic Features</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="h-5 w-5 text-primary" />
+                  <span>Choose 1 Module:</span>
+                </li>
+                <li className="pl-7 text-sm">
+                  • Purchase Module <span className="text-green-600 font-semibold">+{getPrice('module')} {currency}/month</span>
+                </li>
+                <li className="pl-7 text-sm">
+                  • Loyalty Program <span className="text-green-600 font-semibold">+{getPrice('module')} {currency}/month</span>
+                </li>
+                <li className="pl-7 text-sm">
+                  • Delivery Integration <span className="text-green-600 font-semibold">+{getPrice('module')} {currency}/month</span>
+                </li>
+              </ul>
+              <Button
+                className="w-full"
+                variant="outline"
+                onClick={() => handleWhatsAppClick('Standard', getPrice('standard'), ['Choose 1 Module'])}
+              >
+                Get Started
+              </Button>
+            </motion.div>
+
+            {/* Growth Bundle */}
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="relative bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow border-2 border-primary"
+            >
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                <Badge className="bg-primary text-white">Best Value</Badge>
+              </div>
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-semibold mb-2">Growth Bundle</h3>
+                <div className="text-4xl font-bold text-primary">
+                  {getPrice('growth')}
+                  <span className="text-base font-normal text-muted-foreground">/month</span>
+                </div>
+                <p className="text-sm text-muted-foreground mt-2">
+                  One-time setup: {getPrice('setup')} {currency}
+                </p>
+              </div>
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-center gap-2">
+                  <Check className="h-5 w-5 text-primary" />
+                  <span>All Basic Features</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="h-5 w-5 text-primary" />
+                  <span>2 Modules Included</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="h-5 w-5 text-primary" />
+                  <span className="text-green-600 font-semibold">Save {getPrice('module')} {currency}/month</span>
+                </li>
+              </ul>
+              <Button
+                className="w-full"
+                onClick={() => handleWhatsAppClick('Growth Bundle', getPrice('growth'), ['2 Modules Included'])}
+              >
+                Get Started
+              </Button>
+            </motion.div>
+          </div>
+
+          {/* Trial Note */}
+          <div className="text-center mt-12">
+            <p className="text-lg font-medium text-primary">
+              Try all features free for 14 days!
+            </p>
+          </div>
+
+          {/* FAQ Section */}
+          <div className="mt-24 max-w-3xl mx-auto">
+            <h3 className="text-2xl font-bold text-center mb-12">Frequently Asked Questions</h3>
+            <div className="space-y-6">
+              <div className="bg-white rounded-lg p-6 shadow-sm">
+                <h4 className="font-semibold mb-2">What's included in the Setup Fee?</h4>
+                <p className="text-muted-foreground">
+                  8-hour onboarding session including data migration, staff training, and system setup.
+                </p>
+              </div>
+              <div className="bg-white rounded-lg p-6 shadow-sm">
+                <h4 className="font-semibold mb-2">Can I change modules later?</h4>
+                <p className="text-muted-foreground">
+                  Yes, you can upgrade or change modules at any time. Changes will be reflected in your next billing cycle.
+                </p>
+              </div>
+              <div className="bg-white rounded-lg p-6 shadow-sm">
+                <h4 className="font-semibold mb-2">How does the 14-day trial work?</h4>
+                <p className="text-muted-foreground">
+                  Start with full access to all features. No credit card required. Choose your plan at the end of the trial.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Contact CTA */}
+          <div className="text-center mt-16">
+            <Button
+              size="lg"
+              className="gap-2"
+              onClick={() => handleWhatsAppClick('Custom Solution', 'Contact for quote')}
+            >
+              Contact Us for Custom Solutions
+              <ArrowRight className="h-5 w-5" />
+            </Button>
+          </div>
         </div>
-      </div>
-    </section>
-  );
+      </section>
+    );
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background/95 to-primary/5 pt-32 pb-24"
@@ -368,12 +551,12 @@ export const Retail = () => {
 
         {/* Add new POS Devices section */}
         <POSDevicesSection />
-
+        {/* Integration Partners */}
+        <IntegrationPartners />
         {/* Add Pricing section */}
         <PricingSection />
 
-        {/* Integration Partners */}
-        <IntegrationPartners />
+
       </motion.div>
     </div>
   );

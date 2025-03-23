@@ -1059,22 +1059,12 @@ const resources = {
         },
       },
       retail: {
-        metrics: [
-          {
-            value: "30%",
-            label: "Revenue Increase",
-          },
-          {
-            value: "50%",
-            label: "Inventory Turnover",
-          },
-        ],
         seo: {
-          title: "Retail Management Solutions | Omnichannel Commerce Platform",
+          title: "Restaurant POS System & Management Software | SalutTech",
           description:
-            "Transform retail operations with AI-powered inventory, unified commerce, and customer experience management. Boost sales across all channels.",
+            "Complete restaurant management solution with POS, kitchen display, inventory, and more. Perfect for restaurants in Romania. Start free trial today!",
           keywords:
-            "retail software, omnichannel retail, POS system, inventory management, retail analytics, e-commerce integration",
+            "restaurant pos, restaurant management software, kitchen display system, restaurant inventory, restaurant software romania, horeca pos",
         },
         hero: {
           badge: "Retail Revolution",
@@ -1099,7 +1089,7 @@ const resources = {
               ],
             },
             {
-              title: "Smart POS 💳",
+              title: "POS Inteligent 💳",
               description: "Sistem point-of-sale cu recomandări bazate pe AI",
               features: [
                 "Funcționare offline",
@@ -1109,7 +1099,7 @@ const resources = {
               ],
             },
             {
-              title: "Inventory AI 📦",
+              title: "AI pentru Stocuri 📦",
               description: "Sistem predictiv de gestionare stocuri",
               features: [
                 "Prognoză cerere",
@@ -1196,6 +1186,63 @@ const resources = {
           costValue: "2 Months",
           efficiency: "Process Efficiency Gain",
           efficiencyValue: "65%",
+        },
+        pricing: {
+          title: "Simple, Transparent Pricing",
+          subtitle:
+            "Choose the perfect plan for your restaurant. All plans include our core POS system with 14-day free trial.",
+          basic: {
+            title: "Basic",
+            price: "355",
+            setup: "1335",
+            features: [
+              "Smart POS System",
+              "Kitchen Display System",
+              "Basic Stock Management",
+            ],
+          },
+          standard: {
+            title: "Standard",
+            price: "445",
+            setup: "1335",
+            features: [
+              "All Basic Features",
+              "Choose 1 Module",
+              "Purchase Module",
+              "Loyalty Program",
+              "Delivery Integration",
+            ],
+          },
+          growth: {
+            title: "Growth Bundle",
+            price: "445",
+            setup: "1335",
+            features: [
+              "All Basic Features",
+              "2 Modules Included",
+              "Save 67 RON/month",
+            ],
+          },
+          trial: "Try all features free for 14 days!",
+          faq: {
+            title: "Frequently Asked Questions",
+            setup: {
+              question: "What's included in the Setup Fee?",
+              answer:
+                "8-hour onboarding session including data migration, staff training, and system setup.",
+            },
+            modules: {
+              question: "Can I change modules later?",
+              answer:
+                "Yes, you can upgrade or change modules at any time. Changes will be reflected in your next billing cycle.",
+            },
+            trial: {
+              question: "How does the 14-day trial work?",
+              answer:
+                "Start with full access to all features. No credit card required. Choose your plan at the end of the trial.",
+            },
+          },
+          cta: "Contact Us for Custom Solutions",
         },
       },
       common: {
@@ -2555,6 +2602,63 @@ const resources = {
           costValue: "6 Luni",
           efficiency: "Eficiență Crescută",
           efficiencyValue: "65%",
+        },
+        pricing: {
+          title: "Simple, Transparent Pricing",
+          subtitle:
+            "Choose the perfect plan for your restaurant. All plans include our core POS system with 14-day free trial.",
+          basic: {
+            title: "Basic",
+            price: "355",
+            setup: "1335",
+            features: [
+              "Smart POS System",
+              "Kitchen Display System",
+              "Basic Stock Management",
+            ],
+          },
+          standard: {
+            title: "Standard",
+            price: "445",
+            setup: "1335",
+            features: [
+              "All Basic Features",
+              "Choose 1 Module",
+              "Purchase Module",
+              "Loyalty Program",
+              "Delivery Integration",
+            ],
+          },
+          growth: {
+            title: "Growth Bundle",
+            price: "445",
+            setup: "1335",
+            features: [
+              "All Basic Features",
+              "2 Modules Included",
+              "Save 67 RON/month",
+            ],
+          },
+          trial: "Try all features free for 14 days!",
+          faq: {
+            title: "Frequently Asked Questions",
+            setup: {
+              question: "What's included in the Setup Fee?",
+              answer:
+                "8-hour onboarding session including data migration, staff training, and system setup.",
+            },
+            modules: {
+              question: "Can I change modules later?",
+              answer:
+                "Yes, you can upgrade or change modules at any time. Changes will be reflected in your next billing cycle.",
+            },
+            trial: {
+              question: "How does the 14-day trial work?",
+              answer:
+                "Start with full access to all features. No credit card required. Choose your plan at the end of the trial.",
+            },
+          },
+          cta: "Contact Us for Custom Solutions",
         },
       },
       common: {
