@@ -1215,6 +1215,7 @@ const resources = {
               "Basic Stock Management",
               "Cash Register Integration",
               "Multiple Payment Methods",
+              "Table Management",
               "Priority Support Response",
             ],
           },
@@ -1224,7 +1225,6 @@ const resources = {
             setup: "299",
             features: [
               "All Basic Features",
-              "Choose 1 Module",
               "Purchase Module",
               "Loyalty Program",
               "Delivery Integration",
@@ -1245,11 +1245,7 @@ const resources = {
             title: "Growth Bundle",
             price: "99",
             setup: "299",
-            features: [
-              "All Basic Features",
-              "2 Modules Included",
-              "Save 67 RON/month",
-            ],
+            features: ["All Basic Features", "Save 67 RON/month"],
             modulesIncluded: "All Modules Included",
           },
           trial: "Try all features free for 14 days!",

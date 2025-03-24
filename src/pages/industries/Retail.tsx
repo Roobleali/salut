@@ -251,6 +251,10 @@ export const Retail = () => {
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="h-5 w-5 text-primary" />
+                  <span>Table Management</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="h-5 w-5 text-primary" />
                   <span>Priority Support Response</span>
                 </li>
               </ul>
@@ -281,10 +285,6 @@ export const Retail = () => {
                 <li className="flex items-center gap-2">
                   <Check className="h-5 w-5 text-primary" />
                   <span>{t("retail.pricing.allBasicFeatures")}</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-primary" />
-                  <span>{t("retail.pricing.chooseOneModule")}</span>
                 </li>
                 <li className="pl-7 text-sm text-muted-foreground">
                   • Self-Ordering Services (QR Code Demo) ({getPrice('module')} {currency}/month)
@@ -337,11 +337,11 @@ export const Retail = () => {
               <ul className="space-y-4 mb-8">
                 <li className="flex items-center gap-2">
                   <Check className="h-5 w-5 text-primary" />
-                  <span>All Basic Features</span>
+                  <span>{t("retail.pricing.allBasicFeatures")}</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="h-5 w-5 text-primary" />
-                  <span>2 Modules Included</span>
+                  <span>{t("retail.pricing.growth.modulesIncluded")}</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="h-5 w-5 text-primary" />
