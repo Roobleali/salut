@@ -467,38 +467,7 @@ export const Retail = () => {
         animate={{ opacity: 1 }}
         className="min-h-screen bg-gradient-to-br from-background via-background/95 to-primary/5"
       >
-        {/* Hero Section */}
-        <section className="pt-32 pb-16 z-50 overflow-hidden">
 
-          <div className="container mx-auto px-4 text-center ">
-            <Badge className="mb-6">{content.hero.badge}</Badge>
-            <motion.h1
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              className="text-4xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent"
-            >
-              {content.hero.title}
-
-            </motion.h1>
-
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-12">
-              {content.hero.subtitle}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact">
-                <Button size="lg" className="gap-2">
-                  {content.hero.scheduleDemo}
-                  <ArrowRight className="h-5 w-5" />
-                </Button>
-              </Link>
-              <Link href="/contact">
-                <Button variant="outline" size="lg">
-                  {content.hero.contactSales}
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </section>
 
         {/* Features Grid */}
         <section className="py-24">
