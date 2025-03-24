@@ -989,10 +989,10 @@ const resources = {
               title: "Platform Integration",
               description: "Sync with major Romanian real estate platforms",
               features: [
-                "Immobiliare.ro sync",
-                "OLX.ro integration",
-                "Automated listing updates",
-                "Cross-platform analytics",
+                "Sincronizare Immobiliare.ro",
+                "Integrare OLX.ro",
+                "Actualizări automate listări",
+                "Analitică cross-platform",
               ],
               icon: "Share2",
             },
@@ -1000,10 +1000,10 @@ const resources = {
               title: "Marketing Tools",
               description: "Integrated marketing and advertising solutions",
               features: [
-                "Facebook Ads integration",
-                "Google Ads management",
-                "Campaign analytics",
-                "Automated ad optimization",
+                "Integrare Facebook Ads",
+                "Management Google Ads",
+                "Analitică campanii",
+                "Optimizare automată anunțuri",
               ],
               icon: "Megaphone",
             },
@@ -1011,11 +1011,11 @@ const resources = {
               title: "Accounting Integration",
               description: "Seamless financial management and reporting",
               features: [
-                "Saga accounting export",
-                "E-factura integration",
-                "Automated reconciliation",
-                "Financial reporting",
-                "BNR exchange rate integration 💶",
+                "Export contabilitate Saga",
+                "Integrare E-factură",
+                "Reconcilieri automate",
+                "Raportare financiară",
+                "Integrare curs BNR 💶",
               ],
               icon: "Calculator",
             },
@@ -1041,11 +1041,11 @@ const resources = {
           ],
         },
         metrics: {
-          setupTime: "Setup Time",
-          setupTimeValue: "3 Days",
-          cost: "Starting",
+          setupTime: "Timp Configurare",
+          setupTimeValue: "3 Zile",
+          cost: "începe",
           costValue: "50 €",
-          efficiency: "Efficiency Boost",
+          efficiency: "Creștere Eficiență",
           efficiencyValue: "75%",
         },
         integrations: {
@@ -1066,1483 +1066,76 @@ const resources = {
           keywords:
             "restaurant pos, restaurant management software, kitchen display system, restaurant inventory, restaurant software romania, horeca pos",
         },
-        hero: {
-          badge: "Retail Revolution",
-          title: "Next-Gen Retail Platform",
-          subtitle:
-            "Unify online and offline operations with AI-driven insights and real-time inventory across all sales channels",
-          scheduleDemo: "Schedule Demo",
-          contactSales: "Contact Sales",
-        },
         features: {
-          title: "Core Capabilities",
+          title: "Core Features",
           list: [
             {
-              title: "Omnichannel Commerce 🛍️",
+              icon: "ShoppingCart",
+              title: "Smart POS System",
               description:
-                "Seamless integration of physical stores, e-commerce, and mobile sales",
+                "Modern point-of-sale with AI-powered recommendations",
               features: [
-                "Unified inventory management",
-                "Cross-channel customer profiles",
-                "Real-time stock visibility",
-                "Centralized order management",
+                "Offline operation",
+                "Customer recognition",
+                "Dynamic pricing",
+                "Loyalty program integration",
               ],
             },
             {
-              title: "POS Inteligent 💳",
-              description: "Sistem point-of-sale cu recomandări bazate pe AI",
-              features: [
-                "Funcționare offline",
-                "Recunoaștere clienți",
-                "Prețuri dinamice",
-                "Integrare program loialitate",
-              ],
-            },
-            {
-              title: "AI pentru Stocuri 📦",
-              description: "Sistem predictiv de gestionare stocuri",
-              features: [
-                "Prognoză cerere",
-                "Reaprovizionare automată",
-                "Management furnizori",
-                "Alertă stocuri stagnante",
-              ],
-            },
-            {
-              title: "Customer360 👤",
-              description: "Unified customer experience management",
-              features: [
-                "Istoric cumpărături",
-                "Analiză comportament",
-                "Marketing personalizat",
-                "Mapare journey omnichannel",
-              ],
-            },
-            {
-              title: "Retail Analytics 📊",
-              description: "Real-time business intelligence dashboard",
-              features: [
-                "Sales performance",
-                "Inventory turnover",
-                "Staff productivity",
-                "Profit margin analysis",
-              ],
-            },
-            {
-              title: "E-commerce Hub 🌐",
-              description: "Built-in online store management",
-              features: [
-                "Mobile-responsive design",
-                "SEO optimization",
-                "Payment gateway integration",
-                "Abandoned cart recovery",
-              ],
-            },
-          ],
-        },
-        benefits: {
-          title: "Business Impact",
-          list: [
-            "35% faster checkout process",
-            "28% reduction in stockouts",
-            "40% improvement in customer retention",
-            "22% lower operational costs",
-            "50+ pre-built analytics reports",
-            "Real-time mobile alerts",
-          ],
-        },
-        integrations: {
-          title: "Seamless Integrations",
-          partners: [
-            { name: "FiscalNet", logo: "/fiscalnet_logo.png" },
-            { name: "E-factura", logo: "/e-factura.webp" },
-            { name: "Saga Software", logo: "/saga-logo.png" },
-            { name: "Shopify", logo: "/shopify.webp" },
-          ],
-        },
-        testimonials: {
-          title: "Retail Leader Success Stories",
-          clients: [
-            {
-              name: "Sarah Johnson",
-              company: "UrbanFashion Chain",
-              rating: 5,
-              text: "The omnichannel features helped us reduce inventory costs by 30% while improving customer satisfaction scores.",
-              image: "/testimonials/fashion.jpg",
-            },
-            {
-              name: "Michael Chen",
-              company: "TechGadgets Pro",
-              rating: 5,
-              text: "Real-time analytics helped us identify top-performing products and optimize shelf space allocation.",
-              image: "/testimonials/electronics.jpg",
-            },
-          ],
-        },
-        metrics: {
-          setupTime: "Implementation Time",
-          setupTimeValue: "1 Week",
-          cost: "ROI Achieved",
-          costValue: "2 Months",
-          efficiency: "Process Efficiency Gain",
-          efficiencyValue: "65%",
-        },
-        pricing: {
-          title: "Simple, Transparent Pricing",
-          subtitle:
-            "Choose the perfect plan for your restaurant. All plans include our core POS system with 14-day free trial.",
-          basic: {
-            title: "Basic",
-            price: "355",
-            setup: "1335",
-            features: [
-              "Smart POS System",
-              "Kitchen Display System",
-              "Basic Stock Management",
-            ],
-          },
-          standard: {
-            title: "Standard",
-            price: "445",
-            setup: "1335",
-            features: [
-              "All Basic Features",
-              "Choose 1 Module",
-              "Purchase Module",
-              "Loyalty Program",
-              "Delivery Integration",
-            ],
-          },
-          growth: {
-            title: "Growth Bundle",
-            price: "445",
-            setup: "1335",
-            features: [
-              "All Basic Features",
-              "2 Modules Included",
-              "Save 67 RON/month",
-            ],
-          },
-          trial: "Try all features free for 14 days!",
-          faq: {
-            title: "Frequently Asked Questions",
-            setup: {
-              question: "What's included in the Setup Fee?",
-              answer:
-                "8-hour onboarding session including data migration, staff training, and system setup.",
-            },
-            modules: {
-              question: "Can I change modules later?",
-              answer:
-                "Yes, you can upgrade or change modules at any time. Changes will be reflected in your next billing cycle.",
-            },
-            trial: {
-              question: "How does the 14-day trial work?",
-              answer:
-                "Start with full access to all features. No credit card required. Choose your plan at the end of the trial.",
-            },
-          },
-          cta: "Contact Us for Custom Solutions",
-        },
-      },
-      common: {
-        company_name: "Salut Enterprise",
-        learn_more: "Learn More",
-        features: "Features",
-      },
-      websiteBuilder: {
-        hero: {
-          title: "Your Complete Online Presence",
-          subtitle:
-            "So good, it's easy to setup - yet stunningly complete. Design appealing pages and manage your entire business from one unified platform.",
-          cta: "Get Started Free",
-        },
-        quickSetup: {
-          title: "No-Code Mode",
-          subtitle:
-            "Your perfect online presence should be easy to create and maintain",
-          steps: {
-            business: {
-              title: "Set your business",
-              description: "Tell us about your business",
-            },
-            logo: {
-              title: "Add your logo",
-              description: "Upload your brand identity",
-            },
-            features: {
-              title: "Select features",
-              description: "Choose what you need",
-            },
-            theme: {
-              title: "Choose theme",
-              description: "Pick your favorite design",
-            },
-          },
-        },
-        websiteFeatures: {
-          title: "Website Features",
-          subtitle: "Everything you need to create a professional website",
-          dragDrop: {
-            title: "Drag & Drop Builder",
-            description:
-              "Creează site-ul ca un designer cu interfața noastră intuitivă drag-and-drop. Fă ajustări precise, adaugă filtre și animează elementele direct pe pagină.",
-          },
-          ai: {
-            title: "AI-Powered Creation",
-            description:
-              "Let AI suggest your website layout and content based on your industry. Boost your copy-writing with ChatGPT integration for better content generation.",
-          },
-          mobile: {
-            title: "Mobile Responsive",
-            description:
-              "Your website automatically adapts to all devices. Control what's visible on mobile with our responsive design tools.",
-          },
-          photos: {
-            title: "3M+ Free Photos",
-            description:
-              "Accesează o vastă bibliotecă de imagini de calitate de la Unsplash pentru a îmbunătăți aspectul vizual al site-ului tău.",
-          },
-        },
-        ecommerceFeatures: {
-          title: "E-commerce Features",
-          subtitle: "Everything you need to run a successful online store",
-          products: {
-            title: "Adaptive Products",
-            description:
-              "Display your products in all their facets with configurable sizes, colors, and variants. Automated stock management updates in real-time for each variant.",
-          },
-          engagement: {
-            title: "Customer Engagement",
-            description:
-              "Build stronger relationships with real-time chat support and customer reviews. Help customers find their next best buy with smart recommendations.",
-          },
-          analytics: {
-            title: "Analytics & Growth",
-            description:
-              "Track your store's performance with built-in analytics. Build advanced reports and cross-check data to make informed business decisions.",
-          },
-          payments: {
-            title: "Payment Integration",
-            description:
-              "Offer a variety of payment options to your customers. Seamlessly integrate with popular payment providers for secure transactions.",
-          },
-        },
-        additionalFeatures: {
-          title: "Additional Features",
-          subtitle: "Extra tools to enhance your online presence",
-          language: {
-            title: "Multi-Language Support",
-            description:
-              "Install different languages and translate content directly from any page with our built-in translation tools.",
-          },
-          seo: {
-            title: "SEO Optimization",
-            description:
-              "Write search engine-friendly content with our integrated SEO tools to improve your website's visibility.",
-          },
-          market: {
-            title: "Market Adaptability",
-            description:
-              "Expand your reach with integrations to major marketplaces like Amazon and Facebook. Reach more customers where they shop.",
-          },
-          shipping: {
-            title: "Flexible Shipping",
-            description:
-              "Offer multiple shipping options including click and collect. Let customers shop online and pick up orders at your store.",
-          },
-        },
-        pricing: {
-          title: "Free Forever, Unlimited Users",
-          subtitle:
-            "Your website and online store are free forever with our One App Free plan, including hosting, unlimited support, and maintenance. No ads or limits.",
-          cta: "Start Building Now",
-        },
-      },
-      about: {
-        hero: {
-          title: "About Salut Enterprise",
-          description:
-            "Salut Enterprise is a leading provider of enterprise software solutions, specializing in comprehensive business management systems that help organizations streamline their operations and achieve their full potential.",
-        },
-        mission: {
-          title: "Our Mission",
-          description:
-            "We are committed to delivering innovative, scalable, and integrated software solutions that empower businesses to thrive in an increasingly digital world. Our focus is on providing enterprise-grade technology that is both powerful and user-friendly.",
-        },
-        values: {
-          title: "Our Values",
-          innovation: {
-            title: "Innovation",
-            description:
-              "Constantly evolving our solutions to meet changing business needs",
-          },
-          quality: {
-            title: "Quality",
-            description:
-              "Maintaining the highest standards in software development",
-          },
-          customerSuccess: {
-            title: "Customer Success",
-            description: "Dedicated to helping our clients achieve their goals",
-          },
-          integrity: {
-            title: "Integrity",
-            description: "Operăm cu transparență și practici etice de afaceri",
-          },
-        },
-        journey: {
-          title: "Our Journey",
-        },
-        team: {
-          title: "Meet Our Leadership Team",
-        },
-      },
-      thankYou: {
-        meta: {
-          title: "Thank You - Salut Enterprise",
-          description:
-            "Thank you for contacting Salut Enterprise. We appreciate your interest and will get back to you shortly.",
-        },
-        title: "Thank You!",
-        message:
-          "We have received your message and will get back to you as soon as possible.",
-        whatNext: {
-          title: "What happens next?",
-          step1: "Our team will review your message within 24 hours",
-          step2: "A dedicated specialist will be assigned to assist you",
-          step3: "We will contact you via email or phone to discuss your needs",
-        },
-        backHome: "Return to Homepage",
-      },
-    },
-  },
-  ro: {
-    translation: {
-      navigation: {
-        dashboard: "Panou de Control",
-        compliance: "Conformitate",
-        costs: "Gestiunea Costurilor",
-        settings: "Setări",
-        support: "Suport",
-      },
-      dashboard: {
-        title: "Management Cloud de Nivel Enterprise",
-        subtitle:
-          "Soluții Cloud Gestionate Complet cu Infrastructură Germană Conformă GDPR",
-        metrics: {
-          uptime: "Timp de Funcționare",
-          costs: "Costuri Lunare",
-          compliance: "Scor Conformitate",
-          tickets: "Tichete Deschise",
-        },
-        actions: {
-          startTrial: "Început Perioadă de Probă",
-          requestDemo: "Solicită Demo",
-          configure: "Configurează",
-          viewDetails: "Vezi Detalii",
-          export: "Exportă Raport",
-        },
-      },
-      services: {
-        hosting: {
-          title: "Găzduire",
-          features: [
-            "Servere Dedicate",
-            "Clustere Cloud",
-            "Scalare Automată",
-            "Uptime 99.99%",
-          ],
-        },
-        domain: {
-          title: "Domeniu",
-          features: [
-            "Înregistrare",
-            "Management DNS",
-            "Certificate SSL",
-            "Confidențialitate WHOIS",
-          ],
-        },
-        email: {
-          title: "Email",
-          features: [
-            "Email Business",
-            "Filtrare Spam",
-            "IMAP/POP3",
-            "Acces Webmail",
-          ],
-        },
-        backup: {
-          title: "Backup",
-          features: [
-            "Snapshot-uri Zilnice",
-            "Recuperare Date",
-            "Versionare",
-            "Stocare Criptată",
-          ],
-        },
-        security: {
-          title: "Securitate",
-          features: [
-            "Protecție DDoS",
-            "Firewalls",
-            "Monitorizare SIEM",
-            "Testare Penetrare",
-          ],
-        },
-      },
-      compliance: {
-        title: "Panou Conformitate",
-        heatmap: "Hartă Termică Conformitate",
-        status: "Status",
-        lastCheck: "Ultima Verificare",
-        nextAudit: "Următorul Audit",
-        certificates: {
-          gdpr: "Conform GDPR",
-          german: "Legea Germană a Datelor",
-          iso: "ISO 27001",
-          soc2: "SOC 2 Tip II",
-        },
-      },
-      costs: {
-        title: "Gestiunea Costurilor",
-        comparison: "Comparație Costuri",
-        forecast: "Prognoză Costuri",
-        optimization: "Sugestii Optimizare",
-        breakdown: "Defalcare Costuri",
-      },
-      onboarding: {
-        process: "Procesul nostru de integrare",
-        title: "  Transformați-vă afacerea cu soluții ERP cuprinzătoare",
-        desc: "La Salut Enterprise, înțelegem că companiile de servicii sunt conduse de dorința de eficiență, creștere și experiențe excepționale pentru clienți. Soluții ERP personalizate concepute pentru a satisface nevoile dvs. specifice de afaceri din mai multe industrii.",
-      },
-      pageTitle: "Să Transformăm Împreună Afacerea Ta",
-      pageSubtitle:
-        "Alătură-te sutelor de lideri din industrie care și-au modernizat deja soluțiile enterprise cu Salut Tech",
-      trustElements: {
-        support: {
-          title: "Suport 24/7",
-          description: "Timp de răspuns rapid cu echipă dedicată de suport",
-        },
-        security: {
-          title: "Securitate Enterprise",
-          description: "Certificat ISO 27001, soluții conforme GDPR",
-        },
-        clients: {
-          title: "500+ Clienți",
-          description: "De încredere pentru companii lidere la nivel mondial",
-        },
-        expert: {
-          title: "Expert în Industrie",
-          description: "Peste 10 ani de soluții enterprise",
-        },
-      },
-      contactInfo: {
-        title: "Informații de Contact",
-        email: {
-          label: "Email",
-          value: "info@saluttech.ro",
-        },
-        phone: {
-          label: "Telefon",
-          value: "+40 743 118 879",
-        },
-        address: {
-          label: "Adresă",
-          value: "București\nRomânia",
-        },
-        response: {
-          title: "Garanția Răspunsului Rapid",
-          description:
-            "Echipa noastră răspunde de obicei în 24 de ore la toate solicitările",
-        },
-      },
-      form: {
-        title: "Trimite-ne un mesaj",
-        name: {
-          label: "Nume",
-          placeholder: "Numele tău",
-          error: "Numele trebuie să aibă cel puțin 2 caractere",
-        },
-        email: {
-          label: "Email",
-          placeholder: "email@tau.ro",
-          error: "Adresă de email invalidă",
-        },
-        company: {
-          label: "Companie",
-          placeholder: "Compania ta",
-          error: "Numele companiei trebuie să aibă cel puțin 2 caractere",
-        },
-        message: {
-          label: "Mesaj",
-          placeholder: "Cum putem să îți transformăm afacerea?",
-          error: "Mesajul trebuie să aibă cel puțin 10 caractere",
-        },
-        submit: "Trimite Mesaj",
-        sending: "Se trimite...",
-        success: {
-          title: "Mesaj trimis cu succes",
-          description: "Îți vom răspunde în maxim 24 de ore.",
-        },
-        error: {
-          title: "Eroare la trimiterea mesajului",
-          description:
-            "Te rugăm să încerci din nou sau să ne contactezi direct.",
-        },
-      },
-      nav: {
-        industries: "Industrii",
-        modules: "Module",
-        resources: "Resurse",
-        solutions: "Soluțiile Noastre",
-        about: "Despre Noi",
-        manufacturing: {
-          title: "Producție",
-
-          description:
-            "Management complet al producției cu MRP, planificare și control al calității",
-        },
-        real_estate: {
-          title: "Imobiliare",
-
-          description:
-            "Soluție completă de administrare imobiliară pentru închiriere, întreținere și portaluri pentru chiriași",
-        },
-        retail: {
-          title: "Hospitality",
-
-          description:
-            "Soluții integrate POS, inventar și e-commerce pentru retail modern",
-        },
-        services: {
-          title: "Servicii Profesionale",
-
-          description:
-            "Management de proiect și urmărirea serviciilor pentru firme de consultanță",
-        },
-        construction: {
-          title: "Construcții",
-
-          description:
-            "Estimarea costurilor proiectelor, urmărirea materialelor și conformitate cu reglementările",
-        },
-
-        healthcare: {
-          title: "Sănătate",
-
-          description:
-            "Managementul pacienților și urmărirea inventarului medical",
-        },
-        education: {
-          title: "Educație",
-
-          description:
-            "Managementul informațiilor studenților și al resurselor educaționale",
-        },
-      },
-      menu: {
-        crm: "CRM",
-        sales: "Vânzări",
-        purchase: "Achiziții",
-        inventory: "Inventar",
-        manufacturing: "Producție",
-        accounting: "Contabilitate",
-        project_management: "Management Proiecte",
-        hr: "HR și Recrutare",
-        ecommerce: "Website și E-commerce",
-        pos: "Point of Sale",
-        field_service: "Servicii de Teren",
-        marketing: "Automatizare Marketing",
-      },
-      common: {
-        company_name: "Salut Enterprise",
-        learn_more: "Află Mai Multe",
-        features: "Funcționalități",
-        why_choose: "De Ce Să Alegi",
-        market_features: "Caracteristici de Piață",
-        schedule_demo: "Programează Demo",
-        contact_sales: "Contactează Vânzări",
-        read_more: "Citește Mai Mult",
-        get_started: "Începe Acum",
-        contact_us: "Contactează-ne",
-        our_features: "Funcționalitățile Noastre",
-        benefits: "Beneficii",
-        testimonials: "Testimoniale",
-        case_studies: "Studii de Caz",
-        about_us: "Despre Noi",
-      },
-      contact: {
-        sales: "Contactează Vânzări",
-        title: "Contactează-ne",
-        subtitle: "Intră în legătură cu echipa noastră",
-        form: {
-          name: "Numele Tău",
-          email: "Adresa de Email",
-          message: "Mesaj",
-          submit: "Trimite Mesaj",
-        },
-      },
-      industries: {
-        manufacturing: {
-          title: "Suită Enterprise pentru Producție",
-          subtitle:
-            "Soluții avansate de producție adaptate industriilor moderne",
-          description:
-            "Sistem complet de management al producției cu MRP integrat, planificare în timp real și control al calității",
-          badge: "Excelență în Producție",
-          features: {
-            title: "Funcționalități Principale",
-            planning: {
-              title: "Planificarea Producției",
-              description: "Sistem MRP avansat cu programare în timp real",
-            },
-            quality: {
-              title: "Controlul Calității",
+              icon: "Package",
+              title: "Kitchen Display System",
               description:
-                "Management comprehensiv al calității și protocoale de testare",
-            },
-            supply: {
-              title: "Lanț de Aprovizionare",
-              description:
-                "Vizibilitate și optimizare end-to-end a lanțului de aprovizionare",
-            },
-            cost: {
-              title: "Managementul Costurilor",
-              description:
-                "Urmărirea detaliată a costurilor și analiză financiară",
-            },
-            compliance: {
-              title: "Conformitate",
-              description:
-                "Conformitate automatizată cu standardele industriei",
-            },
-            documents: {
-              title: "Integrare E-Documente",
-              description: "Integrare perfectă cu sistemul e-Factura românesc",
-            },
-          },
-          romania_specific: {
-            title: "Funcționalități pentru Piața Românească",
-            features: {
-              efactura: "Conformitate și Integrare e-Factura",
-              fiscal: "Gestionarea Codului Fiscal Românesc",
-              supply_chain: "Optimizare Lanț de Aprovizionare Local",
-              eu_export: "Documentație Export UE",
-              labor: "Conformitate cu Legislația Muncii",
-              inventory: "Management Inventar Regional",
-            },
-          },
-        },
-      },
-      home: {
-        hero: {
-          title: "Soluții Enterprise pentru Afaceri Moderne",
-          subtitle: "Soluții software complete adaptate pentru industria ta",
-          transform: "Transformă-ți Întreprinderea",
-          unlock_growth:
-            "Deblochează o creștere fără precedent cu suita noastră de soluții enterprise de ultimă generație.",
-          why_choose: "De Ce Companiile Lider Aleg",
-          company_exp:
-            "Experimentează fuziunea perfectă dintre fiabilitatea la nivel enterprise și inovația modernă.",
-          platform_evolves:
-            "Platforma noastră evoluează odată cu ambițiile tale, oferind fundația pentru o creștere sustenabilă și excelență digitală.",
-        },
-        features: {
-          scalable: {
-            title: "Scalabilitate Infinită",
-            description:
-              "Arhitectură pregătită pentru viitor care crește odată cu ambițiile tale. Scalează de la startup la enterprise fără probleme.",
-          },
-          integration: {
-            title: "Integrare Perfectă",
-            description:
-              "Conectează-ți perfect întregul ecosistem digital. Operațiuni unificate pe toate platformele și sistemele.",
-          },
-          support: {
-            title: "Suport Elite 24/7",
-            description:
-              "Asistență expertă la îndemâna ta. Echipa noastră dedicată îți asigură succesul non-stop.",
-          },
-        },
-      },
-      button: {
-        demo: "Programează Demo",
-        learn_more: "Află Mai Multe",
-        contact_sales: "Contactează Vânzări",
-        get_started: "Începe Acum",
-        submit: "Trimite",
-        send: "Trimite",
-        view_more: "Vezi Mai Mult",
-        try_now: "Încearcă Acum",
-      },
-      language: {
-        select: "Selectează Limba",
-        english: "Engleză",
-        romanian: "Română",
-      },
-      gradients: {
-        customizer: {
-          title: "Personalizare Gradient",
-          page_title: "Instrument de Personalizare Gradient",
-          page_description:
-            "Creează gradiente frumoase și personalizate pentru aplicația ta enterprise",
-          preset: "Presetare",
-          select_preset: "Selectează o presetare",
-          start_color: "Culoare de Start",
-          end_color: "Culoare de Final",
-          direction: "Direcție",
-          preview: "Previzualizare Gradient",
-          copy_classes: "Copiază Clasele Gradient",
-        },
-        directions: {
-          right: "Dreapta",
-          bottom_right: "Dreapta Jos",
-          top_right: "Dreapta Sus",
-          bottom: "Jos",
-        },
-      },
-      glossary: {
-        title: "Glosar de Terminologie Industrială",
-        description:
-          "Ghid complet al termenilor și definițiilor specifice industriei",
-        search_placeholder: "Caută termeni...",
-        all_industries: "Toate Industriile",
-        example: "Exemplu",
-        no_results: "Nu s-au găsit termeni",
-      },
-      erp: {
-        implementation_milestones: [
-          {
-            id: "kick-off-meeting",
-            duration: "3-5 zile",
-            title: "Întâlnire Inițială",
-            description:
-              "Consultație strategică inițială pentru definirea domeniului și obiectivelor proiectului",
-            note: "Durata poate varia în funcție de complexitatea proiectului",
-            category: "initial",
-          },
-          {
-            id: "requirements-analysis",
-            duration: "5-7 zile",
-            title: "Analiză de Cerințe",
-            description:
-              "Evaluare cuprinzătoare a nevoilor de afaceri și a peisajului sistemului",
-            note: "Complexitatea proceselor de afaceri influențează calendarul",
-            category: "planning",
-          },
-          {
-            id: "solution-design",
-            duration: "5-7 zile",
-            title: "Proiectare Soluție",
-            description:
-              "Planificare arhitecturală și configurare inițială a sistemului ERP",
-            note: "Cerințele personalizate pot extinde faza de proiectare",
-            category: "design",
-          },
-          {
-            id: "implementation",
-            duration: "10-14 zile",
-            title: "Faza de Implementare",
-            description:
-              "Configurare sistem, migrare date și dezvoltare personalizată",
-            note: "Variază semnificativ în funcție de complexitatea sistemului și nevoile de personalizare",
-            category: "development",
-          },
-          {
-            id: "testing",
-            duration: "3-5 zile",
-            title: "Testare Cuprinzătoare",
-            description:
-              "Validarea sistemului pe dimensiuni funcționale și de performanță",
-            note: "Profunzimea testării depinde de intricitatea sistemului",
-            category: "validation",
-          },
-          {
-            id: "training",
-            duration: "2-3 zile",
-            title: "Instruire Utilizatori",
-            description:
-              "Program cuprinzător de instruire pentru utilizatori finali și administratori",
-            note: "Adaptat dimensiunii organizaționale și complexității sistemului",
-            category: "enablement",
-          },
-          {
-            id: "go-live",
-            duration: "2-3 zile",
-            title: "Lansare și Tranziție",
-            description:
-              "Implementare sistem gestionată și perioadă inițială de suport",
-            note: "Complexitatea implementării influențează calendarul",
-            category: "deployment",
-          },
-        ],
-      },
-      navigation: {
-        titles: {
-          Industries: "Industrii",
-          Solutions: "Soluții",
-          Resources: "Resurse",
-        },
-        items: {
-          Industries: [
-            {
-              title: "Producție",
-              href: "/erp-system/manufacturing",
-              description:
-                "Management complet al producției cu MRP, planificare și control al calității",
-            },
-            {
-              title: "Imobiliare",
-              href: "/erp-system/real-estate",
-              description:
-                "Soluție completă de administrare imobiliară pentru închiriere, întreținere și portaluri pentru chiriași",
-            },
-            {
-              title: "Ospitalitate",
-              href: "/erp-system/retail",
-              description:
-                "Soluții integrate POS, inventar și e-commerce pentru retail modern",
-            },
-            {
-              title: "Servicii Profesionale",
-              href: "/erp-system/services",
-              description:
-                "Management de proiect și urmărirea serviciilor pentru firme de consultanță",
-            },
-            {
-              title: "Ospitalitate",
-              href: "/erp-system/hospitality",
-              description:
-                "Sisteme de rezervări și management al experienței oaspeților",
-            },
-            {
-              title: "E-facturare",
-              href: "/erp-system/e-factura",
-              description: "Management informații și resurse educaționale",
-            },
-          ],
-          Solutions: [
-            {
-              title: "Etape ERP",
-              href: "/solutions/erp",
-              description:
-                "Planificare integrată a resurselor întreprinderii pentru management cuprinzător de afaceri",
-            },
-            {
-              title: "Management Cloud",
-              href: "/solutions/cloud-management",
-              description:
-                "Infrastructură cloud scalabilă și optimizare servicii",
-            },
-            {
-              title: "Marketing",
-              href: "#",
-              description:
-                "Strategie de marketing avansată și management de campanii digitale",
-            },
-            {
-              title: "Integrare & Personalizare",
-              href: "#",
-              description:
-                "Integrare sistem fără probleme și optimizare personalizată a proceselor de afaceri",
-            },
-            {
-              title: "Suport & Mentenanță",
-              href: "/solutions/support",
-              description:
-                "Suport tehnic cuprinzător și mentenanță proactivă a sistemului",
-            },
-            {
-              title: "Website & E-commerce Personalizat",
-              href: "/solutions/website-builder",
-              description:
-                "Dezvoltare web personalizată și soluții de platformă e-commerce puternice",
-            },
-          ],
-          Resources: [
-            {
-              title: "Despre Noi",
-              href: "/about",
-              description: "Află mai multe despre compania și misiunea noastră",
-            },
-            {
-              title: "Noutăți",
-              href: "/blog",
-              description:
-                "Rămâi la curent cu actualizări de produs și știri tehnice",
-            },
-            {
-              title: "Studii de Caz",
-              href: "/case-studies",
-              description: "Povești de succes de la clienții noștri",
-            },
-          ],
-        },
-      },
-      home: {
-        hero: {
-          title: "ERP în Cloud pentru",
-          subtitle:
-            "Oferim software personalizat care stimulează creșterea și eficiența în toate industriile.",
-          e_invoicing: "Software Gratuit E-Factura",
-          cta: "Începe Acum",
-        },
-        steps: {
-          manage: {
-            title: "Gestionați",
-            description:
-              "Simplificați operațiunile cu soluțiile noastre integrate de management",
-          },
-          automate: {
-            title: "Automatizați",
-            description:
-              "Îmbunătățiți-vă marketingul! Automatizați pentru o atingere mai mare și angajament mai inteligent!",
-          },
-          succeed: {
-            title: "Reușiți",
-            description:
-              "Atingeți-vă obiectivele de afaceri cu metrici de succes dovedite",
-          },
-        },
-        comparison: {
-          subtitle:
-            "Alegeți viitorul managementului afacerilor cu soluțiile noastre propulsate de AI",
-          traditional: {
-            title: "Software Tradițional",
-            items: [
-              "Nimic Nou: Bazarea pe sisteme învechite care împiedică creșterea.",
-              "Personalizare Limitata: Soluții generice care nu răspund nevoilor specifice.",
-              "Procese Consumatoare de Timp: Sarcini manuale care irosesc ore prețioase.",
-              "Costuri Mari: Licențe scumpe și taxe ascunse.",
-              "Creștere Stagnantă: Lipsa caracteristicilor inovatoare.",
-              "Lipsă Suport: Acces limitat la îndrumare profesională.",
-              "Risc de Obsolescență: Rămânerea în urma concurenței.",
-              "Interfețe Complexe: Necesită training extins.",
-              "Prețuri Rigide: Modele de prețuri inflexibile.",
-              "Tehnologie Depășită: Tehnologie care nu ține pasul cu evoluțiile.",
-              "Probleme de Securitate: Sisteme vulnerabile.",
-              "Scalabilitate Ineficientă: Unelte care nu evoluează odată cu afacerea.",
-            ],
-          },
-          ai: {
-            title: "Impressionați Viitorul cu AI",
-            items: [
-              "Creșteți Profiturile: Optimizați operațiunile pentru profit maxim.",
-              "Economisiți Timp: Automatizați procesele pentru eficiență maximă.",
-              "Eliminați Sarcinile Manuale: Lăsați AI să gestioneze activitățile repetitive.",
-              "Reduceți Costurile: Soluții rentabile cu prețuri transparente.",
-              "Sporiți Productivitatea: Unelte avansate pentru performanță maximă.",
-              "Personalizare Îmbunătățită: Funcții adaptate nevoilor specifice.",
-              "Integrare Perfectă: Compatibilitate cu sistemele existente.",
-              "Soluții Scalabile: Creșteți fără limitări software.",
-              "Analize în Timp Real: Decizii bazate pe date actuale.",
-              "Fără Experiență Necesară: Interfețe ușor de utilizat.",
-            ],
-          },
-        },
-        features: {
-          scalable: {
-            title: "Scalabilitate Infinită",
-            description:
-              "Arhitectură modernă care crește odată cu afacerea ta. Scalare fără efort de la startup la enterprise.",
-          },
-          integration: {
-            title: "Integrare Perfectă",
-            description:
-              "Conectează-ți întregul ecosistem digital. Operațiuni unificate pe toate platformele.",
-          },
-          support: {
-            title: "Suport Elite 24/7",
-            description:
-              "Asistență expertă non-stop. Echipa noastră dedicată îți asigură succesul permanent.",
-          },
-        },
-      },
-      services: {
-        hero: {
-          title: "Transformă-ți Afacerea cu Salut Enterprise",
-          subtitle:
-            "La Salut Enterprise, înțelegem că companiile de servicii sunt conduse de dorința de eficiență, creștere și experiențe excepționale pentru clienți.",
-          cta: "Începe Călătoria",
-          contact: "Contactează Vânzări",
-        },
-        features: {
-          title: "Funcționalități Principale",
-          subtitle:
-            "Suita noastră cuprinzătoare de funcționalități este proiectată nu doar pentru a satisface dorințele tale, ci pentru a le transforma în rezultate tangibile.",
-          project_management: {
-            title: "Management Proiecte",
-            desire: "Realizează execuția perfectă a proiectelor",
-            outcome:
-              "Utilizează diagrame Gantt și vizualizări Kanban pentru vizualizarea clară a sarcinilor și urmărirea progresului, asigurând finalizarea proiectelor la timp și în buget",
-          },
-          crm: {
-            title: "Management Relații Clienți (CRM)",
-            desire: "Construiește relații durabile cu clienții",
-            outcome:
-              "Captează și dezvoltă lead-uri eficient, îmbunătățind ratele de conversie și menținând înregistrări detaliate ale interacțiunilor pentru a îmbunătăți livrarea serviciilor",
-          },
-          billing: {
-            title: "Facturare și Invoicing",
-            desire: "Simplifică procesele financiare",
-            outcome:
-              "Automatizează facturarea direct din proiecte, asigurând plăți la timp și reducând sarcinile administrative cu opțiuni de facturare recurentă",
-          },
-          communication: {
-            title: "Instrumente de Comunicare Integrate",
-            desire: "Favorizează colaborarea între echipe",
-            outcome:
-              "Activează comunicarea în timp real prin mesagerie și dashboard-uri integrate, asigurând că toată lumea este aliniată și informată",
-          },
-          agreements: {
-            title: "Management Acorduri de Servicii",
-            desire: "Optimizează operațiunile de servicii",
-            outcome:
-              "Gestionează eficient acordurile de servicii, simplificând procesele de urmărire și reînnoire pentru un flux operațional îmbunătățit",
-          },
-          mobile: {
-            title: "Accesibilitate Mobilă",
-            desire: "Gestionează-ți afacerea în mișcare",
-            outcome:
-              "Accesează toate funcționalitățile de pe dispozitive mobile, permițându-ți să supervizezi operațiunile oriunde, oricând",
-          },
-          workflows: {
-            title: "Fluxuri de Lucru Personalizabile",
-            desire: "Adaptează procesele la nevoile tale",
-            outcome:
-              "Automatizează sarcinile repetitive cu fluxuri de lucru personalizabile care îmbunătățesc eficiența în toate departamentele",
-          },
-          analytics: {
-            title: "Raportare și Analiză",
-            desire: "Ia decizii informate bazate pe date",
-            outcome:
-              "Folosește instrumentele integrate de analiză pentru a monitoriza metricile de performanță, permițând luarea de decizii strategice pentru o creștere susținută",
-          },
-        },
-        benefits: {
-          title: "De Ce Să Alegi Salut Enterprise?",
-          items: [
-            "Soluție Tot-În-Unu: Integrează multiple funcții de afaceri într-o singură platformă, eliminând dificultățile gestionării sistemelor disparate",
-            "Design Modular: Selectează doar aplicațiile de care ai nevoie, creând o soluție personalizată care se aliniază cu obiectivele specifice ale afacerii tale fără costuri inutile",
-            "Scalabilitate: Pe măsură ce afacerea ta crește, scalează ușor operațiunile cu soluția noastră bazată pe cloud care se adaptează la cerințele în creștere",
-            "Experiență Clienți Îmbunătățită: Îmbunătățește interacțiunile cu clienții prin instrumente CRM eficiente și portaluri self-service care promovează loialitatea și satisfacția",
-            "Management Financiar Îmbunătățit: Simplifică procesele de facturare cu funcții integrate care asigură plăți la timp și raportare financiară precisă",
-          ],
-        },
-        cta: {
-          title: "Gata să Transformi Afacerea?",
-          subtitle:
-            "Experimentează puterea transformativă a Salut Enterprise astăzi.",
-          button: "Începe Acum",
-        },
-      },
-      manufacturing: {
-        seo: {
-          title:
-            "Soluții de Producție pentru Întreprinderi | Management Fabrica Inteligentă",
-          description:
-            "Transformați operațiunile de producție cu soluțiile noastre bazate pe inteligență artificială. Caracteristici includ monitorizare în timp real, comenzi de lucru automate și control calitate.",
-          keywords:
-            "software producție, producție întreprindere, fabrică inteligentă, management producție, control calitate, gestionare stocuri",
-        },
-        enterpriseBadge: "Producție Industrială",
-        hero: {
-          title: "Soluții Inteligente de Producție pentru Industria Modernă",
-          subtitle:
-            "Transformați operațiunile de producție cu platforma noastră bazată pe inteligență artificială, concepută pentru excelență în producția din era digitală.",
-          scheduleDemo: "Programează Demo",
-          contactSales: "Contactează Vânzări",
-        },
-        features: {
-          realTime: {
-            title: "Monitorizare Producție în Timp Real",
-            description:
-              "Actualizări live pentru fiecare etapă a procesului de producție.",
-            benefit: "Transparență sporită și eficiență operațională",
-          },
-          automatedWorkOrders: {
-            title: "Comenzi de Lucru Automate",
-            description:
-              "Programare inteligentă și priorizare a sarcinilor de producție.",
-            benefit: "Flux de lucru îmbunătățit și timpi morti reduși",
-          },
-          inventoryManagement: {
-            title: "Gestionare Stocuri",
-            description: "Reaprovizionare automată și scanare coduri de bare.",
-            benefit: "Erori minimizate și niveluri optime de stoc",
-          },
-          bom: {
-            title: "Listă de Materiale (BoM)",
-            description:
-              "Configurații complexe de produse cu liste de materiale multi-nivel.",
-            benefit:
-              "Gestionare eficientă a stocurilor și reducere a deșeurilor",
-          },
-          qualityControl: {
-            title: "Instrumente Control Calitate",
-            description:
-              "Verificări de calitate dedicate pe parcursul producției.",
-            benefit: "Asigurarea calității consistente a produselor",
-          },
-        },
-        advantages: {
-          comprehensiveIntegration: {
-            title: "Integrare Cuprinzătoare",
-            description:
-              "Conectați perfect producția, stocurile, vânzările și contabilitatea într-o singură platformă pentru informații în timp real și operațiuni eficiente.",
-          },
-          customizationFlexibility: {
-            title: "Personalizare și Flexibilitate",
-            description:
-              "Design modular care permite adaptarea software-ului la nevoile specifice, suportând cerințe operaționale unice și standarde industriale.",
-          },
-          costEffectiveSolution: {
-            title: "Soluție Rentabilă",
-            description:
-              "Model de prețuri accesibil pentru afaceri de toate dimensiunile, oferind funcții de nivel enterprise fără costurile tradiționale mari.",
-          },
-          regulatoryCompliance: {
-            title: "Conformitate Regulatorie",
-            description:
-              "Funcții de conformitate integrate și instrumente de raportare automate pentru a îndeplini standardele industriale și cerințele de reglementare.",
-          },
-        },
-        operationalBenefits: {
-          enhancedVisibility: {
-            title: "Vizibilitate Sporită",
-            description:
-              "Acces la date în timp real pentru luarea de decizii informate privind stocurile, etapele de producție și starea comenzilor.",
-          },
-          costOptimization: {
-            title: "Optimizare Costuri",
-            description:
-              "Alocare inteligentă a resurselor și gestionare integrată a calității pentru a minimiza deșeurile și a îmbunătăți utilizarea.",
-          },
-          increasedProductivity: {
-            title: "Productivitate Crescută",
-            description:
-              "Fluxuri de lucru automate și programare inteligentă care conduc la creșteri semnificative de eficiență în operațiuni.",
-          },
-        },
-        sections: {
-          keyAdvantages: "Avantaje Cheie ale Platformei",
-          enterpriseFeatures: "Funcții Enterprise pentru Producție",
-          operationalImpact: "Impact Operațional",
-          feature: "Funcție",
-          description: "Descriere",
-          benefits: "Beneficii",
-        },
-      },
-      realEstate: {
-        seo: {
-          title:
-            "Soluții Avansate de Management Immobiliar | Software Gestionare Proprietăți",
-          description:
-            "Soluții complete de management immobiliar cu funcții AI pentru gestionare proprietăți, facturare automată și analize de piață.",
-          keywords:
-            "software gestionare proprietăți, management chirie, CRM immobiliar, soluții proprietăți",
-        },
-        hero: {
-          badge: "Soluții Next-Gen pentru Immobiliare",
-          title: "Management Immobiliar Avansat",
-          subtitle:
-            "Soluții complete de management immobiliar cu funcții bazate pe inteligență artificială și integrări perfecte.",
-          scheduleDemo: "Programează Demo",
-          becomePartner: "Devino Partener",
-        },
-        features: {
-          title: "Funcții Principale",
-          list: [
-            {
-              title: "Gestionare Proprietăți 🏢",
-              description: "Administrare completă a portofoliului",
+                "Streamline kitchen operations with digital order management",
               features: [
-                "Urmărire unități",
-                "Management chiriași",
-                "Rapoarte ocupare",
-                "Contracte și documente",
-                "Management proiecte",
+                "Real-time order updates",
+                "Order prioritization",
+                "Kitchen analytics",
+                "Mobile notifications",
               ],
             },
             {
-              title: "Urmărire Proiecte 📋",
-              description: "Administrare completă a proprietăților",
+              icon: "LineChart",
+              title: "Inventory Management",
+              description: "AI-powered inventory control and forecasting",
               features: [
-                "Monitorizare proiecte",
-                "Înregistrări unități",
-                "Opțiuni personalizate",
-                "Management contracte",
+                "Demand forecasting",
+                "Automatic reordering",
+                "Supplier management",
+                "Stock alerts",
               ],
             },
             {
-              title: "Vânzări & Închirieri 🤝",
-              description: "Administrare vânzări și închirieri",
+              icon: "Globe",
+              title: "Online Ordering",
+              description: "Seamless integration with delivery platforms",
               features: [
-                "Generare contracte",
-                "Urmărire reînnoiri",
-                "Gestionare documente",
-                "Întreținere",
+                "Delivery platform integration",
+                "Order synchronization",
+                "Menu management",
+                "Customer tracking",
               ],
             },
             {
-              title: "Întreținere Proprietăți 🔧",
-              description: "Management întreținere clădiri",
-              features: [
-                "Sistem ticketing",
-                "Management furnizori",
-                "Întreținere programată",
-                "Utilități",
-              ],
-            },
-            {
-              title: "Utilități & Facturare 💰",
-              description: "Management costuri utilități",
-              features: [
-                "Citire contoare",
-                "Facturare automată",
-                "Tarife personalizate",
-                "Rapoarte financiare",
-              ],
-            },
-            {
-              title: "CRM & Clienți 👥",
-              description: "Management relații clienți",
-              features: [
-                "Profiluri clienți",
-                "Istoric interacțiuni",
-                "Task-uri și follow-up",
-                "Comunicare automată",
-              ],
-            },
-          ],
-        },
-        advancedFeatures: {
-          title: "Funcții Avansate și Integrări",
-          list: [
-            {
-              title: "Aplicație Mobilă",
+              icon: "Shield",
+              title: "Security & Compliance",
               description:
-                "Aplicație mobilă pentru manageri, agenți și chiriași cu actualizări în timp real",
+                "Enterprise-grade security and regulatory compliance",
               features: [
-                "Notificări în timp real",
-                "Acces documente mobil",
-                "Cereri întreținere mobile",
-                "Programări vizionări",
-              ],
-              icon: "Smartphone",
-            },
-            {
-              title: "Integrare AI/ML",
-              description:
-                "Analitică avansată și automatizări cu inteligență artificială",
-              features: [
-                "Preț chirie predictiv",
-                "Programare inteligentă întreținere",
-                "Procesare automată contracte",
-                "Analiză tendințe piață",
-              ],
-              icon: "Brain",
-            },
-            {
-              title: "Optimizare SEO",
-              description:
-                "Vizibilitate crescută pentru listări pe motoare de căutare",
-              features: [
-                "Descrieri meta automate",
-                "Pagini optimizate SEO",
-                "Optimizare SEO locală",
-                "Analitică performanță",
-              ],
-              icon: "Search",
-            },
-            {
-              title: "Integrare Plăți",
-              description: "Integrare cu procesatoare de plăți românești",
-              features: [
-                "Integrare PayU",
-                "Suport Netopia",
-                "Facturare automată",
-                "Urmărire plăți",
-              ],
-              icon: "CreditCard",
-            },
-            {
-              title: "Notificări Inteligente",
-              description:
-                "Sistem de comunicare automat pentru toate părțile implicate",
-              features: [
-                "Notificări email",
-                "Alertă SMS",
-                "Memento termene limită",
-                "Reguli personalizate notificări",
-              ],
-              icon: "Bell",
-            },
-            {
-              title: "Sistem CRM",
-              description: "Management comprehensiv al relațiilor cu clienții",
-              features: [
-                "Urmărire interacțiuni",
-                "Management lead-uri",
-                "Automatizare task-uri",
-                "Analitică performanță",
-              ],
-              icon: "Users",
-            },
-            {
-              title: "Integrare Platforme",
-              description: "Sincronizare cu platforme imobiliare românești",
-              features: [
-                "Sincronizare Immobiliare.ro",
-                "Integrare OLX.ro",
-                "Actualizări automate listări",
-                "Analitică cross-platform",
-              ],
-              icon: "Share2",
-            },
-            {
-              title: "Unelte Marketing",
-              description: "Soluții integrate de marketing și publicitate",
-              features: [
-                "Integrare Facebook Ads",
-                "Management Google Ads",
-                "Analitică campanii",
-                "Optimizare automată anunțuri",
-              ],
-              icon: "Megaphone",
-            },
-            {
-              title: "Integrare Contabilitate",
-              description: "Management financiar și raportare perfectă",
-              features: [
-                "Export contabilitate Saga",
-                "Integrare E-factură",
-                "Reconcilieri automate",
-                "Raportare financiară",
-                "Integrare curs BNR 💶",
-              ],
-              icon: "Calculator",
-            },
-          ],
-        },
-        testimonials: {
-          title: "Ce Spun Clienții Noștri",
-          clients: [
-            {
-              name: "Costel Ciobanu",
-              company: "Coda Vinci SRL",
-              rating: 5,
-              text: "Acest software a revoluționat complet gestionarea portofoliului nostru. Am redus timpul de procesare a documentelor cu 70% și am dublat tranzacțiile închise în ultimele 6 luni!",
-              image:
-                "https://res.cloudinary.com/do3dahfvh/image/upload/v1731747019/yf8u9a5ql7xvyij3bywh.jpg",
-            },
-            {
-              name: "Grigore Anica",
-              company: "BREC Consulting",
-              rating: 5,
-              text: "Ca consultant imobiliar, am nevoie de instrumente precise. Această platformă oferă exact ce necesit - de la managementul clienților la analize de piață detaliate. Feedback-ul clienților este excepțional!",
-              image:
-                "https://res.cloudinary.com/do3dahfvh/image/upload/v1731747070/jpoxov3qweqyokkfeyco.png",
-            },
-          ],
-        },
-        metrics: {
-          setupTime: "Timp Configurare",
-          setupTimeValue: "3 Zile",
-          cost: "începe",
-          costValue: "50 €",
-          efficiency: "Creștere Eficiență",
-          efficiencyValue: "75%",
-        },
-        integrations: {
-          title: "Parteneri de Integrare",
-          partners: [
-            { name: "E-factura", logo: "/e-factura.webp" },
-            { name: "Saga Software", logo: "/saga-logo.png" },
-            { name: "Conformare SAF-T", logo: "/saft.webp" },
-            { name: "Listări Proprietăți", logo: "/listing.png" },
-          ],
-        },
-      },
-      retail: {
-        seo: {
-          title: "Soluții Management Retail | Platformă Comerț Unificat",
-          description:
-            "Transformă operațiunile retail cu gestionare inteligentă a stocurilor, comerț unificat și management al experienței clienților. Crește vânzările pe toate canalele.",
-          keywords:
-            "software retail, comerț omnichannel, sistem POS, gestionare stocuri, analitică retail, integrare e-commerce",
-        },
-        hero: {
-          badge: "Revoluție Retail",
-          title: "Platformă Modernă de  Retail",
-          subtitle:
-            "Unifică operațiunile online și offline cu analize bazate pe AI și gestiune stocuri în timp real",
-          scheduleDemo: "Programează Demo",
-          contactSales: "Contactează Vânzări",
-        },
-        features: {
-          title: "Funcționalități Principale",
-          list: [
-            {
-              title: "Comerț Unificat 🛍️",
-              description:
-                "Integrare perfectă a magazinelor fizice, e-commerce și vânzări mobile",
-              features: [
-                "Gestionare stocuri unificată",
-                "Profile clienți cross-canal",
-                "Vizibilitate stocuri în timp real",
-                "Management centralizat comenzi",
+                "Data encryption",
+                "Role-based access",
+                "Audit logging",
+                "GDPR compliance",
               ],
             },
             {
-              title: "POS Inteligent 💳",
-              description: "Sistem point-of-sale cu recomandări bazate pe AI",
+              icon: "Wallet",
+              title: "Payment Processing",
+              description: "Flexible payment solutions for all needs",
               features: [
-                "Funcționare offline",
-                "Recunoaștere clienți",
-                "Prețuri dinamice",
-                "Integrare program loialitate",
-              ],
-            },
-            {
-              title: "AI pentru Stocuri 📦",
-              description: "Sistem predictiv de gestionare stocuri",
-              features: [
-                "Prognoză cerere",
-                "Reaprovizionare automată",
-                "Management furnizori",
-                "Alertă stocuri stagnante",
-              ],
-            },
-            {
-              title: "Customer360 👤",
-              description: "Management unificat al experienței clienților",
-              features: [
-                "Istoric cumpărături",
-                "Analiză comportament",
-                "Marketing personalizat",
-                "Mapare journey omnichannel",
-              ],
-            },
-            {
-              title: "Analitică Retail 📊",
-              description: "Dashboard inteligentă în timp real",
-              features: [
-                "Performanță vânzări",
-                "Rotație stocuri",
-                "Productivitate personal",
-                "Analiză marje profit",
-              ],
-            },
-            {
-              title: "Hub E-commerce 🌐",
-              description: "Management integrat magazin online",
-              features: [
-                "Design responsive",
-                "Optimizare SEO",
-                "Integrare gateway plăți",
-                "Recuperare coșuri abandonate",
+                "Multiple payment methods",
+                "Split payments",
+                "Refund management",
+                "Financial reporting",
               ],
             },
           ],
@@ -2607,20 +1200,28 @@ const resources = {
           title: "Simple, Transparent Pricing",
           subtitle:
             "Choose the perfect plan for your restaurant. All plans include our core POS system with 14-day free trial.",
+          allBasicFeatures: "All Basic Features",
+          chooseOneModule: "Choose 1 Module",
+          bestValue: "Best Value",
+          getStarted: "Get Started",
+          setupFee: "Setup Fee",
           basic: {
             title: "Basic",
-            price: "355",
-            setup: "1335",
+            price: "79",
+            setup: "299",
             features: [
               "Smart POS System",
               "Kitchen Display System",
               "Basic Stock Management",
+              "Cash Register Integration",
+              "Multiple Payment Methods",
+              "Priority Support Response",
             ],
           },
           standard: {
             title: "Standard",
-            price: "445",
-            setup: "1335",
+            price: "94",
+            setup: "299",
             features: [
               "All Basic Features",
               "Choose 1 Module",
@@ -2628,16 +1229,28 @@ const resources = {
               "Loyalty Program",
               "Delivery Integration",
             ],
+            modules: [
+              "Self-Ordering Services (QR Code Demo)",
+              "E-Factura Integration",
+              "Saga Connector",
+              "Website & Ecommerce",
+              "Purchase Module",
+              "Loyalty Program",
+              "Delivery Integration",
+              "Advanced Analytics",
+              "Customer Management",
+            ],
           },
           growth: {
             title: "Growth Bundle",
-            price: "445",
-            setup: "1335",
+            price: "99",
+            setup: "299",
             features: [
               "All Basic Features",
               "2 Modules Included",
               "Save 67 RON/month",
             ],
+            modulesIncluded: "All Modules Included",
           },
           trial: "Try all features free for 14 days!",
           faq: {

@@ -185,17 +185,6 @@ export const Retail = () => {
       return currency === 'RON' ? prices[priceKey].ron : prices[priceKey].eur;
     };
 
-    const handleWhatsAppClick = (packageName, price, modules = []) => {
-      const message = encodeURIComponent(
-        `Hello! I'm interested in the ${packageName} package (${price} ${currency}/month).\n` +
-        `Setup fee: ${getPrice('setup')} ${currency}\n` +
-        (modules.length > 0 ? `Selected modules: ${modules.join(', ')}\n` : '') +
-        'Please provide more information about your restaurant.'
-      );
-
-      window.open(`https://wa.me/40729917823?text=${message}`, '_blank');
-    };
-
     return (
       <section className="py-24 bg-gradient-to-tr from-background via-primary/5 to-background">
         <div className="container mx-auto px-4">
@@ -252,12 +241,20 @@ export const Retail = () => {
                   <Check className="h-5 w-5 text-primary" />
                   <span>Basic Stock Management</span>
                 </li>
+                <li className="flex items-center gap-2">
+                  <Check className="h-5 w-5 text-primary" />
+                  <span>Cash Register Integration</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="h-5 w-5 text-primary" />
+                  <span>Multiple Payment Methods</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="h-5 w-5 text-primary" />
+                  <span>Priority Support Response</span>
+                </li>
               </ul>
-              <Button
-                className="w-full"
-                variant="outline"
-                onClick={() => handleWhatsAppClick('Basic', getPrice('basic'))}
-              >
+              <Button className="w-full" variant="outline">
                 Get Started
               </Button>
             </motion.div>
@@ -283,27 +280,35 @@ export const Retail = () => {
               <ul className="space-y-4 mb-8">
                 <li className="flex items-center gap-2">
                   <Check className="h-5 w-5 text-primary" />
-                  <span>All Basic Features</span>
+                  <span>{t("retail.pricing.allBasicFeatures")}</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="h-5 w-5 text-primary" />
-                  <span>Choose 1 Module:</span>
+                  <span>{t("retail.pricing.chooseOneModule")}</span>
                 </li>
-                <li className="pl-7 text-sm">
-                  • Purchase Module <span className="text-green-600 font-semibold">+{getPrice('module')} {currency}/month</span>
+                <li className="pl-7 text-sm text-muted-foreground">
+                  • Self-Ordering Services (QR Code Demo) ({getPrice('module')} {currency}/month)
                 </li>
-                <li className="pl-7 text-sm">
-                  • Loyalty Program <span className="text-green-600 font-semibold">+{getPrice('module')} {currency}/month</span>
+                <li className="pl-7 text-sm text-muted-foreground">
+                  • E-Factura Integration ({getPrice('module')} {currency}/month)
                 </li>
-                <li className="pl-7 text-sm">
-                  • Delivery Integration <span className="text-green-600 font-semibold">+{getPrice('module')} {currency}/month</span>
+                <li className="pl-7 text-sm text-muted-foreground">
+                  • Saga Connector ({getPrice('module')} {currency}/month)
+                </li>
+                <li className="pl-7 text-sm text-muted-foreground">
+                  • Website & Ecommerce ({getPrice('module')} {currency}/month)
+                </li>
+                <li className="pl-7 text-sm text-muted-foreground">
+                  • Purchase Module ({getPrice('module')} {currency}/month)
+                </li>
+                <li className="pl-7 text-sm text-muted-foreground">
+                  • Loyalty Program ({getPrice('module')} {currency}/month)
+                </li>
+                <li className="pl-7 text-sm text-muted-foreground">
+                  • Delivery Integration ({getPrice('module')} {currency}/month)
                 </li>
               </ul>
-              <Button
-                className="w-full"
-                variant="outline"
-                onClick={() => handleWhatsAppClick('Standard', getPrice('standard'), ['Choose 1 Module'])}
-              >
+              <Button className="w-full" variant="outline">
                 Get Started
               </Button>
             </motion.div>
@@ -340,13 +345,10 @@ export const Retail = () => {
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="h-5 w-5 text-primary" />
-                  <span className="text-green-600 font-semibold">Save {getPrice('module')} {currency}/month</span>
+                  <span>Save {getPrice('module')} {currency}/month</span>
                 </li>
               </ul>
-              <Button
-                className="w-full"
-                onClick={() => handleWhatsAppClick('Growth Bundle', getPrice('growth'), ['2 Modules Included'])}
-              >
+              <Button className="w-full">
                 Get Started
               </Button>
             </motion.div>
@@ -386,11 +388,7 @@ export const Retail = () => {
 
           {/* Contact CTA */}
           <div className="text-center mt-16">
-            <Button
-              size="lg"
-              className="gap-2"
-              onClick={() => handleWhatsAppClick('Custom Solution', 'Contact for quote')}
-            >
+            <Button size="lg" className="gap-2">
               Contact Us for Custom Solutions
               <ArrowRight className="h-5 w-5" />
             </Button>
