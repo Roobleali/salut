@@ -38,17 +38,17 @@ const Customization = () => {
     return (
         <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
             <Helmet>
-                <title>Customization Services | Salut Enterprise</title>
+                <title>Customization Services | dolcenera </title>
                 <meta name="description" content="Tailored solutions to meet your specific business needs and requirements." />
-                <meta property="og:title" content="Customization Services | Salut Enterprise" />
+                <meta property="og:title" content="Customization Services | dolcenera " />
                 <meta property="og:description" content="Tailored solutions to meet your specific business needs and requirements." />
                 <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://saluttech.ro/solutions/customization" />
-                <meta property="og:image" content="https://saluttech.ro/og-image.jpg" />
+                <meta property="og:url" content="https://garemit.com/solutions/customization" />
+                <meta property="og:image" content="https://garemit.com/og-image.jpg" />
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Customization Services | Salut Enterprise" />
+                <meta name="twitter:title" content="Customization Services | dolcenera " />
                 <meta name="twitter:description" content="Tailored solutions to meet your specific business needs and requirements." />
-                <meta name="twitter:image" content="https://saluttech.ro/og-image.jpg" />
+                <meta name="twitter:image" content="https://garemit.com/og-image.jpg" />
             </Helmet>
 
             {/* Hero Section */}
@@ -57,7 +57,7 @@ const Customization = () => {
                 <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center">
                         <h1 className="text-4xl font-extrabold text-white sm:text-5xl md:text-6xl">
-                            Enterprise Customization
+                            Customization
                         </h1>
                         <p className="mt-6 text-xl text-gray-100 max-w-3xl mx-auto">
                             Tailored software solutions and integrations designed to match your unique business requirements and workflows.
@@ -100,7 +100,7 @@ const Customization = () => {
                                 <span className="text-purple-600 font-bold">2</span>
                             </div>
                             <h3 className="text-lg font-semibold text-gray-900">Solution Design</h3>
-                            <p className="mt-2 text-gray-600">Creating detailed technical specifications</p>
+                            <p className="mt-2 text-gray-600">Creating detailed nical specifications</p>
                         </div>
                         <div className="text-center">
                             <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">

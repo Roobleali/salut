@@ -1,19 +1,4 @@
-import {
-  Factory,
-  Building2,
-  ShoppingBag,
-  Briefcase,
-  UtensilsCrossed,
-  GraduationCap,
-  FileText,
-  BookOpen,
-  FileCheck,
-  Users,
-  CloudCog,
-  Settings,
-  Wrench,
-  ShoppingCart,
-} from "lucide-react";
+import { Send, Shield, Globe, Smartphone, Wallet } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 interface NavigationItem {
@@ -28,50 +13,26 @@ interface NavigationItem {
 
 export const NAVIGATION_ITEMS: NavigationItem[] = [
   {
-    title: "Industries",
+    title: "Services",
     items: [
       {
-        title: "Manufacturing",
-        href: "/erp-system/manufacturing",
+        title: "Money Transfers",
+        href: "/services/transfers",
         description:
-          "End-to-end manufacturing management with MRP, production planning and quality control",
-        icon: Factory,
+          "Fast and secure money transfers from the UK to Somalia with competitive rates",
+        icon: Send,
       },
       {
-        title: "Real Estate",
-        href: "/erp-system/real-estate",
-        description:
-          "Complete property management solution for leasing, maintenance, and tenant portals",
-        icon: Building2,
+        title: "Mobile Money",
+        href: "/services/mobile-money",
+        description: "Instant transfers to mobile money accounts in Somalia",
+        icon: Smartphone,
       },
       {
-        title: "Retail & E-commerce",
-        href: "/erp-system/retail",
-        description:
-          "Integrated POS, inventory and e-commerce solutions for modern retail",
-        icon: ShoppingBag,
-      },
-      {
-        title: "Professional Services",
-        href: "/erp-system/services",
-        description:
-          "Project management and service tracking for consulting firms",
-        icon: Briefcase,
-      },
-
-      {
-        title: "Hospitality",
-        href: "/erp-system/hospitality",
-        description:
-          "Reservation systems and guest experience management solutions",
-        icon: UtensilsCrossed,
-      },
-
-      {
-        title: "E-invoicing",
-        href: "/erp-system/e-factura",
-        description: "Student information and educational resource management",
-        icon: GraduationCap,
+        title: "Cash Pickup",
+        href: "/services/cash-pickup",
+        description: "Convenient cash pickup locations across Somalia",
+        icon: Wallet,
       },
     ],
   },
@@ -79,73 +40,24 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
     title: "Solutions",
     items: [
       {
-        title: "Odoo ERP Solutions",
-        href: "/solutions/erp",
+        title: "Mobile App",
+        href: "/solutions/mobile-app",
         description:
-          "Comprehensive Odoo ERP implementation and customization for your business needs",
-        icon: Users,
+          "User-friendly mobile app for easy money transfers on the go",
+        icon: Smartphone,
       },
       {
-        title: "Odoo Hosting & Support",
-        href: "/solutions/hosting",
+        title: "Security",
+        href: "/solutions/security",
         description:
-          "Reliable hosting and expert support for your Odoo instance",
-        icon: CloudCog,
+          "Bank-grade security and fraud protection for your transfers",
+        icon: Shield,
       },
       {
-        title: "Odoo Customization",
-        href: "/solutions/customization",
-        description:
-          "Tailored Odoo modules and features for your specific requirements",
-        icon: Settings,
-      },
-      {
-        title: "Odoo Training",
-        href: "/solutions/training",
-        description:
-          "Comprehensive training programs for Odoo users and administrators",
-        icon: GraduationCap,
-      },
-      {
-        title: "Odoo Migration",
-        href: "/solutions/migration",
-        description: "Seamless migration from legacy systems to Odoo ERP",
-        icon: Wrench,
-      },
-      {
-        title: "Odoo E-commerce",
-        href: "/solutions/ecommerce",
-        description: "Powerful e-commerce solutions built on Odoo platform",
-        icon: ShoppingCart,
-      },
-    ],
-  },
-  {
-    title: "Resources",
-    items: [
-      {
-        title: "Blog",
-        href: "/blog",
-        description:
-          "Stay updated with the latest insights and industry trends",
-        icon: BookOpen,
-      },
-      {
-        title: "Case Studies",
-        href: "/case-studies",
-        description: "Success stories from our clients",
-        icon: FileCheck,
-      },
-      {
-        title: "Resources",
-        href: "/resources",
-        description: "Download guides, checklists, and best practices",
-        icon: FileText,
-      },
-      {
-        title: "About Us",
-        href: "/about",
-        description: "Learn more about our company and mission",
+        title: "Multi-language Support",
+        href: "/solutions/language",
+        description: "Full support in Somali and English languages",
+        icon: Globe,
       },
     ],
   },
@@ -154,32 +66,88 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
 export const COMPANY_MILESTONES = [
   {
     id: "founding",
-    year: "2023",
-    month: "November",
+    year: "2024",
+    month: "January",
     title: "Company Founded",
     description:
-      "Salut Enterprise was founded with our first manufacturing industry client.",
+      "Garemit was founded with a mission to serve the Somali diaspora in the UK.",
     category: "launch" as const,
   },
   {
     id: "expansion",
     year: "2024",
-    month: "January",
-    title: "Market Expansion",
+    month: "March",
+    title: "Mobile App Launch",
     description:
-      "Successfully helped 16 companies in the real-estate industry and partnered with local resellers.",
+      "Launched our mobile app for convenient money transfers on the go.",
     category: "growth" as const,
   },
   {
     id: "team-growth",
     year: "2024",
-    month: "March",
-    title: "Team Growth",
+    month: "April",
+    title: "Community Support",
     description:
-      "Expanded our team with talented sales professionals and developers to build a greater future together.",
+      "Expanded our support team with Somali-speaking representatives to better serve our community.",
     category: "team" as const,
   },
 ];
+
+export const TRANSFER_FEATURES = [
+  {
+    id: "fast",
+    title: "Fast Transfers",
+    icon: "clock",
+    description:
+      "Send money instantly to mobile money accounts or arrange cash pickup at convenient locations across Somalia.",
+    features: [
+      "Instant mobile money transfers",
+      "Same-day cash pickup",
+      "Real-time transfer tracking",
+      "Instant notifications",
+    ],
+  },
+  {
+    id: "secure",
+    title: "Bank-Grade Security",
+    icon: "shield",
+    description:
+      "Your money is protected with the highest level of security. We're fully regulated and your funds are always safe with us.",
+    features: [
+      "End-to-end encryption",
+      "Two-factor authentication",
+      "Fraud protection",
+      "Secure verification process",
+    ],
+  },
+  {
+    id: "affordable",
+    title: "Competitive Rates",
+    icon: "wallet",
+    description:
+      "Send more money home with our competitive rates and no hidden fees. We believe in transparent pricing.",
+    features: [
+      "Low transfer fees",
+      "No hidden charges",
+      "Best exchange rates",
+      "Transparent pricing",
+    ],
+  },
+  {
+    id: "community",
+    title: "Built for Somalis",
+    icon: "users",
+    description:
+      "We understand your needs because we're part of the same community. Our platform is designed with Somali culture and values at heart.",
+    features: [
+      "Somali language support",
+      "Cultural understanding",
+      "Community-focused service",
+      "Local expertise",
+    ],
+  },
+];
+
 export const ERP_IMPLEMENTATION_MILESTONES = [
   {
     id: "kick-off-meeting",
@@ -242,73 +210,11 @@ export const ERP_IMPLEMENTATION_MILESTONES = [
     category: "deployment" as const,
   },
 ];
-export const SERVICES = [
-  {
-    id: "horeca",
-    title: "HORECA Solutions",
-    description:
-      "Complete management solutions for hotels, restaurants, and catering businesses with integrated modules for seamless operations",
-    image: "https://images.unsplash.com/photo-1556742504-16b083241fab",
-    features: [
-      "Integrated Reservation System",
-      "Real-time Kitchen Display System",
-      "Smart Inventory Management",
-      "Staff Scheduling & Management",
-      "Customer Relationship Management",
-      "Financial Analytics & Reporting",
-    ],
-  },
-  {
-    id: "manufacturing",
-    title: "Manufacturing Software",
-    description:
-      "Enterprise-grade manufacturing solution with advanced production planning and real-time monitoring capabilities",
-    image: "https://images.unsplash.com/photo-1580983230712-f7d0f878bcc4",
-    features: [
-      "Advanced Production Planning",
-      "Quality Control & Assurance",
-      "Supply Chain Optimization",
-      "Cost & Resource Tracking",
-      "Maintenance Management",
-      "Compliance & Documentation",
-    ],
-  },
-  {
-    id: "pos",
-    title: "Point of Sale",
-    description:
-      "Comprehensive POS system with advanced features for retail and hospitality businesses, seamlessly integrated with back-office operations",
-    image: "https://images.unsplash.com/photo-1556742504-16b083241fab",
-    features: [
-      "Real-time Sales Analytics",
-      "Multi-store Inventory Control",
-      "Customer Loyalty Program",
-      "Advanced Payment Integration",
-      "Mobile POS Capabilities",
-      "Offline Mode Support",
-    ],
-  },
-  {
-    id: "real-estate",
-    title: "Real Estate Management",
-    description:
-      "Complete property management solution with powerful tools for real estate professionals and property managers",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab",
-    features: [
-      "Advanced Property Listings",
-      "Tenant & Lease Management",
-      "Maintenance Request System",
-      "Financial & Portfolio Analysis",
-      "Document Management",
-      "Property Inspection Tools",
-    ],
-  },
-];
 
 export const VIDEO_TESTIMONIALS = [
   {
     id: "gourmet-coffee-testimonial",
-    title: "From Legacy Systems to Modern Enterprise Solution",
+    title: "From Legacy Systems to Modern  Solution",
     clientName: "Sherif Abdala",
     position: "CEO",
     company: "Gourmet Coffee",
@@ -322,8 +228,8 @@ export const VIDEO_TESTIMONIALS = [
     title: "Smart Factory Success Story",
     clientName: "Sarah Johnson",
     position: "Plant Manager",
-    company: "TechManufacturing Inc.",
-    videoUrl: "https://example.com/testimonials/techmanufacturing.mp4",
+    company: "Manufacturing Inc.",
+    videoUrl: "https://example.com/testimonials/manufacturing.mp4",
     thumbnail: "https://images.unsplash.com/photo-1565785755661-61aa53ca37c7",
   },
   {
@@ -340,12 +246,12 @@ export const VIDEO_TESTIMONIALS = [
 export const CASE_STUDIES = [
   {
     id: "gourmet-coffee",
-    title: "Gourmet Coffee's Journey to Modern Enterprise Solutions",
+    title: "Gourmet Coffee's Journey to Modern  Solutions",
     industry: "Manufacturing & HORECA",
     challenge:
       "As Romania's pioneering coffee producer since 1996, Gourmet Coffee faced challenges with fragmented systems (Winmentor and SagaSoft), limiting their ability to efficiently manage production tracking, quality control, and market differentiation. They needed a solution that could handle their diverse operations while maintaining their commitment to premium quality.",
     solution:
-      "Implemented a comprehensive enterprise solution that unified their production management, quality control, and distribution operations. The system was tailored to support their unique coffee blend customization process and streamline their private labeling capabilities.",
+      "Implemented a comprehensive  solution that unified their production management, quality control, and distribution operations. The system was tailored to support their unique coffee blend customization process and streamline their private labeling capabilities.",
     results: [
       "Streamlined production tracking and quality control",
       "Enhanced coffee blend customization capabilities",
@@ -356,7 +262,7 @@ export const CASE_STUDIES = [
     ],
     testimonial: {
       quote:
-        "The transition from our legacy systems to SalutTech's solution has revolutionized how we manage our coffee production and distribution operations. As Romania's first company specialized in private labeling of coffee, we needed a system that could handle our unique requirements, and this solution has exceeded our expectations.",
+        "The transition from our legacy systems to dolcenera's solution has revolutionized how we manage our coffee production and distribution operations. As Romania's first company specialized in private labeling of coffee, we needed a system that could handle our unique requirements, and this solution has exceeded our expectations.",
       author: "Sherif Abdala",
       position: "CEO",
       company: "Gourmet Coffee",
@@ -448,16 +354,13 @@ export const TEAM_MEMBERS = [
     id: "ceo",
     name: "Shakuur Ally",
     role: "CEO & Founder",
-    bio: "Extensive experience across multiple software industries, bringing innovative solutions to enterprise challenges.",
-    expertise: [
-      "Strategic Planning",
-      "Digital Transformation",
-      "Enterprise Solutions",
-    ],
+    bio: "Extensive experience across multiple software industries, bringing innovative solutions to  challenges.",
+    expertise: ["Strategic Planning", "Digital Transformation", " Solutions"],
     image:
       "https://res.cloudinary.com/do3dahfvh/image/upload/v1697357976/lx7l2p8rpywnz5jfn5oa.jpg",
     social: {
-      linkedin: "https://www.linkedin.com/in/rooblecali/",
+      facebook: "https://www.facebook.com/dolcenerashop",
+      instagram: "https://www.instagram.com/dolceneracoffee",
     },
   },
   {
@@ -469,7 +372,8 @@ export const TEAM_MEMBERS = [
     image:
       "https://res.cloudinary.com/do3dahfvh/image/upload/v1731747105/ttt1fmtpdnxfv3gagevm.png",
     social: {
-      linkedin: "https://www.linkedin.com/in/sherif-abdala-03640932/",
+      facebook: "https://www.facebook.com/dolcenerashop",
+      instagram: "https://www.instagram.com/dolceneracoffee",
     },
   },
 ];

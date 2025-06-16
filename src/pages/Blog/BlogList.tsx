@@ -96,7 +96,7 @@ export const BlogList = () => {
                 <meta name="description" content="Discover the latest trends and insights from our blog." />
             </Helmet>
 
-            <div className="relative overflow-hidden bg-gradient-to-b from-primary/5 to-transparent pt-20 pb-24">
+            <div className="relative overflow-hidden bg-white pt-20 pb-24">
                 {/* Decorative Elements */}
                 <div className="absolute inset-0 animate-fade-in">
                     <div className="absolute bottom-10 right-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl opacity-50" />
@@ -104,33 +104,15 @@ export const BlogList = () => {
                 </div>
 
                 <div className="container mx-auto px-4 pt-12 lg:pt-16 relative">
-                    <div className="flex flex-col items-center max-w-4xl mx-auto">
+                    <div className="flex flex-col items-center max-w-7xl mx-auto">
                         <div className="space-y-8 animate-fade-in text-center">
                             <div className="space-y-10">
                                 <h1 className="text-5xl lg:text-6xl font-bold tracking-tight animate-slide-in ">
                                     <span className="block mb-4">
-                                        ERP, Security &
-                                        <span className="relative ml-3">
-                                            AI Updates
-                                            <svg
-                                                className="absolute -bottom-1 left-0 w-full"
-                                                viewBox="0 0 100 10"
-                                                preserveAspectRatio="none"
-                                            >
-                                                <path
-                                                    d="M0,5 Q50,9 100,5"
-                                                    stroke="currentColor"
-                                                    strokeWidth="2"
-                                                    fill="none"
-                                                    className="text-primary"
-                                                />
-                                            </svg>
-                                        </span>
-                                        !
+                                        Noutăți Dolcenera Franchising
                                     </span>
                                     <span className="block mt-2 font-medium text-primary text-3xl">
-
-                                        Discover the latest trends in ERP, AI, and security for 2025 to keep your business ahead of the curve. Stay informed and ready for the future!
+                                        Află ultimele noutăți, povești de succes și tendințe din universul Dolcenera Franchising. Inspiră-te și descoperă oportunitățile de franciză pentru viitor!
                                     </span>
                                     <div className="flex -mb-5 items-center justify-center">
                                         <img src="https://odoocdn.com/openerp_website/static/src/img/graphics/arrow_doodle_1.svg" alt="" />
@@ -158,7 +140,7 @@ export const BlogList = () => {
 
             </div >
 
-            <div className="max-w-6xl mx-auto px-4 py-5">
+            <div className="max-w-7xl mx-auto px-4 py-5">
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {posts.map((post) => (
                         <article key={post.sys.id} className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-100 flex flex-col">

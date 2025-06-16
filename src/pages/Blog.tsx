@@ -1,17 +1,16 @@
 import { Helmet } from "react-helmet";
-import { useTranslation } from "react-i18next";
 import { Link } from "wouter";
 
 const BLOG_POSTS = [
     {
         id: 1,
-        title: "The Future of Enterprise Resource Planning: AI and Automation",
+        title: "The Future of  Resource Planning: AI and Automation",
         excerpt: "Discover how artificial intelligence and automation are transforming ERP systems and revolutionizing business operations.",
-        category: "Technology",
+        category: "nology",
         date: "2024-03-15",
         readTime: "8 min read",
         image: "/blog/erp-future.jpg",
-        slug: "future-of-enterprise-resource-planning"
+        slug: "future-of--resource-planning"
     },
     {
         id: 2,
@@ -36,65 +35,69 @@ const BLOG_POSTS = [
 ];
 
 export function Blog() {
-    const { t } = useTranslation();
 
     return (
         <>
             <Helmet>
-                <title>Blog | {t('common.company_name')} - Enterprise Management Insights</title>
-                <meta name="description" content="Stay updated with the latest insights on enterprise management, digital transformation, and industry trends. Expert analysis and best practices from Salut Enterprise." />
-                <meta name="keywords" content="ERP blog, enterprise management, digital transformation, manufacturing insights, retail technology, business automation" />
+                <title>Blog | Dolcenera Franchising - Management Insights</title>
+                <meta name="description" content="Stay updated with the latest insights on management, digital transformation, and industry trends. Expert analysis and best practices from Dolcenera Franchising." />
+                <meta name="keywords" content="ERP blog, management, digital transformation, manufacturing insights, retail, business automation, Dolcenera Franchising" />
 
                 {/* Open Graph tags */}
-                <meta property="og:title" content={`Blog | ${t('common.company_name')} - Enterprise Management Insights`} />
-                <meta property="og:description" content="Stay updated with the latest insights on enterprise management, digital transformation, and industry trends. Expert analysis and best practices from Salut Enterprise." />
+                <meta property="og:title" content="Dolcenera Franchising Blog" />
+                <meta property="og:description" content="Expert analysis and best practices from Dolcenera Franchising." />
                 <meta property="og:type" content="blog" />
-                <meta property="og:url" content="https://saluttech.ro/blog" />
-                <meta property="og:image" content="https://saluttech.ro/blog/og-image.jpg" />
+                <meta property="og:url" content="https://dolcenera.com/blog" />
+                <meta property="og:image" content="https://dolcenera.com/blog/og-image.jpg" />
 
                 {/* Twitter Card tags */}
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content={`Blog | ${t('common.company_name')} - Enterprise Management Insights`} />
-                <meta name="twitter:description" content="Stay updated with the latest insights on enterprise management, digital transformation, and industry trends. Expert analysis and best practices from Salut Enterprise." />
-                <meta name="twitter:image" content="https://saluttech.ro/blog/og-image.jpg" />
+                <meta name="twitter:title" content="Dolcenera Franchising Blog" />
+                <meta name="twitter:description" content="Expert analysis and best practices from Dolcenera Franchising." />
+                <meta name="twitter:image" content="https://dolcenera.com/blog/og-image.jpg" />
 
                 {/* Structured data */}
                 <script type="application/ld+json">
                     {JSON.stringify({
                         "@context": "https://schema.org",
                         "@type": "Blog",
-                        "name": `${t('common.company_name')} Blog`,
-                        "description": "Enterprise management insights and industry trends",
-                        "url": "https://saluttech.ro/blog",
+                        "name": "Dolcenera Franchising Blog",
+                        "description": "Management insights and industry trends from Dolcenera Franchising",
+                        "url": "https://dolcenera.com/blog",
                         "publisher": {
                             "@type": "Organization",
-                            "name": "Salut Enterprise",
+                            "name": "Dolcenera Franchising",
                             "logo": {
                                 "@type": "ImageObject",
-                                "url": "https://saluttech.ro/logo.jpeg"
+                                "url": "https://dolcenera.com/logo.jpeg"
                             }
                         },
                         "blogPost": BLOG_POSTS.map(post => ({
                             "@type": "BlogPosting",
                             "headline": post.title,
                             "description": post.excerpt,
-                            "image": `https://saluttech.ro${post.image}`,
+                            "image": `https://dolcenera.com${post.image}`,
                             "datePublished": post.date,
                             "author": {
                                 "@type": "Organization",
-                                "name": "Salut Enterprise"
+                                "name": "Dolcenera Franchising"
                             }
                         }))
                     })}
                 </script>
+
+                <meta name="author" content="Dolcenera Franchising" />
+                <link rel="canonical" href="https://dolcenera.com/blog" />
+                <link rel="alternate" hrefLang="en" href="https://dolcenera.com/blog" />
+                <link rel="alternate" hrefLang="ro" href="https://dolcenera.com/ro/blog" />
             </Helmet>
 
-            <div className="min-h-screen bg-gradient-to-br from-background via-primary/5 to-background">
+            <div className="min-h-screen bg-white">
                 <div className="container mx-auto px-4 py-16">
-                    <div className="max-w-4xl mx-auto">
-                        <h1 className="text-4xl font-bold text-center mb-8">Enterprise Management Insights</h1>
+                    <div className="max-w-7xl mx-auto">
+                        <h1 className="text-4xl font-bold text-center mb-8">Management Insights Dolcenera Franchising</h1>
                         <p className="text-xl text-gray-600 text-center mb-12">
-                            Expert analysis, industry trends, and best practices for modern enterprise management
+                            Expert analysis, industry trends, and best practices for modern management from Dolcenera Franchising
                         </p>
 
                         <div className="grid gap-8">

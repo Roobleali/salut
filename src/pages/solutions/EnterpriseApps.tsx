@@ -60,7 +60,7 @@ const ERPSolutionsPage = () => {
       outcome: "Implement robust reporting, client management, transaction tracking, and regulatory compliance tools",
     },
     {
-      title: "Technology & Software",
+      title: "nology & Software",
       desire: "Accelerate product development",
       outcome: "Manage project timelines, resource allocation, client communications, and iterative development processes",
     }
@@ -78,7 +78,7 @@ const ERPSolutionsPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <Badge className="mb-4">Enterprise Solutions</Badge>
+              <Badge className="mb-4"> Solutions</Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary via-primary/90 to-primary/80 bg-clip-text text-transparent">
                 {t('onboarding.title')}
               </h1>
@@ -88,7 +88,7 @@ const ERPSolutionsPage = () => {
 
               </p>
               <div className="flex gap-4 justify-center">
-                <a href="https://cal.com/salut">
+                <a href="https://cal.com/dolcenera">
                   <Button size="lg" className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70">
                     Schedule Demo <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
@@ -152,7 +152,7 @@ const ERPSolutionsPage = () => {
             transition={{ duration: 0.5 }}
             className="max-w-3xl mx-auto"
           >
-            <h2 className="text-3xl font-bold text-center mb-12">Why Choose Salut Enterprise?</h2>
+            <h2 className="text-3xl font-bold text-center mb-12">Why Choose dolcenera ?</h2>
             <div className="grid sm:grid-cols-2 gap-6">
               {BENEFITS.map((benefit, index) => (
                 <motion.div
@@ -186,7 +186,7 @@ const ERPSolutionsPage = () => {
           >
             <h2 className="text-3xl font-bold mb-6">Ready to Transform Your Business?</h2>
             <p className="text-xl text-gray-600 mb-8">
-              Experience the transformative power of Salut Enterprise today.
+              Experience the transformative power of dolcenera  today.
             </p>
             <Link href="/contact">
               <Button size="lg" className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70">

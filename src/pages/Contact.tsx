@@ -1,5 +1,4 @@
 import { useRef, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
@@ -13,18 +12,16 @@ import emailjs from '@emailjs/browser';
 import { Building2, Clock, MessagesSquare, Shield, Users, Loader2 } from 'lucide-react';
 
 export function Contact() {
-  const { t, } = useTranslation();
-
-  const formSchema = z.object({
-    name: z.string().min(2, t('form.name.error')),
-    email: z.string().email(t('form.email.error')),
-    company: z.string().min(2, t('form.company.error')),
-    message: z.string().min(10, t('form.message.error')),
-  });
-
   const { toast } = useToast();
   const formRef = useRef<HTMLFormElement>(null);
   const [isLoading, setIsLoading] = useState(false);
+
+  const formSchema = z.object({
+    name: z.string().min(2, 'Please enter your name.'),
+    email: z.string().email('Please enter a valid email address.'),
+    company: z.string().min(2, 'Please enter your company name.'),
+    message: z.string().min(10, 'Please enter a message.'),
+  });
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -39,23 +36,23 @@ export function Contact() {
   const trustElements = [
     {
       icon: Clock,
-      title: t('trustElements.support.title'),
-      description: t('trustElements.support.description')
+      title: '24/7 Support',
+      description: 'Our team is always available to assist you with your remittance needs.'
     },
     {
       icon: Shield,
-      title: t('trustElements.security.title'),
-      description: t('trustElements.security.description')
+      title: 'Secure & Trusted',
+      description: 'Your data and transfers are protected with industry-leading security.'
     },
     {
       icon: Users,
-      title: t('trustElements.clients.title'),
-      description: t('trustElements.clients.description')
+      title: 'Thousands of Clients',
+      description: 'Trusted by the Somali community in the UK and beyond.'
     },
     {
       icon: Building2,
-      title: t('trustElements.expert.title'),
-      description: t('trustElements.expert.description')
+      title: 'Remittance Experts',
+      description: 'Years of experience serving the diaspora with care and professionalism.'
     }
   ];
 
@@ -65,7 +62,7 @@ export function Contact() {
 
     try {
       const templateParams = {
-        to_name: "Salut Tech Team",
+        to_name: "dolcenera  Team",
         from_name: values.name,
         from_email: values.email,
         company: values.company,
@@ -81,8 +78,8 @@ export function Contact() {
       );
 
       toast({
-        title: t('form.success.title'),
-        description: t('form.success.description'),
+        title: 'Message Sent',
+        description: 'We will respond to your message as soon as possible.',
       });
       form.reset();
 
@@ -93,8 +90,8 @@ export function Contact() {
     } catch (error) {
       console.error('EmailJS Error:', error);
       toast({
-        title: t('form.error.title'),
-        description: t('form.error.description'),
+        title: 'Message Error',
+        description: 'There was an error sending your message. Please try again later.',
         variant: "destructive",
       });
     } finally {
@@ -107,9 +104,9 @@ export function Contact() {
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
-            <h1 className="text-4xl font-bold mb-4">{t('pageTitle')}</h1>
+            <h1 className="text-4xl font-bold mb-4">Contact Garemit</h1>
             <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              {t('pageSubtitle')}
+              We're here to help. Reach out to our team for support, questions, or partnership opportunities.
             </p>
           </div>
 
@@ -128,38 +125,33 @@ export function Contact() {
           <div className="grid md:grid-cols-2 gap-8 bg-white rounded-xl shadow-sm p-8">
             <Card className="border-none shadow-none">
               <CardHeader>
-                <CardTitle className="text-2xl">{t('contactInfo.title')}</CardTitle>
+                <CardTitle className="text-2xl">Contact Information</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-6">
                   <div>
-                    <h3 className="font-semibold mb-2 text-lg">{t('contactInfo.email.label')}</h3>
-                    <a href="mailto:info@saluttech.ro" className="text-primary hover:underline">
-                      {t('contactInfo.email.value')}
+                    <h3 className="font-semibold mb-2 text-lg">Email</h3>
+                    <a href="mailto:info@garemit.com" className="text-primary hover:underline">
+                      info@garemit.com
                     </a>
                   </div>
                   <div>
-                    <h3 className="font-semibold mb-2 text-lg">{t('contactInfo.phone.label')}</h3>
-                    <a href="tel:+40743118879" className="text-primary hover:underline">
-                      {t('contactInfo.phone.value')}
+                    <h3 className="font-semibold mb-2 text-lg">Phone</h3>
+                    <a href="tel:+441234567890" className="text-primary hover:underline">
+                      +44 1234 567890
                     </a>
                   </div>
                   <div>
-                    <h3 className="font-semibold mb-2 text-lg">{t('contactInfo.address.label')}</h3>
+                    <h3 className="font-semibold mb-2 text-lg">Address</h3>
                     <p className="text-gray-600">
-                      {t('contactInfo.address.value').split('\n').map((line, i) => (
-                        <span key={i}>
-                          {line}
-                          <br />
-                        </span>
-                      ))}
+                      Garemit Ltd.<br />123 Somali Street<br />London, UK
                     </p>
                   </div>
                   <div className="pt-4">
                     <MessagesSquare className="h-12 w-12 text-primary mb-4" />
-                    <h3 className="font-semibold mb-2">{t('contactInfo.response.title')}</h3>
+                    <h3 className="font-semibold mb-2">Fast Response</h3>
                     <p className="text-sm text-gray-600">
-                      {t('contactInfo.response.description')}
+                      We aim to respond to all inquiries within 24 hours.
                     </p>
                   </div>
                 </div>
@@ -168,7 +160,7 @@ export function Contact() {
 
             <Card className="border-none shadow-none">
               <CardHeader>
-                <CardTitle className="text-2xl">{t('form.title')}</CardTitle>
+                <CardTitle className="text-2xl">Send Us a Message</CardTitle>
               </CardHeader>
               <CardContent>
                 <Form {...form}>
@@ -178,9 +170,9 @@ export function Contact() {
                       name="name"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>{t('form.name.label')}</FormLabel>
+                          <FormLabel>Your Name</FormLabel>
                           <FormControl>
-                            <Input placeholder={t('form.name.placeholder')} {...field} />
+                            <Input placeholder="Enter your full name" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -191,9 +183,9 @@ export function Contact() {
                       name="email"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>{t('form.email.label')}</FormLabel>
+                          <FormLabel>Your Email</FormLabel>
                           <FormControl>
-                            <Input placeholder={t('form.email.placeholder')} type="email" {...field} />
+                            <Input placeholder="Enter your email address" type="email" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -204,9 +196,9 @@ export function Contact() {
                       name="company"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>{t('form.company.label')}</FormLabel>
+                          <FormLabel>Company (optional)</FormLabel>
                           <FormControl>
-                            <Input placeholder={t('form.company.placeholder')} {...field} />
+                            <Input placeholder="Enter your company name" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -217,10 +209,10 @@ export function Contact() {
                       name="message"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>{t('form.message.label')}</FormLabel>
+                          <FormLabel>Message</FormLabel>
                           <FormControl>
                             <Textarea
-                              placeholder={t('form.message.placeholder')}
+                              placeholder="How can we help you?"
                               className="min-h-[120px]"
                               {...field}
                             />
@@ -233,10 +225,10 @@ export function Contact() {
                       {isLoading ? (
                         <>
                           <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                          {t('form.sending')}
+                          Sending...
                         </>
                       ) : (
-                        t('form.submit')
+                        'Send Message'
                       )}
                     </Button>
                   </form>

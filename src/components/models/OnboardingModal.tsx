@@ -1,5 +1,3 @@
-// @ts-ignore: Unused variable
-
 import { useState, useEffect } from "react";
 import {
     Dialog,
@@ -19,56 +17,52 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import {
-    Loader2,
-    ArrowRight,
-    ArrowLeft,
-    Building2,
-    Search,
-    CheckCircle2,
-} from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import emailjs from "@emailjs/browser";
 
-const formSchema = z
-    .object({
-        company: z.string(),
-        cui: z.string(),
-        cod_postal: z.string(),
-        address: z.string().optional(),
-        county: z.string().optional(),
-        phone: z.string().optional(),
-        numar_reg_com: z.string().optional(),
-        adminName: z.string().min(1, "Admin name is required"),
-        email: z.string().email("Invalid email address"),
-        adminPassword: z
-            .string()
-            .min(6, "Password must be at least 6 characters"),
-        confirmPassword: z.string(),
-    })
+// Step types for Garemit onboarding
+type StepType = "SIGNUP" | "PROFILE" | "INTENT" | "VERIFY" | "DASHBOARD" | "KYC" | "COMPLETED";
 
-    .refine((data) => data.adminPassword === data.confirmPassword, {
-        message: "Passwords do not match",
-        path: ["confirmPassword"],
-    });
+// Analytics event types
+type AnalyticsEvent = {
+    event: string;
+    step: StepType;
+    timestamp: number;
+    data?: any;
+};
+
+// Local storage keys
+const STORAGE_KEYS = {
+    ONBOARDING_PROGRESS: 'garemit_onboarding_progress',
+    ONBOARDING_STEP: 'garemit_onboarding_step',
+    ONBOARDING_FORM_DATA: 'garemit_onboarding_form_data',
+};
+
+const formSchema = z.object({
+    email: z.string().email("Invalid email address"),
+    password: z.string().min(6, "Password must be at least 6 characters"),
+    consent: z.boolean().refine(val => val, { message: "You must accept the terms and privacy policy" }),
+    referral: z.string().optional(),
+    // Step 2
+    fullName: z.string().optional(),
+    country: z.string().optional(),
+    phone: z.string().optional(),
+    language: z.string().optional(),
+    // Step 3
+    destination: z.string().optional(),
+    frequency: z.string().optional(),
+    recipientType: z.string().optional(),
+    typicalAmount: z.string().optional(),
+    // Step 4 (OTP)
+    otp: z.string().optional(),
+    // Step 6 (KYC)
+    idUpload: z.any().optional(),
+    selfie: z.any().optional(),
+    proofOfAddress: z.any().optional(),
+});
 
 type FormData = z.infer<typeof formSchema>;
-
-
-
-type StepType =
-    | "COMPANY_DETAILS"
-    | "ADMIN_SETUP"
-    | "COMPLETED";
-
-const STEPS: Record<StepType, string> = {
-    COMPANY_DETAILS: "Company Details",
-    ADMIN_SETUP: "Admin Account Setup",
-    COMPLETED: "Request Submitted",
-};
 
 interface OnboardingModalProps {
     open: boolean;
@@ -76,678 +70,258 @@ interface OnboardingModalProps {
 }
 
 export function OnboardingModal({ open, onOpenChange }: OnboardingModalProps) {
-    const [step, setStep] = useState<StepType>("COMPANY_DETAILS");
-    const [isLoading, setIsLoading] = useState(false);
-    const [isLookingUp, setIsLookingUp] = useState(false);
-    const [loadingStage, setLoadingStage] = useState<LoadingStage>({
-        stage: 'init',
-        message: ''
-    });
+    const [step, setStep] = useState<StepType>("SIGNUP");
 
+    const STEPS: Record<StepType, string> = {
+        SIGNUP: "Sign Up / Sign In",
+        PROFILE: "Basic Profile Setup",
+        INTENT: "Transfer Intent",
+        VERIFY: "Verify Email / Phone",
+        DASHBOARD: "Welcome to Garemit!",
+        KYC: "KYC / ID Verification",
+        COMPLETED: "Completed",
+    };
 
+    // Track total steps and current step number
+    const TOTAL_STEPS = 7; // Total number of steps in the onboarding process
+    const currentStepNumber = (() => {
+        const stepOrder: StepType[] = ["SIGNUP", "PROFILE", "INTENT", "VERIFY", "DASHBOARD", "KYC", "COMPLETED"];
+        return stepOrder.indexOf(step) + 1;
+    })();
 
-    const { toast } = useToast();
+    // Analytics tracking function
+    const trackEvent = (event: string, data?: any) => {
+        const analyticsEvent: AnalyticsEvent = {
+            event,
+            step,
+            timestamp: Date.now(),
+            data
+        };
 
-    useEffect(() => {
+        // Log to console for development
+        console.log('Analytics Event:', analyticsEvent);
+    };
+
+    // Save progress to local storage
+    const saveProgress = (formData: FormData) => {
         try {
-            emailjs.init("Zf4lxizbewKMs2_SJ");
+            localStorage.setItem(STORAGE_KEYS.ONBOARDING_PROGRESS, JSON.stringify({
+                step,
+                formData,
+                lastUpdated: Date.now()
+            }));
         } catch (error) {
-            console.error("Failed to initialize EmailJS:", error);
-            toast({
-                variant: "destructive",
-                title: "Service Error",
-                description:
-                    "Failed to initialize email service. Please try again later.",
-            });
+            console.error('Failed to save progress:', error);
         }
-    }, []);
+    };
+
+    // Load progress from local storage
+    const loadProgress = () => {
+        try {
+            const savedProgress = localStorage.getItem(STORAGE_KEYS.ONBOARDING_PROGRESS);
+            if (savedProgress) {
+                const { step: savedStep, formData } = JSON.parse(savedProgress);
+                setStep(savedStep as StepType);
+                form.reset(formData);
+                trackEvent('resume_onboarding', { savedStep });
+            }
+        } catch (error) {
+            console.error('Failed to load progress:', error);
+        }
+    };
+
+    // Track modal open/close events
+    useEffect(() => {
+        if (open) {
+            trackEvent('open_modal');
+            loadProgress();
+        } else {
+            trackEvent('close_modal');
+        }
+    }, [open]);
+
+    // Track step changes
+    useEffect(() => {
+        trackEvent('step_change', { from: step });
+    }, [step]);
 
     const form = useForm<FormData>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            company: "",
-            cui: "",
-            cod_postal: "",
-            address: "",
-            county: "",
-            phone: "",
-            numar_reg_com: "",
-            adminName: "",
             email: "",
-            adminPassword: "",
-            confirmPassword: "",
+            password: "",
+            consent: false,
+            referral: "",
+            fullName: "",
+            country: "",
+            phone: "",
+            language: "",
+            destination: "",
+            frequency: "",
+            recipientType: "",
+            typicalAmount: "",
+            otp: "",
         },
     });
-    const baseurl = import.meta.env.VITE_BASE_URL as string;
 
-    const lookupCompany = async (cui: string) => {
-        if (!cui) {
-            toast({
-                variant: "destructive",
-                title: "Validation Error",
-                description: "Please enter a CUI number",
-            });
-            return;
-        }
-
-        setIsLookingUp(true);
-        try {
-            const sanitizedCui = cui
-                .toString()
-                .trim()
-                .replace(/[^0-9]/g, "");
-            const response = await fetch(
-                `${baseurl}/api/anaf-lookup?cui=${sanitizedCui}`,
-            );
-
-            const data = await response.json();
-            console.log(data)
-            if (!response.ok) {
-                throw new Error(data.error || response.statusText);
-            }
-
-            if (data?.found) {
-                form.setValue("company", data.denumire);
-                form.setValue("address", data.adresa || "");
-                form.setValue("county", data.judet || "");
-                form.setValue("phone", data.telefon || "");
-                form.setValue("cui", data.cif || "");
-                form.setValue("cod_postal", data.cod_postal || "");
-                form.setValue("numar_reg_com", data.numar_reg_com || "");
-                toast({
-                    title: "Success",
-                    description:
-                        "Company details found and filled automatically.",
-                });
-            } else {
-                toast({
-                    variant: "destructive",
-                    title: "Company Not Found",
-                    description: data.error || "Could not find company details for the provided CUI.",
-                });
-            }
-        } catch (error: any) {
-            console.error("Company lookup error:", error);
-            toast({
-                variant: "destructive",
-                title: "Lookup Error",
-                description: error.message || "Failed to lookup company details. Please try again or enter manually.",
-            });
-        } finally {
-            setIsLookingUp(false);
-        }
-    };
-
-    const sendEmail = async (data: FormData) => {
-        try {
-            const result = await emailjs.send(
-                "service_lnippfb",
-                "template_ck1avc9",
-                {
-                    to_name: "Salut Enterprise Team",
-                    company: data.company,
-
-                    email: data.email,
-                    phone: data.phone || "N/A",
-                    address: data.address || "N/A",
-                    county: data.county || "N/A",
-                    cui: data.cui || "N/A",
-                    admin_name: data.adminName,
-                },
-            );
-
-            if (result.status === 200) {
-                // Email sent successfully
-            }
-        } catch (error) {
-            console.error("EmailJS error:", error);
-            // Don't throw here as this is a non-critical error
-            toast({
-                variant: "default",
-                title: "⚠️ Warning",
-                description:
-                    "Could not send email notification, but your company was created successfully.",
-            });
-        }
-    };
-    const onSubmit = async (data: FormData) => {
-        setIsLoading(true);
-        try {
-            setLoadingStage({ stage: 'company', message: 'Creating your company...' });
-
-            const response = await fetch(`${baseurl}/api/odoo/create-company`, {
-                method: "POST",
-                credentials: "include",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    name: data.company,
-                    email: data.email,
-                    cod_postal: data.cod_postal,
-                    phone: data.phone || undefined,
-                    street: data.address || undefined,
-                    cui: data.cui || undefined,
-                    city: data.county || undefined,
-                    numar_reg_com: data.numar_reg_com || undefined,
-                    adminName: data.adminName,
-                    adminLogin: data.email,
-                    adminPassword: data.adminPassword,
-                }),
-            });
-
-            const responseData = await response.json();
-
-            if (!response.ok) {
-                throw new Error(responseData.error || "Failed to create company");
-            }
-
-            setLoadingStage({ stage: 'admin', message: 'Setting up admin account...' });
-            await sendEmail(data);
-
-            setLoadingStage({ stage: 'finalizing', message: 'Initializing your dashboard...' });
-            toast({
-                title: "Success",
-                description: "Your company has been created successfully. Redirecting to your dashboard...",
-            });
-
-            setStep("COMPLETED");
-
-            // First get the login page to obtain the CSRF token
-            try {
-                const loginPageResponse = await fetch('https://invoices.saluttech.ro/web/login', {
-                    method: 'GET',
-                    credentials: 'include',
-                });
-
-                const loginPageHtml = await loginPageResponse.text();
-
-                // Create temporary element to parse HTML
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(loginPageHtml, 'text/html');
-
-                // Get CSRF token
-                const csrfToken = doc.querySelector('input[name="csrf_token"]')?.getAttribute('value');
-
-                // Create form with CSRF token
-                const form = document.createElement('form');
-                form.method = 'POST';
-                form.action = 'https://invoices.saluttech.ro/web/login';
-                form.style.display = 'none';
-
-                // Add CSRF token
-                if (csrfToken) {
-                    const csrfInput = document.createElement('input');
-                    csrfInput.type = 'hidden';
-                    csrfInput.name = 'csrf_token';
-                    csrfInput.value = csrfToken;
-                    form.appendChild(csrfInput);
-                }
-
-                // Add other required fields
-                const formFields = {
-                    'login': data.email,
-                    'password': data.adminPassword,
-                    'db': 'invoices.saluttech.ro',
-                    'redirect': '/web'
-                };
-
-                Object.entries(formFields).forEach(([name, value]) => {
-                    const input = document.createElement('input');
-                    input.type = 'hidden';
-                    input.name = name;
-                    input.value = value;
-                    form.appendChild(input);
-                });
-
-                document.body.appendChild(form);
-
-                setTimeout(() => {
-                    form.submit();
-                }, 2000);
-
-            } catch (error) {
-                console.error('Login error:', error);
-                // Fallback to direct URL if form submission fails
-                window.location.href = `https://invoices.saluttech.ro/web/login?login=${encodeURIComponent(data.email)}&password=${encodeURIComponent(data.adminPassword)}&db=invoices.saluttech.ro&redirect=${encodeURIComponent('/web')}`;
-            }
-
-        } catch (error: any) {
-            console.error("Submission error:", error);
-            toast({
-                variant: "destructive",
-                title: "Error",
-                description: error.message || "An unexpected error occurred. Please try again.",
-            });
-            setIsLoading(false);
-            setLoadingStage({ stage: 'init', message: '' });
-        }
-    };
-
-    const validateCurrentStep = () => {
-        if (step === "COMPLETED") return true;
-
-        const currentFields = {
-            COMPANY_DETAILS: ["company", "cui"],
-            ADMIN_SETUP: [
-                "adminName",
-                "email",
-                "adminPassword",
-                "confirmPassword",
-            ],
-        }[step];
-
-        return currentFields.every((field) => {
-            const value = form.getValues(field as keyof FormData);
-            return value && value.length > 0;
+    // Save form data on change
+    useEffect(() => {
+        const subscription = form.watch((formData) => {
+            saveProgress(formData as FormData);
         });
-    };
-
-    const progress = (() => {
-        const stepValues: StepType[] = [
-            "COMPANY_DETAILS",
-            "ADMIN_SETUP",
-            "COMPLETED",
-        ];
-        const currentIndex = stepValues.indexOf(step);
-        return (currentIndex / (stepValues.length - 1)) * 100;
-    })();
+        return () => subscription.unsubscribe();
+    }, [form.watch]);
 
     const goToNextStep = () => {
-        if (validateCurrentStep()) {
-            const stepOrder: StepType[] = [
-                "COMPANY_DETAILS",
-                "ADMIN_SETUP",
-                "COMPLETED",
-            ];
-            const currentIndex = stepOrder.indexOf(step);
-            if (currentIndex < stepOrder.length - 1) {
-                setStep(stepOrder[currentIndex + 1]);
-            }
+        const stepOrder: StepType[] = ["SIGNUP", "PROFILE", "INTENT", "VERIFY", "DASHBOARD", "KYC", "COMPLETED"];
+        const currentIndex = stepOrder.indexOf(step);
+        if (currentIndex < stepOrder.length - 1) {
+            setStep(stepOrder[currentIndex + 1]);
         }
     };
 
     const goToPreviousStep = () => {
-        const stepOrder: StepType[] = [
-            "COMPANY_DETAILS",
-            "ADMIN_SETUP",
-            "COMPLETED",
-        ];
+        const stepOrder: StepType[] = ["SIGNUP", "PROFILE", "INTENT", "VERIFY", "DASHBOARD", "KYC", "COMPLETED"];
         const currentIndex = stepOrder.indexOf(step);
         if (currentIndex > 0) {
             setStep(stepOrder[currentIndex - 1]);
         }
     };
 
-    interface LoadingStage {
-        stage: 'init' | 'company' | 'admin' | 'finalizing';
-        message: string;
-    }
-
-    interface LoadingStateProps {
-        stage: LoadingStage;
-    }
-
-    const LoadingState = ({ stage }: LoadingStateProps) => (
-        <div className="py-6 space-y-6 text-center">
-            <div className="flex flex-col items-center gap-4">
-                <Loader2 className="h-8 w-8 animate-spin text-primary" />
-                <div className="space-y-2">
-                    <h3 className="text-lg font-semibold text-primary">
-                        {stage.stage === 'company' && "Creating Your Company..."}
-                        {stage.stage === 'admin' && "Setting Up Admin Account..."}
-                        {stage.stage === 'finalizing' && "Finalizing Setup..."}
-                    </h3>
-                    <p className="text-sm text-muted-foreground max-w-md mx-auto">
-                        {stage.stage === 'company' && "Building your digital workspace. This might take a minute..."}
-                        {stage.stage === 'admin' && "Configuring administrative access and permissions..."}
-                        {stage.stage === 'finalizing' && "Almost there! Preparing your dashboard..."}
-                    </p>
-                </div>
-            </div>
-            <div className="space-y-4">
-                <Progress
-                    value={
-                        stage.stage === 'company' ? 33 :
-                            stage.stage === 'admin' ? 66 :
-                                stage.stage === 'finalizing' ? 90 : 0
-                    }
-                    className="h-2"
-                />
-                <p className="text-xs text-muted-foreground">
-                    Please don't close this window
-                </p>
-            </div>
-        </div>
-    );
-
-
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
-            <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
+            <DialogContent className="sm:max-w-[500px] max-h-[90vh] overflow-y-auto">
                 <DialogHeader>
                     <div className="space-y-2">
-                        <DialogTitle className="text-xl md:text-3xl font-bold bg-gradient-to-r from-[#9747FF] via-[#8A43E6] to-[#6E35B9] bg-clip-text text-transparent pb-1">
-                            Get Started with Salut Enterprise
+                        <DialogTitle className="text-xl md:text-3xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent pb-1">
+                            Garemit Onboarding
                         </DialogTitle>
-                        {step !== "COMPLETED" && (
-                            <>
-                                <DialogDescription className="text-sm md:text-base font-medium text-foreground/80">
-                                    {STEPS[step]}
-                                </DialogDescription>
-                                <div className="space-y-2">
-                                    <Progress
-                                        value={progress}
-                                        className="h-2"
-                                    />
-                                    <p className="text-xs md:text-sm text-muted-foreground">
-                                        Step{" "}
-                                        {Object.keys(STEPS).indexOf(step) + 1}{" "}
-                                        of {Object.keys(STEPS).length}
-                                    </p>
-                                </div>
-                            </>
-                        )}
+                        <div className="flex items-center justify-between">
+                            <DialogDescription className="text-sm md:text-base font-medium text-foreground/80">
+                                {STEPS[step]}
+                            </DialogDescription>
+                            <span className="text-sm text-muted-foreground">
+                                Step {currentStepNumber} of {TOTAL_STEPS}
+                            </span>
+                        </div>
+                        <Progress value={(currentStepNumber / TOTAL_STEPS) * 100} className="h-2" />
                     </div>
                 </DialogHeader>
-
-                {isLoading ? (
-                    <LoadingState stage={loadingStage} />
-                ) : step === "COMPLETED" ? (
-                    <div className="py-6 md:py-8 text-center space-y-4">
-                        <div className="flex justify-center">
-                            <CheckCircle2 className="h-12 w-12 md:h-16 md:w-16 text-primary" />
-                        </div>
-                        <h3 className="text-xl md:text-2xl font-semibold text-primary">
-                            Thank You for Choosing Salut Enterprise!
-                        </h3>
-                        <p className="text-sm md:text-base text-muted-foreground max-w-md mx-auto">
-                            Your company has been created successfully. You will
-                            be redirected to your dashboard momentarily...
-                        </p>
-                    </div>
-                ) : (
+                {step === "SIGNUP" && (
                     <Form {...form}>
-                        <form
-                            onSubmit={form.handleSubmit(onSubmit)}
-                            className="space-y-4 md:space-y-6"
-                        >
+                        <form className="space-y-6" onSubmit={form.handleSubmit(() => setStep("PROFILE"))}>
+                            <div className="space-y-4">
+                                <FormField control={form.control} name="email" render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Email</FormLabel>
+                                        <FormControl><Input type="email" placeholder="you@email.com" {...field} /></FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )} />
+                                <FormField control={form.control} name="password" render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Password</FormLabel>
+                                        <FormControl><Input type="password" placeholder="Password" {...field} /></FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )} />
+                                <FormField control={form.control} name="referral" render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Referral Code (optional)</FormLabel>
+                                        <FormControl><Input placeholder="Referral code" {...field} /></FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )} />
+                                <FormField control={form.control} name="consent" render={({ field }) => (
+                                    <FormItem>
+                                        <div className="flex items-center gap-2">
+                                            <input type="checkbox" id="consent" checked={field.value} onChange={e => field.onChange(e.target.checked)} className="accent-primary" />
+                                            <FormLabel htmlFor="consent" className="mb-0">I agree to the <a href="/legal/privacy" className="underline text-primary">Privacy Policy</a> and Terms.</FormLabel>
+                                        </div>
+                                        <FormMessage />
+                                    </FormItem>
+                                )} />
+                            </div>
 
-                            {step === "COMPANY_DETAILS" && (
-                                <div className="space-y-4">
-                                    <FormField
-                                        control={form.control}
-                                        name="cui"
-                                        render={({ field }) => (
-                                            <FormItem>
-                                                <FormLabel>
-                                                    CUI Number
-                                                </FormLabel>
-                                                <div className="flex gap-2">
-                                                    <FormControl>
-                                                        <div className="relative flex-1">
-                                                            <Building2 className="absolute left-3 top-2.5 h-4 w-4 md:h-5 md:w-5 text-muted-foreground" />
-                                                            <Input
-                                                                placeholder="Enter CUI"
-                                                                className="pl-10 text-sm md:text-base"
-                                                                {...field}
-                                                                autoFocus
-                                                            />
-                                                        </div>
-                                                    </FormControl>
-                                                    <Button
-                                                        type="button"
-                                                        variant="outline"
-                                                        onClick={() =>
-                                                            lookupCompany(
-                                                                field.value,
-                                                            )
-                                                        }
-                                                        disabled={
-                                                            isLookingUp ||
-                                                            !field.value
-                                                        }
-                                                        className="min-w-[100px] md:min-w-[120px] bg-primary/5 hover:bg-primary/10 border-primary/20 hover:border-primary/30"
-                                                    >
-                                                        {isLookingUp ? (
-                                                            <Loader2 className="h-4 w-4 animate-spin" />
-                                                        ) : (
-                                                            <>
-                                                                <Search className="mr-2 h-4 w-4" />
-                                                                <span className="hidden sm:inline">
-                                                                    Lookup
-                                                                </span>{" "}
-                                                                Info
-                                                            </>
-                                                        )}
-                                                    </Button>
-                                                </div>
-                                                <FormMessage />
-                                            </FormItem>
-                                        )}
-                                    />  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-
-                                        <FormField
-                                            control={form.control}
-                                            name="company"
-                                            render={({ field }) => (
-                                                <FormItem>
-                                                    <FormLabel>
-                                                        Company Name
-                                                    </FormLabel>
-                                                    <FormControl>
-                                                        <Input
-                                                            placeholder="Company Name"
-                                                            className="text-sm md:text-base"
-                                                            {...field}
-                                                        />
-                                                    </FormControl>
-                                                    <FormMessage />
-                                                </FormItem>
-                                            )}
-                                        />
-                                        <FormField
-                                            control={form.control}
-                                            name="numar_reg_com"
-                                            render={({ field }) => (
-                                                <FormItem>
-                                                    <FormLabel>
-                                                        Trade Reg.
-                                                    </FormLabel>
-                                                    <FormControl>
-                                                        <Input
-                                                            placeholder="Trade Reg."
-                                                            className="text-sm md:text-base"
-                                                            {...field}
-                                                        />
-                                                    </FormControl>
-                                                    <FormMessage />
-                                                </FormItem>
-                                            )}
-                                        />
-                                    </div>
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                        <FormField
-                                            control={form.control}
-                                            name="address"
-                                            render={({ field }) => (
-                                                <FormItem>
-                                                    <FormLabel>
-                                                        Address
-                                                    </FormLabel>
-                                                    <FormControl>
-                                                        <Input
-                                                            placeholder="Company Address"
-                                                            className="text-sm md:text-base"
-                                                            {...field}
-                                                        />
-                                                    </FormControl>
-                                                    <FormMessage />
-                                                </FormItem>
-                                            )}
-                                        />
-
-                                        <FormField
-                                            control={form.control}
-                                            name="county"
-                                            render={({ field }) => (
-                                                <FormItem>
-                                                    <FormLabel>
-                                                        County
-                                                    </FormLabel>
-                                                    <FormControl>
-                                                        <Input
-                                                            placeholder="County"
-                                                            className="text-sm md:text-base"
-                                                            {...field}
-                                                        />
-                                                    </FormControl>
-                                                    <FormMessage />
-                                                </FormItem>
-                                            )}
-                                        />
-                                    </div>
-
-
-
-                                </div>
-                            )}
-
-                            {step === "ADMIN_SETUP" && (
-                                <div className="space-y-4">
-                                    <FormField
-                                        control={form.control}
-                                        name="adminName"
-                                        render={({ field }) => (
-                                            <FormItem>
-                                                <FormLabel>
-                                                    Admin Name
-                                                </FormLabel>
-                                                <FormControl>
-                                                    <Input
-                                                        placeholder="Full Name"
-                                                        className="text-sm md:text-base"
-                                                        {...field}
-                                                    />
-                                                </FormControl>
-                                                <FormMessage />
-                                            </FormItem>
-                                        )}
-                                    />
-
-                                    <FormField
-                                        control={form.control}
-                                        name="email"
-                                        render={({ field }) => (
-                                            <FormItem>
-                                                <FormLabel>
-                                                    Email Address
-                                                </FormLabel>
-                                                <FormControl>
-                                                    <Input
-                                                        type="email"
-                                                        placeholder="your.email@company.com"
-                                                        className="text-sm md:text-base"
-                                                        {...field}
-                                                    />
-                                                </FormControl>
-                                                <FormMessage />
-                                            </FormItem>
-                                        )}
-                                    />
-
-
-                                    <FormField
-                                        control={form.control}
-                                        name="adminPassword"
-                                        render={({ field }) => (
-                                            <FormItem>
-                                                <FormLabel>Password</FormLabel>
-                                                <FormControl>
-                                                    <Input
-                                                        type="password"
-                                                        placeholder="Minimum 6 characters"
-                                                        className="text-sm md:text-base"
-                                                        {...field}
-                                                    />
-                                                </FormControl>
-                                                <FormMessage />
-                                            </FormItem>
-                                        )}
-                                    />
-
-                                    <FormField
-                                        control={form.control}
-                                        name="confirmPassword"
-                                        render={({ field }) => (
-                                            <FormItem>
-                                                <FormLabel>
-                                                    Confirm Password
-                                                </FormLabel>
-                                                <FormControl>
-                                                    <Input
-                                                        type="password"
-                                                        placeholder="Confirm your password"
-                                                        className="text-sm md:text-base"
-                                                        {...field}
-                                                    />
-                                                </FormControl>
-                                                <FormMessage />
-                                            </FormItem>
-                                        )}
-                                    />
-                                </div>
-                            )}
-
-                            <div className="flex justify-between pt-4">
-                                {step !== ("COMPLETED" as StepType) && (
-                                    <>
-                                        <Button
-                                            type="button"
-                                            variant="outline"
-                                            onClick={goToPreviousStep}
-                                            disabled={
-
-                                                isLoading
-                                            }
-                                            className="text-sm md:text-base"
-                                        >
-                                            <ArrowLeft className="mr-2 h-4 w-4" />{" "}
-                                            Back
-                                        </Button>
-
-                                        {step !== "ADMIN_SETUP" ? (
-                                            <Button
-                                                type="button"
-                                                onClick={goToNextStep}
-                                                disabled={isLoading}
-                                                className="text-sm md:text-base"
-                                            >
-                                                Next{" "}
-                                                <ArrowRight className="ml-2 h-4 w-4" />
-                                            </Button>
-                                        ) : (
-                                            <Button
-                                                type="submit"
-                                                disabled={isLoading}
-                                                className="text-sm md:text-base"
-                                            >
-                                                {isLoading ? (
-                                                    <>
-                                                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                                                        Creating...
-                                                    </>
-                                                ) : (
-                                                    "Create Company"
-                                                )}
-                                            </Button>
-                                        )}
-                                    </>
-                                )}
+                        </form>
+                    </Form>
+                )}
+                {step === "PROFILE" && (
+                    <Form {...form}>
+                        <form className="space-y-6" onSubmit={form.handleSubmit(() => setStep("INTENT"))}>
+                            <div className="space-y-4">
+                                <FormField control={form.control} name="fullName" render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Full Name</FormLabel>
+                                        <FormControl><Input placeholder="Your full name" {...field} /></FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )} />
+                                <FormField control={form.control} name="country" render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Country of Residence</FormLabel>
+                                        <FormControl>
+                                            <select {...field} className="w-full border rounded px-3 py-2">
+                                                <option value="">Select country</option>
+                                                <option value="UK">United Kingdom</option>
+                                                <option value="SO">Somalia</option>
+                                                <option value="US">United States</option>
+                                                <option value="CA">Canada</option>
+                                                <option value="KE">Kenya</option>
+                                                <option value="ET">Ethiopia</option>
+                                                {/* Add more countries as needed */}
+                                            </select>
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )} />
+                                <FormField control={form.control} name="phone" render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Mobile Number (optional)</FormLabel>
+                                        <FormControl><Input placeholder="e.g. +44 7123 456789" {...field} /></FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )} />
+                                <FormField control={form.control} name="language" render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Language Preference</FormLabel>
+                                        <FormControl>
+                                            <select {...field} className="w-full border rounded px-3 py-2">
+                                                <option value="">Select language</option>
+                                                <option value="en">English</option>
+                                                <option value="so">Somali</option>
+                                            </select>
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )} />
                             </div>
                         </form>
                     </Form>
                 )}
+                {/* Steps PROFILE, INTENT, VERIFY, DASHBOARD, KYC to be implemented next */}
+                <div className="flex justify-between mt-6">
+                    {currentStepNumber > 1 && (
+                        <Button
+                            type="button"
+                            variant="outline"
+                            onClick={goToPreviousStep}
+                            className="flex-1 mr-2"
+                        >
+                            Back
+                        </Button>
+                    )}
+                    <Button
+                        type="submit"
+                        className="flex-1 text-white"
+                        onClick={() => {
+                            trackEvent('continue_step', { from: step });
+                            form.handleSubmit(() => goToNextStep())();
+                        }}
+                    >
+                        {currentStepNumber === TOTAL_STEPS ? 'Complete' : 'Continue'}
+                    </Button>
+                </div>
             </DialogContent>
         </Dialog>
     );

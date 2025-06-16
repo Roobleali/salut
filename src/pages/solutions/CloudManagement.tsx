@@ -324,23 +324,6 @@ const ActivityLog = () => {
 
 
 // Components
-const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, features }) => (
-    <motion.div
-        className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow"
-        whileHover={{ y: -2 }}
-    >
-        <div className="text-4xl mb-4">{icon}</div>
-        <h3 className="text-xl font-semibold mb-4">{title}</h3>
-        <ul className="space-y-2">
-            {features.map((feature, index) => (
-                <li key={index} className="flex items-center">
-                    <span className="text-green-500 mr-2">✓</span>
-                    {feature}
-                </li>
-            ))}
-        </ul>
-    </motion.div>
-);
 
 
 

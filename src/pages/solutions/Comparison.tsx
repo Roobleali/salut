@@ -120,17 +120,17 @@ const Comparison = () => {
         <Layout ariaLabel="Solution Comparison">
             <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
                 <Helmet>
-                    <title>Solution Comparison | Salut Enterprise</title>
+                    <title>Solution Comparison | dolcenera </title>
                     <meta name="description" content="Compare our website builder and e-commerce solutions to find the perfect fit for your business." />
-                    <meta property="og:title" content="Solution Comparison | Salut Enterprise" />
+                    <meta property="og:title" content="Solution Comparison | dolcenera " />
                     <meta property="og:description" content="Compare our website builder and e-commerce solutions to find the perfect fit for your business." />
                     <meta property="og:type" content="website" />
-                    <meta property="og:url" content="https://saluttech.ro/solutions/comparison" />
-                    <meta property="og:image" content="https://saluttech.ro/og-image.jpg" />
+                    <meta property="og:url" content="https://garemit.com/solutions/comparison" />
+                    <meta property="og:image" content="https://garemit.com/og-image.jpg" />
                     <meta name="twitter:card" content="summary_large_image" />
-                    <meta name="twitter:title" content="Solution Comparison | Salut Enterprise" />
+                    <meta name="twitter:title" content="Solution Comparison | dolcenera " />
                     <meta name="twitter:description" content="Compare our website builder and e-commerce solutions to find the perfect fit for your business." />
-                    <meta name="twitter:image" content="https://saluttech.ro/og-image.jpg" />
+                    <meta name="twitter:image" content="https://garemit.com/og-image.jpg" />
                 </Helmet>
 
                 {/* Hero Section */}
@@ -231,6 +231,78 @@ const Comparison = () => {
                             >
                                 Contact Sales
                             </a>
+                        </div>
+                    </div>
+                </section>
+
+                {/* New Comparison Section */}
+                <section className="py-16 bg-gray-50">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl text-center mb-8">
+                            ⚖️ Traditional Remittance vs. Garemit
+                        </h2>
+                        <div className="overflow-x-auto">
+                            <table className="min-w-full bg-white border border-gray-200 rounded-lg shadow">
+                                <thead>
+                                    <tr>
+                                        <th className="py-3 px-4 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Feature</th>
+                                        <th className="py-3 px-4 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Traditional Remittance</th>
+                                        <th className="py-3 px-4 bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">🚀 Garemit</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td className="py-3 px-4 border-t border-gray-200">Speed</td>
+                                        <td className="py-3 px-4 border-t border-gray-200">🐌 1–5 days (banks, agents)</td>
+                                        <td className="py-3 px-4 border-t border-gray-200">⚡ Instant or same-day (blockchain rails)</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="py-3 px-4 border-t border-gray-200">Fees</td>
+                                        <td className="py-3 px-4 border-t border-gray-200">💸 5–12% (hidden + FX margin)</td>
+                                        <td className="py-3 px-4 border-t border-gray-200">💰 1–3% transparent flat rate</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="py-3 px-4 border-t border-gray-200">Access</td>
+                                        <td className="py-3 px-4 border-t border-gray-200">🏦 Requires bank accounts or cash agents</td>
+                                        <td className="py-3 px-4 border-t border-gray-200">📱 Phone-to-phone, no bank needed</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="py-3 px-4 border-t border-gray-200">Transparency</td>
+                                        <td className="py-3 px-4 border-t border-gray-200">❌ Opaque: "Your money is being processed"</td>
+                                        <td className="py-3 px-4 border-t border-gray-200">✅ Real-time status tracking</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="py-3 px-4 border-t border-gray-200">Energy Loss (Physics)</td>
+                                        <td className="py-3 px-4 border-t border-gray-200">🔥 High friction — money loses value via middlemen</td>
+                                        <td className="py-3 px-4 border-t border-gray-200">♻️ Conservation of value — minimal loss</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="py-3 px-4 border-t border-gray-200">User Experience</td>
+                                        <td className="py-3 px-4 border-t border-gray-200">😓 Long forms, queues, ID photocopies</td>
+                                        <td className="py-3 px-4 border-t border-gray-200">😌 Smooth onboarding, digital-first</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="py-3 px-4 border-t border-gray-200">Hours</td>
+                                        <td className="py-3 px-4 border-t border-gray-200">⏰ Office hours only</td>
+                                        <td className="py-3 px-4 border-t border-gray-200">🕐 24/7 anytime, anywhere</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="py-3 px-4 border-t border-gray-200">Support</td>
+                                        <td className="py-3 px-4 border-t border-gray-200">🧱 Disconnected agents, slow support</td>
+                                        <td className="py-3 px-4 border-t border-gray-200">💬 Live chat + smart notifications</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="py-3 px-4 border-t border-gray-200">Currency Exchange</td>
+                                        <td className="py-3 px-4 border-t border-gray-200">🤐 Hidden FX rates</td>
+                                        <td className="py-3 px-4 border-t border-gray-200">🔍 Fair market rates (via stablecoin logic)</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="py-3 px-4 border-t border-gray-200">Trust</td>
+                                        <td className="py-3 px-4 border-t border-gray-200">🤔 Relies on legacy institutions</td>
+                                        <td className="py-3 px-4 border-t border-gray-200">🤝 Built by diaspora, for diaspora</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </section>

@@ -72,12 +72,12 @@ export function CRM() {
       <div className="container mx-auto px-4">
         {/* Hero Section */}
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <Badge className="mb-4">Enterprise CRM</Badge>
+          <Badge className="mb-4"> CRM</Badge>
           <h1 className="text-4xl font-bold mb-6">
             Transform Your Customer Relationships
           </h1>
           <p className="text-xl text-gray-600 mb-8">
-            Our enterprise CRM solution helps you build stronger customer relationships, streamline sales processes, and drive growth with powerful insights.
+            Our  CRM solution helps you build stronger customer relationships, streamline sales processes, and drive growth with powerful insights.
           </p>
           <div className="flex gap-4 justify-center">
             <Link href="/contact">
@@ -141,7 +141,7 @@ export function CRM() {
               <h3 className="text-2xl font-bold mb-8 text-center">
                 {CASE_STUDY.title}
               </h3>
-              
+
               <div className="grid sm:grid-cols-3 gap-8 mb-8">
                 {CASE_STUDY.metrics.map((metric) => (
                   <div key={metric.label} className="text-center">

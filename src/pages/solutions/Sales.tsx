@@ -52,7 +52,7 @@ const CASE_STUDY = {
   quote: {
     text: "The sales management system has transformed how we handle our global sales operations. The automation and insights have been game-changing for our team.",
     author: "Michael Chen",
-    position: "VP of Sales, GlobalTech Manufacturing",
+    position: "VP of Sales, Global Manufacturing",
   },
 };
 
@@ -72,7 +72,7 @@ export function Sales() {
       <div className="container mx-auto px-4">
         {/* Hero Section */}
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <Badge className="mb-4">Enterprise Sales</Badge>
+          <Badge className="mb-4"> Sales</Badge>
           <h1 className="text-4xl font-bold mb-6">
             Accelerate Your Sales Performance
           </h1>

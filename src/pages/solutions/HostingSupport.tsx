@@ -4,13 +4,13 @@ import { Shield, Clock, Server, Users } from "lucide-react";
 const features = [
     {
         icon: Shield,
-        title: "Enterprise-Grade Security",
+        title: "-Grade Security",
         description: "Advanced security measures including SSL encryption, regular backups, and DDoS protection to keep your data safe.",
     },
     {
         icon: Clock,
         title: "24/7 Support",
-        description: "Round-the-clock technical support with guaranteed response times and dedicated support team.",
+        description: "Round-the-clock nical support with guaranteed response times and dedicated support team.",
     },
     {
         icon: Server,
@@ -28,17 +28,17 @@ const HostingSupport = () => {
     return (
         <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
             <Helmet>
-                <title>Hosting & Support Services | Salut Enterprise</title>
-                <meta name="description" content="Enterprise-grade hosting and support services to keep your systems running smoothly." />
-                <meta property="og:title" content="Hosting & Support Services | Salut Enterprise" />
-                <meta property="og:description" content="Enterprise-grade hosting and support services to keep your systems running smoothly." />
+                <title>Hosting & Support Services | dolcenera </title>
+                <meta name="description" content="-grade hosting and support services to keep your systems running smoothly." />
+                <meta property="og:title" content="Hosting & Support Services | dolcenera " />
+                <meta property="og:description" content="-grade hosting and support services to keep your systems running smoothly." />
                 <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://saluttech.ro/solutions/hosting-support" />
-                <meta property="og:image" content="https://saluttech.ro/og-image.jpg" />
+                <meta property="og:url" content="https://garemit.com/solutions/hosting-support" />
+                <meta property="og:image" content="https://garemit.com/og-image.jpg" />
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Hosting & Support Services | Salut Enterprise" />
-                <meta name="twitter:description" content="Enterprise-grade hosting and support services to keep your systems running smoothly." />
-                <meta name="twitter:image" content="https://saluttech.ro/og-image.jpg" />
+                <meta name="twitter:title" content="Hosting & Support Services | dolcenera " />
+                <meta name="twitter:description" content="-grade hosting and support services to keep your systems running smoothly." />
+                <meta name="twitter:image" content="https://garemit.com/og-image.jpg" />
             </Helmet>
 
             {/* Hero Section */}
@@ -47,7 +47,7 @@ const HostingSupport = () => {
                 <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center">
                         <h1 className="text-4xl font-extrabold text-white sm:text-5xl md:text-6xl">
-                            Enterprise Hosting & Support
+                            Hosting & Support
                         </h1>
                         <p className="mt-6 text-xl text-gray-100 max-w-3xl mx-auto">
                             Reliable hosting infrastructure and expert support services to ensure your business operations run smoothly 24/7.

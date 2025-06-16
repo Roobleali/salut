@@ -113,11 +113,11 @@ const PrivacyPolicy = () => {
                         <h2 className="text-2xl font-semibold">Contact Us</h2>
                     </div>
                     <p className="text-gray-700 mb-4">For any privacy-related questions or concerns, contact our Data Protection Officer:</p>
-                    <a href="mailto:info@saluttech.ro" className="text-blue-600 hover:text-blue-700">
-                        info@saluttech.ro
+                    <a href="mailto:info@garemit.com" className="text-blue-600 hover:text-blue-700">
+                        info@garemit.com
                     </a>
                     <p className="text-gray-700 mt-4">
-                        Salut Tech SRL<br />
+                        dolcenera  SRL<br />
                         CUI : 49702253 <br />
                         Bucharest, Romania
                     </p>

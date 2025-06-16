@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://salut-enterprise.com/sitemap.xml
+Sitemap: https://dolcenera.com/sitemap.xml
 
 # Disallow admin and private areas
 Disallow: /admin/

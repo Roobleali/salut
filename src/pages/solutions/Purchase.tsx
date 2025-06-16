@@ -67,7 +67,7 @@ export function Purchase() {
       <div className="container mx-auto px-4">
         {/* Hero Section */}
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <Badge className="mb-4">Enterprise Procurement</Badge>
+          <Badge className="mb-4"> Procurement</Badge>
           <h1 className="text-4xl font-bold mb-6">
             Streamline Your Procurement Process
           </h1>

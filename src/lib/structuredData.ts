@@ -1,14 +1,14 @@
 export const generateOrganizationSchema = (t: (key: string) => string) => ({
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "Salut Enterprise",
-  url: "https://salut-enterprise.com",
-  logo: "https://salut-enterprise.com/logo.png",
+  name: "Dolcenera",
+  url: "https://dolcenera.com",
+  logo: "https://dolcenera.com/logo.png",
   description: t("common.organization.description"),
   sameAs: [
-    "https://linkedin.com/company/salut-enterprise",
-    "https://twitter.com/salut-enterprise",
-    "https://facebook.com/salut-enterprise",
+    "https://linkedin.com/company/dolcenera",
+    "https://twitter.com/dolcenera",
+    "https://facebook.com/dolcenera",
   ],
   contactPoint: {
     "@type": "ContactPoint",
@@ -27,7 +27,7 @@ export const generateBreadcrumbSchema = (
     "@type": "ListItem",
     position: pathSegments.indexOf(segment) + 1,
     name: t(`breadcrumbs.${segment}`),
-    item: `https://salut-enterprise.com/${pathSegments
+    item: `https://dolcenera.com/${pathSegments
       .slice(0, pathSegments.indexOf(segment) + 1)
       .join("/")}`,
   }));
@@ -40,7 +40,7 @@ export const generateBreadcrumbSchema = (
         "@type": "ListItem",
         position: 1,
         name: t("breadcrumbs.home"),
-        item: "https://salut-enterprise.com",
+        item: "https://dolcenera.com",
       },
       ...breadcrumbItems,
     ],
@@ -59,8 +59,8 @@ export const generateServiceSchema = (
   description: description,
   provider: {
     "@type": "Organization",
-    name: "Salut Enterprise",
-    url: "https://salut-enterprise.com",
+    name: "Dolcenera",
+    url: "https://dolcenera.com",
   },
   offers: {
     "@type": "Offer",
@@ -71,7 +71,7 @@ export const generateServiceSchema = (
   areaServed: "Worldwide",
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "Enterprise Services",
+    name: " Services",
     itemListElement: features.map((feature) => ({
       "@type": "Offer",
       itemOffered: {
@@ -105,10 +105,10 @@ export const generateArticleSchema = (
   },
   publisher: {
     "@type": "Organization",
-    name: "Salut Enterprise",
+    name: "Dolcenera",
     logo: {
       "@type": "ImageObject",
-      url: "https://salut-enterprise.com/logo.png",
+      url: "https://dolcenera.com/logo.png",
     },
   },
   datePublished: publishDate,

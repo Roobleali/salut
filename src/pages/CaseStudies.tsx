@@ -51,21 +51,21 @@ export function CaseStudies() {
     <>
       <Helmet>
         <title>Case Studies | {t('common.company_name')} - Success Stories</title>
-        <meta name="description" content="Explore real-world success stories of businesses that transformed their operations with Salut Enterprise solutions. Learn how our clients achieved remarkable results." />
-        <meta name="keywords" content="ERP case studies, business transformation, success stories, manufacturing efficiency, retail technology, real estate management" />
+        <meta name="description" content="Explore real-world success stories of businesses that transformed their operations with dolcenera  solutions. Learn how our clients achieved remarkable results." />
+        <meta name="keywords" content="ERP case studies, business transformation, success stories, manufacturing efficiency, retail nology, real estate management" />
 
         {/* Open Graph tags */}
         <meta property="og:title" content={`Case Studies | ${t('common.company_name')} - Success Stories`} />
-        <meta property="og:description" content="Explore real-world success stories of businesses that transformed their operations with Salut Enterprise solutions. Learn how our clients achieved remarkable results." />
+        <meta property="og:description" content="Explore real-world success stories of businesses that transformed their operations with dolcenera  solutions. Learn how our clients achieved remarkable results." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://saluttech.ro/case-studies" />
-        <meta property="og:image" content="https://saluttech.ro/case-studies/og-image.jpg" />
+        <meta property="og:url" content="https://garemit.com/case-studies" />
+        <meta property="og:image" content="https://garemit.com/case-studies/og-image.jpg" />
 
         {/* Twitter Card tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={`Case Studies | ${t('common.company_name')} - Success Stories`} />
-        <meta name="twitter:description" content="Explore real-world success stories of businesses that transformed their operations with Salut Enterprise solutions. Learn how our clients achieved remarkable results." />
-        <meta name="twitter:image" content="https://saluttech.ro/case-studies/og-image.jpg" />
+        <meta name="twitter:description" content="Explore real-world success stories of businesses that transformed their operations with dolcenera  solutions. Learn how our clients achieved remarkable results." />
+        <meta name="twitter:image" content="https://garemit.com/case-studies/og-image.jpg" />
 
         {/* Structured data */}
         <script type="application/ld+json">
@@ -74,7 +74,7 @@ export function CaseStudies() {
             "@type": "ItemList",
             "name": `${t('common.company_name')} Case Studies`,
             "description": "Success stories of businesses transformed by our solutions",
-            "url": "https://saluttech.ro/case-studies",
+            "url": "https://garemit.com/case-studies",
             "itemListElement": CASE_STUDIES.map((study, index) => ({
               "@type": "ListItem",
               "position": index + 1,
@@ -82,10 +82,10 @@ export function CaseStudies() {
                 "@type": "Article",
                 "headline": study.title,
                 "description": study.excerpt,
-                "image": `https://saluttech.ro${study.image}`,
+                "image": `https://garemit.com${study.image}`,
                 "author": {
                   "@type": "Organization",
-                  "name": "Salut Enterprise"
+                  "name": "dolcenera "
                 }
               }
             }))

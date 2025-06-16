@@ -82,12 +82,12 @@ const WebsiteBuilder = () => {
                 <meta property="og:title" content={`${t('websiteBuilder.hero.title')} | ${t('common.company_name')}`} />
                 <meta property="og:description" content={t('websiteBuilder.hero.subtitle')} />
                 <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://saluttech.ro/solutions/website-builder" />
-                <meta property="og:image" content="https://saluttech.ro/og-image.jpg" />
+                <meta property="og:url" content="https://garemit.com/solutions/website-builder" />
+                <meta property="og:image" content="https://garemit.com/og-image.jpg" />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content={`${t('websiteBuilder.hero.title')} | ${t('common.company_name')}`} />
                 <meta name="twitter:description" content={t('websiteBuilder.hero.subtitle')} />
-                <meta name="twitter:image" content="https://saluttech.ro/og-image.jpg" />
+                <meta name="twitter:image" content="https://garemit.com/og-image.jpg" />
             </Helmet>
 
             {/* Hero Section */}

@@ -9,10 +9,10 @@ export default function ThankYou() {
     return (
         <>
             <Helmet>
-                <title>{t('thankYou.meta.title', 'Thank You - Salut Enterprise')}</title>
+                <title>{t('thankYou.meta.title', 'Thank You - Dolcenera')}</title>
                 <meta
                     name="description"
-                    content={t('thankYou.meta.description', 'Thank you for contacting Salut Enterprise. We appreciate your interest and will get back to you shortly.')}
+                    content={t('thankYou.meta.description', 'Thank you for contacting Dolcenera. We appreciate your interest and will get back to you shortly.')}
                 />
                 <meta name="robots" content="noindex" />
             </Helmet>

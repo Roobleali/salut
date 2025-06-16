@@ -10,7 +10,7 @@ const features = [
     {
         icon: Shield,
         title: "Secure Process",
-        description: "Enterprise-grade security measures ensuring your data remains protected throughout the migration.",
+        description: "-grade security measures ensuring your data remains protected throughout the migration.",
     },
     {
         icon: Clock,
@@ -71,17 +71,17 @@ const Migration = () => {
     return (
         <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
             <Helmet>
-                <title>Migration Services | Salut Enterprise</title>
-                <meta name="description" content="Seamless migration services to help you transition to our enterprise solutions." />
-                <meta property="og:title" content="Migration Services | Salut Enterprise" />
-                <meta property="og:description" content="Seamless migration services to help you transition to our enterprise solutions." />
+                <title>Migration Services | dolcenera </title>
+                <meta name="description" content="Seamless migration services to help you transition to our  solutions." />
+                <meta property="og:title" content="Migration Services | dolcenera " />
+                <meta property="og:description" content="Seamless migration services to help you transition to our  solutions." />
                 <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://saluttech.ro/solutions/migration" />
-                <meta property="og:image" content="https://saluttech.ro/og-image.jpg" />
+                <meta property="og:url" content="https://garemit.com/solutions/migration" />
+                <meta property="og:image" content="https://garemit.com/og-image.jpg" />
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Migration Services | Salut Enterprise" />
-                <meta name="twitter:description" content="Seamless migration services to help you transition to our enterprise solutions." />
-                <meta name="twitter:image" content="https://saluttech.ro/og-image.jpg" />
+                <meta name="twitter:title" content="Migration Services | dolcenera " />
+                <meta name="twitter:description" content="Seamless migration services to help you transition to our  solutions." />
+                <meta name="twitter:image" content="https://garemit.com/og-image.jpg" />
             </Helmet>
 
             {/* Hero Section */}
@@ -90,7 +90,7 @@ const Migration = () => {
                 <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center">
                         <h1 className="text-4xl font-extrabold text-white sm:text-5xl md:text-6xl">
-                            Enterprise Migration
+                            Migration
                         </h1>
                         <p className="mt-6 text-xl text-gray-100 max-w-3xl mx-auto">
                             Seamless system migration services designed to minimize disruption and ensure zero data loss.

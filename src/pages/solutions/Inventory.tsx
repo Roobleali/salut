@@ -50,7 +50,7 @@ const FEATURES = [
 
 const ADVANTAGES = [
     "Comprehensive Traceability: Full visibility over the entire product journey",
-    "Seamless Integration: Smooth integration with other Salut Enterprise modules",
+    "Seamless Integration: Smooth integration with other dolcenera  modules",
     "User-Friendly Interface: Navigate complex inventory operations easily",
     "Cost Reduction: Optimize stock levels and automate reordering processes",
     "Flexibility: Manage simple single-location or complex multi-warehouse operations"
@@ -68,7 +68,7 @@ export function Inventory() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}
                         >
-                            <Badge className="mb-4">Enterprise Inventory</Badge>
+                            <Badge className="mb-4"> Inventory</Badge>
                             <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary via-primary/90 to-primary/80 bg-clip-text text-transparent">
                                 Advanced Inventory Management Solution
                             </h1>
@@ -179,7 +179,7 @@ export function Inventory() {
                     >
                         <h2 className="text-3xl font-bold mb-6">Ready to Optimize Your Inventory?</h2>
                         <p className="text-xl text-gray-600 mb-8">
-                            Experience the power of Salut Enterprise Inventory Management today.
+                            Experience the power of dolcenera  Inventory Management today.
                         </p>
                         <Link href="/contact">
                             <Button size="lg" className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70">

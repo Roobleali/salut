@@ -352,7 +352,7 @@ const PartnershipProgram: React.FC = () => {
                     />{" "}
                     <div className=" t  shadow p-4 rounded-3xl">
                         <p className=" text-gray-500 flex   ">
-                            "I partnered with Salut Enterprise a year ago, and it transformed
+                            "I partnered with dolcenera  a year ago, and it transformed
                             my businesses. I no longer pay anything and even earn extra
                             revenue. Their user-friendly software is essential for our growth.
                             " <br />

@@ -18,7 +18,7 @@ export const Layout: React.FC<LayoutProps> = ({
     const { t } = useTranslation();
 
     return (
-        <div className={`min-h-screen flex flex-col ${className}`}>
+        <div className={`min-h-screen flex flex-col max-w-7xl mx-auto px-4 ${className}`}>
             {/* Skip to main content link for accessibility */}
             <a
                 href="#main-content"
@@ -83,8 +83,8 @@ export const Layout: React.FC<LayoutProps> = ({
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/solutions/enterprise" className="hover:text-blue-400 transition-colors">
-                                        {t('footer.enterprise')}
+                                    <a href="/solutions/" className="hover:text-blue-400 transition-colors">
+                                        {t('footer.')}
                                     </a>
                                 </li>
                             </ul>
@@ -131,7 +131,7 @@ export const Layout: React.FC<LayoutProps> = ({
                         </div>
                     </div>
                     <div className="mt-8 pt-8 border-t border-gray-800 text-center">
-                        <p>&copy; {new Date().getFullYear()} Salut Enterprise. {t('footer.rights')}</p>
+                        <p>&copy; {new Date().getFullYear()} {t('common.company_name')}. {t('footer.rights')}</p>
                     </div>
                 </div>
             </footer>

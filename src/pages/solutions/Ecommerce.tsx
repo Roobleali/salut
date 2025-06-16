@@ -56,17 +56,17 @@ const Ecommerce = () => {
     return (
         <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
             <Helmet>
-                <title>E-commerce Solutions | Salut Enterprise</title>
+                <title>E-commerce Solutions | dolcenera </title>
                 <meta name="description" content="Create and manage your online store with our comprehensive e-commerce platform." />
-                <meta property="og:title" content="E-commerce Solutions | Salut Enterprise" />
+                <meta property="og:title" content="E-commerce Solutions | dolcenera " />
                 <meta property="og:description" content="Create and manage your online store with our comprehensive e-commerce platform." />
                 <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://saluttech.ro/solutions/ecommerce" />
-                <meta property="og:image" content="https://saluttech.ro/og-image.jpg" />
+                <meta property="og:url" content="https://garemit.com/solutions/ecommerce" />
+                <meta property="og:image" content="https://garemit.com/og-image.jpg" />
                 <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="E-commerce Solutions | Salut Enterprise" />
+                <meta name="twitter:title" content="E-commerce Solutions | dolcenera " />
                 <meta name="twitter:description" content="Create and manage your online store with our comprehensive e-commerce platform." />
-                <meta name="twitter:image" content="https://saluttech.ro/og-image.jpg" />
+                <meta name="twitter:image" content="https://garemit.com/og-image.jpg" />
             </Helmet>
 
             {/* Hero Section */}
